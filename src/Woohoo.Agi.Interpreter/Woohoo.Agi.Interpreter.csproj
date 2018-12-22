@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\Common\Common.Build.settings" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8CA852D1-CBD1-4DFC-8846-F7B840461F9B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Woohoo.Agi</RootNamespace>
+    <AssemblyName>Woohoo.Agi.Interpreter</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>..\..\bin\Debug\Woohoo.Agi.Interpreter\Woohoo.Agi.Interpreter.xml</DocumentationFile>
+    <NoWarn>CS1591,SA1600</NoWarn>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;NET20;</DefineConstants>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DocumentationFile>..\..\bin\Release\Woohoo.Agi.Interpreter\Woohoo.Agi.Interpreter.xml</DocumentationFile>
+    <NoWarn>CS1591,SA1600</NoWarn>
+    <DefineConstants>TRACE;NET20</DefineConstants>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Common\Common.AssemblyInfo.cs">
+      <Link>Common.AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Detection\Databases.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Databases.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Detection\DetectByFileNames.cs" />
+    <Compile Include="Detection\DetectByWinAgiGameInfo.cs" />
+    <Compile Include="Detection\Database.cs" />
+    <Compile Include="Detection\DetectByAgiDesignerGameInfo.cs" />
+    <Compile Include="Detection\DetectByInternalDatabase.cs" />
+    <Compile Include="Detection\GameFile.cs" />
+    <Compile Include="Detection\GameFileCollection.cs" />
+    <Compile Include="Detection\Game.cs" />
+    <Compile Include="Detection\GameDetector.cs" />
+    <Compile Include="Detection\GameDetectorResult.cs" />
+    <Compile Include="Detection\GameInfoParser.cs" />
+    <Compile Include="Detection\IGameDetectorAlgorithm.cs" />
+    <Compile Include="Errors.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Errors.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Interpreter\LogicPatch.cs" />
+    <Compile Include="Interpreter\PreferencesSerializer.cs" />
+    <Compile Include="Interpreter\Controls\PromptControl.cs" />
+    <Compile Include="Interpreter\Controls\GameControl.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverAmiga2.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverAmiga3.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverAmiga1.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverAppleIIgs.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverAtariST.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverEga.cs" />
+    <Compile Include="Interpreter\UserInterfaceTheme.cs" />
+    <Compile Include="Interpreter\RenderSize.cs" />
+    <Compile Include="Interpreter\RenderPoint.cs" />
+    <Compile Include="Interpreter\ScreenPoint.cs" />
+    <Compile Include="Interpreter\RenderRectangle.cs" />
+    <Compile Include="Interpreter\PictureRectangle.cs" />
+    <Compile Include="Interpreter\InputEvent.cs" />
+    <Compile Include="Interpreter\InputEventAscii.cs" />
+    <Compile Include="Interpreter\InputEventDirection.cs" />
+    <Compile Include="Interpreter\InputEventType.cs" />
+    <Compile Include="Interpreter\Random.cs" />
+    <Compile Include="Interpreter\Controls\ClassicInputControl.cs" />
+    <Compile Include="Interpreter\Controls\GameSelectionControl.cs" />
+    <Compile Include="Interpreter\Controls\InputControl.cs" />
+    <Compile Include="Interpreter\Controls\PopupInputControl.cs" />
+    <Compile Include="Interpreter\Controls\TraceControl.cs" />
+    <Compile Include="Interpreter\Controls\WordListInputControl.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverCga.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverCga1.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverCga0.cs" />
+    <Compile Include="Interpreter\ErrorCodes.cs" />
+    <Compile Include="Interpreter\GraphicsColor.cs" />
+    <Compile Include="Interpreter\ExecutionException.cs" />
+    <Compile Include="Interpreter\AgiInterpreter.Kernel.cs" />
+    <Compile Include="Interpreter\PicturePoint.cs" />
+    <Compile Include="Interpreter\StringUtility.cs" />
+    <Compile Include="Interpreter\Blit.cs" />
+    <Compile Include="Interpreter\BorderType.cs" />
+    <Compile Include="Interpreter\ClockState.cs" />
+    <Compile Include="Interpreter\ComputerType.cs" />
+    <Compile Include="Interpreter\ControlEntry.cs" />
+    <Compile Include="Interpreter\ExitException.cs" />
+    <Compile Include="Interpreter\DitheredColor.cs" />
+    <Compile Include="Interpreter\GameStartInfo.cs" />
+    <Compile Include="Interpreter\GameStartInfoComparer.cs" />
+    <Compile Include="Interpreter\GraphicsRenderer.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriver.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverFull.cs" />
+    <Compile Include="Interpreter\GraphicsRendererDriverHercules.cs" />
+    <Compile Include="Interpreter\ISavedGameSerializer.cs" />
+    <Compile Include="Interpreter\IKernel.cs" />
+    <Compile Include="Interpreter\Controls\InputBoxControl.cs" />
+    <Compile Include="Interpreter\Controls\InventoryControl.cs" />
+    <Compile Include="Interpreter\Controls\ListBoxControl.cs" />
+    <Compile Include="Interpreter\LogicInterpreter.cs" />
+    <Compile Include="Interpreter\Controls\MenuControl.cs" />
+    <Compile Include="Interpreter\Parser.cs" />
+    <Compile Include="Interpreter\LogicPatches.cs" />
+    <Compile Include="Interpreter\PictureInterpreter.cs" />
+    <Compile Include="Interpreter\Preferences.cs" />
+    <Compile Include="Interpreter\ControlLine.cs" />
+    <Compile Include="Interpreter\PriorityTable.cs" />
+    <Compile Include="Interpreter\ResourceManager.cs" />
+    <Compile Include="Interpreter\SavedGameManager.cs" />
+    <Compile Include="Interpreter\Controls\SaveRestoreFolderBrowseControl.cs" />
+    <Compile Include="Interpreter\Controls\SaveRestoreGameBrowseControl.cs" />
+    <Compile Include="Interpreter\ScriptManager.cs" />
+    <Compile Include="Interpreter\SoundManager.cs" />
+    <Compile Include="Interpreter\Controls\StatusLineControl.cs" />
+    <Compile Include="Interpreter\Controls\TextBoxControl.cs" />
+    <Compile Include="Interpreter\UserInputMode.cs" />
+    <Compile Include="Interpreter\ISoundPcmDriver.cs" />
+    <Compile Include="Interpreter\Controls\InventoryControlItem.cs" />
+    <Compile Include="Interpreter\Font.cs" />
+    <Compile Include="Interpreter\CycleMode.cs" />
+    <Compile Include="Interpreter\Direction.cs" />
+    <Compile Include="Interpreter\DisplayType.cs" />
+    <Compile Include="Interpreter\EgoControl.cs" />
+    <Compile Include="Interpreter\Flags.cs" />
+    <Compile Include="Interpreter\LoopUpdate.cs" />
+    <Compile Include="Interpreter\Menu.cs" />
+    <Compile Include="Interpreter\MenuItem.cs" />
+    <Compile Include="Interpreter\MenuParentItem.cs" />
+    <Compile Include="Interpreter\MessageState.cs" />
+    <Compile Include="Interpreter\MouseArea.cs" />
+    <Compile Include="Interpreter\MouseAreaPosition.cs" />
+    <Compile Include="Interpreter\MouseButton.cs" />
+    <Compile Include="Interpreter\MouseDown.cs" />
+    <Compile Include="Interpreter\MouseMode.cs" />
+    <Compile Include="Interpreter\PictureBrushPattern.cs" />
+    <Compile Include="Interpreter\PictureBrushShape.cs" />
+    <Compile Include="Interpreter\PictureBuffer.cs" />
+    <Compile Include="Interpreter\PictureCode.cs" />
+    <Compile Include="Interpreter\PictureRenderer.cs" />
+    <Compile Include="Interpreter\RenderBuffer.cs" />
+    <Compile Include="Interpreter\ScriptCodes.cs" />
+    <Compile Include="Interpreter\ShiftDirection.cs" />
+    <Compile Include="Interpreter\SoundChannel.cs" />
+    <Compile Include="Interpreter\PcmSoundDriver.cs" />
+    <Compile Include="Interpreter\TextColor.cs" />
+    <Compile Include="Interpreter\TextPosition.cs" />
+    <Compile Include="Interpreter\Tone.cs" />
+    <Compile Include="Interpreter\ToneChannel.cs" />
+    <Compile Include="Interpreter\ToneChannelNoise.cs" />
+    <Compile Include="Interpreter\UserInterface.cs" />
+    <Compile Include="Interpreter\ViewObjectManager.cs" />
+    <Compile Include="Interpreter\ViewObjectTable.cs" />
+    <Compile Include="Interpreter\WindowManager.cs" />
+    <Compile Include="Interpreter\GameFolder.cs" />
+    <Compile Include="Interpreter\IGameContainer.cs" />
+    <Compile Include="Resources\ViewCel.cs" />
+    <Compile Include="Resources\ViewLoop.cs" />
+    <Compile Include="Resources\Serialization\InventoryDecoder.cs" />
+    <Compile Include="Resources\Serialization\LogicDecoder.cs" />
+    <Compile Include="Resources\Serialization\PictureDecoder.cs" />
+    <Compile Include="Resources\Serialization\SoundDecoder.cs" />
+    <Compile Include="Resources\Serialization\StringDecoder.cs" />
+    <Compile Include="Resources\Serialization\ViewDecoder.cs" />
+    <Compile Include="Resources\Serialization\VocabularyDecoder.cs" />
+    <Compile Include="Resources\Serialization\VolumeDecoder.cs" />
+    <Compile Include="Resources\Serialization\VolumeFilesNotFoundException.cs" />
+    <Compile Include="Resources\Serialization\GameNotFoundException.cs" />
+    <Compile Include="Interpreter\IGraphicsDriver.cs" />
+    <Compile Include="Interpreter\IInputDriver.cs" />
+    <Compile Include="Interpreter\AgiInterpreter.cs" />
+    <Compile Include="InterpreterMajorVersion.cs" />
+    <Compile Include="InterpreterVersion.cs" />
+    <Compile Include="Resources\InventoryItem.cs" />
+    <Compile Include="Resources\InventoryResource.cs" />
+    <Compile Include="Interpreter\ISoundDriver.cs" />
+    <Compile Include="Resources\Serialization\IVolumeDecoder.cs" />
+    <Compile Include="Interpreter\LogicArgumentType.cs" />
+    <Compile Include="Interpreter\LogicCommand.cs" />
+    <Compile Include="Interpreter\LogicCommandTable.cs" />
+    <Compile Include="Interpreter\LogicControlCode.cs" />
+    <Compile Include="Interpreter\LogicFunctionCode.cs" />
+    <Compile Include="Interpreter\LogicFunctionTable.cs" />
+    <Compile Include="Interpreter\LogicProcedureCode.cs" />
+    <Compile Include="Interpreter\LogicProcedureTable.cs" />
+    <Compile Include="Resources\LogicResource.cs" />
+    <Compile Include="Resources\Serialization\LzwDecompress.cs" />
+    <Compile Include="Interpreter\Motion.cs" />
+    <Compile Include="Interpreter\Palette.cs" />
+    <Compile Include="Interpreter\ParserResult.cs" />
+    <Compile Include="Resources\Serialization\PictureCompression.cs" />
+    <Compile Include="Resources\PictureResource.cs" />
+    <Compile Include="Platform.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Serialization\ResourceLoader.cs" />
+    <Compile Include="Interpreter\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Serialization\RleCompression.cs" />
+    <Compile Include="Resources\Serialization\RleCompressionInvalidRepeatCountException.cs" />
+    <Compile Include="Resources\SoundResource.cs" />
+    <Compile Include="Interpreter\SoundType.cs" />
+    <Compile Include="Interpreter\State.cs" />
+    <Compile Include="Interpreter\TraceState.cs" />
+    <Compile Include="Interpreter\Variables.cs" />
+    <Compile Include="Interpreter\ViewObject.cs" />
+    <Compile Include="Interpreter\ViewObjectFlags.cs" />
+    <Compile Include="Resources\ViewResource.cs" />
+    <Compile Include="Resources\Serialization\VocabularyInvalidRepeatCountException.cs" />
+    <Compile Include="Resources\VocabularyResource.cs" />
+    <Compile Include="Resources\VocabularyWordFamily.cs" />
+    <Compile Include="Resources\Serialization\VolumeDecoderInvalidResourceOffsetException.cs" />
+    <Compile Include="Resources\Serialization\VolumeDecoderInvalidResourceSignatureException.cs" />
+    <Compile Include="Resources\Serialization\VolumeDecoderV2.cs" />
+    <Compile Include="Resources\Serialization\VolumeDecoderV3.cs" />
+    <Compile Include="Resources\Serialization\VolumeResourceMap.cs" />
+    <Compile Include="Resources\Serialization\VolumeResourceMapEntry.cs" />
+    <Compile Include="Resources\Serialization\VolumeResourceMapEntryCollection.cs" />
+    <Compile Include="Interpreter\WalkMode.cs" />
+    <Compile Include="Resources\Serialization\XorTransform.cs" />
+    <Compile Include="Interpreter\SavedGameXmlSerializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Interpreter\FontAppleIIgs8x8.nbf" />
+    <None Include="Interpreter\FontAmiga8x8.nbf" />
+    <None Include="Interpreter\FontAtariST8x8.nbf" />
+    <None Include="Interpreter\FontEga8x8.nbf" />
+    <None Include="Interpreter\FontHercules16x16.nbf" />
+    <None Include="Interpreter\FontUnknown8x8.nbf" />
+    <AdditionalFiles Include="stylecop.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Detection\Databases.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Databases.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Errors.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interpreter\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Detection\Database.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

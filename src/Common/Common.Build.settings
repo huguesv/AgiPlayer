@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Ensures that if this file changes it forces a rebuild -->
+  <PropertyGroup>
+    <MSBuildAllProjects>
+      $(MSBuildAllProjects);$(MSBuildThisFileFullPath)
+    </MSBuildAllProjects>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BuildRoot Condition="'$(BuildRoot)' == ''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), AgiPlayer.sln))</BuildRoot>
+    <BuildRoot Condition="!HasTrailingSlash($(BuildRoot))">$(BuildRoot)\</BuildRoot>
+    <CommonPath>$(BuildRoot)Common</CommonPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors Condition="'$(TreatWarningsAsErrors)' == ''">true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)..\bin\$(Configuration)\$(MSBuildProjectName)</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <IntermediateOutputPath>$(SolutionDir)..\obj\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
+    <UseCommonOutputDirectory>False</UseCommonOutputDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE;$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+</Project>

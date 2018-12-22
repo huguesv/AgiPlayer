@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\Common\Common.Build.settings" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{92CB2B38-7D95-4ED8-A333-8760BC4076AD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Woohoo.Agi.Player</RootNamespace>
+    <AssemblyName>Woohoo.Agi.Player</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>..\..\bin\Debug\Woohoo.Agi.Player\Woohoo.Agi.Player.xml</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+    <DefineConstants>TRACE;DEBUG;USE_SDL</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>..\..\bin\Release\Woohoo.Agi.Player\Woohoo.Agi.Player.xml</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+    <DefineConstants>TRACE;USE_SDL</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Common\Common.AssemblyInfo.cs">
+      <Link>Common.AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AbortException.cs" />
+    <Compile Include="AgiPlayer.cs" />
+    <Compile Include="Backend\Sdl\NativeMethods.cs" />
+    <Compile Include="Backend\Sdl\SdlGraphicsDriver.cs" />
+    <Compile Include="Backend\Sdl\SdlInputDriver.cs" />
+    <Compile Include="Backend\Sdl\SdlKey.cs" />
+    <Compile Include="Backend\Sdl\SdlPlayer.cs" />
+    <Compile Include="Backend\Sdl\SdlSoundChannel.cs" />
+    <Compile Include="Backend\Sdl\SdlSoundPcmDriver.cs" />
+    <Compile Include="Backend\Sdl2\NativeMethods.cs" />
+    <Compile Include="Backend\Sdl2\NativeMethods2.cs" />
+    <Compile Include="Backend\Sdl2\Sdl2GraphicsDriver.cs" />
+    <Compile Include="Backend\Sdl2\Sdl2InputDriver.cs" />
+    <Compile Include="Backend\Sdl2\Sdl2Key.cs" />
+    <Compile Include="Backend\Sdl2\Sdl2Player.cs" />
+    <Compile Include="Backend\Sdl2\Sdl2SoundChannel.cs" />
+    <Compile Include="Backend\Sdl2\Sdl2SoundPcmDriver.cs" />
+    <Compile Include="GameFinder.cs" />
+    <Compile Include="GameZipArchive.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Woohoo.Agi.Interpreter\Woohoo.Agi.Interpreter.csproj">
+      <Project>{8CA852D1-CBD1-4DFC-8846-F7B840461F9B}</Project>
+      <Name>Woohoo.Agi.Interpreter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\lib\SDL.dll">
+      <Link>SDL.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\lib\SDL2.dll">
+      <Link>SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

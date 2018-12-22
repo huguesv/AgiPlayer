@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ContinueButton" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="FontAmiga8x8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FontAmiga8x8.nbf;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FontAppleIIgs8x8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FontAppleIIgs8x8.nbf;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FontAtariST8x8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FontAtariST8x8.nbf;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FontEga8x8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FontEga8x8.nbf;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FontHercules16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FontHercules16x16.nbf;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FontUnknown8x8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FontUnknown8x8.nbf;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GameSelectionHeader" xml:space="preserve">
+    <value>      Select a game to play</value>
+  </data>
+  <data name="GameSelectionNoGameFound" xml:space="preserve">
+    <value>No game found.</value>
+  </data>
+  <data name="InputBox" xml:space="preserve">
+    <value>           ENTER COMMAND\n\n</value>
+  </data>
+  <data name="InventoryAppleIIgs" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="InventoryCarrying" xml:space="preserve">
+    <value>You are carrying:</value>
+  </data>
+  <data name="InventoryNothing" xml:space="preserve">
+    <value>nothing</value>
+  </data>
+  <data name="InventoryStatusForItemsAtariST" xml:space="preserve">
+    <value>Select the desired item.</value>
+  </data>
+  <data name="InventoryStatusForItemsPC" xml:space="preserve">
+    <value>Press ENTER to select, ESC to cancel</value>
+  </data>
+  <data name="InventoryStatusNoItemsAmiga" xml:space="preserve">
+    <value>Press a key to return to the game</value>
+  </data>
+  <data name="InventoryStatusNoItemsAtariST" xml:space="preserve">
+    <value>Press RETURN to continue.</value>
+  </data>
+  <data name="InventoryStatusNoItemsPC" xml:space="preserve">
+    <value>Press a key to return to the game</value>
+  </data>
+  <data name="KernelVersion1" xml:space="preserve">
+    <value>\n  {0} v{1}  \n\n</value>
+  </data>
+  <data name="KernelVersion2" xml:space="preserve">
+    <value>\nName: {0}\nVersion: {1}\nId: {2}\nPlatform: {3}\nInterpreter: {4}\n</value>
+  </data>
+  <data name="ListBoxItemFormat" xml:space="preserve">
+    <value> - {0}</value>
+  </data>
+  <data name="ListBoxItemTooLong" xml:space="preserve">
+    <value>TOO LONG</value>
+  </data>
+  <data name="ListBoxScrollbarDown" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="ListBoxScrollbarDownHidden" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="ListBoxScrollbarUp" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="ListBoxScrollbarUpHidden" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="MessageTooVerboseFormat" xml:space="preserve">
+    <value>Message too verbose:\n\n\"{0}...\"\n\nPress ESC to continue.</value>
+  </data>
+  <data name="NotNow" xml:space="preserve">
+    <value>Not now.</value>
+  </data>
+  <data name="PathExample" xml:space="preserve">
+    <value>(For example, \"B:\" or \"C:\\savegame\")</value>
+  </data>
+  <data name="PauseAmiga" xml:space="preserve">
+    <value>Game paused.</value>
+  </data>
+  <data name="PauseAppleIIgs" xml:space="preserve">
+    <value>Game paused.</value>
+  </data>
+  <data name="PauseAtariST" xml:space="preserve">
+    <value>Game paused.  Press RETURN to continue.</value>
+  </data>
+  <data name="PausePC" xml:space="preserve">
+    <value>      Game paused.\nPress Enter to continue.</value>
+  </data>
+  <data name="PlayerName" xml:space="preserve">
+    <value>Agi Player</value>
+  </data>
+  <data name="PlayerVersion" xml:space="preserve">
+    <value>1.0.0</value>
+  </data>
+  <data name="QuitButton" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="QuitQueryAmiga" xml:space="preserve">
+    <value>Quit the game, or continue?</value>
+  </data>
+  <data name="QuitQueryAtariST" xml:space="preserve">
+    <value>About to leave the game.</value>
+  </data>
+  <data name="QuitQueryPC" xml:space="preserve">
+    <value>Press ENTER to quit.\nPress ESC to keep playing.</value>
+  </data>
+  <data name="RestartButton" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="RestartQueryAmiga" xml:space="preserve">
+    <value>Restart the game?</value>
+  </data>
+  <data name="RestartQueryAppleIIgs" xml:space="preserve">
+    <value>Restart the game?</value>
+  </data>
+  <data name="RestartQueryAtariST" xml:space="preserve">
+    <value>About to restart the game.</value>
+  </data>
+  <data name="RestartQueryPC" xml:space="preserve">
+    <value>Press ENTER to restart\nthe game.\n\nPress ESC to continue\nthis game.</value>
+  </data>
+  <data name="RestoreNoGameAvailable" xml:space="preserve">
+    <value>No saved game is available.</value>
+  </data>
+  <data name="RestoreNoGamesInFolderFormat" xml:space="preserve">
+    <value>There are no games to\nrestore in\n\n {0}\n\nPress ENTER to continue.</value>
+  </data>
+  <data name="RestorePathPromptFormat" xml:space="preserve">
+    <value>        RESTORE GAME\n\nOn which disk or in which directory is the game that you want to restore?\n\n{0}\n\n</value>
+  </data>
+  <data name="RestoreQuery" xml:space="preserve">
+    <value>Press ENTER to restore game.\nPress ESC to cancel.</value>
+  </data>
+  <data name="RestoreSelectSlot" xml:space="preserve">
+    <value>Use the arrow keys to select the game which you wish to restore. Press ENTER to restore the game, ESC to not restore a game.</value>
+  </data>
+  <data name="SaveDescriptionPrompt" xml:space="preserve">
+    <value>How would you like to describe this saved game?\n\n</value>
+  </data>
+  <data name="SaveDiskFull" xml:space="preserve">
+    <value>   Sorry, this disk is full.\nPosition pointer and press ENTER\n    to overwrite a saved game\nor press ESC and try again \n    with another disk\n</value>
+  </data>
+  <data name="SaveDone" xml:space="preserve">
+    <value>Game saved.</value>
+  </data>
+  <data name="SavePathDoesNotExistFormat" xml:space="preserve">
+    <value>There is no directory named\n {0}\nPress ENTER to try again.\nPress ESC to cancel.</value>
+  </data>
+  <data name="SavePathPromptFormat" xml:space="preserve">
+    <value>         SAVE GAME\n\nOn which disk or in which directory do you wish to save this game?\n\n{0}\n\n</value>
+  </data>
+  <data name="SaveQuery" xml:space="preserve">
+    <value>Press ENTER to save game.\nPress ESC to cancel.</value>
+  </data>
+  <data name="SaveRestoreSelectName" xml:space="preserve">
+    <value>Use the arrow keys to move\n     the pointer to your name.\nThen press ENTER\n</value>
+  </data>
+  <data name="SaveSelectSlot" xml:space="preserve">
+    <value>Use the arrow keys to select the slot in which you wish to save the game. Press ENTER to save in the slot, ESC to not save a game.</value>
+  </data>
+  <data name="ScoreStatusNew" xml:space="preserve">
+    <value>Score:%d of %d</value>
+  </data>
+  <data name="ScoreStatusOld" xml:space="preserve">
+    <value>Score: %d of %d</value>
+  </data>
+  <data name="SelectButton" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SoundOff" xml:space="preserve">
+    <value>off</value>
+  </data>
+  <data name="SoundOn" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="SoundStatusNew" xml:space="preserve">
+    <value>Sound:%s</value>
+  </data>
+  <data name="SoundStatusOld" xml:space="preserve">
+    <value>Sound is %s</value>
+  </data>
+  <data name="TraceFunctionNumber" xml:space="preserve">
+    <value>%d: eval.%d</value>
+  </data>
+  <data name="TraceFunctionResult" xml:space="preserve">
+    <value> :%c</value>
+  </data>
+  <data name="TraceFunctionResultFalse" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="TraceFunctionResultTrue" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="TraceParameterEnd" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="TraceParameterSeparator" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="TraceParameterSigned" xml:space="preserve">
+    <value>%d</value>
+  </data>
+  <data name="TraceParameterStart" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="TraceParameterUnsigned" xml:space="preserve">
+    <value>%u</value>
+  </data>
+  <data name="TraceProcedureNumber" xml:space="preserve">
+    <value>%d: cmd.%d</value>
+  </data>
+  <data name="TraceProcedureReturn" xml:space="preserve">
+    <value>return</value>
+  </data>
+  <data name="TraceProcedureText" xml:space="preserve">
+    <value>%d: %s</value>
+  </data>
+  <data name="TraceSeparatorLine" xml:space="preserve">
+    <value>==========================</value>
+  </data>
+  <data name="TypelessBox" xml:space="preserve">
+    <value>Choose word</value>
+  </data>
+</root>

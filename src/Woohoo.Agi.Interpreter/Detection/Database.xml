@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<database>
+  <config>
+    <includes>
+      <pattern name="OBJECT" />
+      <pattern name="WORDS.TOK" />
+      <pattern name="*VOL.*" />
+      <pattern name="*DIR" />
+      <pattern name="DIRS" />
+    </includes>
+    <excludes />
+  </config>
+  <games>
+    <game name="AGI Demo 1" platform="PC" date="XXXX-XX-XX" version="" format="" interpreter="2.425" language="English" comments="">
+      <file name="OBJECT" crc32="05853ab3" md5="60175f87421161f368e39de8833c866e" sha1="6300be2599265f673e3bb5100abef2c0a11815f3" />
+      <file name="SNDDIR" crc32="9fd999bf" md5="e13b88ee000e4c50e5cab4fec0d25d25" sha1="172ef36fdc3a395c114897bdfb3010d24895bf4e" />
+      <file name="VIEWDIR" crc32="f62208ea" md5="aeecabb87f322be5d534c3c17d087a9c" sha1="369cd902bdce73f7055178d76fcf1384cb636414" />
+      <file name="VOL.0" crc32="ba47bc96" md5="f304059125996837d549abce5e04a9b0" sha1="4ae86488cc1b2eef28b29555e5eb8ad60ab0b1d5" />
+      <file name="WORDS.TOK" crc32="fc3a1407" md5="345b69b922b8c18a0bc93cdc4d79f52b" sha1="69e6d05a154b41f3668ab1cfa582aade6ed46130" />
+      <file name="LOGDIR" crc32="ff09c352" md5="9c4a5b09cc3564bc48b4766e679ea332" sha1="ecc1da95b2915fb28868b1ae19f8978f3b7aa2dc" />
+      <file name="PICDIR" crc32="a5958ae1" md5="13ee4faf4a127aecc8ee9aff9e7ec575" sha1="307ff90f9b91ed54428ca50ff9e49ff69926c1b9" />
+    </game>
+    <game name="AGI Demo 2" platform="PC" date="XXXX-XX-XX" version="" format="3.5DD" interpreter="2.915" language="English" comments="">
+      <file name="SNDDIR" crc32="acbf5a63" md5="98cfad3cf4f790f7ab5f30a2161451f9" sha1="3fd8210a57634a1c61980e2a380573bb5abf620e" />
+      <file name="PICDIR" crc32="50f70a71" md5="75c90b6e0c7f2e8dad70fafa0bbcfdb4" sha1="98094b0ccd1bf2d4975c0722bd90d7af9b9d29a7" />
+      <file name="LOGDIR" crc32="85e73dfe" md5="e8ebeb0bbe978172fe166f91f51598c7" sha1="585c17b294cbf69326fcceef5de4c59b637c08ea" />
+      <file name="VIEWDIR" crc32="73a0ff92" md5="487338f2efac668f46847d2e293fd34d" sha1="7e22c9d0d34215b1a19f817f99642da1759fd4b2" />
+      <file name="WORDS.TOK" crc32="fc3a1407" md5="345b69b922b8c18a0bc93cdc4d79f52b" sha1="69e6d05a154b41f3668ab1cfa582aade6ed46130" />
+      <file name="OBJECT" crc32="05853ab3" md5="60175f87421161f368e39de8833c866e" sha1="6300be2599265f673e3bb5100abef2c0a11815f3" />
+      <file name="VOL.0" crc32="a52d0c7c" md5="1149167407c3c3a33039960f7eaa282a" sha1="fe3a67595baf92b3446f3d8b19b57a4d3e9eedbb" />
+      <file name="VOL.1" crc32="bc6a0ca7" md5="465bd81ba55e33425f58ea527f827c04" sha1="17d351d1fc9bfd8abcfd2ad2fffa5002621ee041" />
+      <file name="VOL.2" crc32="87f805da" md5="ad5d02077378b571ff1afaa9a279d757" sha1="d73ef9de79ab77b370395f265c4f32893dccf945" />
+      <file name="VOL.3" crc32="a71600d4" md5="70bf189e15bc603c564c37102186a308" sha1="fec14f9fb82818a877df9dadc2131439f22e7933" />
+    </game>
+    <game name="AGI Demo 2 v1" platform="PC" date="XXXX-XX-XX" version="" format="5.25DD" interpreter="2.915" language="English" comments="">
+      <file name="WORDS.TOK" crc32="fc3a1407" md5="345b69b922b8c18a0bc93cdc4d79f52b" sha1="69e6d05a154b41f3668ab1cfa582aade6ed46130" />
+      <file name="SNDDIR" crc32="cdcab7e1" md5="5005c3659b7158b828b0330e4af65a38" sha1="f0d157240332a87cbf155cd687883ba4090fc95e" />
+      <file name="LOGDIR" crc32="1d38ad82" md5="852ac303a374df62571642ca1e2d1f0a" sha1="d9d80416b52e16f554af52a0327fa2dc381fdf50" />
+      <file name="VIEWDIR" crc32="4913ecec" md5="c7053956a6b0fc370e6c3a38d26e07a6" sha1="911bd06c1dd8b888c6b3ada06932baf12c823fcf" />
+      <file name="PICDIR" crc32="a9a88072" md5="9f2f4d3058236a3044a3b0de9872ef70" sha1="31fc379f3e27b02abf0b96c020b52426da1db16a" />
+      <file name="OBJECT" crc32="05853ab3" md5="60175f87421161f368e39de8833c866e" sha1="6300be2599265f673e3bb5100abef2c0a11815f3" />
+      <file name="VOL.0" crc32="9a526994" md5="774bab8b055b993e31adde6a69d247bd" sha1="b00a02f84def304aaf62bdad7c078bd475dd4f06" />
+      <file name="VOL.1" crc32="6f443d70" md5="23794b8d4dd5e4cd03bf318f3475e4c2" sha1="88a872989fd68eafcc2404e0e686d38be949befd" />
+      <file name="VOL.2" crc32="29b05cd0" md5="982400222d72b7ee5bca62013cdb6c47" sha1="948dba4e6cff36325b04f4d371e4c4561fd48e36" />
+    </game>
+    <game name="AGI Demo 2 v2" platform="PC" date="XXXX-XX-XX" version="" format="5.25DD" interpreter="2.917" language="English" comments="">
+      <file name="WORDS.TOK" crc32="38e8c845" md5="710268a9f20f77aeeff3b42d38dfb05f" sha1="a8a1eca5ab0e041686c14316bb276b8156534985" />
+      <file name="SNDDIR" crc32="f6ec8a8e" md5="e8cfe518479d448e0d91334a821273fb" sha1="fa237bf5c5bea821bdc9d5c24659613ad9681a04" />
+      <file name="LOGDIR" crc32="a124de2b" md5="1503f02086ea9f388e7e041c039eaa69" sha1="db0727aa968aab623ac69c37b8428940bcc99ee5" />
+      <file name="VIEWDIR" crc32="39c90c7b" md5="8aa0d3c2dbf25c97bde5ede5e5c1ca6b" sha1="31d2a1f8f688608e68e8cc7ef1378061e5fe05b0" />
+      <file name="PICDIR" crc32="f044aa1c" md5="56ee884dc50034c5cc21e682a836a8d9" sha1="8bc5cf5d51fc3733005c3a1f225119798355afb4" />
+      <file name="OBJECT" crc32="05853ab3" md5="60175f87421161f368e39de8833c866e" sha1="6300be2599265f673e3bb5100abef2c0a11815f3" />
+      <file name="VOL.0" crc32="4ea95bb5" md5="a1291e1a69cc0af259733433bf2303ba" sha1="2bd9d2f64c9621c14921cf7f6d2c5afd8be60da5" />
+      <file name="VOL.1" crc32="2baf2f68" md5="6dfef815edfc150e2ce0591426079ade" sha1="7e9b1d17fb8c7f46ba6291807ed7ebb2c2403e97" />
+    </game>
+    <game name="AGI Demo 2" platform="AppleIIgs" date="XXXX-XX-XX" version="" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="8e5cdc62" md5="ffb8767189d59847fed8dd00fb5b711b" sha1="8c14984415a0b85811d4d9ecad170dc485a67ec2" />
+      <file name="SNDDIR" crc32="acbc991f" md5="2541f0ea579153e3e142fd4b6a66cad6" sha1="a2272b18a26ca60a1ce16dede990834a1d7e75dc" />
+      <file name="LOGDIR" crc32="a605d28a" md5="580ffdc569ff158f56fb92761604f70e" sha1="7039671b78f1b5df6643e7e33209cd81d10f1604" />
+      <file name="VIEWDIR" crc32="58ea3ff6" md5="317f0ac2ae97b208fb503d2d7a438fb3" sha1="e9b23002a43c57992b883948cc2dcfe23bc09143" />
+      <file name="PICDIR" crc32="3311973e" md5="ec5b95ed69f565de8415c2607ef780b0" sha1="2651d80cd84e0c0455a4de353856f46f3cbdd853" />
+      <file name="OBJECT" crc32="05853ab3" md5="60175f87421161f368e39de8833c866e" sha1="6300be2599265f673e3bb5100abef2c0a11815f3" />
+      <file name="VOL.0" crc32="c2f2ee01" md5="bec15e9cdf26aacb2693f0ecf3ded7fc" sha1="d8b6401f3ae6a02f50da2fd07a47eba1bea0a193" />
+      <file name="VOL.1" crc32="96cd2b33" md5="49963f9e08cc76f76cd9ca77237adb20" sha1="5492ae3e41bc9c035e3a566293d33177c0f972b5" />
+    </game>
+    <game name="AGI Demo 3" platform="PC" date="XXXX-XX-XX" version="" format="" interpreter="3.002.102" language="English" comments="">
+      <file name="OBJECT" crc32="05853ab3" md5="60175f87421161f368e39de8833c866e" sha1="6300be2599265f673e3bb5100abef2c0a11815f3" />
+      <file name="DMDIR" crc32="d43258d5" md5="289c7a2c881f1d973661e961ced77d74" sha1="9c34015a1fc8f66c530eb5abdac221ccbb6a5c5e" />
+      <file name="DMVOL.1" crc32="2ee9890f" md5="0263acff9dc7b4a4d3f8110c600c5974" sha1="e57bff090ff28e5f46d7292bc3a5614760a4901d" />
+      <file name="WORDS.TOK" crc32="fc3a1407" md5="345b69b922b8c18a0bc93cdc4d79f52b" sha1="69e6d05a154b41f3668ab1cfa582aade6ed46130" />
+      <file name="DMVOL.0" crc32="c2ef86b5" md5="f0270dfebae97272e02efda66006149b" sha1="40990ec95a645e290df430034d7edc6eb81ed2c9" />
+    </game>
+    <game name="Christmas Card v1" platform="PC" date="XXXX-XX-XX" version="" format="FLOPPY" interpreter="2.272" language="English" comments="">
+      <file name="LOGDIR" crc32="e7d94d15" md5="3067b8d5957e2861e069c3c0011bd43d" sha1="8b9716ddfdb9d7b992995d514d86a41210e6f42e" />
+      <file name="WORDS.TOK" crc32="af629823" md5="5d9d16cf6770256ce1486ae696baa80b" sha1="193679e8e178ac1ad8443c48bd0490c7a90d1cba" />
+      <file name="OBJECT" crc32="6bb17aaa" md5="ed8f494cc513e9f9fa41f8a7ef7bf91b" sha1="a3fa1dd3c18ac9c0cf701c60388788fde08363b2" />
+      <file name="VOL.0" crc32="9e37e679" md5="8d55de8568a730afbfba2f69158fb516" sha1="d22b8d0c9572f61cb306782383232ece914f2c4d" />
+      <file name="PICDIR" crc32="a0cc43d0" md5="6c976532e7be1ffce6af16e21007bf43" sha1="0ceca13f3a425d5127f23a885d39d34f1cf7ae4e" />
+      <file name="SNDDIR" crc32="45f378fe" md5="02ea4506fbc433d02f39ec83fcb4a7d9" sha1="04a169a13785d50eba023a37181d5d907e0ed28e" />
+      <file name="VIEWDIR" crc32="481a9f9c" md5="1742d73dce78c08f18df1d14c00bde55" sha1="390884435f7acb1958658b8cee838405ce78e310" />
+    </game>
+    <game name="Christmas Card v2" platform="PC" date="XXXX-XX-XX" version="" format="FLOPPY" interpreter="2.272" language="English" comments="">
+      <file name="LOGDIR" crc32="e7d94d15" md5="3067b8d5957e2861e069c3c0011bd43d" sha1="8b9716ddfdb9d7b992995d514d86a41210e6f42e" />
+      <file name="WORDS.TOK" crc32="af629823" md5="5d9d16cf6770256ce1486ae696baa80b" sha1="193679e8e178ac1ad8443c48bd0490c7a90d1cba" />
+      <file name="OBJECT" crc32="6bb17aaa" md5="ed8f494cc513e9f9fa41f8a7ef7bf91b" sha1="a3fa1dd3c18ac9c0cf701c60388788fde08363b2" />
+      <file name="VOL.0" crc32="7401976a" md5="bf1163e9c0e9d00a4b416222dd98da12" sha1="e1be30d8f4fa2e816f27e2bd7e9789736c304f31" />
+      <file name="PICDIR" crc32="a0cc43d0" md5="6c976532e7be1ffce6af16e21007bf43" sha1="0ceca13f3a425d5127f23a885d39d34f1cf7ae4e" />
+      <file name="SNDDIR" crc32="45f378fe" md5="02ea4506fbc433d02f39ec83fcb4a7d9" sha1="04a169a13785d50eba023a37181d5d907e0ed28e" />
+      <file name="VIEWDIR" crc32="481a9f9c" md5="1742d73dce78c08f18df1d14c00bde55" sha1="390884435f7acb1958658b8cee838405ce78e310" />
+    </game>
+    <game name="Donald Duck's Playground" platform="AtariST" date="XXXX-XX-XX" version="1.0A" format="" interpreter="2.272" language="English" comments="">
+      <file name="LOGDIR" crc32="084a8014" md5="64388812e25dbd75f7af1103bc348596" sha1="ea1bf41f9918c83232dd926ffd36957910387ecc" />
+      <file name="WORDS.TOK" crc32="d849cec1" md5="965ad37be6ceee8110efc8e21d4a48af" sha1="a1809f0157f6e554100a0a4788c6050df7e775e6" />
+      <file name="OBJECT" crc32="aaa435af" md5="6feb4d7bd33c9c1c3a885fd4e07a3b04" sha1="ba520b3e87c3b62f271e96198a122b0b827dad3a" />
+      <file name="VOL.0" crc32="332d346f" md5="37c65655c756712427bdd460dd32f6af" sha1="de7d783cc0671f6890d3ca3674d588bca0686807" />
+      <file name="PICDIR" crc32="2bb1f99e" md5="de95cef2ec7baa2eb142b3bd6338eb0d" sha1="434feb168b704daa58ed54ed6ecd829341d4219f" />
+      <file name="SNDDIR" crc32="c8acda2b" md5="970b076633a4cb4112b9e2eb2907a850" sha1="3ec4d17271d2518b038670055a54bfbb8d71f549" />
+      <file name="VIEWDIR" crc32="1ff418f0" md5="c2ea5c233cf2320599e5fba27bdd8ae6" sha1="159dfb6a80e0d6fa40577798c8e2473f44280ac8" />
+    </game>
+    <game name="Donald Duck's Playground (hacked)" platform="PC" date="XXXX-XX-XX" version="1.0A" format="FLOPPY" interpreter="2.272" language="English" comments="">
+      <file name="LOGDIR" crc32="76476821" md5="70a853aec9815cdb9bdc4f2ce55ffda9" sha1="25346116d0fdaea6aa946c37033795269404c613" />
+      <file name="WORDS.TOK" crc32="d849cec1" md5="965ad37be6ceee8110efc8e21d4a48af" sha1="a1809f0157f6e554100a0a4788c6050df7e775e6" />
+      <file name="OBJECT" crc32="aaa435af" md5="6feb4d7bd33c9c1c3a885fd4e07a3b04" sha1="ba520b3e87c3b62f271e96198a122b0b827dad3a" />
+      <file name="VOL.0" crc32="15a9b9f3" md5="5b2966554954baaa6f205250124c9241" sha1="d3a41136a599d01de8d24f4f8a2d90c87fc92cce" />
+      <file name="PICDIR" crc32="2bb1f99e" md5="de95cef2ec7baa2eb142b3bd6338eb0d" sha1="434feb168b704daa58ed54ed6ecd829341d4219f" />
+      <file name="SNDDIR" crc32="c8acda2b" md5="970b076633a4cb4112b9e2eb2907a850" sha1="3ec4d17271d2518b038670055a54bfbb8d71f549" />
+      <file name="VIEWDIR" crc32="1ff418f0" md5="c2ea5c233cf2320599e5fba27bdd8ae6" sha1="159dfb6a80e0d6fa40577798c8e2473f44280ac8" />
+    </game>
+    <game name="Donald Duck's Playground" platform="PC" date="XXXX-XX-XX" version="1.0C" format="FLOPPY" interpreter="2.272" language="English" comments="">
+      <file name="LOGDIR" crc32="6d0d4e18" md5="550971d196f65190a5c760d2479406ef" sha1="1bc8ed01eef7950fc3048acc6acf2fc3822ab600" />
+      <file name="WORDS.TOK" crc32="d849cec1" md5="965ad37be6ceee8110efc8e21d4a48af" sha1="a1809f0157f6e554100a0a4788c6050df7e775e6" />
+      <file name="OBJECT" crc32="246031c6" md5="c65962b78b00da476d672b4ca67c379d" sha1="6436d98d7e00e4f20a5cc40c45833e779939f8ff" />
+      <file name="VOL.0" crc32="c6281403" md5="448f18e70ddba26bdde0f1b10634f235" sha1="62e98f079526186de38329ac5e51b6d729a59c4d" />
+      <file name="PICDIR" crc32="6856bdaa" md5="6001d269b48b39404661808d02785bd8" sha1="fecb06bf26423383832e37e12404cf205f3a50cb" />
+      <file name="SNDDIR" crc32="ff1465e6" md5="c1c043f6d06bf24139fda615235b67de" sha1="ec48aea4c8b51554fdb74ccaa499664d107cffe9" />
+      <file name="VIEWDIR" crc32="ced08c41" md5="867c334834551fffb2f9f7e1870428e2" sha1="9d24031a324bb2506b61a372dc697dd4c106f13d" />
+    </game>
+    <game name="Gold Rush!" platform="PC" date="XXXX-XX-XX" version="2.01" format="3.5DD" interpreter="3.002.149" language="English" comments="">
+      <file name="GRDIR" crc32="f23766f7" md5="6a285235745f69b4b421403659497216" sha1="670f4b78df6fb1f9d835805e1855ff84aa70d5b2" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="GRVOL.0" crc32="4446a980" md5="d82478e38cf20622af75ecda6cacc492" sha1="4a08e1ecd14356d14f1af1145daca43a21b86a7b" />
+      <file name="GRVOL.1" crc32="eca59845" md5="c5f7b52b979bbbf44f873fa22ecf287b" sha1="0578678f0350e6490d8df61006d7f070fa5532ee" />
+      <file name="GRVOL.2" crc32="b16e6364" md5="3f753b8b1e8b7307eee37a11ebe7190f" sha1="0b479ff104d8f73835939ddaf6da739ce1cc9c08" />
+    </game>
+    <game name="Gold Rush!" platform="PC" date="XXXX-XX-XX" version="2.01" format="5.25DD" interpreter="3.002.149" language="English" comments="">
+      <file name="GRVOL.1" crc32="985699e5" md5="8ddf79efdb570d3f56e6fc693ac916a3" sha1="59345f368ddf4cfbfb428cc6e76ae4c32046e365" />
+      <file name="GRVOL.2" crc32="1bfe2e52" md5="0dcb93d9e2901a8b41035812305ed135" sha1="a9eccb6a43cb2aa2dd2d87e5dc8b95fa8c27aa3e" />
+      <file name="GRVOL.0" crc32="e6cbcdae" md5="099cf878595fea15a4b2506d40b8ea53" sha1="eba83fc4c765f24eee76dbe1f6c7f932508f6981" />
+      <file name="GRVOL.11" crc32="395bf1d8" md5="eea575e47b1e8fbd915ed34b68ee17c9" sha1="59f5da55be90a7da02c28c0ca40861c2d93c95a4" />
+      <file name="GRVOL.10" crc32="127e2cbb" md5="e2291ecbc0ddc036eb15ce2ac3417116" sha1="a69da8ef1d493a03fbe76f666a0052e392e5d64e" />
+      <file name="GRVOL.3" crc32="cbe53112" md5="0cacd4aef3c9e3e9135166c8365ae262" sha1="e54cf12f0e06cbd26fb7eacfd0f9f473ea8c3e24" />
+      <file name="GRVOL.12" crc32="95d58783" md5="0649df472c193ca624dbe5f1327d357e" sha1="8242fd65d28fb20c616fd020a68e4bfbfa804829" />
+      <file name="GRDIR" crc32="6dfff5b6" md5="db733d199238d4009a9e95f11ece34e9" sha1="91f35f498b05986f64179f5188795211eeb4961b" />
+      <file name="GRVOL.9" crc32="ea07285b" md5="7b44a218c8ec630c96d9d452e51f43b3" sha1="65aa692be9b2dc4476d7a8d77b4fc450188a545a" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="GRVOL.5" crc32="be407cf8" md5="6d6e1231594b8b5041aa8af64b13a161" sha1="0911006ab966abb6ffa089a6048ede3084689bfd" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="GRVOL.4" crc32="e2dd97d8" md5="9e3e470c693a1bfbf545e5fc1bde7982" sha1="00f2b5642f1919cf8baf2bf83526fdcf2fce41e1" />
+    </game>
+    <game name="Gold Rush! (cracked)" platform="PC" date="XXXX-XX-XX" version="2.01" format="3.5DD" interpreter="3.002.149" language="English" comments="">
+      <file name="GRDIR" crc32="33d065ab" md5="1ef85c37fcf7224f9731f20f169c8c53" sha1="60d1f869f015e7f74b03d6cbed100be4190fca4f" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="GRVOL.0" crc32="4446a980" md5="d82478e38cf20622af75ecda6cacc492" sha1="4a08e1ecd14356d14f1af1145daca43a21b86a7b" />
+      <file name="GRVOL.1" crc32="eca59845" md5="c5f7b52b979bbbf44f873fa22ecf287b" sha1="0578678f0350e6490d8df61006d7f070fa5532ee" />
+      <file name="GRVOL.2" crc32="b16e6364" md5="3f753b8b1e8b7307eee37a11ebe7190f" sha1="0b479ff104d8f73835939ddaf6da739ce1cc9c08" />
+    </game>
+    <game name="Gold Rush! (cracked)" platform="PC" date="XXXX-XX-XX" version="2.01" format="5.25DD" interpreter="3.002.149" language="English" comments="">
+      <file name="GRVOL.1" crc32="985699e5" md5="8ddf79efdb570d3f56e6fc693ac916a3" sha1="59345f368ddf4cfbfb428cc6e76ae4c32046e365" />
+      <file name="GRVOL.2" crc32="1bfe2e52" md5="0dcb93d9e2901a8b41035812305ed135" sha1="a9eccb6a43cb2aa2dd2d87e5dc8b95fa8c27aa3e" />
+      <file name="GRVOL.0" crc32="e6cbcdae" md5="099cf878595fea15a4b2506d40b8ea53" sha1="eba83fc4c765f24eee76dbe1f6c7f932508f6981" />
+      <file name="GRVOL.11" crc32="395bf1d8" md5="eea575e47b1e8fbd915ed34b68ee17c9" sha1="59f5da55be90a7da02c28c0ca40861c2d93c95a4" />
+      <file name="GRVOL.10" crc32="127e2cbb" md5="e2291ecbc0ddc036eb15ce2ac3417116" sha1="a69da8ef1d493a03fbe76f666a0052e392e5d64e" />
+      <file name="GRVOL.3" crc32="cbe53112" md5="0cacd4aef3c9e3e9135166c8365ae262" sha1="e54cf12f0e06cbd26fb7eacfd0f9f473ea8c3e24" />
+      <file name="GRVOL.12" crc32="95d58783" md5="0649df472c193ca624dbe5f1327d357e" sha1="8242fd65d28fb20c616fd020a68e4bfbfa804829" />
+      <file name="GRDIR" crc32="ac18f6ea" md5="3ae052117feb483f01a9017025fbb366" sha1="d5dcc2f5285a4f53685634299cc3478f0cb7ca86" />
+      <file name="GRVOL.9" crc32="ea07285b" md5="7b44a218c8ec630c96d9d452e51f43b3" sha1="65aa692be9b2dc4476d7a8d77b4fc450188a545a" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="GRVOL.5" crc32="be407cf8" md5="6d6e1231594b8b5041aa8af64b13a161" sha1="0911006ab966abb6ffa089a6048ede3084689bfd" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="GRVOL.4" crc32="e2dd97d8" md5="9e3e470c693a1bfbf545e5fc1bde7982" sha1="00f2b5642f1919cf8baf2bf83526fdcf2fce41e1" />
+    </game>
+    <game name="Gold Rush!" platform="Amiga" date="XXXX-XX-XX" version="2.05" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="VOL.1" crc32="4668977c" md5="e9639b60d3b683063a32e9a0cb3fcfef" sha1="d57ce4bc84e21a1a5d82aefd082c9b923302dad4" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="OBJECT" crc32="e0275492" md5="049c6080959c6a8959ee94205f5d87ab" sha1="8ae55f375d4baf7797941662ac3ea57c7d5cf2ed" />
+      <file name="VOL.0" crc32="18c858e1" md5="c5268f6968cdb7fd197a157981c2656e" sha1="0489f7d4142e5f06497fc90af290134f3726ef4e" />
+      <file name="VOL.2" crc32="a115483e" md5="ded25fd8d960bd6881674b6a97e7c5d3" sha1="90e5b2b0c9f17d7554bf91dbe4f2146d307c1ebc" />
+      <file name="DIRS" crc32="07b8b5e0" md5="a1d4de3e75c2688c1e2ca2634ffc3bd8" sha1="9ec4e7499e2012be68d7eff635967633b3654edd" />
+    </game>
+    <game name="Gold Rush!" platform="AppleIIgs" date="XXXX-XX-XX" version="1.0M" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="GRVOL.1" crc32="953fc6c3" md5="51ae211151ead07ec35cf872d0ed41be" sha1="da319b9a13f7e7e765592d66ac3f2f62d52b855d" />
+      <file name="GRDIR" crc32="66e58278" md5="3f7b9ce62631434389f85371b11921d6" sha1="3a1fdc083bccf9841ede2de78c759dd8dc745c5c" />
+      <file name="GRVOL.2" crc32="485c8d10" md5="033e19f8b0c69dbc9cfc2572dafa4602" sha1="c7f8d8259f7da48cd2930f6c0199c82a3eaaa940" />
+      <file name="WORDS.TOK" crc32="56afdca8" md5="93dfdc42e5bc79e0c0289d5c66bbe5c6" sha1="02ba43af43488b23f0a5e078c01fdc6bc4944c33" />
+      <file name="OBJECT" crc32="a99f9815" md5="4ff1ece778ca69ce61fbe17a5daac801" sha1="d3bb579f186cdb1ba615d7e765b5c7ecc18eb7da" />
+      <file name="GRVOL.4" crc32="a2f51524" md5="c95b3b45e5ccdd7f3ca1593dd7d3f6f2" sha1="4fd88883997f2d25dd65ec1c9e6c176112b4833a" />
+      <file name="GRVOL.3" crc32="15c13235" md5="3b0e814c01a3476e455c5718e023b211" sha1="8a9606247787534c28452bd0779ee46aa03258b0" />
+      <file name="GRVOL.0" crc32="58d280ff" md5="6213d1026aa924ef24dc24b1574d2f27" sha1="f0d867918d8e7602aa850341e3315c261d504312" />
+    </game>
+    <game name="Gold Rush! (bad grvol.3)" platform="Atari ST" date="XXXX-XX-XX" version="1.01" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="GRVOL.9" crc32="cf847608" md5="ac5670bdba4463240b3d2fda0501c0a7" sha1="b96972aeee226040afdbdda44c4046cf6f81d874" />
+      <file name="GRVOL.11" crc32="4742f574" md5="62f33a47bdaac545be1036897d88d5b7" sha1="4899be8d34ce29db0e22f2d2a21110750f43c170" />
+      <file name="GRVOL.2" crc32="1ededb8f" md5="a75b59baf82021baa0dc4ba1d266175c" sha1="e567cd3671646cacb8b453ec2063cc9496347d97" />
+      <file name="GRDIR" crc32="5fb7a690" md5="4dd4d50480a3d6c206fa227ce8142735" sha1="a653b50444b3c4b5a23579d23e596a87d65e6e21" />
+      <file name="GRVOL.12" crc32="95d58783" md5="0649df472c193ca624dbe5f1327d357e" sha1="8242fd65d28fb20c616fd020a68e4bfbfa804829" />
+      <file name="GRVOL.1" crc32="7ce52ac1" md5="b71e1e3a405a64e10959c76c89022bfc" sha1="b4474b4b990a812b91740e87815121ecbedfa6b6" />
+      <file name="GRVOL.4" crc32="968e7412" md5="7d2aec3df4b6b2a978fb4733a0fe2372" sha1="6b5c03b221c71611dc06d17a9d9bce82ef8453b7" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="GRVOL.10" crc32="54c7c1fc" md5="c462afb85c505ce6914818100c4fce89" sha1="585ddc3b41e5e1952a9ec5a882d0730591be56a6" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="GRVOL.5" crc32="be4b392b" md5="a8b669345a113d7a2deeb7a4c09f3c85" sha1="3ef161fb0569907fd61f336e429582a078b00b7c" />
+      <file name="GRVOL.3" crc32="dc68e04b" md5="d518bf971230c940c12604e9e1bc0642" sha1="1da94423480082f10d3adbd8cc17983bc31ac72a" />
+      <file name="GRVOL.0" crc32="d13f3585" md5="b24ae96538a7dbd6a276ee2210b72903" sha1="6b9ca42febb59f88cebc05ce36a1b39ae86b87e6" />
+    </game>
+    <game name="Gold Rush!" platform="Atari ST" date="XXXX-XX-XX" version="2.01" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="GRVOL.9" crc32="cf847608" md5="ac5670bdba4463240b3d2fda0501c0a7" sha1="b96972aeee226040afdbdda44c4046cf6f81d874" />
+      <file name="GRVOL.11" crc32="4742f574" md5="62f33a47bdaac545be1036897d88d5b7" sha1="4899be8d34ce29db0e22f2d2a21110750f43c170" />
+      <file name="GRVOL.2" crc32="1ededb8f" md5="a75b59baf82021baa0dc4ba1d266175c" sha1="e567cd3671646cacb8b453ec2063cc9496347d97" />
+      <file name="GRDIR" crc32="5fb7a690" md5="4dd4d50480a3d6c206fa227ce8142735" sha1="a653b50444b3c4b5a23579d23e596a87d65e6e21" />
+      <file name="GRVOL.12" crc32="95d58783" md5="0649df472c193ca624dbe5f1327d357e" sha1="8242fd65d28fb20c616fd020a68e4bfbfa804829" />
+      <file name="GRVOL.1" crc32="7ce52ac1" md5="b71e1e3a405a64e10959c76c89022bfc" sha1="b4474b4b990a812b91740e87815121ecbedfa6b6" />
+      <file name="GRVOL.4" crc32="968e7412" md5="7d2aec3df4b6b2a978fb4733a0fe2372" sha1="6b5c03b221c71611dc06d17a9d9bce82ef8453b7" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="GRVOL.10" crc32="54c7c1fc" md5="c462afb85c505ce6914818100c4fce89" sha1="585ddc3b41e5e1952a9ec5a882d0730591be56a6" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="GRVOL.5" crc32="be4b392b" md5="a8b669345a113d7a2deeb7a4c09f3c85" sha1="3ef161fb0569907fd61f336e429582a078b00b7c" />
+      <file name="GRVOL.3" crc32="9449c10c" md5="fa738ee1f308fe5b8a24211ffebe54bd" sha1="7335150941ef3dcdda6ad1558a375b605fcc50df" />
+      <file name="GRVOL.0" crc32="830ac2c3" md5="4c29eb4f1b0a55eb14fcb62bf2bf1976" sha1="f7bcff59a5a903d18f6d5793ffb09e7d7661a683" />
+    </game>
+    <game name="Gold Rush!" platform="Macintosh" date="XXXX-XX-XX" version="2.01" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="VOL.4" crc32="e2dd97d8" md5="9e3e470c693a1bfbf545e5fc1bde7982" sha1="00f2b5642f1919cf8baf2bf83526fdcf2fce41e1" />
+      <file name="VOL.11" crc32="395bf1d8" md5="eea575e47b1e8fbd915ed34b68ee17c9" sha1="59f5da55be90a7da02c28c0ca40861c2d93c95a4" />
+      <file name="VOL.5" crc32="be407cf8" md5="6d6e1231594b8b5041aa8af64b13a161" sha1="0911006ab966abb6ffa089a6048ede3084689bfd" />
+      <file name="GRDIR" crc32="6dfff5b6" md5="db733d199238d4009a9e95f11ece34e9" sha1="91f35f498b05986f64179f5188795211eeb4961b" />
+      <file name="VOL.12" crc32="95d58783" md5="0649df472c193ca624dbe5f1327d357e" sha1="8242fd65d28fb20c616fd020a68e4bfbfa804829" />
+      <file name="VOL.9" crc32="ea07285b" md5="7b44a218c8ec630c96d9d452e51f43b3" sha1="65aa692be9b2dc4476d7a8d77b4fc450188a545a" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="VOL.10" crc32="127e2cbb" md5="e2291ecbc0ddc036eb15ce2ac3417116" sha1="a69da8ef1d493a03fbe76f666a0052e392e5d64e" />
+      <file name="VOL.0" crc32="e6cbcdae" md5="099cf878595fea15a4b2506d40b8ea53" sha1="eba83fc4c765f24eee76dbe1f6c7f932508f6981" />
+      <file name="VOL.1" crc32="985699e5" md5="8ddf79efdb570d3f56e6fc693ac916a3" sha1="59345f368ddf4cfbfb428cc6e76ae4c32046e365" />
+      <file name="VOL.2" crc32="1bfe2e52" md5="0dcb93d9e2901a8b41035812305ed135" sha1="a9eccb6a43cb2aa2dd2d87e5dc8b95fa8c27aa3e" />
+      <file name="VOL.3" crc32="cbe53112" md5="0cacd4aef3c9e3e9135166c8365ae262" sha1="e54cf12f0e06cbd26fb7eacfd0f9f473ea8c3e24" />
+    </game>
+    <game name="King's Quest I" platform="PC" date="XXXX-XX-XX" version="2.0F" format="FLOPPY" interpreter="2.917" language="English" comments="">
+      <file name="WORDS.TOK" crc32="eba7ec7e" md5="50e00d15fa3e25b512c19608119111cf" sha1="e4c1592e4a92d38e646c043614305de6f97482ca" />
+      <file name="VIEWDIR" crc32="72791dbd" md5="ac7048eceb628c07f452ecd1662d7b3d" sha1="7d79e8861099acd6250c83f6c51c4a93b6f1d059" />
+      <file name="VOL.1" crc32="5b5e75a0" md5="77c3be070fc9bf9c69952ed56821efe1" sha1="5c73176c5d9a295b76f76d29dcb2b62a7d6ddd9a" />
+      <file name="LOGDIR" crc32="4d098292" md5="10ad66e2ecbd66951534a50aedcd0128" sha1="8dcdb16fa70c5b5a9a49ee95a57d4e1555ea310f" />
+      <file name="SNDDIR" crc32="e8a07a2c" md5="cf37ab2f6af09afee3598b92c9a42983" sha1="f8be9cdb59229af7bf3ad18cda5c3aa119760760" />
+      <file name="VOL.2" crc32="b310ac5c" md5="b33d0a9938c095da1a69b5ee3c9209d4" sha1="599de7c8aceaa0d0f2a838d3b6befb602af50737" />
+      <file name="VOL.0" crc32="d337fbfd" md5="8ec91effac02ba476f823f065ca10172" sha1="6f22b3471749e6f334dea0ed4b5ab7197f10f3dc" />
+      <file name="OBJECT" crc32="2f7911a0" md5="6eca02fa540337308529ff13e9e764aa" sha1="8fc5c6d1f002330e17b98f45781307268ba0b451" />
+      <file name="PICDIR" crc32="f5d23f58" md5="d468936618bed024ea453a315aba1958" sha1="49cb4c175d8da0ca480cb207ed7152186e418dcc" />
+    </game>
+    <game name="King's Quest I" platform="Macintosh" date="XXXX-XX-XX" version="2.0C" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="0686ba52" md5="c78d3335f295066a0651cb44f64441ea" sha1="66d44d12c0671abc0eb4e2ce0f5092d92ee10d26" />
+      <file name="VIEWDIR" crc32="1b26368f" md5="a17c4d828206cae2c0d999bd0ff8d0a3" sha1="ecddf457f0cb6ee89417379915dd7eda8d9c05fd" />
+      <file name="VOL.1" crc32="33da1989" md5="5d1b016d5ad61491e9d8e5dc84178265" sha1="0fab55a151bda62dfddfc2e252bf8117be895c09" />
+      <file name="LOGDIR" crc32="c1c4ff27" md5="d4c4739d4ac63f7dbd29255425077d48" sha1="b1c67a36da15f450dd2f3af753db1ee0935fef0c" />
+      <file name="SNDDIR" crc32="ea080d5d" md5="903418e656e3699a4ad4b1572a10ab43" sha1="9fb7b32e2dc957d20e1ef01ddb4c3a845a5de037" />
+      <file name="VOL.2" crc32="dcb0a865" md5="126e753ac4a128b75ce33e1d3d32a582" sha1="f6d224406256739d7383320d8b36885c3cbc35b6" />
+      <file name="VOL.0" crc32="2fc477d8" md5="749c98b921bf2b87f21c74f611b191a1" sha1="b02f8c8d5545116505c9ca5bd3855d7f5f666063" />
+      <file name="OBJECT" crc32="5d8b30bd" md5="aa7b57bf1840d5f1522aecb0705cc0c0" sha1="b4c053cb09db6fddd72d19a0060e93323a1fa77b" />
+      <file name="PICDIR" crc32="0c0ed92c" md5="259d56f4777df50cb306c2c2bdfd428c" sha1="60dac7382d1cfa817dc45c27867c5b631df25ebf" />
+    </game>
+    <game name="King's Quest I" platform="Amiga" date="XXXX-XX-XX" version="1.0U" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="56e0d74f" md5="cd3c53a7f0b7acba0fc0d687c2648e7a" sha1="b250cab2d1cf3d80b2f5f5381dd4432df382906e" />
+      <file name="VIEWDIR" crc32="4f6afe6e" md5="e5ef1ee582439bb55060f4e252005b5c" sha1="c6baa5368e33823d92933a1112954f1336e64001" />
+      <file name="VOL.1" crc32="8c27a64a" md5="5ab1f40972e1753a261a016647b5aeb7" sha1="ab1f6a896a2bc0d2ba3a51406301385e89ea3377" />
+      <file name="LOGDIR" crc32="986832ae" md5="246c695324f1c514aee2b904fa352fad" sha1="28ee6833e488dbe55a1f37714024107b493a5267" />
+      <file name="SNDDIR" crc32="4b74d35d" md5="c431c6793ee6cf8e3a1b911a21a5a74f" sha1="abd24df13bbe07d173765f801b2d33807c45a518" />
+      <file name="VOL.2" crc32="32884bdb" md5="5cf0671ee2fa95cb68f09d086990ccd3" sha1="284c09ba9e236a12e659cbb8dada711570b51757" />
+      <file name="VOL.0" crc32="e0f706ef" md5="417904e8cb718b9be2297353329bb76b" sha1="e6e9e1ef97f01b32621fa06d91986e0ce47e98a7" />
+      <file name="OBJECT" crc32="4974def8" md5="ccf73ee422e76e8d0ceb01ab07e05148" sha1="a53677ea805376c014fa50b4a64a60a09499304f" />
+      <file name="PICDIR" crc32="0b7cf352" md5="25b147e51febbfdf8e5dc4727198551f" sha1="ac45d192aef14e7eed5bd4f407dfbe00b995977e" />
+    </game>
+    <game name="King's Quest I" platform="AppleIIgs" date="XXXX-XX-XX" version="1.0S" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="d05f662f" md5="cd75f18f7483daf8ff98c9f4d409b973" sha1="138f70e7ab4069e59864ba61c6a9f9bfed809203" />
+      <file name="SNDDIR" crc32="5a66f4c2" md5="64a0e820c11b57eaec3124b3f7eea119" sha1="730712a28b0ad3157ef68631e28fea8a828748e3" />
+      <file name="LOGDIR" crc32="a4abe0cd" md5="f4277aa34b43d37382bc424c81627617" sha1="7775856c4e4bd3c0bf43ef00f015f2ee19edd15d" />
+      <file name="VIEWDIR" crc32="193e10c4" md5="71e31b1924f74479c40a01bfa6d6ba93" sha1="82a90bed6ad57b7d72ad64a924330d63786562db" />
+      <file name="PICDIR" crc32="aa9c1b84" md5="63af8f82ed3f668677eb416176e1a0e3" sha1="f70289f63d9943a1eb0c37758a69c65113a8d709" />
+      <file name="OBJECT" crc32="2f7911a0" md5="6eca02fa540337308529ff13e9e764aa" sha1="8fc5c6d1f002330e17b98f45781307268ba0b451" />
+      <file name="VOL.0" crc32="b6dda7e9" md5="3c9f039e1eb79aab9f59280ab569b611" sha1="9427b21c71cc36d2e0cfa4e8561b75b70c57440d" />
+      <file name="VOL.1" crc32="1e530c64" md5="d68a00b9d56e772c7d1376d66e8b642b" sha1="acb631aadea6a8ec83144b86eefe63927bb4ddb3" />
+      <file name="VOL.2" crc32="501dc57f" md5="588fc03f21c06b26c41ec305a6c9fc4f" sha1="f4a139452be3a19643d393e04d48cf0d2f845d3f" />
+    </game>
+    <game name="King's Quest I" platform="Atari ST" date="XXXX-XX-XX" version="1.0V" format="" interpreter="2.917" language="English" comments="">
+      <file name="WORDS.TOK" crc32="24e1310e" md5="dd888916d6173a567cfc21a194567d93" sha1="87823232de928db7ef3ff4f11c0e014b300a2fb7" />
+      <file name="SNDDIR" crc32="b6ba3f7c" md5="9103823ad67c00d757e2016e83387249" sha1="a742bc383434624e3d49ef0a68ebf92b31834e77" />
+      <file name="LOGDIR" crc32="12ceb49f" md5="c3a017e556c4b0eece366a4cd9abb657" sha1="53e7ac21b3ba7feaf2a3fbda6b383273283020d6" />
+      <file name="VIEWDIR" crc32="d84f47b6" md5="e77a03c0676685b27c44dbf741117632" sha1="a291ddd9f5bd32894d3b58ddfc7aa006169bf9b1" />
+      <file name="PICDIR" crc32="ed28db75" md5="c453d2d1c40d04680772e8bfa01ec3ad" sha1="fcaeae3c111e83460d4e3a6cacdbad01e94a0a2c" />
+      <file name="OBJECT" crc32="a93dbf4f" md5="2eaba28aeff717742983a57d2c12301f" sha1="901344ee89194c547f540a12ebc1be1ca475fd3b" />
+      <file name="VOL.0" crc32="ff30fba0" md5="2c5c1f46017c20144964f7213ba0a8a2" sha1="189fdfb0362ba80935ae203c5211e762b249de54" />
+      <file name="VOL.1" crc32="40085359" md5="d47ac6f93ac280b3237562b24707032d" sha1="a607738207b2f7584f7c0bcd7e2a276c17e33dd0" />
+      <file name="VOL.2" crc32="32884bdb" md5="5cf0671ee2fa95cb68f09d086990ccd3" sha1="284c09ba9e236a12e659cbb8dada711570b51757" />
+    </game>
+    <game name="King's Quest II" platform="PC" date="XXXX-XX-XX" version="2.1" format="FLOPPY" interpreter="2.411" language="English" comments="">
+      <file name="WORDS.TOK" crc32="6cf8a510" md5="e588b7b3d29f3627023a565e0c806bc5" sha1="0708b3ca8fabdcee772f24a82a93d1431a8e9ab3" />
+      <file name="VIEWDIR" crc32="f20645f7" md5="9ef1036a3c7c47b60a32e97a9e44360b" sha1="c53e184a00614d134dead25f1b3cd62b57fd9be8" />
+      <file name="VOL.1" crc32="61567756" md5="5eb56fcb0022cf3fcbe8a6626e03184b" sha1="cd9630b84fcac99faafc4c5203769a21107b12ce" />
+      <file name="LOGDIR" crc32="df28f8c8" md5="759e39f891a0e1d86dd29d7de485c6ac" sha1="693c576134d8938d8156287552be6cd6df033ebf" />
+      <file name="SNDDIR" crc32="8d63378f" md5="3a865d993b9f1bdcfb6e23a2fd45ef0d" sha1="5134ee4868a7d3f69b610ec61cb386df1ab87036" />
+      <file name="VOL.2" crc32="4481c735" md5="160aedd09c4e4425257e46e03f6c39b8" sha1="d40800eec9460be6ffd8f358009c4bb97bab7f2d" />
+      <file name="VOL.0" crc32="00bd8f52" md5="a9a86189c78139a454a9c0c23edce827" sha1="db089f0045f80e0dcddba7105c0b5800424d0c3c" />
+      <file name="OBJECT" crc32="3a3c3723" md5="ef32575e784ad173671eb780595338b5" sha1="91cf06c740c5c56dc3daa9b08217013c7cc40216" />
+      <file name="PICDIR" crc32="403d89e5" md5="44517da392eb48f2fa1a73deffa56f9f" sha1="af0b580e481babdfdc63502998fbf2205857ba37" />
+    </game>
+    <game name="King's Quest II" platform="PC" date="XXXX-XX-XX" version="2.2" format="FLOPPY" interpreter="2.426" language="English" comments="">
+      <file name="WORDS.TOK" crc32="6cf8a510" md5="e588b7b3d29f3627023a565e0c806bc5" sha1="0708b3ca8fabdcee772f24a82a93d1431a8e9ab3" />
+      <file name="VIEWDIR" crc32="9dcaadbd" md5="e150500935139540a988b73accb75c60" sha1="42cba0912dfad0a8f36b665b2aeba623bb8ffd7d" />
+      <file name="VOL.1" crc32="cd9efd72" md5="7b73d0641ba1a9fa9421c52562c96d6e" sha1="8dc2dba7e54f23a6f805e755459c7d306fbb4fa8" />
+      <file name="LOGDIR" crc32="a9a679c2" md5="b944c4ff18fb8867362dc21cc688a283" sha1="9bae1d1383cbc2bf72e7e257711e28fe3e7a3859" />
+      <file name="SNDDIR" crc32="4c31249c" md5="37101362c2a66bfb944efe3e5ea6a0b9" sha1="b5a2f9d3ebb022c9377b21a8c5791f9d51de9174" />
+      <file name="VOL.2" crc32="bc52a0fd" md5="afebcd251d8fb22e2af51f9fcf34a999" sha1="bc3f7581a85d38d711760cf457a2abd442eae93a" />
+      <file name="VOL.0" crc32="ec87d062" md5="84ad897deda632debd59e11cc4e1ab43" sha1="aa3b95b20385467c39267e3090ced79cc879a93a" />
+      <file name="OBJECT" crc32="3a3c3723" md5="ef32575e784ad173671eb780595338b5" sha1="91cf06c740c5c56dc3daa9b08217013c7cc40216" />
+      <file name="PICDIR" crc32="a99b4b89" md5="7e8b7100a0110a6bfd1c37e59fb37e76" sha1="c967a7c725227b99883a96fc5f9ab235da3ecf3f" />
+    </game>
+    <game name="King's Quest II" platform="Amiga" date="XXXX-XX-XX" version="2.0J" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="9732c477" md5="27c91956153d4d33127a46d476f097c1" sha1="2d734aed77803038f65a63071b58f8cf0069dbb0" />
+      <file name="VIEWDIR" crc32="8756ad23" md5="d63af88482f970bba38c361faf7a1a73" sha1="849122b179a0cc3c4eb987fac4715ec30a26c285" />
+      <file name="VOL.1" crc32="6d1c343d" md5="f0bc8d2d0fc6c75a8d189a4a3b5942bb" sha1="acd7062b7b0ab6045e17a3203c99e198fb0f35b9" />
+      <file name="LOGDIR" crc32="d26e944b" md5="b866f0fab2fad91433a637a828cfa410" sha1="f4a2353e591f13468a7c31bc82ed7833581815b9" />
+      <file name="SNDDIR" crc32="eace54f4" md5="455658efd6fc7247dd40f2eb7bbd5813" sha1="3d49c59ac4a09a11c78f0dc620818fc31a72d354" />
+      <file name="VOL.2" crc32="9809c3fe" md5="1793349657eb72999b2c6b9a546ea2f4" sha1="78afced38023da7103f32c5abfb95e1d9b1370dc" />
+      <file name="VOL.0" crc32="b5ae5f89" md5="b086a11deb6d74b02a322c9cda5aa861" sha1="b40005bce424bb981b5f9a3fb4300b4fef2aae6f" />
+      <file name="OBJECT" crc32="54dec8e0" md5="4a5b16c2019748fd658dd18d5277bf8e" sha1="e47c676f9bb6d06aa99560d5f8607c00d9e5a0f2" />
+      <file name="PICDIR" crc32="c8fdc157" md5="4a8420e8d6fb370a9504cca51304e53a" sha1="923e7f15c4be8bf3e2a666711a833a09676367f8" />
+    </game>
+    <game name="King's Quest II (?)" platform="Amiga" date="XXXX-XX-XX" version="2.0J" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="9732c477" md5="27c91956153d4d33127a46d476f097c1" sha1="2d734aed77803038f65a63071b58f8cf0069dbb0" />
+      <file name="SNDDIR" crc32="eace54f4" md5="455658efd6fc7247dd40f2eb7bbd5813" sha1="3d49c59ac4a09a11c78f0dc620818fc31a72d354" />
+      <file name="LOGDIR" crc32="d26e944b" md5="b866f0fab2fad91433a637a828cfa410" sha1="f4a2353e591f13468a7c31bc82ed7833581815b9" />
+      <file name="VIEWDIR" crc32="8756ad23" md5="d63af88482f970bba38c361faf7a1a73" sha1="849122b179a0cc3c4eb987fac4715ec30a26c285" />
+      <file name="PICDIR" crc32="c8fdc157" md5="4a8420e8d6fb370a9504cca51304e53a" sha1="923e7f15c4be8bf3e2a666711a833a09676367f8" />
+      <file name="OBJECT" crc32="24df1354" md5="629f6867e412be15404b97ffacac0dea" sha1="590915d6c610c5ddeaefc4afcedb1d44c17e7660" />
+      <file name="VOL.0" crc32="b5ae5f89" md5="b086a11deb6d74b02a322c9cda5aa861" sha1="b40005bce424bb981b5f9a3fb4300b4fef2aae6f" />
+      <file name="VOL.1" crc32="6d1c343d" md5="f0bc8d2d0fc6c75a8d189a4a3b5942bb" sha1="acd7062b7b0ab6045e17a3203c99e198fb0f35b9" />
+      <file name="VOL.2" crc32="9809c3fe" md5="1793349657eb72999b2c6b9a546ea2f4" sha1="78afced38023da7103f32c5abfb95e1d9b1370dc" />
+    </game>
+    <game name="King's Quest II" platform="Macintosh" date="XXXX-XX-XX" version="2.0R" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="aacd0e85" md5="66efd93543a2ae16d8108dbaaf0b8487" sha1="4ce8da7ed1e59f8ada27e57b82a966a71d4e77d1" />
+      <file name="SNDDIR" crc32="ccdb3947" md5="712fd4c8160a7d44d36b032e74d27982" sha1="8332b4630866b785fd4bb431f37d5ca38b561a18" />
+      <file name="LOGDIR" crc32="ac85beb5" md5="cbdb0083317c8e7cfb7ac35da4bc7fdc" sha1="dca0e8f0006f21d0c0726870c10381a63f5ff77f" />
+      <file name="VIEWDIR" crc32="d8cc5de3" md5="50f8f4fa0b786abc2d125be44004e05d" sha1="3d8e07241b108d8dd435158e821fe8dd24363cd6" />
+      <file name="PICDIR" crc32="513b588c" md5="e2115a0676d75493f69f8ced082d156b" sha1="3e69f9daf04a8c3e988ab533be6ad861179470bb" />
+      <file name="OBJECT" crc32="c0473442" md5="b05683016825dae8b19c46628b153dfb" sha1="fff0c1e4847f721c768f666f6762b13299c0ad88" />
+      <file name="VOL.0" crc32="08b4b70d" md5="e5ae3b5fbf4ccac6a4b18a65dc157974" sha1="72ba44efde15bfbaa5945e92153eeae632b9032c" />
+      <file name="VOL.1" crc32="de73a98f" md5="42eccf77c18621d674177e8b2252e8da" sha1="4b7bcfcce8addde197dc2a69fea1720bdc2efc92" />
+      <file name="VOL.2" crc32="818230b7" md5="36e729ebfbcf469ad6d95da33fe7d63f" sha1="f0ef8de11b4d65f5cd83f143ebe3cc1a66e1dcaa" />
+    </game>
+    <game name="King's Quest II (bad?)" platform="AppleIIgs" date="XXXX-XX-XX" version="2.0A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="668a2f8c" md5="efb37be6519a36cff927465f0cdf5752" sha1="1322ec6ab1e4437d699df90f5e143cf9e9e36068" />
+      <file name="SNDDIR" crc32="27499af7" md5="2a1a659cf8afd52aebe90ea2d9db2217" sha1="fdf1bd5588a6d0237f4b34fc420e6b14c346cf58" />
+      <file name="LOGDIR" crc32="02858327" md5="5203c8b95250a2ecfee93ddb99414753" sha1="f69a310f127e2c799d8a15b948c154039f57f385" />
+      <file name="VIEWDIR" crc32="1e9fdb0e" md5="82d908540fbb8e9348046d9b2dd0887a" sha1="c45daeb30a8928ed4bcb7b5befd4bddc8eb307b6" />
+      <file name="PICDIR" crc32="73d665b4" md5="b5d627355029dfd6d861c774f64d2e85" sha1="5cd29f48e8fe5b5ad159f32bcdac0ef8d3b8ce61" />
+      <file name="OBJECT" crc32="3a3c3723" md5="ef32575e784ad173671eb780595338b5" sha1="91cf06c740c5c56dc3daa9b08217013c7cc40216" />
+      <file name="VOL.0" crc32="3ca176e4" md5="4edb2c4bab3071cb64ab4f0ab3c22208" sha1="f939793e8c76075f5969648cfd7749ea171cf52c" />
+      <file name="VOL.1" crc32="26049271" md5="369f62285c45aa85d353b7f093d7809b" sha1="1a8112b6e47486930293797e19932e34c41754ed" />
+      <file name="VOL.2" crc32="6b52023a" md5="f5d4257f3094712756fb05ba5c1c06e3" sha1="b429137830946fbc4b5e1256c2d9b6e391d622c6" />
+    </game>
+    <game name="King's Quest II (?)" platform="AppleIIgs" date="XXXX-XX-XX" version="2.0A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="668a2f8c" md5="efb37be6519a36cff927465f0cdf5752" sha1="1322ec6ab1e4437d699df90f5e143cf9e9e36068" />
+      <file name="SNDDIR" crc32="2856d31f" md5="83e35f7e578e6a692c8c508a56f5b561" sha1="82c972d41ecf3f687b478717210a93ffea85d5ad" />
+      <file name="LOGDIR" crc32="02858327" md5="5203c8b95250a2ecfee93ddb99414753" sha1="f69a310f127e2c799d8a15b948c154039f57f385" />
+      <file name="VIEWDIR" crc32="1e9fdb0e" md5="82d908540fbb8e9348046d9b2dd0887a" sha1="c45daeb30a8928ed4bcb7b5befd4bddc8eb307b6" />
+      <file name="PICDIR" crc32="73d665b4" md5="b5d627355029dfd6d861c774f64d2e85" sha1="5cd29f48e8fe5b5ad159f32bcdac0ef8d3b8ce61" />
+      <file name="OBJECT" crc32="3a3c3723" md5="ef32575e784ad173671eb780595338b5" sha1="91cf06c740c5c56dc3daa9b08217013c7cc40216" />
+      <file name="VOL.0" crc32="3ca176e4" md5="4edb2c4bab3071cb64ab4f0ab3c22208" sha1="f939793e8c76075f5969648cfd7749ea171cf52c" />
+      <file name="VOL.1" crc32="26049271" md5="369f62285c45aa85d353b7f093d7809b" sha1="1a8112b6e47486930293797e19932e34c41754ed" />
+      <file name="VOL.2" crc32="6b52023a" md5="f5d4257f3094712756fb05ba5c1c06e3" sha1="b429137830946fbc4b5e1256c2d9b6e391d622c6" />
+    </game>
+    <game name="King's Quest III" platform="PC" date="XXXX-XX-XX" version="1.01" format="FLOPPY" interpreter="2.272" language="English" comments="">
+      <file name="SNDDIR" crc32="db5bfd35" md5="97a738ea6d343bc81f99ab81e9277b63" sha1="dbc4ad3926b09907bb81aefc9a602420f1eb2e1a" />
+      <file name="WORDS.TOK" crc32="46d861cb" md5="6755a5dcd4e874e008f8aba9dd32ca03" sha1="acab3cee8087eb5f884af551377922929db39cc0" />
+      <file name="VIEWDIR" crc32="21d4b1f8" md5="b0ce0c090d5041f36a17f5083a127cc2" sha1="b236dcf9a12a12c36a71c782aa33eaa49ced8d5a" />
+      <file name="VOL.1" crc32="7c62f7b0" md5="5802349ba4c5344330d77f344dbafca5" sha1="af82a2ee76d825af76a4309cffcebb149d256666" />
+      <file name="LOGDIR" crc32="f16aa84c" md5="9c2b34e7ffaa89c8e2ecfeb3695d444b" sha1="775534a809b90c507dfea525ce4b22ad63ffad1d" />
+      <file name="VOL.3" crc32="b4c75d2e" md5="9b5016e154d50e4aa8a6b517884b490d" sha1="beacfb5813c6daa5771d9c9d3213c7ac53c332db" />
+      <file name="VOL.2" crc32="ba6b9d2b" md5="2458a55102176f40d1db3470c26f2156" sha1="25cf47a5419f12f94db2ab09d102b5200bacd9fd" />
+      <file name="VOL.0" crc32="443288e8" md5="3ab1fa42144963d2cd133926d5ffd076" sha1="4c62df0b747bc667f8379673ff4a7fbb0e7aeeb1" />
+      <file name="OBJECT" crc32="b533db7f" md5="fb3c133845b9cf19fe54bbbbde9fa5b8" sha1="befe0103b619aecdf103237f6569988403596dc6" />
+      <file name="PICDIR" crc32="8fd6245c" md5="3bb7769c5fd002252a4335e5c72baaa6" sha1="42e140fdd1df1c8f40da91d5313e75636d35e894" />
+    </game>
+    <game name="King's Quest III" platform="PC" date="XXXX-XX-XX" version="2.00" format="3.5DD" interpreter="2.435" language="English" comments="">
+      <file name="WORDS.TOK" crc32="46d861cb" md5="6755a5dcd4e874e008f8aba9dd32ca03" sha1="acab3cee8087eb5f884af551377922929db39cc0" />
+      <file name="VIEWDIR" crc32="a759f921" md5="3095c9e690eb2c6e1b5bd4a10b564ec9" sha1="f9d523f16cb974dd14c41880a7995c5655f8bc77" />
+      <file name="VOL.1" crc32="a5ec27ec" md5="3a16ab4130d0e6e0726bf6ad51483563" sha1="2139963a6e05b8761a3fcafae1ec71796edfe347" />
+      <file name="LOGDIR" crc32="a34f44e4" md5="b46dc63d6272fb6ed24a004ad580a033" sha1="6385a2af76eaa907e02ba3bd43a23ca95215f441" />
+      <file name="SNDDIR" crc32="528b4578" md5="59495207f8ec15b334ae431a4be7b856" sha1="67450c3d020a0fea00841fd3814a4cf7dc96dc72" />
+      <file name="VOL.2" crc32="be2bd717" md5="f25424a28cf89cc1f9218024740a6a3d" sha1="3d480aad6cf56baf279681e6d08042ab38510606" />
+      <file name="VOL.0" crc32="06d71677" md5="94acdd1922d15f3768256a62359d9d2a" sha1="709ab133b7a19844000cf809c0a30ff568f7711a" />
+      <file name="OBJECT" crc32="80bb91c4" md5="5bec18f772c4b15f69a8c21e7afae152" sha1="922f819b42235417c4824a833e1fb3cfd54a5fce" />
+      <file name="PICDIR" crc32="0c39343d" md5="f4ab59d49503ec8a406c2ddaf284c4aa" sha1="05203767e9eb32d80b17351841fef14b6dc7ee90" />
+    </game>
+    <game name="King's Quest III" platform="PC" date="XXXX-XX-XX" version="2.00" format="5.25DD" interpreter="2.435" language="English" comments="">
+      <file name="SNDDIR" crc32="0158cbe8" md5="e2a6a02893296cd4f55f5ed1fc93d94c" sha1="4be7119b12b60c03fedfaf6ebd1a33a2ee4bf958" />
+      <file name="WORDS.TOK" crc32="46d861cb" md5="6755a5dcd4e874e008f8aba9dd32ca03" sha1="acab3cee8087eb5f884af551377922929db39cc0" />
+      <file name="VIEWDIR" crc32="95ba445c" md5="75b15c557bd1f927c0463cead175799d" sha1="2a445529b4c44114660930099be99275c56c02bd" />
+      <file name="VOL.1" crc32="37a54960" md5="ad21a1f2f96fee942b22717a52e8a2a5" sha1="dea012cbae0e29b9ad91de3161f4e405959915cc" />
+      <file name="LOGDIR" crc32="89469be1" md5="18aad8f7acaaff760720c5c6885b6bab" sha1="1e337051c534eabb7b993f4c3c0048267965ab83" />
+      <file name="VOL.3" crc32="920686d3" md5="a19f1ff874e7e9ef990578882b00d13d" sha1="ad4e31c9f8570437df3817283fe1cfc067bab494" />
+      <file name="VOL.2" crc32="b69550fd" md5="4dbe49a0957c1abf28c1cdf1eab9d63f" sha1="db0691ae200da142bc16b8a284642c594617090d" />
+      <file name="VOL.0" crc32="06d71677" md5="94acdd1922d15f3768256a62359d9d2a" sha1="709ab133b7a19844000cf809c0a30ff568f7711a" />
+      <file name="OBJECT" crc32="80bb91c4" md5="5bec18f772c4b15f69a8c21e7afae152" sha1="922f819b42235417c4824a833e1fb3cfd54a5fce" />
+      <file name="PICDIR" crc32="582eb496" md5="5cef4420b58866df5e3a68244844c2ee" sha1="315c0853d91add03f7c061fefc0113d83f015ef1" />
+    </game>
+    <game name="King's Quest III" platform="PC" date="XXXX-XX-XX" version="2.14" format="3.5DD" interpreter="2.936" language="English" comments="">
+      <file name="SNDDIR" crc32="ea6648bc" md5="04de53c57fd559be4ba4e8a456428593" sha1="055297c883a2d32ab3092adbfdd168c4965a66bf" />
+      <file name="WORDS.TOK" crc32="119108e8" md5="a395c623947245eec25661ff327b601d" sha1="df90e8eade5738af377f15214a1c66c937ac7925" />
+      <file name="VIEWDIR" crc32="047faaa2" md5="c45fa85aafdb15033515dbcf3d8de9f1" sha1="98d62ede1ba37d0e831230b30ea2f9eec445c4d5" />
+      <file name="VOL.1" crc32="d1db3b70" md5="ce8535146099ab43b40438f77ee9b676" sha1="36179b1c2e1f67a72748ed8b3a47fabf34362cb0" />
+      <file name="LOGDIR" crc32="87e235be" md5="d3d17b77b3b3cd13246749231d9473cd" sha1="dbcf95fbd09e8c6b9f25f692dd888870863c8c81" />
+      <file name="VOL.3" crc32="7e9b95cc" md5="639dd4b81af426c8fc72df6b15d56ba7" sha1="4bc77d2df5cdc866542699e831201598e163c68d" />
+      <file name="VOL.2" crc32="9704a378" md5="2ed4ada6bdc027c604110c4ee58bb289" sha1="51094babce11ad1a73e1d82f968d5053062cc76b" />
+      <file name="VOL.0" crc32="230e671d" md5="a62df7f089ef95f9e192e2f766e6fd76" sha1="77ea4e5ba6443b94b0f2eb0df10f727d06ae5733" />
+      <file name="OBJECT" crc32="ba748770" md5="8fc901501e7c92f702bba825e046bd85" sha1="88906eb6382077b06d63c56ebb4c26e5c7ba5e83" />
+      <file name="PICDIR" crc32="0a98b071" md5="43528321470c1ce3d079452221177fe0" sha1="4a209a096e076c3abe6deec3dec3fbec954cab83" />
+    </game>
+    <game name="King's Quest III" platform="PC" date="XXXX-XX-XX" version="2.14" format="5.25DD" interpreter="2.936" language="English" comments="">
+      <file name="SNDDIR" crc32="4a3805fe" md5="49049f5fc341fb9b13033b6c3a602911" sha1="4e68806998a6f7ba0b8541b762263117ec5c3a01" />
+      <file name="WORDS.TOK" crc32="119108e8" md5="a395c623947245eec25661ff327b601d" sha1="df90e8eade5738af377f15214a1c66c937ac7925" />
+      <file name="VIEWDIR" crc32="7bf281b6" md5="64f4359e4ef1424989302005fb762bc9" sha1="f2d3a3b71e3320c4bcffaf34a6b3ce40b6f87d0c" />
+      <file name="VOL.1" crc32="7a3e0e24" md5="f28ed20a364a693ffde75e01b9fda0c2" sha1="44ef8292ec3f6ce4288911694cb0c7c6c6dfe3dc" />
+      <file name="LOGDIR" crc32="a8508d8c" md5="7650e659c7bc0f1e9f8a410b7a2e9de6" sha1="cc6cd153d8abc2490ef689e67c395b887f6e11e1" />
+      <file name="VOL.3" crc32="3cd48b57" md5="efc77e149cd32a0e7d9890bf5a4831e6" sha1="9fa595692142683e2438e5bc33b1873b323ba0a0" />
+      <file name="VOL.2" crc32="ff81d661" md5="a90f71fd1d92332c10e00843e1f26116" sha1="03f2d0a3f340b7c8d3f80b4898df6ccbdca24a96" />
+      <file name="VOL.0" crc32="230e671d" md5="a62df7f089ef95f9e192e2f766e6fd76" sha1="77ea4e5ba6443b94b0f2eb0df10f727d06ae5733" />
+      <file name="OBJECT" crc32="ba748770" md5="8fc901501e7c92f702bba825e046bd85" sha1="88906eb6382077b06d63c56ebb4c26e5c7ba5e83" />
+      <file name="PICDIR" crc32="582eb496" md5="5cef4420b58866df5e3a68244844c2ee" sha1="315c0853d91add03f7c061fefc0113d83f015ef1" />
+    </game>
+    <game name="King's Quest III" platform="Macintosh" date="XXXX-XX-XX" version="2.14" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="2791339e" md5="985a43f13dfbee5b02e7bf72dc30b119" sha1="e65767c8e32f6efb7e6a943b202a3ef3ffbdc757" />
+      <file name="WORDS.TOK" crc32="ab6cfbd4" md5="66daee94fd7f92d49d2f5e41e837642e" sha1="52937a9aec47f1345cf016451fa3bf5e7973b1d3" />
+      <file name="VIEWDIR" crc32="3026d198" md5="1619bba8026a5740996f955b1ed65b14" sha1="35610d03a126310d186cba6b0f0636c87bbedf48" />
+      <file name="VOL.1" crc32="d3883fcb" md5="222c3de0420a90d89bc8cc9663540c9e" sha1="7dfc8a7b3ea32fc9aa40e14f8da87f5ca9f5f502" />
+      <file name="LOGDIR" crc32="288d0f9d" md5="7639c0da5ce94848227d409351fabda2" sha1="36c62c5ff46e61c6dff60bad3cc47d5c70f995d1" />
+      <file name="VOL.3" crc32="ae42baec" md5="ecef654ec1d1a53ef46e73e68226969b" sha1="6a286bd032ffc7a105066b76ec723a67ed1208c4" />
+      <file name="VOL.2" crc32="5aabf957" md5="9921fa265b49f6fadd7a3dbd8e5311f0" sha1="a95035fc64175312b341ae0d65937ec1195100b2" />
+      <file name="VOL.0" crc32="b9b398ad" md5="57614e0ba0775548435b0a2cddabb959" sha1="7ae9b8ee292166a5ee105ed8b9eb3d3576bb5696" />
+      <file name="OBJECT" crc32="add6b57f" md5="689742be384a75b41b3217692351487f" sha1="7bcd2bf395e778bde2169d51ba29bd33f452ed3e" />
+      <file name="PICDIR" crc32="0e663ad9" md5="e66f9497405f6622eb1f1811ff2e7101" sha1="1aead603b701abe0d00c9801d0a39a199b1a26d3" />
+    </game>
+    <game name="King's Quest III" platform="Amiga" date="XXXX-XX-XX" version="2.15" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="VOL.1" crc32="ec9186cb" md5="70a524139291ccf536d55c8ee51822a9" sha1="b859e29a94f0f15b2074e391db45b6d2dee75af2" />
+      <file name="WORDS.TOK" crc32="46d861cb" md5="6755a5dcd4e874e008f8aba9dd32ca03" sha1="acab3cee8087eb5f884af551377922929db39cc0" />
+      <file name="OBJECT" crc32="26763fcc" md5="b2347defbe9a458a117f830d6b609454" sha1="a95b388fedbac1bc46c674c774d74dcacf341c89" />
+      <file name="VOL.0" crc32="48a3f1b3" md5="5fe2c6032ef90220d20e0d1a2e0877dd" sha1="d1cf2ea0d3731fd74dd7545904dbb4053c6c7bb8" />
+      <file name="VOL.2" crc32="d0836ef9" md5="e8bbc81cb86824c9ab3f20b12755ebd1" sha1="21198c7d3e7675b0285782e0891eeaec18c98109" />
+      <file name="DIRS" crc32="49051684" md5="8e35bded2bc5cf20f5eec2b15523b155" sha1="f6098001a77b45bfe54dc8d5ff4ef72c1efc1552" />
+    </game>
+    <game name="King's Quest III" platform="Amiga" date="XXXX-XX-XX" version="1.01" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="967469d4" md5="6dd47b613bb520e6640383dae3782b6e" sha1="2b77c30070cd25a35c0c264f60c6a3b1a04bd9c5" />
+      <file name="PICDIR" crc32="22c536ad" md5="81f9b6e19d06f5819d03a95588b33374" sha1="78573d081a133928ae779956da969c613aa5af8a" />
+      <file name="LOGDIR" crc32="3e5f084b" md5="8ab343306df0e2d98f136be4e8cfd0ef" sha1="ff9b86ff30b311031209763a89c9f6ef8ef39164" />
+      <file name="VIEWDIR" crc32="e409b618" md5="ea4b2e922b9d0c53aed1798f8b59fc85" sha1="e14abdd9ccbcffa4693b75f38a168c7129b67839" />
+      <file name="WORDS.TOK" crc32="46d861cb" md5="6755a5dcd4e874e008f8aba9dd32ca03" sha1="acab3cee8087eb5f884af551377922929db39cc0" />
+      <file name="OBJECT" crc32="89e2a978" md5="64e83af31dab6d1b0dbae6d432742c2b" sha1="0f249022c7510ff7fb99ac329accebb870a2b657" />
+      <file name="VOL.0" crc32="facc1221" md5="d455529529b61bed23b052cfdac6b8f5" sha1="6583e616ff1210cb5702aca9532fcfbdbbcbf0a5" />
+      <file name="VOL.1" crc32="bb8cfb0b" md5="d2e08d590bcbd374a2c51c1f9acceb9e" sha1="eeee4b5d3c5f350769e07db0c67a22da6bcd9396" />
+      <file name="VOL.2" crc32="c26b4f22" md5="8f5d7d89ab4320a3b85f98ebbb19b815" sha1="794ad1c8a74c9af4f2a7410b560a31f47bae89e8" />
+      <file name="VOL.3" crc32="b4c75d2e" md5="9b5016e154d50e4aa8a6b517884b490d" sha1="beacfb5813c6daa5771d9c9d3213c7ac53c332db" />
+    </game>
+    <game name="King's Quest III (original)" platform="Atari ST" date="XXXX-XX-XX" version="1.02" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="61e7b8a8" md5="379f41971b7204813a7958a30639e156" sha1="4acbe1211d288bf34c5fb933d7a4a6d11cf5fa9e" />
+      <file name="PICDIR" crc32="c8cab156" md5="89fd1b44243518d122959cf2dc8edb07" sha1="af2d7aaa3f091aa6bb9ddfab29e8b2c0c89d6346" />
+      <file name="LOGDIR" crc32="9a7fe35c" md5="8846df2654302b623217ba8bd6d657a9" sha1="f4307879dea4b3ddb2958f0c927c22223e551f45" />
+      <file name="VIEWDIR" crc32="39ea47a7" md5="13c3ff7372ff052cd01a95d5a80f2dcf" sha1="69d2c3c5c2f72abcc52a6959d7175c29dd031c62" />
+      <file name="WORDS.TOK" crc32="46d861cb" md5="6755a5dcd4e874e008f8aba9dd32ca03" sha1="acab3cee8087eb5f884af551377922929db39cc0" />
+      <file name="OBJECT" crc32="b533db7f" md5="fb3c133845b9cf19fe54bbbbde9fa5b8" sha1="befe0103b619aecdf103237f6569988403596dc6" />
+      <file name="VOL.0" crc32="3da45048" md5="3267f7e2a89f15c96ea09921ae465050" sha1="c988f3376b69b0385c365f4ed5472352bc7db04c" />
+      <file name="VOL.1" crc32="c17b99c8" md5="9aa30cf0d59d441630bdb141c56e8a5b" sha1="2a87ccd16c02484dc669a4f3468584711edcfb0c" />
+      <file name="VOL.2" crc32="c26b4f22" md5="8f5d7d89ab4320a3b85f98ebbb19b815" sha1="794ad1c8a74c9af4f2a7410b560a31f47bae89e8" />
+      <file name="VOL.3" crc32="b4c75d2e" md5="9b5016e154d50e4aa8a6b517884b490d" sha1="beacfb5813c6daa5771d9c9d3213c7ac53c332db" />
+    </game>
+    <game name="King's Quest III (incomplete)" platform="AtariST" date="XXXX-XX-XX" version="1.02" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="46d861cb" md5="6755a5dcd4e874e008f8aba9dd32ca03" sha1="acab3cee8087eb5f884af551377922929db39cc0" />
+      <file name="SNDDIR" crc32="61e7b8a8" md5="379f41971b7204813a7958a30639e156" sha1="4acbe1211d288bf34c5fb933d7a4a6d11cf5fa9e" />
+      <file name="LOGDIR" crc32="9a7fe35c" md5="8846df2654302b623217ba8bd6d657a9" sha1="f4307879dea4b3ddb2958f0c927c22223e551f45" />
+      <file name="VIEWDIR" crc32="39ea47a7" md5="13c3ff7372ff052cd01a95d5a80f2dcf" sha1="69d2c3c5c2f72abcc52a6959d7175c29dd031c62" />
+      <file name="PICDIR" crc32="c8cab156" md5="89fd1b44243518d122959cf2dc8edb07" sha1="af2d7aaa3f091aa6bb9ddfab29e8b2c0c89d6346" />
+      <file name="OBJECT" crc32="b533db7f" md5="fb3c133845b9cf19fe54bbbbde9fa5b8" sha1="befe0103b619aecdf103237f6569988403596dc6" />
+      <file name="VOL.0" crc32="3da45048" md5="3267f7e2a89f15c96ea09921ae465050" sha1="c988f3376b69b0385c365f4ed5472352bc7db04c" />
+      <file name="VOL.1" crc32="c17b99c8" md5="9aa30cf0d59d441630bdb141c56e8a5b" sha1="2a87ccd16c02484dc669a4f3468584711edcfb0c" />
+      <file name="VOL.2" crc32="c26b4f22" md5="8f5d7d89ab4320a3b85f98ebbb19b815" sha1="794ad1c8a74c9af4f2a7410b560a31f47bae89e8" />
+    </game>
+    <game name="King's Quest III" platform="AppleIIgs" date="XXXX-XX-XX" version="2.0A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="904bd2f5" md5="1697a4b87d8527543861f4a6df973d61" sha1="cf24a3fc49ef81f8198d041c0caf3906878b2d44" />
+      <file name="SNDDIR" crc32="e583be18" md5="c8cc29f85bc979b19c9aacd974210862" sha1="40b4a7ab7832e4be86c7b7737677ed64a385224c" />
+      <file name="LOGDIR" crc32="d0b0a68b" md5="ac30b7ca5a089b5e642fbcdcbe872c12" sha1="5776965125772b7082390e5e3ad4fcd35aa167c1" />
+      <file name="VIEWDIR" crc32="5ca0bf87" md5="d6743e44801fe6f1fcb36bbb0711cb2f" sha1="42fddc869c2cbd96f97f75dc7206f5492cdd0775" />
+      <file name="PICDIR" crc32="239fc122" md5="2e815221c66ee5198a4677b5a64f7f61" sha1="d7e2eaf91d5bf2f34048c613ed14b9d0990fab49" />
+      <file name="OBJECT" crc32="ba748770" md5="8fc901501e7c92f702bba825e046bd85" sha1="88906eb6382077b06d63c56ebb4c26e5c7ba5e83" />
+      <file name="VOL.0" crc32="f82c3180" md5="4bb1cdf6a5def7f12ffec1f3dbea5565" sha1="441dd4f3e2db4999f914bbac2a353b95dc5543ff" />
+      <file name="VOL.1" crc32="5588627f" md5="adebda7d32608d1d9021a3cf5e457cc0" sha1="b268f6c176a72c8bc76d75818bb9b5c5a705a846" />
+      <file name="VOL.2" crc32="db3d31bd" md5="df9aa702f4ff7d7a1e3cc29069d2b7fb" sha1="2fa458f172a46dc510a3d7cdf07e1faf46c46228" />
+    </game>
+    <game name="King's Quest IV" platform="PC" date="XXXX-XX-XX" version="2.0" format="3.5DD" interpreter="3.002.086" language="English" comments="">
+      <file name="OBJECT" crc32="9a24c702" md5="99586cbcea06eec3c8c8944ac5c4c46c" sha1="f57d6604d75a9609351142e9f0b30fb35f9db3af" />
+      <file name="KQ4VOL.2" crc32="314f238b" md5="024939a6d81fd90dada9a142c4f95ca6" sha1="b2d78c4822f6708a6420d6a763c4a0d6feda845f" />
+      <file name="KQ4VOL.0" crc32="99ea7f33" md5="28cf575cfb15c3868e283c190be69255" sha1="c425d105adeee411ab659638cc6150cc67061440" />
+      <file name="WORDS.TOK" crc32="0e4ca342" md5="aa061da63351735adf5f61c0210c0595" sha1="27ad84950663eb5b7d5bfb0937791bfec21547c0" />
+      <file name="KQ4VOL.3" crc32="a4b07ea0" md5="0af52dd1cbc24119c99cc5fcdb249d84" sha1="1e6422fb8740e71ba7ca2d97e6c82e1e2d151572" />
+      <file name="KQ4DIR" crc32="da8ed9b8" md5="fe44655c42f16c6f81046fdf169b6337" sha1="3929da798a59b690ead76a56fe8181a2c37d9ad0" />
+      <file name="KQ4VOL.1" crc32="8b0345f0" md5="7b7b9549ed513b9836af2ffe86a6c8fc" sha1="8da6562d98f8cf13104fa7c1b7e875055f81a217" />
+    </game>
+    <game name="King's Quest IV" platform="PC" date="XXXX-XX-XX" version="2.0" format="5.25DD" interpreter="3.002.086" language="English" comments="">
+      <file name="OBJECT" crc32="9a24c702" md5="99586cbcea06eec3c8c8944ac5c4c46c" sha1="f57d6604d75a9609351142e9f0b30fb35f9db3af" />
+      <file name="KQ4VOL.9" crc32="ea302203" md5="40674f2794466dcc5b04b076d8aa0d0f" sha1="31e81bb58e81d32fa4c63685d9f25cc15bf38bf9" />
+      <file name="KQ4VOL.6" crc32="6fe8fec0" md5="e259e0ce3d97349e3c11b20531a7a56b" sha1="e19ee10bb7cd98d391cce2268f73739a4c791296" />
+      <file name="KQ4VOL.5" crc32="68c3e02c" md5="ea13c34c97a9accdcd2b29a0d37d7b86" sha1="d74a4d000fd085da80cf1ed840532b7cd253f20a" />
+      <file name="KQ4VOL.4" crc32="89533e35" md5="f9787050b55dee358822812809bedba2" sha1="fb65ad7cc7f3f3421011fcd57b762b1e636b47fe" />
+      <file name="KQ4VOL.3" crc32="b6be5903" md5="3b7f8b0cf8a3ee18ce883157b54be653" sha1="9f7188828f446d5924d797e354379164d9f09693" />
+      <file name="KQ4VOL.2" crc32="15b454fd" md5="cbb7029e11f724669540503e908eeca6" sha1="3862ac0469f9bc6501aadbe304b8661eb27fd6f5" />
+      <file name="KQ4VOL.1" crc32="ffb0025c" md5="932e28766b20711275a2a3d5b22748ae" sha1="fcdf0e3519a41b2f213b9903a1c0392cee49a599" />
+      <file name="KQ4VOL.0" crc32="b8ccac67" md5="524e27ea8729e9b767b5b31d027db2e7" sha1="187a08208b27afbef4cc3e95660fefc3899e6161" />
+      <file name="WORDS.TOK" crc32="0e4ca342" md5="aa061da63351735adf5f61c0210c0595" sha1="27ad84950663eb5b7d5bfb0937791bfec21547c0" />
+      <file name="KQ4VOL.10" crc32="db4f8d19" md5="a10a4ab446b116ab4033592de619c150" sha1="5dec059552501b272c034b4f85286a92bf3781e8" />
+      <file name="KQ4VOL.11" crc32="3b383bcb" md5="2c892017c6c55d1830425133e0b0786e" sha1="a005900ec23abfb14cc636421c5f0e4876c2f280" />
+      <file name="KQ4DIR" crc32="ae3134b7" md5="f50f7f997208ca0e35b2650baec43a2d" sha1="896635c5eff93fc55fa5f9ad6344b6c2afde77b9" />
+    </game>
+    <game name="King's Quest IV" platform="PC" date="XXXX-XX-XX" version="2.2" format="3.5DD" interpreter="3.002.086" language="English" comments="">
+      <file name="KQ4DIR" crc32="8ed6e6da" md5="7470b3aeb49d867541fc66cc8454fb7d" sha1="da467c6748fb9910ff3fd90c7c1b14c72da0e727" />
+      <file name="WORDS.TOK" crc32="b4bfe4d4" md5="371f0340b41dfd6aa89f8cb0b3bad92d" sha1="38a97f44fc782e9d7fc930351e9c372d87dfb3f5" />
+      <file name="OBJECT" crc32="9a24c702" md5="99586cbcea06eec3c8c8944ac5c4c46c" sha1="f57d6604d75a9609351142e9f0b30fb35f9db3af" />
+      <file name="KQ4VOL.3" crc32="4b487c9f" md5="5f7c702bea1e641d232bb69c0aabed71" sha1="85a53d01583d88354d83fb34468d1929042816df" />
+      <file name="KQ4VOL.2" crc32="2817266d" md5="2c607696208ff971ce5616daa370756e" sha1="f6063f4b9593ebf4e8a9fe5726bec48a1ccd4364" />
+      <file name="KQ4VOL.1" crc32="275142ca" md5="4467df37716ba959250cf4e80979c733" sha1="acf545ebc1f2defe456acd1c5a8e3c1ae316ff96" />
+      <file name="KQ4VOL.0" crc32="cc544087" md5="d4b7725dde48cbc7a329f3a0edd74e3b" sha1="1d7101dc81dd5d18ef777601e5888d38c92381d3" />
+    </game>
+    <game name="King's Quest IV" platform="PC" date="XXXX-XX-XX" version="2.3" format="3.5DD" interpreter="3.002.086" language="English" comments="">
+      <file name="OBJECT" crc32="9a24c702" md5="99586cbcea06eec3c8c8944ac5c4c46c" sha1="f57d6604d75a9609351142e9f0b30fb35f9db3af" />
+      <file name="KQ4VOL.2" crc32="3ddbd561" md5="c50c4e672752baca889b2fc066801322" sha1="aec5319de907dc6b61b725a5b18ea07ed7ed79aa" />
+      <file name="KQ4VOL.0" crc32="cc544087" md5="d4b7725dde48cbc7a329f3a0edd74e3b" sha1="1d7101dc81dd5d18ef777601e5888d38c92381d3" />
+      <file name="WORDS.TOK" crc32="b4bfe4d4" md5="371f0340b41dfd6aa89f8cb0b3bad92d" sha1="38a97f44fc782e9d7fc930351e9c372d87dfb3f5" />
+      <file name="KQ4VOL.3" crc32="c5d5cd1f" md5="9069de95c57b00d626ccfdffb687341b" sha1="8c7cee1a56e0ba6c7bc4221bf534495823397432" />
+      <file name="KQ4DIR" crc32="f20e6146" md5="82a0d39af891042e99ac1bd6e0b29046" sha1="8eeb3b96e5cf126512e8d623f649beae6c9f3bc1" />
+      <file name="KQ4VOL.1" crc32="c456d0e8" md5="bf467e842b247dd0ca992fb6220b1ea2" sha1="7c53255b41d38bf5242d9043e4b8fe1dfe591837" />
+    </game>
+    <game name="King's Quest IV" platform="PC" date="XXXX-XX-XX" version="2.3" format="5.25DD" interpreter="3.002.086" language="English" comments="">
+      <file name="KQ4VOL.2" crc32="71e1fe3a" md5="4bacb508f8b21506758403e3e72d7a80" sha1="e779e68e472e36e4a2f63b894194c0ca40d42809" />
+      <file name="KQ4VOL.6" crc32="5757f438" md5="46e1445cae3fc8c09339d67e7f3bdadf" sha1="867d2b5d8fd105706fd311bbdae52a51fa15debd" />
+      <file name="KQ4VOL.4" crc32="cdfddaf4" md5="98bc53dfe9a2744aedb3ed456c77ee18" sha1="282b2c81afbbcf63e966246d1a892ef6e597d2f7" />
+      <file name="KQ4VOL.10" crc32="db4f8d19" md5="a10a4ab446b116ab4033592de619c150" sha1="5dec059552501b272c034b4f85286a92bf3781e8" />
+      <file name="KQ4VOL.11" crc32="3b383bcb" md5="2c892017c6c55d1830425133e0b0786e" sha1="a005900ec23abfb14cc636421c5f0e4876c2f280" />
+      <file name="KQ4DIR" crc32="e7fbec15" md5="6d7714b8b61466a5f5981242b993498f" sha1="dbcecca6183d1471c366e6a51a986c4acb869eaa" />
+      <file name="KQ4VOL.1" crc32="bbb4bc98" md5="53d10090cde95efd54f4c326948e8e18" sha1="82b00a65d9a6ef7fd381cbd5537d60338e564665" />
+      <file name="WORDS.TOK" crc32="b4bfe4d4" md5="371f0340b41dfd6aa89f8cb0b3bad92d" sha1="38a97f44fc782e9d7fc930351e9c372d87dfb3f5" />
+      <file name="OBJECT" crc32="9a24c702" md5="99586cbcea06eec3c8c8944ac5c4c46c" sha1="f57d6604d75a9609351142e9f0b30fb35f9db3af" />
+      <file name="KQ4VOL.3" crc32="c7575b68" md5="ab9f2feeb2f2d750c789e1e7b74123d3" sha1="b6c70a45d278137e90770ecedf668466d61b7f55" />
+      <file name="KQ4VOL.0" crc32="1942ce0d" md5="22a455a760f481bdd1917f0366e28cfd" sha1="68906a6f6f05b30725c3fac1a61527ff2c1978cf" />
+      <file name="KQ4VOL.9" crc32="3076bae9" md5="9c181fcfd4956c25ea8862ca8132d359" sha1="ee45c84d0918879dc34ade2519f5885503c495e5" />
+      <file name="KQ4VOL.5" crc32="e7877368" md5="861f58ee1feb13248217fa8dcfce7eb2" sha1="87e846529b07f1d393d15ea8134ca029708e63fc" />
+    </game>
+    <game name="King's Quest IV" platform="AppleIIgs" date="XXXX-XX-XX" version="1.0K" format="" interpreter="3.002.086" language="English" comments="">
+      <file name="OBJECT" crc32="9a24c702" md5="99586cbcea06eec3c8c8944ac5c4c46c" sha1="f57d6604d75a9609351142e9f0b30fb35f9db3af" />
+      <file name="KQ4VOL.2" crc32="c31d01ef" md5="73a9c55304fb1caff52acde819fd34b1" sha1="964d26a2c761cc8464a3dfdd1597e2b12a617c01" />
+      <file name="KQ4VOL.0" crc32="c6605cd0" md5="bcff3bbea07b06196fd7e2c9743757c3" sha1="64faf9ab8c8146a86dbb27c263e70b3fe653d721" />
+      <file name="WORDS.TOK" crc32="4e7fcb52" md5="5aa87e68fdc446c646c3a8f5ea5cda4b" sha1="48764382313a324ac0160170a64c7d43e4bf1064" />
+      <file name="KQ4VOL.3" crc32="3804bf21" md5="c1912283480ab295de06643a566320dd" sha1="98b282d5994ab6fb3a801d14b0e43f2fd35b59e7" />
+      <file name="KQ4DIR" crc32="9b8c8bc5" md5="8536859331159f15012e35dc82cb154e" sha1="0f6b5e39db6b7e2c2ef239dae452dd28982ea7e8" />
+      <file name="KQ4VOL.1" crc32="ed1efdc6" md5="8925660ff4ad2166a41ed4cc5d781793" sha1="7a85ae08058a22b19489d8a651d8c7be15bd24a9" />
+    </game>
+    <game name="King's Quest IV Demo" platform="PC" date="XXXX-XX-XX" version="" format="FLOPPY" interpreter="3.002.102" language="English" comments="">
+      <file name="WORDS.TOK" crc32="fc3a1407" md5="345b69b922b8c18a0bc93cdc4d79f52b" sha1="69e6d05a154b41f3668ab1cfa582aade6ed46130" />
+      <file name="OBJECT" crc32="05853ab3" md5="60175f87421161f368e39de8833c866e" sha1="6300be2599265f673e3bb5100abef2c0a11815f3" />
+      <file name="DMVOL.0" crc32="5a4843ab" md5="ac28c0db9bc0631edfe3d5014747c2ac" sha1="9b79f08cf1eb7f5df97dcae74b21bfe46d84c86d" />
+      <file name="DMVOL.1" crc32="691ba286" md5="6a76e64dfd36cadaacfa827330cdaa84" sha1="6cbf9c16cc86b303fe19642e3ebd4c097c5bd449" />
+      <file name="DMDIR" crc32="38040e0f" md5="a3332d70170a878469d870b14863d0bf" sha1="ab3332cbda47021f4521e8bda5a8c0b196c39ae8" />
+    </game>
+    <game name="Leisure Suit Larry I" platform="PC" date="XXXX-XX-XX" version="1.00" format="FLOPPY" interpreter="2.440" language="English" comments="">
+      <file name="WORDS.TOK" crc32="295fe597" md5="988a1baaf3ee0d9cd678274dc2f219f2" sha1="9fd64e7d57a707afa4f834adc7ee6affd9b7d940" />
+      <file name="VIEWDIR" crc32="03629772" md5="8c4edeea3fa5518ab431ee9b0ba7c378" sha1="0194c587f7ef13e31f1011cc72306c1ab972b9ac" />
+      <file name="VOL.1" crc32="4917e107" md5="7ddb49cf212d5fab3c2edf86ee895886" sha1="e107999bc7ace17f2dfd53442c331945f3929706" />
+      <file name="LOGDIR" crc32="2f82e0b1" md5="1fe764e66857e7f305a5f03ca3f4971d" sha1="1e8a5282f477a895ef6c9e8d328a6292926b1000" />
+      <file name="SNDDIR" crc32="578de438" md5="8fbdd1377d7110c3a28979d4627fc3e5" sha1="2b4a438f22fbeeef8a6fd099a608a78766d6e75e" />
+      <file name="VOL.2" crc32="42c8cd81" md5="89103f5b48fa49c00eed42f4b19808e1" sha1="6d711d5a8e836d46e552e8acdc72f7d44c33bd42" />
+      <file name="VOL.0" crc32="b7a0f8fa" md5="28dabb6408d2eb4757ee28686308a475" sha1="91c56f64c6a6989c27a43f5147751f0650932e1e" />
+      <file name="OBJECT" crc32="1cb5f786" md5="aa7bce1ca83f181c92c1feea2c119eec" sha1="cda4a0aae589ae40b098865b6e4b964a8663009f" />
+      <file name="PICDIR" crc32="fddfaf76" md5="a22e109d14d5cff65be77dd1b12af6f3" sha1="8ed989dabbd53c922d144f1e9f1b7a650e28b904" />
+    </game>
+    <game name="Leisure Suit Larry I" platform="Macintosh" date="XXXX-XX-XX" version="1.05" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="e2a94bc1" md5="480b147cee712c47008c4071211eacd8" sha1="20aabdc463bd425edcfcd61802bf9bfc4e03af20" />
+      <file name="VIEWDIR" crc32="d1a681ab" md5="133265371eaee0ec6272fef1c7209344" sha1="73f05c6294bc3d864abf2bde3f093e3161f2dd19" />
+      <file name="VOL.1" crc32="556c6c7a" md5="eec4633642e8c2bd6b8de9070ec8f234" sha1="14e9fce01163d3c4d732c24a1b7158949c2ca5d3" />
+      <file name="LOGDIR" crc32="537e7dba" md5="8a0076429890531832f0dc113285e31e" sha1="1e17c51cf89e03d321791b42efe195bf31174811" />
+      <file name="SNDDIR" crc32="6c8ce02c" md5="3d70d239c180fb76149bc6fa2fcf71a6" sha1="55152c8610db9739c8d28702aedbcff526654233" />
+      <file name="VOL.2" crc32="e7cfeb80" md5="2f49f6ba08bb6728b3e920137a38b685" sha1="d42abd2429dd7857e4b7158afc745ad520f25a08" />
+      <file name="VOL.0" crc32="8abbc79c" md5="15d5ef792e62271a429f01105e845713" sha1="87ccc9da5030201acce594816c7cdd2a448eabd3" />
+      <file name="OBJECT" crc32="f5bcbad0" md5="fd2c53795dbc740ed7892080d15f92a4" sha1="eb1d7a5f4760b5d4627638df6ac599bb7eaf7dc8" />
+      <file name="PICDIR" crc32="3875e52c" md5="1e007a47b4532ef878278dcf431868d0" sha1="6c834e8548f2610bf02da11a6b4366e501858b8b" />
+    </game>
+    <game name="Leisure Suit Larry I" platform="Amiga" date="XXXX-XX-XX" version="1.05" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="f13427b3" md5="9ae0cc1ec70068591216591a0e1ae637" sha1="134bb22f2d7c2ae667c3df3b6dfd4dddeb588118" />
+      <file name="VIEWDIR" crc32="1243e8ef" md5="6d69a761578cab707cde1883148d784d" sha1="c0a343ba13ce21cc64f7d7cb9afdf36b40629917" />
+      <file name="VOL.1" crc32="1371b0a2" md5="bca152f73450af0d4985dd37fbaef239" sha1="e1d15b5a24d8b7245052eec026dcc8b6a3002110" />
+      <file name="LOGDIR" crc32="e394b64d" md5="3f5d26d8834ca49c147fb60936869d56" sha1="6d53ad1800866ad322e87a8be3934351209cf003" />
+      <file name="SNDDIR" crc32="72e873c9" md5="7758a8c2f6d27cf124cd51d233289b33" sha1="42944daec3c3177a76b08975450256b35b696c17" />
+      <file name="VOL.2" crc32="5bdf920e" md5="74df9feb06695ceac3120cd412bec20b" sha1="34f3613bf97317123204c626932d4c362d4bdce4" />
+      <file name="VOL.0" crc32="38f34fbb" md5="47bd01b6c20d11afb4e471b77d4bf387" sha1="06a882a112eab965a420c56754028fcb854fe254" />
+      <file name="OBJECT" crc32="a34006f5" md5="f1ed523760b3f7854750b68083054bcd" sha1="316cc894863e0e0a67e37f727c08aa9cbaca4426" />
+      <file name="PICDIR" crc32="fddfaf76" md5="a22e109d14d5cff65be77dd1b12af6f3" sha1="8ed989dabbd53c922d144f1e9f1b7a650e28b904" />
+    </game>
+    <game name="Leisure Suit Larry I" platform="AtariST" date="XXXX-XX-XX" version="1.04" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="f13427b3" md5="9ae0cc1ec70068591216591a0e1ae637" sha1="134bb22f2d7c2ae667c3df3b6dfd4dddeb588118" />
+      <file name="SNDDIR" crc32="b32d93eb" md5="2cfeb30ce3aec0b4352c80a332a72f01" sha1="b6e7bec485e3fedba7f055ba3c3c740533eb1948" />
+      <file name="LOGDIR" crc32="edebf8c1" md5="8b579f8673fe9448c2538f5ed9887cf0" sha1="7480f54e4402650f467136c97f8e5b5b02360e3d" />
+      <file name="VIEWDIR" crc32="4f16d5ba" md5="03f7c6738fd90cbe6eeafe4d7334e917" sha1="d4be3d2566077e2aea8ecc36ab17e00b30838e1b" />
+      <file name="PICDIR" crc32="fddfaf76" md5="a22e109d14d5cff65be77dd1b12af6f3" sha1="8ed989dabbd53c922d144f1e9f1b7a650e28b904" />
+      <file name="OBJECT" crc32="1cb5f786" md5="aa7bce1ca83f181c92c1feea2c119eec" sha1="cda4a0aae589ae40b098865b6e4b964a8663009f" />
+      <file name="VOL.0" crc32="ae1e20f1" md5="b6b756c6be803e32d69dcedf3ae16e25" sha1="a4959465e499255059e9b975716a6b697c4a8207" />
+      <file name="VOL.1" crc32="93f6f748" md5="c413b3e0fab50105091c1c2ddf4a6804" sha1="bcc355aba75512b868c48c2e5f4ddb30da6c541c" />
+      <file name="VOL.2" crc32="46964269" md5="10dbde5bc5b7707a85a14c46bf6e7b51" sha1="478859a5ca15a7dc933dc62f4c4520e7384b27c3" />
+    </game>
+    <game name="Leisure Suit Larry I (alternate)" platform="AtariST" date="XXXX-XX-XX" version="1.04" format="" interpreter="" language="English" comments="">
+      <file name="VOL.4" crc32="91732380" md5="fc0c2343af571355c73210ef44bfafda" sha1="ab1ea13b47278363aa863b8bf8665ff0ce954c08" />
+      <file name="SNDDIR" crc32="b32d93eb" md5="2cfeb30ce3aec0b4352c80a332a72f01" sha1="b6e7bec485e3fedba7f055ba3c3c740533eb1948" />
+      <file name="PICDIR" crc32="fddfaf76" md5="a22e109d14d5cff65be77dd1b12af6f3" sha1="8ed989dabbd53c922d144f1e9f1b7a650e28b904" />
+      <file name="LOGDIR" crc32="edebf8c1" md5="8b579f8673fe9448c2538f5ed9887cf0" sha1="7480f54e4402650f467136c97f8e5b5b02360e3d" />
+      <file name="VIEWDIR" crc32="4f16d5ba" md5="03f7c6738fd90cbe6eeafe4d7334e917" sha1="d4be3d2566077e2aea8ecc36ab17e00b30838e1b" />
+      <file name="WORDS.TOK" crc32="f13427b3" md5="9ae0cc1ec70068591216591a0e1ae637" sha1="134bb22f2d7c2ae667c3df3b6dfd4dddeb588118" />
+      <file name="OBJECT" crc32="1cb5f786" md5="aa7bce1ca83f181c92c1feea2c119eec" sha1="cda4a0aae589ae40b098865b6e4b964a8663009f" />
+      <file name="VOL.0" crc32="ae1e20f1" md5="b6b756c6be803e32d69dcedf3ae16e25" sha1="a4959465e499255059e9b975716a6b697c4a8207" />
+      <file name="VOL.1" crc32="93f6f748" md5="c413b3e0fab50105091c1c2ddf4a6804" sha1="bcc355aba75512b868c48c2e5f4ddb30da6c541c" />
+      <file name="VOL.2" crc32="46964269" md5="10dbde5bc5b7707a85a14c46bf6e7b51" sha1="478859a5ca15a7dc933dc62f4c4520e7384b27c3" />
+      <file name="VOL.3" crc32="34359252" md5="1d9540634cb1c2bff334c3b75e831411" sha1="b1576bc50561156746315628d120b733cb74e2cc" />
+    </game>
+    <game name="Leisure Suit Larry I (bluesoft)" platform="AtariST" date="XXXX-XX-XX" version="1.04" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="f13427b3" md5="9ae0cc1ec70068591216591a0e1ae637" sha1="134bb22f2d7c2ae667c3df3b6dfd4dddeb588118" />
+      <file name="SNDDIR" crc32="b32d93eb" md5="2cfeb30ce3aec0b4352c80a332a72f01" sha1="b6e7bec485e3fedba7f055ba3c3c740533eb1948" />
+      <file name="LOGDIR" crc32="edebf8c1" md5="8b579f8673fe9448c2538f5ed9887cf0" sha1="7480f54e4402650f467136c97f8e5b5b02360e3d" />
+      <file name="VIEWDIR" crc32="4f16d5ba" md5="03f7c6738fd90cbe6eeafe4d7334e917" sha1="d4be3d2566077e2aea8ecc36ab17e00b30838e1b" />
+      <file name="PICDIR" crc32="fddfaf76" md5="a22e109d14d5cff65be77dd1b12af6f3" sha1="8ed989dabbd53c922d144f1e9f1b7a650e28b904" />
+      <file name="OBJECT" crc32="1cb5f786" md5="aa7bce1ca83f181c92c1feea2c119eec" sha1="cda4a0aae589ae40b098865b6e4b964a8663009f" />
+      <file name="VOL.0" crc32="ae1e20f1" md5="b6b756c6be803e32d69dcedf3ae16e25" sha1="a4959465e499255059e9b975716a6b697c4a8207" />
+      <file name="VOL.1" crc32="228e9081" md5="a86927d22aa4c7ba032db7c4e28efdc4" sha1="7d2a7c17cc4f1a0f49cc2b31f9dcc567d6fbef78" />
+      <file name="VOL.2" crc32="46964269" md5="10dbde5bc5b7707a85a14c46bf6e7b51" sha1="478859a5ca15a7dc933dc62f4c4520e7384b27c3" />
+    </game>
+    <game name="Leisure Suit Larry I" platform="AppleIIgs" date="XXXX-XX-XX" version="1.0E" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="d81f0bfe" md5="fc09f6dc8407496353ad35e4bb90ff27" sha1="e8a4ad4a9105edc968e2335ea991fbced73d29bb" />
+      <file name="SNDDIR" crc32="59b7e109" md5="220284d3f0a6b92366e2fc3d8a4923f3" sha1="e492ed1dcf2092fd7992248d7ba2a789e629b476" />
+      <file name="LOGDIR" crc32="97f7a20d" md5="5f9e1dd68d626c6d303131c119582ad4" sha1="a0dbea45049e14f45edbe75d4d504700411ee52b" />
+      <file name="VIEWDIR" crc32="f3bd8e85" md5="6a1ccfd0cfe2a27e101f4e9da942f64f" sha1="d6412579fa19819510e04df59c6fc60e51030afe" />
+      <file name="PICDIR" crc32="bb59b003" md5="51f6bb21533e6329cac530ddadc8de42" sha1="d953441b0f11c8ea49b9965297965b44cdb896d8" />
+      <file name="OBJECT" crc32="1cb5f786" md5="aa7bce1ca83f181c92c1feea2c119eec" sha1="cda4a0aae589ae40b098865b6e4b964a8663009f" />
+      <file name="VOL.0" crc32="c323e1c0" md5="580d6fc83beb18c6d5cfd82c2f68a32f" sha1="9972d9b475cbd8ca2beacaa7766b365ecde8b663" />
+      <file name="VOL.1" crc32="ab163133" md5="54ddc271a49f9346f6df4db031ef3654" sha1="7787450e121bee360d6fb612c537dffe51124276" />
+      <file name="VOL.2" crc32="82067a25" md5="ab73a08a332becaa6db3f793be4ac04e" sha1="004735b61f38583c06646407895f2315fcf3f162" />
+    </game>
+    <game name="Manhunter: New York" platform="PC" date="XXXX-XX-XX" version="1.22" format="3.5DD" interpreter="3.002.107" language="English" comments="">
+      <file name="WORDS.TOK" crc32="36d2cf43" md5="239700be03a55519a1b7ccd4a6717e98" sha1="431c09fbd9c8ee9d3f26153af0fa13c9e184a8de" />
+      <file name="OBJECT" crc32="c1520a64" md5="a729c0a711e3893e3586ebd76fcb04c7" sha1="48d17581cbe17b1664d27c936e7bf906a1a79bdc" />
+      <file name="MHDIR" crc32="88c0354c" md5="5b625329021ad49fd0c1d6f2d6f54bba" sha1="d6a562e0b2b806c2a901c091459891354ee70ee6" />
+      <file name="MHVOL.0" crc32="2c1c1547" md5="06d36c8ff908461884df207afffa39e5" sha1="ee8955c08b64dbb91a2166cfccb6e9a15659d35d" />
+      <file name="MHVOL.1" crc32="8769309b" md5="05cf46c93e6aa2c8bcc220860dd7ff14" sha1="762a2d8ccffedf80d4622dd46abebe0ac4f8552b" />
+      <file name="MHVOL.2" crc32="62edd742" md5="9112f1facee9a50ae7a99d00488b9df4" sha1="e9e7f381e57ab212c502035e6915c02d05a0a55c" />
+    </game>
+    <game name="Manhunter: New York" platform="PC" date="XXXX-XX-XX" version="1.22" format="5.25DD" interpreter="3.002.107" language="English" comments="">
+      <file name="MHVOL.12" crc32="7507f18e" md5="036cb25785ce245b0387ff05fc64d51f" sha1="6c21f4728614f3b56809bd6e7fc26e5ee1d33f37" />
+      <file name="MHVOL.2" crc32="41c60f99" md5="4f18fc749cfb3b40ddb191817052652b" sha1="c21f549c11d4d54710eb1a019d0573e5ad622432" />
+      <file name="MHVOL.10" crc32="037a7209" md5="576c39a0eceb1d7ec4e59ccce48a4d18" sha1="87bb21b1e95da1363310f8efbdfa65ac3ecdac31" />
+      <file name="MHVOL.4" crc32="c07a9ec8" md5="771f9142448a7cc7066013205c882293" sha1="8cbe3ae5f9bf41fbd380f9c7efaa4c27100ad7bb" />
+      <file name="MHVOL.1" crc32="fc6ef230" md5="6f8572989d5a5625c7eb56a79cf93f22" sha1="4aae8c1154109eb054148e17579dcc45710031e1" />
+      <file name="MHVOL.3" crc32="86b9d86a" md5="1774c2c24c48c92ba47a436e8b5c2f7f" sha1="b52811d41ff93adbd00835b17c70fa0c07d3c1ce" />
+      <file name="MHVOL.0" crc32="95858b68" md5="7da828147aded092778ceb6a51da1a60" sha1="34f77e923717d85e8514eb3552f1867ea95dd659" />
+      <file name="MHVOL.5" crc32="1471080e" md5="9153d89aff8758037b1b62af916e6b83" sha1="6f0bf24f1f978f178fe2c142458a91591b20763f" />
+      <file name="WORDS.TOK" crc32="36d2cf43" md5="239700be03a55519a1b7ccd4a6717e98" sha1="431c09fbd9c8ee9d3f26153af0fa13c9e184a8de" />
+      <file name="OBJECT" crc32="c1520a64" md5="a729c0a711e3893e3586ebd76fcb04c7" sha1="48d17581cbe17b1664d27c936e7bf906a1a79bdc" />
+      <file name="MHVOL.11" crc32="9c9c177f" md5="ec774ea1d0dc8d1faf45a087f42f19b0" sha1="b65f34668fceaa73c5da5540c8175a24b289f03b" />
+      <file name="MHVOL.9" crc32="367e22e1" md5="ab2152cf8db6ea4e298b927e96ebb982" sha1="6ac5f2aa48b3d88c08c16c3857fd9cfcebed1e0f" />
+      <file name="MHDIR" crc32="757d0fa4" md5="0c7b86f05fe02c2e26cff1b07450b82a" sha1="e6b32f83d1fb46806d7c9e9c6221322a7f9bad82" />
+    </game>
+    <game name="Manhunter: New York (cracked)" platform="PC" date="XXXX-XX-XX" version="1.22" format="3.5DD" interpreter="3.002.107" language="English" comments="">
+      <file name="WORDS.TOK" crc32="36d2cf43" md5="239700be03a55519a1b7ccd4a6717e98" sha1="431c09fbd9c8ee9d3f26153af0fa13c9e184a8de" />
+      <file name="OBJECT" crc32="c1520a64" md5="a729c0a711e3893e3586ebd76fcb04c7" sha1="48d17581cbe17b1664d27c936e7bf906a1a79bdc" />
+      <file name="MHDIR" crc32="88c0354c" md5="5b625329021ad49fd0c1d6f2d6f54bba" sha1="d6a562e0b2b806c2a901c091459891354ee70ee6" />
+      <file name="MHVOL.0" crc32="2c1c1547" md5="06d36c8ff908461884df207afffa39e5" sha1="ee8955c08b64dbb91a2166cfccb6e9a15659d35d" />
+      <file name="MHVOL.1" crc32="290d2901" md5="86e5ef79fb9b0c107e0652f6e6ac101c" sha1="8421208f08782deee1fbb4529d7fc60f23e53de7" />
+      <file name="MHVOL.2" crc32="62edd742" md5="9112f1facee9a50ae7a99d00488b9df4" sha1="e9e7f381e57ab212c502035e6915c02d05a0a55c" />
+    </game>
+    <game name="Manhunter: New York (incomplete)" platform="PC" date="XXXX-XX-XX" version="1.22" format="5.25DD" interpreter="3.002.107" language="English" comments="">
+      <file name="MHVOL.0" crc32="95858b68" md5="7da828147aded092778ceb6a51da1a60" sha1="34f77e923717d85e8514eb3552f1867ea95dd659" />
+      <file name="MHVOL.1" crc32="bd817df6" md5="5c6f2891133cd9c4b8d583e5edfa469b" sha1="dbc48ef3e7f29b1af32535bc1070151a7768720f" />
+      <file name="MHVOL.2" crc32="41c60f99" md5="4f18fc749cfb3b40ddb191817052652b" sha1="c21f549c11d4d54710eb1a019d0573e5ad622432" />
+      <file name="MHVOL.9" crc32="367e22e1" md5="ab2152cf8db6ea4e298b927e96ebb982" sha1="6ac5f2aa48b3d88c08c16c3857fd9cfcebed1e0f" />
+      <file name="WORDS.TOK" crc32="36d2cf43" md5="239700be03a55519a1b7ccd4a6717e98" sha1="431c09fbd9c8ee9d3f26153af0fa13c9e184a8de" />
+      <file name="MHDIR" crc32="757d0fa4" md5="0c7b86f05fe02c2e26cff1b07450b82a" sha1="e6b32f83d1fb46806d7c9e9c6221322a7f9bad82" />
+      <file name="MHVOL.10" crc32="037a7209" md5="576c39a0eceb1d7ec4e59ccce48a4d18" sha1="87bb21b1e95da1363310f8efbdfa65ac3ecdac31" />
+      <file name="MHVOL.12" crc32="7507f18e" md5="036cb25785ce245b0387ff05fc64d51f" sha1="6c21f4728614f3b56809bd6e7fc26e5ee1d33f37" />
+      <file name="OBJECT" crc32="c1520a64" md5="a729c0a711e3893e3586ebd76fcb04c7" sha1="48d17581cbe17b1664d27c936e7bf906a1a79bdc" />
+    </game>
+    <game name="Manhunter: New York" platform="Amiga" date="XXXX-XX-XX" version="1.06" format="" interpreter="3.002.107" language="English" comments="">
+      <file name="VOL.1" crc32="adbf2b00" md5="3dd7d7b5ae3a127f90e9187675d62fc1" sha1="001a2b76611fe395e8d9ead11c89f41b75ad3fe3" />
+      <file name="WORDS.TOK" crc32="36d2cf43" md5="239700be03a55519a1b7ccd4a6717e98" sha1="431c09fbd9c8ee9d3f26153af0fa13c9e184a8de" />
+      <file name="OBJECT" crc32="2eaedfad" md5="7a989183ccacc1c752b782f32b06ac35" sha1="766602eb7027044630580ec234ec3a320be186fd" />
+      <file name="VOL.0" crc32="0f69bcdf" md5="370de7316a1b6a623b5dbdbbc008459d" sha1="126b78f977525b785aa5b3da69321bf8b461e2aa" />
+      <file name="VOL.2" crc32="ea1afe14" md5="f617344926c06fa82f9850015e43e216" sha1="0a1c2a792a072040222b866808b9eb91990c8721" />
+      <file name="DIRS" crc32="1e2a71e9" md5="92c6183042d1c2bb76236236a7d7a847" sha1="62da7ad536f32eeecea3de9262c220771c7bc01d" />
+    </game>
+    <game name="Manhunter: New York (original)" platform="AtariST" date="XXXX-XX-XX" version="1.03" format="" interpreter="3.002.107" language="English" comments="">
+      <file name="MHVOL.12" crc32="7507f18e" md5="036cb25785ce245b0387ff05fc64d51f" sha1="6c21f4728614f3b56809bd6e7fc26e5ee1d33f37" />
+      <file name="MHVOL.2" crc32="14597930" md5="06026ced43f72140eaf2f853e8df1dcb" sha1="426c1b77cfc01acc9e316096d27dcba8e54e0aa3" />
+      <file name="MHVOL.10" crc32="037a7209" md5="576c39a0eceb1d7ec4e59ccce48a4d18" sha1="87bb21b1e95da1363310f8efbdfa65ac3ecdac31" />
+      <file name="MHVOL.4" crc32="8c08f12a" md5="893d3e753ecaca8562792fedc2e214f3" sha1="3c6a18180cf5d47f4522428952ff1af6b950a245" />
+      <file name="MHVOL.1" crc32="49f63fe5" md5="0a8e1f25c2bcad5e2866098c56ed2b6c" sha1="386c492682bddc0d6c925588bf6caca98a95de51" />
+      <file name="MHVOL.3" crc32="306aa507" md5="d5c0c8a171430806a717e064a3551f80" sha1="4892b06ba76f4395dfc8eb349172f5c8361df624" />
+      <file name="MHVOL.0" crc32="a2c1c0bd" md5="920025ec6b1ffbe16b002c6ec56c7f3f" sha1="996b9b46708f745f5bdc6de4eba73f0ccd03b261" />
+      <file name="MHVOL.5" crc32="b753552a" md5="a818efcd2657d4f1571e91fed84db70b" sha1="538fefe9d29e934d7db8268ebac4d95cd03f28fa" />
+      <file name="WORDS.TOK" crc32="36d2cf43" md5="239700be03a55519a1b7ccd4a6717e98" sha1="431c09fbd9c8ee9d3f26153af0fa13c9e184a8de" />
+      <file name="OBJECT" crc32="c1520a64" md5="a729c0a711e3893e3586ebd76fcb04c7" sha1="48d17581cbe17b1664d27c936e7bf906a1a79bdc" />
+      <file name="MHVOL.11" crc32="9c9c177f" md5="ec774ea1d0dc8d1faf45a087f42f19b0" sha1="b65f34668fceaa73c5da5540c8175a24b289f03b" />
+      <file name="MHVOL.9" crc32="367e22e1" md5="ab2152cf8db6ea4e298b927e96ebb982" sha1="6ac5f2aa48b3d88c08c16c3857fd9cfcebed1e0f" />
+      <file name="MHDIR" crc32="88c80d7f" md5="f2d58056ad802452d60776ee920a52a6" sha1="5e6eb907acc72f589d4480016d0743bb60d68213" />
+    </game>
+    <game name="Manhunter: New York" platform="AppleIIgs" date="XXXX-XX-XX" version="2.0E" format="" interpreter="3.002.107" language="English" comments="">
+      <file name="MHVOL.4" crc32="d9ef6eb8" md5="0806f8b655254912b23518153486ef36" sha1="2ec249840982ef61d0e0048cae3c37ebc6a0ff9e" />
+      <file name="MHVOL.2" crc32="59228a31" md5="2ce97f10d3540a922a41d539d752a63f" sha1="ee34973fd6f15d4ac114a63c000d2b886d62236a" />
+      <file name="MHVOL.3" crc32="b532d842" md5="8fa780cdb3431a6e5a1f52bbe6084dab" sha1="e0543da2c8b6bad665ecba90946fbfaa461c881b" />
+      <file name="MHVOL.0" crc32="5c8fe256" md5="8d76b624bc6bf6b7312e7a9a11a03c6b" sha1="94d1ed59870bdaca38bd405fe08345e95485d9cd" />
+      <file name="WORDS.TOK" crc32="213e35c2" md5="cb49bc20060c063810190ec5eed71682" sha1="95a595895615310f1f6b7b262c55972c4adf511e" />
+      <file name="OBJECT" crc32="0bc42ccd" md5="ca337216cd18797db99919f294d11017" sha1="91a45e97d2ecda1250035b03dc7716ae001ad0cd" />
+      <file name="MHDIR" crc32="25028dbf" md5="2f1509f76f24e6e7d213f2dadebbf156" sha1="0131cd4fb205cbdeffc5552a7bd347be4c5ed5ef" />
+      <file name="MHVOL.1" crc32="15969024" md5="2b861be17b0e6dcf6c89bca8fcdd3865" sha1="52fedf7955a5e97aa410c77f0415f5f89978a128" />
+    </game>
+    <game name="Manhunter: San Francisco" platform="PC" date="XXXX-XX-XX" version="3.02" format="3.5DD" interpreter="3.002.149" language="English" comments="">
+      <file name="MH2DIR" crc32="26060c01" md5="6fb6f0ee2437704c409cf17e081ba152" sha1="d05ac387f940acf9318c18507499d63d53396275" />
+      <file name="MH2VOL.2" crc32="679a4f31" md5="866b00329917ac6bd4e15708631918cf" sha1="714bffc64dbfb81b7ba516e318bd1466da8237ba" />
+      <file name="MH2VOL.11" crc32="ea256b19" md5="c3d68a1ab57a4761cd5f53d249add91c" sha1="cb0829c3892b268197d04317ec897be53cb44c1b" />
+      <file name="MH2VOL.10" crc32="9cc661f0" md5="42736d707926d2688ec94817812af762" sha1="7196412406852287f0f73f1856fe5fc5cf64eee2" />
+      <file name="MH2VOL.3" crc32="ad849fbd" md5="c65366bd09e7590ce9f607a9d624c688" sha1="5aab297ea1e66131208cefa9dfcfd85e75343281" />
+      <file name="MH2VOL.0" crc32="5cde8dc6" md5="17b0285aa47aa4a9e2097a7b8a3c2a3a" sha1="9d0775b965a8aa0851115742aec88dce28f5fdba" />
+      <file name="MH2VOL.1" crc32="615bcf61" md5="f31864ca3a8e347a132fcf1becef9625" sha1="bddbbe6f836e860d873850a6e061bd09cc47ed69" />
+      <file name="WORDS.TOK" crc32="ec7b44a3" md5="9a802fac3e5d572ed4eee80f320bfddc" sha1="5071ddd3e2892a43e46ad254c72521e60a47a22b" />
+      <file name="MH2VOL.9" crc32="6bb02679" md5="4318646e3553f144d857823aa453ba04" sha1="761941480f205b27ecb42548991479ba9ab7aa3e" />
+      <file name="OBJECT" crc32="894f2085" md5="80ddd44ec62062ef517eef278e09cacc" sha1="742ea40a6737f1603f05fad1dfcd1e5066472693" />
+    </game>
+    <game name="Manhunter: San Francisco" platform="PC" date="XXXX-XX-XX" version="3.02" format="5.25DD" interpreter="3.002.149" language="English" comments="">
+      <file name="MH2VOL.3" crc32="004a2b3d" md5="f0fbe15277851fd747f690e66c2cdef8" sha1="315c19fd8919f5f6e9b485b78842a8b79b06f4d0" />
+      <file name="MH2VOL.0" crc32="11f5aef9" md5="575b2005ba7ba3cb25d9fcc7868a24b3" sha1="971ff3664b1f8eb98da8c1507fdc08c41e10a1cf" />
+      <file name="MH2VOL.1" crc32="4ce8b97c" md5="d7e94d082afeab3e72e7939e3720db75" sha1="3a29029afdc1521ff30073f37d3ce62321a416f5" />
+      <file name="WORDS.TOK" crc32="ec7b44a3" md5="9a802fac3e5d572ed4eee80f320bfddc" sha1="5071ddd3e2892a43e46ad254c72521e60a47a22b" />
+      <file name="MH2VOL.8" crc32="1dab8232" md5="cd93c659148e240da87e4be3c62d1c5a" sha1="6df2d346d3b70e35185e11a6369166833e06ea5a" />
+      <file name="MH2VOL.9" crc32="768e7fa7" md5="f2e9568ac040329fe5cc125fedef466b" sha1="e6d6b370616b78d2bfd660b7a2430d08033264a3" />
+      <file name="OBJECT" crc32="894f2085" md5="80ddd44ec62062ef517eef278e09cacc" sha1="742ea40a6737f1603f05fad1dfcd1e5066472693" />
+      <file name="MH2DIR" crc32="96f3242a" md5="bbb2c2f88d5740f7437fb7aa6f080b7b" sha1="27343dbadec5b7f72d6da032e8241aa5ea8f5091" />
+      <file name="MH2VOL.15" crc32="3869443b" md5="cb81b316afae1670aec8ad9201651c6d" sha1="bcebd8d19d62f4e54a5515144958418b931524af" />
+      <file name="MH2VOL.14" crc32="3422f8a2" md5="8454aa937d88b89161ea78e3b8aae49d" sha1="01388adeffeda566fd3b930feb66a67b4709ab29" />
+      <file name="MH2VOL.13" crc32="63adb8cb" md5="2323aa96c85bdab9f621fed075e0075f" sha1="f0d0a4466ae9b69d8e060f44e46f9fdb087eff21" />
+      <file name="MH2VOL.12" crc32="e1449175" md5="61a7b4d9037202adf4855a91bece9f01" sha1="e16bba4528cf4ee172a2573e96c6f8cc950edda6" />
+      <file name="MH2VOL.11" crc32="90b6751d" md5="25b800b17e2afee5e1796f0a3853a8a4" sha1="ece15977823d94f90a2d43d9457a0b8a7cb26870" />
+      <file name="MH2VOL.10" crc32="c8b8edb9" md5="9cb83d40ddbf94d81acf964f1854c759" sha1="64bb736a0ff8f023b63fc812ced9f995f24a00ed" />
+      <file name="MH2VOL.6" crc32="91da74df" md5="c572207172cfa8e964d0838c169f8891" sha1="ade8a5fa0c9f222e7b36ab5b98166819f86de20b" />
+      <file name="MH2VOL.7" crc32="6d35672d" md5="af4d5bc1c055633359c805f57f844072" sha1="25d203cfea31958786c2c1aac8df9fada520be39" />
+      <file name="MH2VOL.4" crc32="3fba01c3" md5="a63ca70cd944c06b213d07d35dee58b6" sha1="c00a887d75a7201e1fe77b480e3a05ac02ac5292" />
+      <file name="MH2VOL.5" crc32="c4c773f1" md5="cdebe7f0acb884a5f1f0cb7d02c74332" sha1="63cbc5165953f1ff2589310bd8b003a4b53cc9c5" />
+      <file name="MH2VOL.2" crc32="12fe1c62" md5="a284116324f5c8465cd34f04b387a7e3" sha1="c018c16fb51211753478bc07f74a41e7928d501e" />
+    </game>
+    <game name="Manhunter: San Francisco" platform="PC" date="XXXX-XX-XX" version="3.03" format="5.25DD" interpreter="3.002.149" language="English" comments="">
+      <file name="MH2VOL.9" crc32="768e7fa7" md5="f2e9568ac040329fe5cc125fedef466b" sha1="e6d6b370616b78d2bfd660b7a2430d08033264a3" />
+      <file name="MH2VOL.2" crc32="cfa6f858" md5="99feba473cdf8050c27f98bffc8e6439" sha1="3b6089d7f8a3eef0c574889a17a29dd6dbe7c081" />
+      <file name="MH2VOL.8" crc32="1dab8232" md5="cd93c659148e240da87e4be3c62d1c5a" sha1="6df2d346d3b70e35185e11a6369166833e06ea5a" />
+      <file name="MH2VOL.1" crc32="3539ae1f" md5="bf45a64a94194012c8aece31f509c885" sha1="8dd0a58cf898cfd3702cce6e5492a03e13cde283" />
+      <file name="MH2VOL.7" crc32="1ff5e7ea" md5="3dd34999e67286cd6397cadf3d675e91" sha1="1753e7bcfbee2d3539a50644279a5af38b90a093" />
+      <file name="MH2VOL.0" crc32="11f5aef9" md5="575b2005ba7ba3cb25d9fcc7868a24b3" sha1="971ff3664b1f8eb98da8c1507fdc08c41e10a1cf" />
+      <file name="MH2VOL.6" crc32="91da74df" md5="c572207172cfa8e964d0838c169f8891" sha1="ade8a5fa0c9f222e7b36ab5b98166819f86de20b" />
+      <file name="OBJECT" crc32="894f2085" md5="80ddd44ec62062ef517eef278e09cacc" sha1="742ea40a6737f1603f05fad1dfcd1e5066472693" />
+      <file name="MH2DIR" crc32="96da55d8" md5="b90e4795413c43de469a715fb3c1fa93" sha1="50a8fddca8e170a68bcc6ac086d4dd92a9083bcb" />
+      <file name="MH2VOL.5" crc32="220e1d27" md5="e5e38bf271fbc29d3fcecb6e30f37736" sha1="63837310b48b1c6f8eed4ff98e8a18f47144e4e4" />
+      <file name="MH2VOL.12" crc32="e1449175" md5="61a7b4d9037202adf4855a91bece9f01" sha1="e16bba4528cf4ee172a2573e96c6f8cc950edda6" />
+      <file name="MH2VOL.13" crc32="63adb8cb" md5="2323aa96c85bdab9f621fed075e0075f" sha1="f0d0a4466ae9b69d8e060f44e46f9fdb087eff21" />
+      <file name="MH2VOL.10" crc32="c8b8edb9" md5="9cb83d40ddbf94d81acf964f1854c759" sha1="64bb736a0ff8f023b63fc812ced9f995f24a00ed" />
+      <file name="MH2VOL.11" crc32="90b6751d" md5="25b800b17e2afee5e1796f0a3853a8a4" sha1="ece15977823d94f90a2d43d9457a0b8a7cb26870" />
+      <file name="MH2VOL.4" crc32="787227f9" md5="134d10a6180860fcd54602a6063a724f" sha1="8dfd11abe9ea0dda2f2f1b2a722c2a1270e5201c" />
+      <file name="MH2VOL.14" crc32="3422f8a2" md5="8454aa937d88b89161ea78e3b8aae49d" sha1="01388adeffeda566fd3b930feb66a67b4709ab29" />
+      <file name="MH2VOL.15" crc32="3869443b" md5="cb81b316afae1670aec8ad9201651c6d" sha1="bcebd8d19d62f4e54a5515144958418b931524af" />
+      <file name="WORDS.TOK" crc32="ec7b44a3" md5="9a802fac3e5d572ed4eee80f320bfddc" sha1="5071ddd3e2892a43e46ad254c72521e60a47a22b" />
+      <file name="MH2VOL.3" crc32="004a2b3d" md5="f0fbe15277851fd747f690e66c2cdef8" sha1="315c19fd8919f5f6e9b485b78842a8b79b06f4d0" />
+    </game>
+    <game name="Manhunter: San Francisco" platform="Amiga" date="XXXX-XX-XX" version="3.06" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="WORDS.TOK" crc32="ec7b44a3" md5="9a802fac3e5d572ed4eee80f320bfddc" sha1="5071ddd3e2892a43e46ad254c72521e60a47a22b" />
+      <file name="VOL.10" crc32="9cc661f0" md5="42736d707926d2688ec94817812af762" sha1="7196412406852287f0f73f1856fe5fc5cf64eee2" />
+      <file name="VOL.11" crc32="ea256b19" md5="c3d68a1ab57a4761cd5f53d249add91c" sha1="cb0829c3892b268197d04317ec897be53cb44c1b" />
+      <file name="VOL.0" crc32="a628e18c" md5="1156926cf3e63c19d735b962d4f4b48b" sha1="ca260ec002912e9aced7d4f5896cd518ffc7b20d" />
+      <file name="VOL.3" crc32="b55aaad4" md5="6b0a7de6c8bf93353e20b6685add6cd4" sha1="5420fa515f3696dfbc9256b43b45c47ebc36f966" />
+      <file name="VOL.2" crc32="628e5b58" md5="72d1879480583718c785e2e20208943d" sha1="c3b67d6e1a2fa4c2a5ce66aca8567d90e6531089" />
+      <file name="VOL.1" crc32="64a99aa0" md5="7e9bd4bcf1af83818028a8a9de91c562" sha1="49c53167d95cccf2cf8f799efdf0c1716b2b9e4f" />
+      <file name="OBJECT" crc32="c6db07f1" md5="45c21cde138d6bdf1c30b2b6d68c997d" sha1="36f06ccbc24a2d182e975214518d1c0a5032320d" />
+      <file name="VOL.9" crc32="c6967742" md5="4ac0d58f1d0983dbb25e45b8f1d3cbbe" sha1="8c0762e28f0dd3e5d020a8ec312328c735007d2e" />
+      <file name="DIRS" crc32="9cab5d67" md5="b412e8a126368b76696696f7632d4c16" sha1="74e2e2cd388b197a12b8f33426e8391592e44b01" />
+    </game>
+    <game name="Manhunter: San Francisco" platform="AtariST" date="XXXX-XX-XX" version="1.0" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="MH2VOL.2" crc32="492362da" md5="463b90c2151336298f0efba7ac0bfe33" sha1="9545c47e1687033648e4dc4ab40141b466764f3c" />
+      <file name="WORDS.TOK" crc32="ec7b44a3" md5="9a802fac3e5d572ed4eee80f320bfddc" sha1="5071ddd3e2892a43e46ad254c72521e60a47a22b" />
+      <file name="MH2VOL.3" crc32="b8b75948" md5="658698314d68097955d0d530c73fa80b" sha1="0975e91713c659a268eab7186f4d21c0cafd6d38" />
+      <file name="MH2VOL.9" crc32="c6967742" md5="4ac0d58f1d0983dbb25e45b8f1d3cbbe" sha1="8c0762e28f0dd3e5d020a8ec312328c735007d2e" />
+      <file name="MH2VOL.1" crc32="86249705" md5="58baa96c852a42c16ad9867cf37c1fc3" sha1="b190943e377b34e998be4da200c0610356e5a5f6" />
+      <file name="MH2VOL.10" crc32="9cc661f0" md5="42736d707926d2688ec94817812af762" sha1="7196412406852287f0f73f1856fe5fc5cf64eee2" />
+      <file name="MH2VOL.11" crc32="ea256b19" md5="c3d68a1ab57a4761cd5f53d249add91c" sha1="cb0829c3892b268197d04317ec897be53cb44c1b" />
+      <file name="OBJECT" crc32="894f2085" md5="80ddd44ec62062ef517eef278e09cacc" sha1="742ea40a6737f1603f05fad1dfcd1e5066472693" />
+      <file name="MH2DIR" crc32="c3a86545" md5="5e3581495708b952fea24438a6c7e040" sha1="96ffffe510606fe0cc4fb3d9b3c5b54646f2cefb" />
+      <file name="MH2VOL.0" crc32="a7671aaf" md5="0cf02aac1c2ba2c20446de20e4b366a3" sha1="d3aa33271824e219fb5c3987f5b1233a1335f817" />
+    </game>
+    <game name="Manhunter: San Francisco (alternate)" platform="AtariST" date="XXXX-XX-XX" version="1.0" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="MH2VOL.2" crc32="492362da" md5="463b90c2151336298f0efba7ac0bfe33" sha1="9545c47e1687033648e4dc4ab40141b466764f3c" />
+      <file name="WORDS.TOK" crc32="ec7b44a3" md5="9a802fac3e5d572ed4eee80f320bfddc" sha1="5071ddd3e2892a43e46ad254c72521e60a47a22b" />
+      <file name="MH2VOL.3" crc32="b8b75948" md5="658698314d68097955d0d530c73fa80b" sha1="0975e91713c659a268eab7186f4d21c0cafd6d38" />
+      <file name="MH2VOL.9" crc32="c6967742" md5="4ac0d58f1d0983dbb25e45b8f1d3cbbe" sha1="8c0762e28f0dd3e5d020a8ec312328c735007d2e" />
+      <file name="MH2VOL.1" crc32="86249705" md5="58baa96c852a42c16ad9867cf37c1fc3" sha1="b190943e377b34e998be4da200c0610356e5a5f6" />
+      <file name="MH2VOL.10" crc32="9cc661f0" md5="42736d707926d2688ec94817812af762" sha1="7196412406852287f0f73f1856fe5fc5cf64eee2" />
+      <file name="MH2VOL.11" crc32="ea256b19" md5="c3d68a1ab57a4761cd5f53d249add91c" sha1="cb0829c3892b268197d04317ec897be53cb44c1b" />
+      <file name="OBJECT" crc32="894f2085" md5="80ddd44ec62062ef517eef278e09cacc" sha1="742ea40a6737f1603f05fad1dfcd1e5066472693" />
+      <file name="MH2DIR" crc32="c3a86545" md5="5e3581495708b952fea24438a6c7e040" sha1="96ffffe510606fe0cc4fb3d9b3c5b54646f2cefb" />
+      <file name="MH2VOL.0" crc32="93869471" md5="b0a092a6b5476d544b17596a9c383a5d" sha1="4db566b76172dd5c809f9a3795e456dd40c1a3d4" />
+    </game>
+    <game name="Mixed-Up Mother Goose" platform="PC" date="XXXX-XX-XX" version="" format="FLOPPY" interpreter="2.915" language="English" comments="">
+      <file name="WORDS.TOK" crc32="50f4710f" md5="17b9f2c7ea19173d0df7802c8b6ea9c8" sha1="a26725cb458b56b4fa688799c62f392ae7de41f7" />
+      <file name="VIEWDIR" crc32="df72ee30" md5="4d04f8e065f1d4974d717df6bc28cb6f" sha1="5a6097578a8066d47ed1002fdbbad3cef0e384b0" />
+      <file name="VOL.1" crc32="15a840f8" md5="ff6f42a7861bb00d645e367190f43db6" sha1="7f9a5e7d17f63534def4881dd1c64641827612d5" />
+      <file name="LOGDIR" crc32="adc0e9c9" md5="e524655abf9b96a3b179ffcd1d0f79af" sha1="a995623422318c3cf9262408f7df84126f3a9d09" />
+      <file name="SNDDIR" crc32="443edc2c" md5="ead21b3422a366903ef11ccc63f9df30" sha1="3da76c992b91d6b67729f922cbe667885b91e1cc" />
+      <file name="VOL.2" crc32="21ac3cc4" md5="0d619d450a90fbc085878d6f680cd151" sha1="2e96dd9c9c8dc11e5e2fbab9c06cd138e154de94" />
+      <file name="VOL.0" crc32="6855d3d0" md5="6d01f4da718e0fd1906097768f80cea6" sha1="b53bffdfe8dd2808b3d0ed923c42b45a50432d18" />
+      <file name="OBJECT" crc32="99225799" md5="79f88f36a3c37f8241ca31b4bccb3ccc" sha1="6b2b61a03c1decc19ded971d4639c2cce8b3913f" />
+      <file name="PICDIR" crc32="d8337aeb" md5="53811d8c315c37d79edc4fa3e92a76f3" sha1="62b3c94b211477699e870186b910d1b7702e6f9b" />
+    </game>
+    <game name="Mixed-Up Mother Goose (corrupt object)" platform="PC" date="XXXX-XX-XX" version="" format="FLOPPY" interpreter="2.915" language="English" comments="">
+      <file name="WORDS.TOK" crc32="50f4710f" md5="17b9f2c7ea19173d0df7802c8b6ea9c8" sha1="a26725cb458b56b4fa688799c62f392ae7de41f7" />
+      <file name="VIEWDIR" crc32="df72ee30" md5="4d04f8e065f1d4974d717df6bc28cb6f" sha1="5a6097578a8066d47ed1002fdbbad3cef0e384b0" />
+      <file name="VOL.1" crc32="15a840f8" md5="ff6f42a7861bb00d645e367190f43db6" sha1="7f9a5e7d17f63534def4881dd1c64641827612d5" />
+      <file name="LOGDIR" crc32="adc0e9c9" md5="e524655abf9b96a3b179ffcd1d0f79af" sha1="a995623422318c3cf9262408f7df84126f3a9d09" />
+      <file name="SNDDIR" crc32="443edc2c" md5="ead21b3422a366903ef11ccc63f9df30" sha1="3da76c992b91d6b67729f922cbe667885b91e1cc" />
+      <file name="VOL.2" crc32="21ac3cc4" md5="0d619d450a90fbc085878d6f680cd151" sha1="2e96dd9c9c8dc11e5e2fbab9c06cd138e154de94" />
+      <file name="VOL.0" crc32="6855d3d0" md5="6d01f4da718e0fd1906097768f80cea6" sha1="b53bffdfe8dd2808b3d0ed923c42b45a50432d18" />
+      <file name="OBJECT" crc32="ac703c85" md5="dff350940274bf3192cde081ef5a4cf2" sha1="559dbc3a2f5322a66902c273bfe58c8f1d9e1c50" />
+      <file name="PICDIR" crc32="d8337aeb" md5="53811d8c315c37d79edc4fa3e92a76f3" sha1="62b3c94b211477699e870186b910d1b7702e6f9b" />
+    </game>
+    <game name="Mixed-Up Mother Goose" platform="AppleIIgs" date="XXXX-XX-XX" version="" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="0daf2a1c" md5="a17701c9c26fb23631b1c09740c3f977" sha1="5406c5e15b09293431145cc190de3ef4c4a04028" />
+      <file name="SNDDIR" crc32="4d0478fd" md5="5f8ce7e48314085e30c81bbb26ff0a02" sha1="48ced3328e4532a4fafa3080481424ff67c83656" />
+      <file name="LOGDIR" crc32="c3372953" md5="3541954a7303467c6df87665312ffb6a" sha1="d6426facc18b85c929a7216df16198c19eb8a1f2" />
+      <file name="VIEWDIR" crc32="22ad55bb" md5="203feaaefdee84555411f07b7b9c15d2" sha1="db9378d4af5b26459230beb0a5791ac241cc308d" />
+      <file name="PICDIR" crc32="07a543bb" md5="00adb925fe81c1a887903d3d59d3a998" sha1="d825f63e8350d147e5fbdbc25b7a5190fec3e53b" />
+      <file name="OBJECT" crc32="99225799" md5="79f88f36a3c37f8241ca31b4bccb3ccc" sha1="6b2b61a03c1decc19ded971d4639c2cce8b3913f" />
+      <file name="VOL.0" crc32="f2196758" md5="c8ad96da5a03d7c2bd855ecf2aec2eef" sha1="347303aa943dcf569dc7e23c1ef6f4f2cd91d8b2" />
+      <file name="VOL.1" crc32="6e9283f6" md5="aa8fcb4dcd0a413e9d3085262b95b157" sha1="980bfc73203c90b7ea71695264c6afdc25bc78a2" />
+      <file name="VOL.2" crc32="55419ab7" md5="39c048318db327f3fbe243836f0247ef" sha1="84148b6f95bfced1f94cf1c326bd68fb06eb732f" />
+    </game>
+    <game name="Mixed-Up Mother Goose" platform="Atari ST" date="XXXX-XX-XX" version="" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="50f4710f" md5="17b9f2c7ea19173d0df7802c8b6ea9c8" sha1="a26725cb458b56b4fa688799c62f392ae7de41f7" />
+      <file name="SNDDIR" crc32="018c71ff" md5="1b309c3df536418a1a880127773f4075" sha1="c79f3199962905f569c4b13a55fbd8b875bd3095" />
+      <file name="LOGDIR" crc32="d1cefedb" md5="f79365f9d75ba6b8dd230164b7839fc1" sha1="24c36a61be1f4d6f4c22b59a50c43ce9b863e612" />
+      <file name="VIEWDIR" crc32="4acf5c39" md5="fc2e7c9abf3be397f4e7b18d299c4e7d" sha1="b0ac2bd9ccdb7c4dc11647d727685e051766a508" />
+      <file name="PICDIR" crc32="30a810ca" md5="e2208dbd15f12f160021e3188d9c87a2" sha1="93b6f31fc301ab48fa9fe19f43bbafe4ce699df4" />
+      <file name="OBJECT" crc32="99225799" md5="79f88f36a3c37f8241ca31b4bccb3ccc" sha1="6b2b61a03c1decc19ded971d4639c2cce8b3913f" />
+      <file name="VOL.0" crc32="5c984af2" md5="b34df1cb22c58de3d6821a95509e6811" sha1="657f2291b80515897b20da4c141a894723df9623" />
+      <file name="VOL.1" crc32="54e6f37a" md5="1a1b3bf676d2aca15e2dc33bd26992a1" sha1="b12bee626630643943995fe474ea1149f627f860" />
+      <file name="VOL.2" crc32="77210592" md5="939cd29eca2a9162e6425b80e006606e" sha1="066dbc604cf01e40e3191aefac4c09d8f372510f" />
+    </game>
+    <game name="Mixed-Up Mother Goose" platform="Amiga" date="XXXX-XX-XX" version="1.1" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="OBJECT" crc32="bc6f534e" md5="b2e233bc5065dcc4141317b92434d078" sha1="5c68195ae3d6d208c6f5a7d85f18cf5a010697b6" />
+      <file name="VOL.0" crc32="cd8d5cbf" md5="731594cdf40a3f72fc803c89879491e0" sha1="6fcd3924d344b0f0ddefd9f67628d158920f6f25" />
+      <file name="WORDS.TOK" crc32="50f4710f" md5="17b9f2c7ea19173d0df7802c8b6ea9c8" sha1="a26725cb458b56b4fa688799c62f392ae7de41f7" />
+      <file name="VOL.1" crc32="d2882799" md5="3780ec529c38d9f0a32391998e9ea90a" sha1="8df68a92df85c948b402f66378e9b83762ac4575" />
+      <file name="VOL.2" crc32="653e5553" md5="9b44ed32c8d2f3f401d2f0a430ee0291" sha1="2f89592894e3f10b4cc51c9b3eda637b3b7cdb54" />
+      <file name="DIRS" crc32="b7276afa" md5="5c1295fe6daaf95831195ba12894dbd9" sha1="f25978e79f90476bcebafbcf736799ff62a38773" />
+    </game>
+    <game name="Police Quest I" platform="PC" date="XXXX-XX-XX" version="2.0A" format="FLOPPY" interpreter="2.903" language="English" comments="">
+      <file name="SNDDIR" crc32="87f1ceeb" md5="a2df71917dfea4d29991adb962bbb2d6" sha1="598d91240d3ec2554ad53a1356b9013f6a6109a3" />
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="VIEWDIR" crc32="6f01d1b3" md5="b7a70e815fd9c8fdfe926f42d9782751" sha1="09d8787cda884cbefb47e0c5032c0d0558d5d178" />
+      <file name="VOL.1" crc32="9c9bb069" md5="cc6ea8aa04f95fb6d164640dd3037c88" sha1="7554595cff545d0729d0881936fb0aa360b9f215" />
+      <file name="LOGDIR" crc32="ff9874aa" md5="b9dbb305092851da5e34d6a9f00240b1" sha1="565024ee47a7f7b412fb3097c4b17d82758d4c56" />
+      <file name="VOL.3" crc32="0b5a2f3b" md5="0dd97ff1288c8ae91377a743ee2966d1" sha1="d3372088abada7767c23e2c6555298f293ebf8c5" />
+      <file name="VOL.2" crc32="eb03c37f" md5="9d5640041f6815965c40951d8d481a06" sha1="7686e2cae58f8c707e3f94f675cc0cb04f13ba2a" />
+      <file name="VOL.0" crc32="224c637b" md5="5674b4d61c9891f385173af1376f1ca9" sha1="5fad41c0382998757e232b4747a93bd09d0a8fcc" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="PICDIR" crc32="5761639a" md5="8984669590d0b1a4b2ee786df095fd4a" sha1="f3d5f32768c2cce4e5dbe6070b5c8910bb6c56e9" />
+    </game>
+    <game name="Police Quest I" platform="PC" date="XXXX-XX-XX" version="2.0E" format="FLOPPY" interpreter="2.915" language="English" comments="">
+      <file name="SNDDIR" crc32="f5f96543" md5="222f09e562ce809936a9e2733733eed7" sha1="9e7e43c55ccd1136032c15b21b86e763df70b709" />
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="VIEWDIR" crc32="c810874d" md5="fc8eb123e9835be983abf19d9e693275" sha1="0003b53303caa78334761bbe2cdc7b45af9d1770" />
+      <file name="VOL.1" crc32="2189249b" md5="2fa6a09e637a2cb94ecb04d5b9d59a58" sha1="9072c1c056e72fca86b05dfd288642366b7b34ad" />
+      <file name="LOGDIR" crc32="eac6f3a7" md5="2fd992a92df6ab0461d5a2cd83c72139" sha1="bd21687a052a2a150f3d316b5ea6067daef74364" />
+      <file name="VOL.3" crc32="58021757" md5="6e860f79a6300b41f94600d0093c6ef0" sha1="f5f558ad2d12e5174a720cb169a6286efe5c29c4" />
+      <file name="VOL.2" crc32="eb20533c" md5="97cd2abfb2be6bc7692ccf789eab3f7d" sha1="84112bed4d12073dbfd632b0aac311c61de8251f" />
+      <file name="VOL.0" crc32="82eaf402" md5="4d44bf0e438ba7c0b05c17be4dea36c5" sha1="e9bb52063f9b99bba8c1c092a0b1189c2ea44df6" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="PICDIR" crc32="528c1cbf" md5="47a4b3fcb211520ba6591172505b1666" sha1="161d88a19a2a59a45e7df16920fe221005c12727" />
+    </game>
+    <game name="Police Quest I" platform="PC" date="XXXX-XX-XX" version="2.0G" format="3.5DD" interpreter="2.917" language="English" comments="">
+      <file name="SNDDIR" crc32="89a3a183" md5="ed489e4f8647af2b956d08ee78b4ff42" sha1="4f8dd3f65034927030289011c9f21afe4c19c793" />
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="VIEWDIR" crc32="8a93212e" md5="631d6539348d489c2f4f84a6d1c58e08" sha1="b286bee204242acf802ecee3217fe88a49efb3de" />
+      <file name="VOL.1" crc32="9c5f96fa" md5="a4ef57c5cc9542a7b53288f58d600964" sha1="26be13fba7f8c6f82e17e1c53dfe9c499a66d46c" />
+      <file name="LOGDIR" crc32="0e851173" md5="d194e5d88363095f55d5096b8e32fbbb" sha1="bfc5df20b046d9e7d9f1f535e50cc49f788bf6ec" />
+      <file name="VOL.3" crc32="00000000" md5="d41d8cd98f00b204e9800998ecf8427e" sha1="da39a3ee5e6b4b0d3255bfef95601890afd80709" />
+      <file name="VOL.2" crc32="76f042f1" md5="d3b130e92661ab0793b3d9101700c004" sha1="c0741cf39d305de743f36c41084c8f4dd72c0ee1" />
+      <file name="VOL.0" crc32="82eaf402" md5="4d44bf0e438ba7c0b05c17be4dea36c5" sha1="e9bb52063f9b99bba8c1c092a0b1189c2ea44df6" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="PICDIR" crc32="5bf41c35" md5="60cbfd91b9e77ad0baa22f0b73987838" sha1="328f695d61844eb22a423cd66a6522bfeda8536b" />
+    </game>
+    <game name="Police Quest I" platform="PC/AtariST" date="XXXX-XX-XX" version="2.0G" format="5.25DD" interpreter="2.917" language="English" comments="">
+      <file name="SNDDIR" crc32="812b4496" md5="0cf5bd1fdaa00ace866375894cd6d403" sha1="8088728f40ccaca58dcc2d91c8a83a63f0cf9ade" />
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="VIEWDIR" crc32="99f247bf" md5="fd9641406084e049ac466e81fc154b41" sha1="089975fc5f2799874338a85587dfec9062a226fd" />
+      <file name="VOL.1" crc32="35c0dda5" md5="c0dfb7be01cc3c4839469da9c85749bd" sha1="5eabd2e14d6f987316a9deae486f16d5f391be43" />
+      <file name="LOGDIR" crc32="1ccd8b67" md5="231f3e28170d6e982fc0ced4c98c5c1c" sha1="e5990535baceef522f791b1a7d7437fa504dbf1f" />
+      <file name="VOL.3" crc32="d16c4ba3" md5="3fb8765c9529e2533fecc12b03a6ddc8" sha1="0961d18acbdcd6a0cd366ed9341032a985040e16" />
+      <file name="VOL.2" crc32="dea7f7e8" md5="2f73c457a187c5871bc0579d80018f08" sha1="8851d4e6c6deceece0997a1e8f1845edebd14c4c" />
+      <file name="VOL.0" crc32="82eaf402" md5="4d44bf0e438ba7c0b05c17be4dea36c5" sha1="e9bb52063f9b99bba8c1c092a0b1189c2ea44df6" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="PICDIR" crc32="574cecf1" md5="f1f573577981a1beae8d9195caeb636e" sha1="ec68a09c1a425884ee1b58f3fac4a8cfcb92eb0e" />
+    </game>
+    <game name="Police Quest I (?)" platform="PC" date="XXXX-XX-XX" version="2.0G" format="3.5DD" interpreter="2.917" language="English" comments="">
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="SNDDIR" crc32="89a3a183" md5="ed489e4f8647af2b956d08ee78b4ff42" sha1="4f8dd3f65034927030289011c9f21afe4c19c793" />
+      <file name="LOGDIR" crc32="0e851173" md5="d194e5d88363095f55d5096b8e32fbbb" sha1="bfc5df20b046d9e7d9f1f535e50cc49f788bf6ec" />
+      <file name="VIEWDIR" crc32="8a93212e" md5="631d6539348d489c2f4f84a6d1c58e08" sha1="b286bee204242acf802ecee3217fe88a49efb3de" />
+      <file name="PICDIR" crc32="5bf41c35" md5="60cbfd91b9e77ad0baa22f0b73987838" sha1="328f695d61844eb22a423cd66a6522bfeda8536b" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="VOL.0" crc32="82eaf402" md5="4d44bf0e438ba7c0b05c17be4dea36c5" sha1="e9bb52063f9b99bba8c1c092a0b1189c2ea44df6" />
+      <file name="VOL.1" crc32="9c5f96fa" md5="a4ef57c5cc9542a7b53288f58d600964" sha1="26be13fba7f8c6f82e17e1c53dfe9c499a66d46c" />
+      <file name="VOL.2" crc32="76f042f1" md5="d3b130e92661ab0793b3d9101700c004" sha1="c0741cf39d305de743f36c41084c8f4dd72c0ee1" />
+    </game>
+    <game name="Police Quest I" platform="Amiga" date="XXXX-XX-XX" version="2.0B" format="" interpreter="3.002.149" language="English" comments="">
+      <file name="VOL.1" crc32="26f9bf12" md5="8dd03af2a285e4f30ef4ba1357da43a4" sha1="f4dd3c84eeae19e92faa1442da4e9cd157813fcc" />
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="OBJECT" crc32="f30ca8b2" md5="94de6b402f9ba4d237b77a830b01c82a" sha1="eb4b304d8efb6228f17fc7248c76d754071be279" />
+      <file name="VOL.0" crc32="67448392" md5="1222778713f48f87621ef38986768897" sha1="d7a63e8a14027d6f55c55882c065fc3e242e0f41" />
+      <file name="VOL.2" crc32="9216efa6" md5="bac9a74eef92d7987076fd0b541fecf2" sha1="663bf4f14fb7a9eab9c75972d12a587b2e411287" />
+      <file name="DIRS" crc32="ac50e433" md5="cfa93e5f2aa7378bddd10ad6746a2ffb" sha1="c991b565d5bec67ce9be682227124a4df711227a" />
+    </game>
+    <game name="Police Quest I (atari)" platform="AtariST" date="XXXX-XX-XX" version="2.0G" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="812b4496" md5="0cf5bd1fdaa00ace866375894cd6d403" sha1="8088728f40ccaca58dcc2d91c8a83a63f0cf9ade" />
+      <file name="PICDIR" crc32="574cecf1" md5="f1f573577981a1beae8d9195caeb636e" sha1="ec68a09c1a425884ee1b58f3fac4a8cfcb92eb0e" />
+      <file name="LOGDIR" crc32="1ccd8b67" md5="231f3e28170d6e982fc0ced4c98c5c1c" sha1="e5990535baceef522f791b1a7d7437fa504dbf1f" />
+      <file name="VIEWDIR" crc32="99f247bf" md5="fd9641406084e049ac466e81fc154b41" sha1="089975fc5f2799874338a85587dfec9062a226fd" />
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="VOL.0" crc32="82eaf402" md5="4d44bf0e438ba7c0b05c17be4dea36c5" sha1="e9bb52063f9b99bba8c1c092a0b1189c2ea44df6" />
+      <file name="VOL.1" crc32="35c0dda5" md5="c0dfb7be01cc3c4839469da9c85749bd" sha1="5eabd2e14d6f987316a9deae486f16d5f391be43" />
+      <file name="VOL.2" crc32="dea7f7e8" md5="2f73c457a187c5871bc0579d80018f08" sha1="8851d4e6c6deceece0997a1e8f1845edebd14c4c" />
+      <file name="VOL.3" crc32="a7be125d" md5="5d4625a9643a9514908fc052926df951" sha1="5ac7709b62fad7191c291e2a31158cccf44f2be3" />
+    </game>
+    <game name="Police Quest I (bad)" platform="AtariST" date="XXXX-XX-XX" version="" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="812b4496" md5="0cf5bd1fdaa00ace866375894cd6d403" sha1="8088728f40ccaca58dcc2d91c8a83a63f0cf9ade" />
+      <file name="PICDIR" crc32="574cecf1" md5="f1f573577981a1beae8d9195caeb636e" sha1="ec68a09c1a425884ee1b58f3fac4a8cfcb92eb0e" />
+      <file name="LOGDIR" crc32="1ccd8b67" md5="231f3e28170d6e982fc0ced4c98c5c1c" sha1="e5990535baceef522f791b1a7d7437fa504dbf1f" />
+      <file name="VIEWDIR" crc32="99f247bf" md5="fd9641406084e049ac466e81fc154b41" sha1="089975fc5f2799874338a85587dfec9062a226fd" />
+      <file name="WORDS.TOK" crc32="86f39da1" md5="88484c414874272390d73cc4985e60b4" sha1="f89aa034ea7e2e0297d78f4f44597f7a35ad0f5f" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="VOL.0" crc32="82eaf402" md5="4d44bf0e438ba7c0b05c17be4dea36c5" sha1="e9bb52063f9b99bba8c1c092a0b1189c2ea44df6" />
+      <file name="VOL.1" crc32="11bde348" md5="cefe263812de59af94a552dd5d4194ca" sha1="82ed7884573140f452831a5ca2c6df84a266036f" />
+      <file name="VOL.2" crc32="dea7f7e8" md5="2f73c457a187c5871bc0579d80018f08" sha1="8851d4e6c6deceece0997a1e8f1845edebd14c4c" />
+      <file name="VOL.3" crc32="d16c4ba3" md5="3fb8765c9529e2533fecc12b03a6ddc8" sha1="0961d18acbdcd6a0cd366ed9341032a985040e16" />
+    </game>
+    <game name="Police Quest I (bad 2)" platform="AtariST" date="XXXX-XX-XX" version="" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="812b4496" md5="0cf5bd1fdaa00ace866375894cd6d403" sha1="8088728f40ccaca58dcc2d91c8a83a63f0cf9ade" />
+      <file name="PICDIR" crc32="574cecf1" md5="f1f573577981a1beae8d9195caeb636e" sha1="ec68a09c1a425884ee1b58f3fac4a8cfcb92eb0e" />
+      <file name="LOGDIR" crc32="1ccd8b67" md5="231f3e28170d6e982fc0ced4c98c5c1c" sha1="e5990535baceef522f791b1a7d7437fa504dbf1f" />
+      <file name="VIEWDIR" crc32="99f247bf" md5="fd9641406084e049ac466e81fc154b41" sha1="089975fc5f2799874338a85587dfec9062a226fd" />
+      <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
+      <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
+      <file name="VOL.0" crc32="f8a7627f" md5="51604cebbd12d12f9d77f06b0cb772d3" sha1="a8b513f2d936958c21998908c312a11f69a8be00" />
+      <file name="VOL.1" crc32="03c9f8d3" md5="d30a04700a3a1f1d70601f10645e1ded" sha1="c2c054c82a47193185551808f6717bd6e1a03a18" />
+      <file name="VOL.2" crc32="401df1cf" md5="eab91f3e7c8c43604ed7150397cd7562" sha1="ec4928cedd236e94d0753de6bd19a5e96c6ac92e" />
+      <file name="VOL.3" crc32="9b09493d" md5="57b4d13714e62cbaa565e2b1152f0f0e" sha1="b06be30a0296e62e3bda6efce3699b2e7430ecb2" />
+    </game>
+    <game name="Police Quest I" platform="AppleIIgs" date="XXXX-XX-XX" version="2.0B" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="755cbd69" md5="8c8e1d7c8678ba447b9c432c5f1c2164" sha1="cdb04814ca21dd8fdb12e7c4a2c3ccbedeb53124" />
+      <file name="SNDDIR" crc32="bfa6c02e" md5="12406b240c56ee4589fe1b3852f6d0ed" sha1="54c9fbd2d788be246e8f3b3fabbf3b61c294d773" />
+      <file name="LOGDIR" crc32="69592c03" md5="e7c175918372336461e3811d594f482f" sha1="7fb289746d3be1bf463ef34970a42c9566c13bd7" />
+      <file name="VIEWDIR" crc32="325bf17a" md5="57654579ba9763399b1bfab1f8191970" sha1="d5d821215700adef86440f162202b4a929b4a707" />
+      <file name="PICDIR" crc32="b345ef62" md5="7c4ae2aa5c29907b813c8e6d1f3886df" sha1="f49e80f853632edc109f2ca588d57c69778509d8" />
+      <file name="OBJECT" crc32="d5d887f1" md5="d8b3773ff17ed4ed636dedb288f0dda9" sha1="4d3be7176c2ac4574e042f238c6c08e035a8953d" />
+      <file name="VOL.0" crc32="33c25750" md5="4308c4d42eb8288df59d34e5e1f75db0" sha1="fbf714e0893c7fb9a18cf6d48c88a160847afbb7" />
+      <file name="VOL.1" crc32="a8e69ebf" md5="ebff38552fb3e872d951b60b2e941c69" sha1="8135235eed0307795c2be770d7ea3af926a75b2c" />
+      <file name="VOL.2" crc32="28f14c7d" md5="c09c017bc7aef4428a15ce9c73076d58" sha1="e6e25def488f77a88d6c4d3f7a9683a5b30ad477" />
+    </game>
+    <game name="Police Quest I" platform="Macintosh" date="XXXX-XX-XX" version="2.0G" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="17733bc1" md5="5a5f2cd9bde8f43845e84d1450682fbc" sha1="771219706386b09125cb6ec2b17f64a9e8abe688" />
+      <file name="PICDIR" crc32="fdb4294b" md5="a5785e510e9a6e919fff9f781b0eab6d" sha1="2348b9b9f0739c10efae87d5b01ed4e58e42f3a8" />
+      <file name="LOGDIR" crc32="3c9d1d0a" md5="805750b66c1c5b88a214e67bfdca17a1" sha1="eaa86a3d0500d6db0f18737590e2acf5fc6ddd28" />
+      <file name="VIEWDIR" crc32="99f247bf" md5="fd9641406084e049ac466e81fc154b41" sha1="089975fc5f2799874338a85587dfec9062a226fd" />
+      <file name="WORDS.TOK" crc32="24fa76f9" md5="f2eefd1c88c9c0771903c829b7edfcdf" sha1="ac2dd0bf3d0b46438672d2bf39f7da69023b834c" />
+      <file name="OBJECT" crc32="154c2cb7" md5="3abe57192138c3d179488639055a0535" sha1="1768185f15702016c2254b51fae06ae6432f9b2f" />
+      <file name="VOL.0" crc32="e2bfbe5d" md5="3ef69aae8ffb6ffb0e57a178e35825d0" sha1="ad18830255c3f80bd0a49381189e95439d2cfec3" />
+      <file name="VOL.1" crc32="249b9f5c" md5="e40c477f0dca751306094534d88e523b" sha1="84602126231e3838ca0e6864794c7d512728dc38" />
+      <file name="VOL.2" crc32="1f7394f5" md5="05388d47018dbd0ef4340457411f8fe4" sha1="79c1aaec8b7924cbbe7b1a2205013601a8c1801e" />
+      <file name="VOL.3" crc32="0799ad93" md5="1de8a8bc9def37d93d56df1a9bba853e" sha1="ac36088acba52992bf6b6837edc78e422dacd6b4" />
+    </game>
+    <game name="Police Quest I" platform="AppleIIgs" date="XXXX-XX-XX" version="2.0A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="755cbd69" md5="8c8e1d7c8678ba447b9c432c5f1c2164" sha1="cdb04814ca21dd8fdb12e7c4a2c3ccbedeb53124" />
+      <file name="SNDDIR" crc32="5314f2d1" md5="f11f7fcde969d0a9027d815b10645f64" sha1="1f5c7777050917f6016a3bb620eb81165173390f" />
+      <file name="LOGDIR" crc32="d0fb7595" md5="8994e39d0901de3d07cecfb954075bb5" sha1="7df4925b5675651155d66af4daaac13699dcdc73" />
+      <file name="VIEWDIR" crc32="3716b0ed" md5="c60b99725c9055559a5138ad44fbcb23" sha1="0986fbcc58d4fe05b0d82d5b2d630932b82fe8cd" />
+      <file name="PICDIR" crc32="37252703" md5="9c719e23de9ccca0895f6b752ef0a10e" sha1="0dbfc211438d0e379dd6942b1ef75885a7c304e8" />
+      <file name="OBJECT" crc32="d5d887f1" md5="d8b3773ff17ed4ed636dedb288f0dda9" sha1="4d3be7176c2ac4574e042f238c6c08e035a8953d" />
+      <file name="VOL.0" crc32="33c25750" md5="4308c4d42eb8288df59d34e5e1f75db0" sha1="fbf714e0893c7fb9a18cf6d48c88a160847afbb7" />
+      <file name="VOL.1" crc32="0e34133c" md5="aed92facebb5cf303169c68c2ac33159" sha1="1624c3684cdcca4fad55473c37351b43f5b08463" />
+      <file name="VOL.2" crc32="28f14c7d" md5="c09c017bc7aef4428a15ce9c73076d58" sha1="e6e25def488f77a88d6c4d3f7a9683a5b30ad477" />
+    </game>
+    <game name="Space Quest I" platform="PC" date="XXXX-XX-XX" version="1.0X" format="FLOPPY" interpreter="2.089" language="English" comments="">
+      <file name="WORDS.TOK" crc32="3e10d10a" md5="0a6ef9bf7f972ed6a8c89b0b39266804" sha1="39a9fa9e70b6bffbb7a92e54b18f15740d377d89" />
+      <file name="VIEWDIR" crc32="463ff0ad" md5="997faa114e0ab61c43171b6451e1382c" sha1="3653cbe5d16b760018f7f9cc9c1d1bcd044624ad" />
+      <file name="VOL.1" crc32="e1c1abd6" md5="ed430600d79f17d67b405bb9d47f7121" sha1="e3ffef59739a73c672e3e5aa345d8484591de119" />
+      <file name="LOGDIR" crc32="938a1123" md5="af93941b6c51460790a9efa0e8cb7122" sha1="f686c30cbfad6c6ababc09d7d3d8ce95b418c74e" />
+      <file name="SNDDIR" crc32="cf24ff87" md5="68ac2fe494ecbabb6dac9b21e2bb6233" sha1="41493dc3e528c5ec7f71dff8e80edffb927fa021" />
+      <file name="VOL.2" crc32="b972ab4d" md5="47f96ca10d6d72e46a4adb27aa37371f" sha1="5c24bfd1038022cb80bf01c8ba356d747edaa714" />
+      <file name="VOL.0" crc32="ca6b7705" md5="e19181d0c20c1eb6448592ec7ad44b12" sha1="b6e4e8a3d190e906f8746bce9cbe832309566b13" />
+      <file name="OBJECT" crc32="355cdb1d" md5="72cb214ea1534493b334b4aeb6b423d6" sha1="6be9dcef518174ef7fb51b9ccf264e2a107ee91d" />
+      <file name="PICDIR" crc32="518e5dc4" md5="8479f8a9cc0a0967b4185843f29ec446" sha1="83ed879fde0879115de0c548d23674b38f55e2c8" />
+    </game>
+    <game name="Space Quest I" platform="PC" date="XXXX-XX-XX" version="1.1A" format="FLOPPY" interpreter="2.272" language="English" comments="">
+      <file name="WORDS.TOK" crc32="b5ef8ed5" md5="f3de6f87511782319e841bfc7d32a788" sha1="9d6dcc384d8786ada81c8bde898c33c34b5d7b37" />
+      <file name="VIEWDIR" crc32="69af3da4" md5="2bac0b69ef21a2dcdfc318541eca0695" sha1="9651f8de070bd395a28106d68103e8f78ac3d5c1" />
+      <file name="VOL.1" crc32="f2d3bb57" md5="963db39c6223da768af562f08a3033aa" sha1="d9b4ac21599c0a638224f09b4ba663e6f6d2bc48" />
+      <file name="LOGDIR" crc32="d58b2035" md5="8d8c20ab9f4b6e4817698637174a1cb6" sha1="9d52781948f260968cd56cb116eddb942893fe04" />
+      <file name="SNDDIR" crc32="1a55a0e1" md5="48419a76b14dc50e8fd51fc2e13583b0" sha1="87bda2d291e0fd42577707ac5e7ac56c6930dae7" />
+      <file name="VOL.2" crc32="02edc209" md5="923f0a297ce05efb7f57014f287d3069" sha1="5c2aa690a5d866a81457365b5131f9f5cb463f79" />
+      <file name="VOL.0" crc32="657f5bf8" md5="3222c8d6a7973f64dd10f7a0dd058d25" sha1="da90ebd9663904ad8d5e39e58ddbd94d67e50800" />
+      <file name="OBJECT" crc32="355cdb1d" md5="72cb214ea1534493b334b4aeb6b423d6" sha1="6be9dcef518174ef7fb51b9ccf264e2a107ee91d" />
+      <file name="PICDIR" crc32="df79ce00" md5="96aede314892eecaf91690da54673b0d" sha1="4dc54c878ae09c8001ee5bca383634a665ace7fa" />
+    </game>
+    <game name="Space Quest I" platform="PC" date="XXXX-XX-XX" version="2.2" format="FLOPPY" interpreter="2.426" language="English" comments="">
+      <file name="WORDS.TOK" crc32="7c9d455a" md5="42b35795b6b489cd6e8d326e679f6a25" sha1="ab9a4dcc58e7cb92e40205e1931aac463fec7379" />
+      <file name="VIEWDIR" crc32="e3d0ffbc" md5="1868e1ce06e6c3816ec7364085e13f73" sha1="99e44ddab86dd74bb7f656f0c06221f311e56bc2" />
+      <file name="VOL.1" crc32="8908c96f" md5="0e575ee31e7ad04f7d6f07cea41cca39" sha1="4f75fa44b8b05a22c0a03c1df7e34a41e6ccb699" />
+      <file name="LOGDIR" crc32="36f49d8d" md5="5d67630aba008ec5f7f9a6d0a00582f4" sha1="e5b85250d403dd711dd68377c7bdcecb7a483c10" />
+      <file name="SNDDIR" crc32="9b80fa17" md5="ab684bd2f6c0e87a80fc4cd06e544b1a" sha1="5f6c87dadfb704a126a2395722aa735b1fac608c" />
+      <file name="VOL.2" crc32="0ea18761" md5="57790c69c23fddc56840d8b0255c232f" sha1="0b737c86dd220eccb87edfb8f617021e7315ab10" />
+      <file name="VOL.0" crc32="b38bc7a5" md5="e3c443117a755102173db7b0fb8b423c" sha1="cb11383925524e07a0eb6fe342c1f6996cd34300" />
+      <file name="OBJECT" crc32="8524101a" md5="b1a713b5061db3f536971e234f261c47" sha1="7b82cc9bde99576bca00e7a56a2263765c431a07" />
+      <file name="PICDIR" crc32="7fd2d036" md5="64680cd14e572be7f46636e819895fdf" sha1="1710167999c9dfba10a11e0a5e0192a3f3f1de18" />
+    </game>
+    <game name="Space Quest I" platform="Amiga" date="XXXX-XX-XX" version="1.2" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="867e1b58" md5="082f5b3f385e06bf491e0e7532e3de50" sha1="bd926ff659ab2dcdb4afc204a7f917de7df04ee2" />
+      <file name="VIEWDIR" crc32="ed675781" md5="edc8696e88336255c016a529fd4b8db0" sha1="ece7879447df4ed7e0b55d20970f932c4fc2c1f0" />
+      <file name="VOL.1" crc32="c122cf6a" md5="102e8340e9f78a0e33208f3f7f1a8191" sha1="7dfaa919ba97a2e0f3761c451569443a6d4583f2" />
+      <file name="LOGDIR" crc32="a86408a7" md5="0b216d931e95750f1f4837d6a4b821e5" sha1="918db1b426a67a54d530521f32fe596751a4f2f0" />
+      <file name="SNDDIR" crc32="b1fa468f" md5="0b0672cc17de38c6ef36f9f00e3e443c" sha1="1313b38daa405e25cc35faf11112f48073afd09f" />
+      <file name="VOL.2" crc32="f907cc0c" md5="4ecb7090b5f4d4dfc3f37ba72ea8256d" sha1="f2a6c830421016750a91f658483f425356f10e9c" />
+      <file name="VOL.0" crc32="af13c911" md5="a81e6330a7de82ab2b9841a33b3a458b" sha1="60e9482d0fa6aff6aa95fd75f4aea8e27c0c3750" />
+      <file name="OBJECT" crc32="db622f8f" md5="ab599cef268c9af2532eba2bdb3423ed" sha1="2ad79fef05723c76a2ded44dbb4c949b566f4c65" />
+      <file name="PICDIR" crc32="9cab8a40" md5="0985794bc78ad1c5dcf3e536fa67bcfc" sha1="5bedc436ad9a91d0002830b2cb7d5bc6dc1adca1" />
+    </game>
+    <game name="Space Quest I (original)" platform="AtariST" date="XXXX-XX-XX" version="1.1A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="b5ef8ed5" md5="f3de6f87511782319e841bfc7d32a788" sha1="9d6dcc384d8786ada81c8bde898c33c34b5d7b37" />
+      <file name="SNDDIR" crc32="357bc481" md5="b01bd4d054e71288fe786118da16bf57" sha1="73d477926885b469b2b7b2f28623d2bb2f408119" />
+      <file name="LOGDIR" crc32="4e6a0c8b" md5="6421fb64b0e6604c9dd065975d9279e9" sha1="3a9c3c9906f92c396a19c4fd4ba6bc2e1d6383b1" />
+      <file name="VIEWDIR" crc32="5b22cfd4" md5="1a92f24497ec5e130ebcf5847d9a0e38" sha1="05fdc0f6fd28676ffe84c24e5aa5526b71f1eca9" />
+      <file name="PICDIR" crc32="f9df36f0" md5="c5b20b47c90dd30fd9f3c646cc3d659b" sha1="a54afe61531f0c8eb30d47b8cc3e2a4ccc2e57e2" />
+      <file name="OBJECT" crc32="355cdb1d" md5="72cb214ea1534493b334b4aeb6b423d6" sha1="6be9dcef518174ef7fb51b9ccf264e2a107ee91d" />
+      <file name="VOL.0" crc32="62f5c86e" md5="3bced155c0a87b08027f3851a2e882d7" sha1="0680a0b9b409594403d81b3e5daed90ee70f7915" />
+      <file name="VOL.1" crc32="989a10ef" md5="5d049e7c8c25c093d7d53bc66f95748c" sha1="fd48e94606d8b28b97c8cc113424f0e6099a3b18" />
+      <file name="VOL.2" crc32="02edc209" md5="923f0a297ce05efb7f57014f287d3069" sha1="5c2aa690a5d866a81457365b5131f9f5cb463f79" />
+    </game>
+    <game name="Space Quest I (bluesoft)" platform="AtariST" date="XXXX-XX-XX" version="1.1A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="b5ef8ed5" md5="f3de6f87511782319e841bfc7d32a788" sha1="9d6dcc384d8786ada81c8bde898c33c34b5d7b37" />
+      <file name="SNDDIR" crc32="357bc481" md5="b01bd4d054e71288fe786118da16bf57" sha1="73d477926885b469b2b7b2f28623d2bb2f408119" />
+      <file name="LOGDIR" crc32="4e6a0c8b" md5="6421fb64b0e6604c9dd065975d9279e9" sha1="3a9c3c9906f92c396a19c4fd4ba6bc2e1d6383b1" />
+      <file name="VIEWDIR" crc32="5b22cfd4" md5="1a92f24497ec5e130ebcf5847d9a0e38" sha1="05fdc0f6fd28676ffe84c24e5aa5526b71f1eca9" />
+      <file name="PICDIR" crc32="f9df36f0" md5="c5b20b47c90dd30fd9f3c646cc3d659b" sha1="a54afe61531f0c8eb30d47b8cc3e2a4ccc2e57e2" />
+      <file name="OBJECT" crc32="e0fafb79" md5="db7b2f57c0c0c821516dc50f381b3a8b" sha1="164c2c8e89355d0161cb21dd2bf46e5d5690cb4d" />
+      <file name="VOL.0" crc32="62f5c86e" md5="3bced155c0a87b08027f3851a2e882d7" sha1="0680a0b9b409594403d81b3e5daed90ee70f7915" />
+      <file name="VOL.1" crc32="bf874e76" md5="dc54c2569749023c2b36006fceb465f3" sha1="8ecf81ebaefc652b87d05cacd7dfe3b509acc3cb" />
+      <file name="VOL.2" crc32="02edc209" md5="923f0a297ce05efb7f57014f287d3069" sha1="5c2aa690a5d866a81457365b5131f9f5cb463f79" />
+    </game>
+    <game name="Space Quest I (?)" platform="AtariST" date="XXXX-XX-XX" version="1.1A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="b5ef8ed5" md5="f3de6f87511782319e841bfc7d32a788" sha1="9d6dcc384d8786ada81c8bde898c33c34b5d7b37" />
+      <file name="SNDDIR" crc32="357bc481" md5="b01bd4d054e71288fe786118da16bf57" sha1="73d477926885b469b2b7b2f28623d2bb2f408119" />
+      <file name="LOGDIR" crc32="4e6a0c8b" md5="6421fb64b0e6604c9dd065975d9279e9" sha1="3a9c3c9906f92c396a19c4fd4ba6bc2e1d6383b1" />
+      <file name="VIEWDIR" crc32="5b22cfd4" md5="1a92f24497ec5e130ebcf5847d9a0e38" sha1="05fdc0f6fd28676ffe84c24e5aa5526b71f1eca9" />
+      <file name="PICDIR" crc32="f9df36f0" md5="c5b20b47c90dd30fd9f3c646cc3d659b" sha1="a54afe61531f0c8eb30d47b8cc3e2a4ccc2e57e2" />
+      <file name="OBJECT" crc32="355cdb1d" md5="72cb214ea1534493b334b4aeb6b423d6" sha1="6be9dcef518174ef7fb51b9ccf264e2a107ee91d" />
+      <file name="VOL.0" crc32="62f5c86e" md5="3bced155c0a87b08027f3851a2e882d7" sha1="0680a0b9b409594403d81b3e5daed90ee70f7915" />
+      <file name="VOL.1" crc32="989a10ef" md5="5d049e7c8c25c093d7d53bc66f95748c" sha1="fd48e94606d8b28b97c8cc113424f0e6099a3b18" />
+      <file name="VOL.2" crc32="6befd8d0" md5="700ad436a1a6c1611fc146834a89fad2" sha1="abc12e5736fff307c68330029a0797a64d0be6e8" />
+    </game>
+    <game name="Space Quest I" platform="AppleIIgs" date="XXXX-XX-XX" version="2.2" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="7c9d455a" md5="42b35795b6b489cd6e8d326e679f6a25" sha1="ab9a4dcc58e7cb92e40205e1931aac463fec7379" />
+      <file name="SNDDIR" crc32="826ef905" md5="5b1db699d6a656c62d3f6f5e30957537" sha1="cd0a79bae4ebb2426e2e1cfbb83cff87b20de332" />
+      <file name="LOGDIR" crc32="d210ef19" md5="64b9b3d04c1066d36e6a6e56187a83f7" sha1="709b55ec1d44316e925ccebfcc8fdbcbd17df0c2" />
+      <file name="VIEWDIR" crc32="2a24a598" md5="3f0b4dd2965d66a41a28b94229f8716c" sha1="7dd36203c23040a8106f996b818c80ad6b6e3660" />
+      <file name="PICDIR" crc32="d52f1ebc" md5="18c0038df38056d573a05e0cc35d0d6e" sha1="b76def95d8fa938658ac6bc06af63b21e5a47015" />
+      <file name="OBJECT" crc32="8524101a" md5="b1a713b5061db3f536971e234f261c47" sha1="7b82cc9bde99576bca00e7a56a2263765c431a07" />
+      <file name="VOL.0" crc32="5b2ad3bb" md5="d6b4a1b470790bc9f581feaf8d29ed1b" sha1="b964ccb7141186afc978bfd5451c19e7ac6fad8b" />
+      <file name="VOL.1" crc32="a9eb72c4" md5="e321a66e64c6781004c68b9ce2ec961e" sha1="67bb4bc4f865824bb6c4d3920640f0121715896e" />
+      <file name="VOL.2" crc32="f04aac27" md5="9d58717937f59cf36dbc283b7ba058a4" sha1="5eaa7698c451253d0c448a97ca2257080b8eb51b" />
+    </game>
+    <game name="Space Quest I" platform="Macintosh" date="XXXX-XX-XX" version="1.5D" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="a4f1cfd3" md5="33871e84af66afd6386cae86ffafd209" sha1="e7805820f28cf928416b7e90212add285996a988" />
+      <file name="SNDDIR" crc32="2891ea2b" md5="5f526496996144e13f5982e332eaea29" sha1="deb22414bf2ee70c3ab225fe1dbde5e9f6a29633" />
+      <file name="LOGDIR" crc32="9c202e66" md5="ce88419aadd073d1c6682d859b3d8aa2" sha1="0ed2dba867c36bcb8b6363de9f57d1f0239b9769" />
+      <file name="VIEWDIR" crc32="b7c14326" md5="f708a41daf378e59b43b7ab0958fec92" sha1="b98b5f0a4f02a03b738126223a27584442d3b5d1" />
+      <file name="PICDIR" crc32="54d2d1f0" md5="4b907ed63bd2687ce79bf99255039715" sha1="44d938e502319dd1681740c8e67080f047a25ad0" />
+      <file name="OBJECT" crc32="259e55ca" md5="d217147126a7d2100d3e1e5e73849e88" sha1="1ab9a6cc60cb4e8465db31bed1ca7af866076e4c" />
+      <file name="VOL.0" crc32="2119e9d5" md5="e18a9f061511be4d9cb302918c95dd16" sha1="6cb1dd9b4892e438ddaaf6d13f76c2c671d8dff0" />
+      <file name="VOL.1" crc32="34eb6147" md5="084ff5a696f361522d74696c8524c30f" sha1="6e6f0cff4c16e41ad7695dac605b3ec9ed2e7b95" />
+      <file name="VOL.2" crc32="ab8866ba" md5="88c64fcaa971146fe916215fd7fbca46" sha1="5fad20d152c91f3e01e28d1e3180cadbc473cddf" />
+    </game>
+    <game name="Space Quest II" platform="PC" date="XXXX-XX-XX" version="2.0A" format="3.5DD" interpreter="2.912" language="English" comments="">
+      <file name="SNDDIR" crc32="13ea7167" md5="172819727a8af62bfe64e14d577e1196" sha1="756c8bcfd9a62cfa2b877ca99fed3634e0d7b9e8" />
+      <file name="PICDIR" crc32="bec735f8" md5="6ed7aaf6df82c5fc41338d5dd551cc2b" sha1="6f3bcc9901b128e3062d78e8c088473ddc8bfc60" />
+      <file name="LOGDIR" crc32="772e92b4" md5="6c25e33d23b8bed42a5c7fa63d588e5c" sha1="7aee973359f14b0c318ea669ca87d78d86518a54" />
+      <file name="VIEWDIR" crc32="f643c62e" md5="205a00c2c52dabd9a3b6c98728810413" sha1="f016270a21d6c3a7fa08ec2cb1acf3c3ba0b621b" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="VOL.0" crc32="40aa0099" md5="c02144967d10d89e484bf89d5b26ee77" sha1="bde511aa40b86055cb15c0d52a757cfb1aa6b308" />
+      <file name="VOL.1" crc32="06bfce29" md5="ba918c5e527c504bed39c67a1dcb0703" sha1="5e79412897b3021a07c63c4558e2ebe57f8837f9" />
+      <file name="VOL.2" crc32="6dbdff2f" md5="59266c9fc69edbcba3adff888a5a2d1e" sha1="e1418b6768e0c84c9d92a925f0d906fc9a4cd63f" />
+      <file name="VOL.3" crc32="14a285ac" md5="81051bcc2cf1bedf378224b0a93e2877" sha1="ba8ab5a0280b953aa97435ff8946cbcbb2755a27" />
+    </game>
+    <game name="Space Quest II" platform="PC" date="XXXX-XX-XX" version="2.0A" format="5.25DD" interpreter="2.912" language="English" comments="">
+      <file name="SNDDIR" crc32="9ef333f1" md5="41fd5ed9ce7b8f7bd574b137daa4f131" sha1="82941eeb795bbe64ef788459e69e1401fc798790" />
+      <file name="PICDIR" crc32="4824d141" md5="821ec3f12a5bf1231dbabff210e018f1" sha1="9365305ddcc1d80808f56f1866788f2a5180ae36" />
+      <file name="LOGDIR" crc32="1a33142d" md5="ad7ce8f800581ecc536f3e8021d7a74d" sha1="aa9508662651abb5c95babf98ae1b71b4defa07f" />
+      <file name="VIEWDIR" crc32="fc5a8af4" md5="c335cba3943372e79106e4d479ae66a6" sha1="1a6acbc0ae88594efc9d66ba739efc2b239b39dd" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="VOL.0" crc32="40aa0099" md5="c02144967d10d89e484bf89d5b26ee77" sha1="bde511aa40b86055cb15c0d52a757cfb1aa6b308" />
+      <file name="VOL.1" crc32="06bfce29" md5="ba918c5e527c504bed39c67a1dcb0703" sha1="5e79412897b3021a07c63c4558e2ebe57f8837f9" />
+      <file name="VOL.2" crc32="e00e23a0" md5="f9da01ab7babf6f9bac602177f8d697d" sha1="64961a25a9f72f0cc101cb730196bcdc4407b9a0" />
+      <file name="VOL.3" crc32="0a93e37d" md5="5e3994bf021eccb2ccda6cef5d81e6fd" sha1="9bda1ed6196b526ffc3e4a5c4a080c1742d6422f" />
+    </game>
+    <game name="Space Quest II" platform="PC" date="XXXX-XX-XX" version="2.0C" format="3.5DD" interpreter="2.917" language="English" comments="">
+      <file name="SNDDIR" crc32="ce6176a3" md5="2bfce7f053428cabd4c1b3626bfa5ae3" sha1="e3a472e21ab673d7cf41ee8a38a0d669f588c1ae" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="VIEWDIR" crc32="1c69203f" md5="6e3008c0568b0dc7267274e7db01b045" sha1="4275067c6faa8eaaf92015e0f79237295ceda73b" />
+      <file name="VOL.1" crc32="28acb3d4" md5="8705478563584b133ac9c194a6546e52" sha1="0369f1da2ef4d637899be212ee911bc257d95fe8" />
+      <file name="LOGDIR" crc32="29f1a7cc" md5="b394eaae1dfe4203378e02641178959c" sha1="9ccb58770ada467ca40e9e02df8bec72369a3b18" />
+      <file name="VOL.3" crc32="00000000" md5="d41d8cd98f00b204e9800998ecf8427e" sha1="da39a3ee5e6b4b0d3255bfef95601890afd80709" />
+      <file name="VOL.2" crc32="60c77d16" md5="d16a3ee03086f431b349938d7948a3b5" sha1="68bca17054fe4b3790935b2966e3c19dd92d3816" />
+      <file name="VOL.0" crc32="7b88cd4f" md5="ab3e2f335b09306b0b9dfcd2a8ecd618" sha1="1b324773b31eca7feff3e303501ba37208c363c4" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="PICDIR" crc32="78bb1368" md5="5f5e5631849c2a8f0e25182e642ba77a" sha1="9e811a4668be63968127728e4efcc142e96ba1ce" />
+    </game>
+    <game name="Space Quest II" platform="PC" date="XXXX-XX-XX" version="2.0D" format="3.5DD" interpreter="2.936" language="English" comments="">
+      <file name="SNDDIR" crc32="1f150fac" md5="cf16584fc8591f9b01d3a8b53d3fb465" sha1="0c3fd0271f408b824b97b803619d7f18306c2e41" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="VIEWDIR" crc32="e18b87a6" md5="ce1494301c5645131cb887136681a3fe" sha1="9a9d0619e49a842b6336264698a229617cfdc247" />
+      <file name="VOL.1" crc32="679e2fad" md5="2e1b86471ec3c43be1d9d1c5290ca1a3" sha1="d9ada73129cbf21e320144bbd7e08d3278129185" />
+      <file name="LOGDIR" crc32="7beb7519" md5="85390bde8958c39830e1adbe9fff87f3" sha1="c476a8d9889fb1a6ced38452556054a045efdf7b" />
+      <file name="VOL.3" crc32="7e9b95cc" md5="639dd4b81af426c8fc72df6b15d56ba7" sha1="4bc77d2df5cdc866542699e831201598e163c68d" />
+      <file name="VOL.2" crc32="b5347308" md5="5a2f1663aa1eca8314833c63cca04607" sha1="095a4c565a1b7bda6640c2fbf6355a44b2439a57" />
+      <file name="VOL.0" crc32="687ad2e2" md5="586b7f3f7a7c4e5b6fd5fe7c6dcb616b" sha1="944fba21b60b2dd4e71bea1b55f8b0d3770c9c30" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="PICDIR" crc32="366a8993" md5="cc0aede5d46cf56344f95f32a8a0bad2" sha1="e48337d475c364a7c1c23752693f1189e8b0a01b" />
+    </game>
+    <game name="Space Quest II" platform="PC" date="XXXX-XX-XX" version="2.0D" format="5.25DD" interpreter="2.936" language="English" comments="">
+      <file name="SNDDIR" crc32="1c9fadbc" md5="848403997b7d007a9bad1e1b6ab2aaf5" sha1="445a86d6cae458794936a8b52b9aed7c206eb355" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="VIEWDIR" crc32="7dde8222" md5="fbda99f3bace36278dcc53b08add4d9d" sha1="386b3b750cc7a4e8a386ec7ffe8a6ebe36e44b8a" />
+      <file name="VOL.1" crc32="679e2fad" md5="2e1b86471ec3c43be1d9d1c5290ca1a3" sha1="d9ada73129cbf21e320144bbd7e08d3278129185" />
+      <file name="LOGDIR" crc32="eab977f8" md5="0884ea4e127e333986568775fb21600b" sha1="66e7ec8324648f6db4415c2682caa897ec8dd347" />
+      <file name="VOL.3" crc32="2f236481" md5="5757740fd9630088669f6caf2b76dcb8" sha1="05451dfe09078d0a46926dec74941e9fda0e170d" />
+      <file name="VOL.2" crc32="f062c41f" md5="c260ed8e490f41606508b9422beb3fc1" sha1="8f457cbce27d214c166b1ec05bc0c3d87a80f984" />
+      <file name="VOL.0" crc32="687ad2e2" md5="586b7f3f7a7c4e5b6fd5fe7c6dcb616b" sha1="944fba21b60b2dd4e71bea1b55f8b0d3770c9c30" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="PICDIR" crc32="9cbea791" md5="5cd0924ba02066f4e5e10ccfffd9dff6" sha1="17730e2b5756f36992c5cb0c3eabf0b84c607913" />
+    </game>
+    <game name="Space Quest II" platform="PC" date="XXXX-XX-XX" version="2.0F" format="3.5DD" interpreter="2.936" language="English" comments="">
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="VIEWDIR" crc32="1ddb9f8d" md5="efb1f93513d57eeca9a539e019df7b89" sha1="74e6b6fcef76516ea1be1fc8c584fefe66eb97be" />
+      <file name="VOL.1" crc32="56ddcb7f" md5="fa5415f7cbc6e78c69d94ef3c92d000d" sha1="79963ad0ce237966e8125a3c0b04bb6840212be4" />
+      <file name="LOGDIR" crc32="4af29aa5" md5="28add5125484302d213911df60d2aded" sha1="698adf61f0d28d02d438536795cf07d75b7dfa7e" />
+      <file name="SNDDIR" crc32="e129a2f5" md5="eab6a5f4cb071c906df674e98891a432" sha1="79cc5f5d8690319119007bdaf00c84cf86ffa923" />
+      <file name="VOL.2" crc32="0684fac1" md5="f7015465702a24333a0e799ad0d967bb" sha1="1dd02bf49ccf480574984b3e9022cf54d3b0fcb7" />
+      <file name="VOL.0" crc32="fd471c99" md5="3e09c8580506212cd3494b5df8ea6cbc" sha1="5f9cba6dced32737c5a80f7cf2e805541c9fa422" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="PICDIR" crc32="c3509c67" md5="514534df82237848dfcd760e476a766e" sha1="5c87dfc1ed42f1d081e67a72b77e769ce2465da2" />
+    </game>
+    <game name="Space Quest II" platform="Macintosh" date="XXXX-XX-XX" version="2.0D" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="090e4833" md5="40666f360eeabd0af8422f70a4433af7" sha1="d234a5efe46f21d9e24daa843cb8979e1e6a2c18" />
+      <file name="WORDS.TOK" crc32="2d9e1b4b" md5="6c171b44637ccbe0cadb59ecc044a2ab" sha1="ab8465a4c63363d9df9c0e470fa4cb4c29e917c5" />
+      <file name="VIEWDIR" crc32="d879bb48" md5="54e3c66ba71e70a1c9a2b159a74dae1e" sha1="952a321e83ead88e9d117af42e32fe37d73c337b" />
+      <file name="VOL.1" crc32="98dd60a3" md5="b7a1994f387d7a880f2e8f507253abc5" sha1="bbe953d482b3924513b2b16f151033dff948d6c6" />
+      <file name="LOGDIR" crc32="8384a13e" md5="bfbebe0b59d83f931f2e1c62ce9484a7" sha1="4ef96f3b310eaa1d7462cb657045dc520373efdd" />
+      <file name="VOL.3" crc32="15a6feb4" md5="55141747e984c0e2528fa1104018cce0" sha1="3f225beb4b8eb510b178cb6caa51522e8695acda" />
+      <file name="VOL.2" crc32="dd3f3c1d" md5="971043e0c43c91e5f76548dfcf84dd02" sha1="ba2be73b8f2bfe3c645b5e2586ab4340b82f38ca" />
+      <file name="VOL.0" crc32="9061359b" md5="b947bb4cec8c5d7b7c8e439d049f29b4" sha1="702994efc5860abefc25a97fd7d1d0fb9f847e15" />
+      <file name="OBJECT" crc32="60fe6dc1" md5="738ab16e8d9b9a0097ba9f2e2275d055" sha1="a5679762c4cacae4243bbdf00616dfbfc83b2abd" />
+      <file name="PICDIR" crc32="1ae49043" md5="5567194649ea97f3c0e582384d55167f" sha1="2633691027401b95b86bd46d6ec5a0224569cb16" />
+    </game>
+    <game name="Space Quest II" platform="Amiga" date="XXXX-XX-XX" version="2.0F" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="VIEWDIR" crc32="1ddb9f8d" md5="efb1f93513d57eeca9a539e019df7b89" sha1="74e6b6fcef76516ea1be1fc8c584fefe66eb97be" />
+      <file name="VOL.1" crc32="56ddcb7f" md5="fa5415f7cbc6e78c69d94ef3c92d000d" sha1="79963ad0ce237966e8125a3c0b04bb6840212be4" />
+      <file name="LOGDIR" crc32="4af29aa5" md5="28add5125484302d213911df60d2aded" sha1="698adf61f0d28d02d438536795cf07d75b7dfa7e" />
+      <file name="SNDDIR" crc32="e129a2f5" md5="eab6a5f4cb071c906df674e98891a432" sha1="79cc5f5d8690319119007bdaf00c84cf86ffa923" />
+      <file name="VOL.2" crc32="0684fac1" md5="f7015465702a24333a0e799ad0d967bb" sha1="1dd02bf49ccf480574984b3e9022cf54d3b0fcb7" />
+      <file name="VOL.0" crc32="fd471c99" md5="3e09c8580506212cd3494b5df8ea6cbc" sha1="5f9cba6dced32737c5a80f7cf2e805541c9fa422" />
+      <file name="OBJECT" crc32="7d4611f9" md5="5dc52be721257719f4b311a84ce22b16" sha1="b6de91838b78d788de5023b3d9d91376890929f0" />
+      <file name="PICDIR" crc32="c3509c67" md5="514534df82237848dfcd760e476a766e" sha1="5c87dfc1ed42f1d081e67a72b77e769ce2465da2" />
+    </game>
+    <game name="Space Quest II (alternate)" platform="AtariST" date="XXXX-XX-XX" version="2.0C" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="e1a90d3a" md5="30df64fbb29fbfbba40b35441cd58f67" sha1="c47d8138b63ff25d4dd5086cc8cbc04209653bdf" />
+      <file name="PICDIR" crc32="c0746c1b" md5="1bc304b0b88425ad9e885edf9a18b30d" sha1="bd28c4b2a044be92496e5762881bc13a9584b7d2" />
+      <file name="LOGDIR" crc32="bb96128b" md5="bd71fe54869e86945041700f1804a651" sha1="8474c56071239c1943dfcbb7e7f60f51cab7138c" />
+      <file name="VIEWDIR" crc32="fd0930c5" md5="5b33fbb78187481177f3d36a54d5fdba" sha1="4b5a39d57032c1046e646bdbe0a1970341e1a1b8" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="VOL.0" crc32="7b447c58" md5="df655a23ae530515fa47d477d6a0b04f" sha1="5b05c486a9915dbca77d15e09bdc1a4979f3848d" />
+      <file name="VOL.1" crc32="d9afc4cd" md5="f935c218d32cf5fc582b2afe63dbc30c" sha1="6cb9fc6ab636684ff2f30bef87cbd634f1072e18" />
+      <file name="VOL.2" crc32="84ba2405" md5="e3f65d749976bb995d69d14937f38695" sha1="552b9f1d906e11fe64dff1e7fd75625dde0390fa" />
+      <file name="VOL.3" crc32="f55d8680" md5="67031ff21722c6b10b775390faece51e" sha1="c3529e37dd8a74dcf9f1f370b588d67a8d2e8349" />
+    </game>
+    <game name="Space Quest II (bad?)" platform="AtariST" date="XXXX-XX-XX" version="2.0C" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="e1a90d3a" md5="30df64fbb29fbfbba40b35441cd58f67" sha1="c47d8138b63ff25d4dd5086cc8cbc04209653bdf" />
+      <file name="PICDIR" crc32="c0746c1b" md5="1bc304b0b88425ad9e885edf9a18b30d" sha1="bd28c4b2a044be92496e5762881bc13a9584b7d2" />
+      <file name="LOGDIR" crc32="bb96128b" md5="bd71fe54869e86945041700f1804a651" sha1="8474c56071239c1943dfcbb7e7f60f51cab7138c" />
+      <file name="VIEWDIR" crc32="fd0930c5" md5="5b33fbb78187481177f3d36a54d5fdba" sha1="4b5a39d57032c1046e646bdbe0a1970341e1a1b8" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="VOL.0" crc32="7b447c58" md5="df655a23ae530515fa47d477d6a0b04f" sha1="5b05c486a9915dbca77d15e09bdc1a4979f3848d" />
+      <file name="VOL.1" crc32="6e2f5462" md5="fca69cc2f2b6772eb17e7ff675b188cc" sha1="28f16e5002fd331ad3b63dd4ed0af6a40b1ca711" />
+      <file name="VOL.2" crc32="84ba2405" md5="e3f65d749976bb995d69d14937f38695" sha1="552b9f1d906e11fe64dff1e7fd75625dde0390fa" />
+      <file name="VOL.3" crc32="badc4bbd" md5="47ec145b014a2da55dedd93881d18c19" sha1="b6786b3adbd092ad2ddd1ce20233b946c60c35fc" />
+    </game>
+    <game name="Space Quest II (bad 2?)" platform="AtariST" date="XXXX-XX-XX" version="2.0C" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="e1a90d3a" md5="30df64fbb29fbfbba40b35441cd58f67" sha1="c47d8138b63ff25d4dd5086cc8cbc04209653bdf" />
+      <file name="PICDIR" crc32="c0746c1b" md5="1bc304b0b88425ad9e885edf9a18b30d" sha1="bd28c4b2a044be92496e5762881bc13a9584b7d2" />
+      <file name="LOGDIR" crc32="bb96128b" md5="bd71fe54869e86945041700f1804a651" sha1="8474c56071239c1943dfcbb7e7f60f51cab7138c" />
+      <file name="VIEWDIR" crc32="fd0930c5" md5="5b33fbb78187481177f3d36a54d5fdba" sha1="4b5a39d57032c1046e646bdbe0a1970341e1a1b8" />
+      <file name="WORDS.TOK" crc32="aeb974ec" md5="552e2b31bf8825eea5a46e6eebb4cb3e" sha1="4011fb5b691986f057baeda79c88d225355a59b4" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="VOL.0" crc32="e224f7b5" md5="1cad6cb51d2b7c56fe47965f2e244a10" sha1="379e4756e065e3e6de6138bc9fbb131299766e54" />
+      <file name="VOL.1" crc32="e1c8e378" md5="7ac373fb79e3468857d304835daa7af0" sha1="513ecbfb5d04a926e0cd93f7bec31058468318b4" />
+      <file name="VOL.2" crc32="583effe8" md5="78442d9a5f7f7e772500663c1b6c2a78" sha1="a53acbfe9f25142fc44825c1bc685a6add74d356" />
+      <file name="VOL.3" crc32="6e437fd6" md5="811d85729498da6a02ce0112a348de5e" sha1="a444fda8acf5d6c39c435b4a17c0ca2a41c979d1" />
+    </game>
+    <game name="Space Quest II" platform="AppleIIgs" date="XXXX-XX-XX" version="2.0A" format="" interpreter="" language="English" comments="">
+      <file name="WORDS.TOK" crc32="4c81f551" md5="dd359906ca925362ce416d288fc1ed5e" sha1="9c585cece9d98a5fe838a5fea4f216d21c0ae43f" />
+      <file name="SNDDIR" crc32="736a2478" md5="c96925a8f1c479b817065b47751ef0bf" sha1="703142dd64cec44b5b4419c15bf5788747b19a6c" />
+      <file name="LOGDIR" crc32="c9fb0d1b" md5="5dfdac98dd3c01fcfb166529f917e911" sha1="ceab6020ab76b172ea7e9ce14513255920302275" />
+      <file name="VIEWDIR" crc32="f5845743" md5="ed30cc7aadb4fee28167f4d1812f7592" sha1="86e070d651415e847c8d7a2cc842e1bbf8fd8fec" />
+      <file name="PICDIR" crc32="fc58a803" md5="6a3a9fe965116d1b7cea5e9d45d5aadf" sha1="42a2017e4ce57a6d8b624bcee33277699c6b8c17" />
+      <file name="OBJECT" crc32="b67fcb84" md5="5024d50d42801aaea7170a756218a7e6" sha1="0e77603e5ddd16252e67fb5193aa527e04c8efd9" />
+      <file name="VOL.0" crc32="873659be" md5="6fe8609cdf93ced475b3d503371ad9e6" sha1="ef7132a33a2e61fc9292b869c2787789485256de" />
+      <file name="VOL.1" crc32="d5b62245" md5="0966e9fc390495c5534f2094354f33be" sha1="acbe22f7804ec1308762db3c8d3382ebfed62593" />
+      <file name="VOL.2" crc32="f717520e" md5="befb6baa2155c8d0e4e0811cdd02bd84" sha1="8e42646ed97ab8fbeafa54631ea8d1b41e0eb85f" />
+    </game>
+    <game name="The Black Cauldron" platform="PC" date="XXXX-XX-XX" version="2.00" format="FLOPPY" interpreter="2.439" language="English" comments="">
+      <file name="SNDDIR" crc32="8491f9fc" md5="1268c6e2c2802433d42a44513abea689" sha1="2e9d8ec49c7c7f86eb408857bfe05412a6f3da89" />
+      <file name="VIEWDIR" crc32="d5409a74" md5="0e9b075bf0d72ef46c34b6f3e8e66515" sha1="cd3778cfa019c469ee1b6e18609c3bd307df2ed7" />
+      <file name="VOL.1" crc32="e6a85e67" md5="6dbceb046198594374dc41d2dc332c9e" sha1="8597c976a7b6837706bb6f2175a1c3203426f5ad" />
+      <file name="LOGDIR" crc32="783a63a1" md5="7f598d4712319b09d7bd5b3be10a2e4a" sha1="4f8a2c86341350bbb003343bcf5c4e5f051b56d0" />
+      <file name="VOL.2" crc32="ac9b48f9" md5="07a2594ebc5c5b043bcd5e4ef80448f5" sha1="9e6bd6cc2367c9613dde09b4f09df8d27cd90ecf" />
+      <file name="WORDS.TOK" crc32="d2a71a7b" md5="b9ddaf9442f7d897f0131f915f2c80a5" sha1="7a4d6cac5d233bb94cf7488515b52a4720a58573" />
+      <file name="VOL.0" crc32="ff6febf8" md5="7fa555bb98f2b87cfce8af099780c0e4" sha1="337f8d5795ea74ac3d0a3c512aa08b0d344ba00b" />
+      <file name="OBJECT" crc32="14b3c6ab" md5="8bda909f31057a87ecb6fbff44237e4c" sha1="f91ba96fa8a376a3048b9935a0925a38baf938cb" />
+      <file name="PICDIR" crc32="e8103bdf" md5="d8d9f4b760381c212093d3f6948cd140" sha1="9bfeaefc0057b85c344ffe76dbf00d104197dd4a" />
+    </game>
+    <game name="The Black Cauldron" platform="PC" date="XXXX-XX-XX" version="2.10" format="3.5DD" interpreter="3.002.098" language="English" comments="">
+      <file name="WORDS.TOK" crc32="d2a71a7b" md5="b9ddaf9442f7d897f0131f915f2c80a5" sha1="7a4d6cac5d233bb94cf7488515b52a4720a58573" />
+      <file name="OBJECT" crc32="14b3c6ab" md5="8bda909f31057a87ecb6fbff44237e4c" sha1="f91ba96fa8a376a3048b9935a0925a38baf938cb" />
+      <file name="BCDIR" crc32="b3af0f26" md5="0de3953c9225009dc91e5b0d1692967b" sha1="af43958ab85316100e22e93a1bdcfd935ac99c12" />
+      <file name="BCVOL.0" crc32="08aa1057" md5="e9b3ddb657689a7fed023670193508f6" sha1="68de8206b40c560618a6db872e37884ec82e3d2f" />
+      <file name="BCVOL.1" crc32="232d19a7" md5="08dec443f203223f2aec2d223485e144" sha1="577c972dc6df9d7a9f93666b5cacae31021e4d4d" />
+    </game>
+    <game name="The Black Cauldron" platform="PC" date="XXXX-XX-XX" version="2.10" format="5.25DD" interpreter="3.002.098" language="English" comments="">
+      <file name="OBJECT" crc32="14b3c6ab" md5="8bda909f31057a87ecb6fbff44237e4c" sha1="f91ba96fa8a376a3048b9935a0925a38baf938cb" />
+      <file name="BCDIR" crc32="2691d449" md5="0c5a9acbcc7e51127c34818e75806df6" sha1="71f23be706936947d80264e9fe36d8e47d7ce5cb" />
+      <file name="BCVOL.0" crc32="08aa1057" md5="e9b3ddb657689a7fed023670193508f6" sha1="68de8206b40c560618a6db872e37884ec82e3d2f" />
+      <file name="WORDS.TOK" crc32="d2a71a7b" md5="b9ddaf9442f7d897f0131f915f2c80a5" sha1="7a4d6cac5d233bb94cf7488515b52a4720a58573" />
+      <file name="BCVOL.1" crc32="02eed913" md5="6ccf65f404911496a4c6218315ba2847" sha1="ab7f4a6a6ff99c49269696da510668ce4ced811d" />
+      <file name="BCVOL.2" crc32="dbd154d0" md5="453c738ba84d7491efaf5a7ddd56a701" sha1="fd5aab5444b0c751c6b8edb2294ff309dfa5a66a" />
+    </game>
+    <game name="The Black Cauldron" platform="Amiga" date="XXXX-XX-XX" version="2.00" format="" interpreter="" language="English" comments="">
+      <file name="SNDDIR" crc32="e684c74c" md5="34ebd17835d5c46c111dc0a5290e0559" sha1="5844b17793a78b3bcab304a3f03146de9e2c96d7" />
+      <file name="WORDS.TOK" crc32="d2a71a7b" md5="b9ddaf9442f7d897f0131f915f2c80a5" sha1="7a4d6cac5d233bb94cf7488515b52a4720a58573" />
+      <file name="VIEWDIR" crc32="d971b222" md5="9656477c03f7d1ac737189b74c0de3bc" sha1="c368ad62d2f56f8a13871bb129b8fdbb6da592d1" />
+      <file name="VOL.1" crc32="9c3012ea" md5="1b1fdebe2af4f824238a2b57bfc5475e" sha1="3e0b9201671a88e5bf0ef38aadfb82c836fc407f" />
+      <file name="LOGDIR" crc32="5d4dd7a0" md5="7b01694af21213b4727bb94476f64eb5" sha1="ba3f59b826035aa8ccad88460fa250320f27862c" />
+      <file name="VOL.2" crc32="ac9b48f9" md5="07a2594ebc5c5b043bcd5e4ef80448f5" sha1="9e6bd6cc2367c9613dde09b4f09df8d27cd90ecf" />
+      <file name="VOL.0" crc32="42ae42f2" md5="a62c506d22589b554cc2d36453f978c1" sha1="e530dca3d3e554ef1c2edc7e759944068c0585c8" />
+      <file name="OBJECT" crc32="fb87b16b" md5="364239c8772c4a2aecaa8822b5eeb942" sha1="19ce985c24e38d038821e8b473632e80b8dee979" />
+      <file name="PICDIR" crc32="e8103bdf" md5="d8d9f4b760381c212093d3f6948cd140" sha1="9bfeaefc0057b85c344ffe76dbf00d104197dd4a" />
+    </game>
+    <game name="The Black Cauldron (bad?)" platform="AppleIIgs" date="XXXX-XX-XX" version="1.0O" format="" interpreter="3.002.098" language="English" comments="">
+      <file name="OBJECT" crc32="14b3c6ab" md5="8bda909f31057a87ecb6fbff44237e4c" sha1="f91ba96fa8a376a3048b9935a0925a38baf938cb" />
+      <file name="BCDIR" crc32="9ca6bfc4" md5="dc09d30b147242692f4f85b9811962db" sha1="0ecc7ba5aeb1c7ffd1daf84d8a7a18b5aa99706f" />
+      <file name="BCVOL.0" crc32="9beaf713" md5="765a40e60e0a2e186e24e4b281b305bf" sha1="f653889799c67aa980507dea68278af1c0a1c730" />
+      <file name="WORDS.TOK" crc32="a47b5b07" md5="c8b25de8bb954d4c4131ba950dbfea0f" sha1="e8f0f2f92b8691914e06000a8b64b7ee906cadf0" />
+      <file name="BCVOL.1" crc32="d44b944a" md5="9d13fd98f2e4e7d63a25cfa9280965c1" sha1="e0ad02f7c17d05e476e7235c41bda3fb4ee26124" />
+      <file name="BCVOL.2" crc32="bce69da2" md5="7e9491b7956353b338d210f2448f6e84" sha1="247862191f70f22ba99e871326e2d25b47680818" />
+    </game>
+  </games>
+</database>

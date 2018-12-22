@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <!-- Use Classic to type text at the bottom of the screen while the game runs. -->
+  <!-- Use InputBox to type text in a box while the game is paused. -->
+  <!-- Use WordList for classic mode with optional word list selection box, invoked using CTRL, ALT, SHIFT or CAPSLOCK. -->
+  <!-- Values: Classic, InputBox, WordList -->
+  <!-- Default: Classic -->
+  <InputMode>InputBox</InputMode>
+
+  <!-- Horizontal scaling factor. -->
+  <!-- Values: 1+ -->
+  <!-- Default: 2 -->
+  <DisplayScaleX>4</DisplayScaleX>
+
+  <!-- Vertical scaling factor. -->
+  <!-- Values: 1+ -->
+  <!-- Default: 2 -->
+  <DisplayScaleY>4</DisplayScaleY>
+
+  <!-- The theme affects the font and the color palette used. Once the game is running, these can be cycled using CTRL+R. -->
+  <!-- Values: Ega, Cga1, Cga2, Hercules, HerculesGreen, HerculesAmber, AtariST, Amiga1, Amiga2, Amiga3, AppleIIgs -->
+  <!-- Default: Ega -->
+  <Theme>Ega</Theme>
+
+  <!-- Skip the question at the start of Gold Rush!, King's Quest IV, Manhunter: New York and Leisure Suit Larry. -->
+  <!-- Values: true, false -->
+  <!-- Default: false -->
+  <SkipStartupQuestion>true</SkipStartupQuestion>
+
+  <!-- Enables/disables single channel sound, emulating the PC beeper. -->
+  <!-- Values: true, false -->
+  <!-- Default: false -->
+  <SoundSingleChannel>false</SoundSingleChannel>
+
+  <!-- Sound dissolve mode (2 or 3, for the agi version). -->
+  <!-- Values: 2, 3 -->
+  <!-- Default: 3 -->
+  <SoundDissolve>3</SoundDissolve>
+
+  <!-- Enable usage of the sound volume state variable. -->
+  <!-- Values: true, false -->
+  <!-- Default: true -->
+  <SoundReadVariable>true</SoundReadVariable>
+
+  <!-- Enables/disables sound output. This has side effects in the execution of the AGI scripts. Scripts that wait for music to finish playing will execute too quickly, because the sound flag is set immediately. -->
+  <!-- Values: true, false -->
+  <!-- Default: true -->
+  <SoundHardwareEnabled>true</SoundHardwareEnabled>
+
+  <!-- Time, in milliseconds, to delay the fading of each palette gradient. -->
+  <!-- Values: 0+ -->
+  <!-- Default: 25 -->
+  <DisplayFadeDelay>25</DisplayFadeDelay>
+
+  <!-- Number of palette gradients to use when fading. -->
+  <!-- Values: 0+ -->
+  <!-- Default: 10 -->
+  <DisplayFadeCount>10</DisplayFadeCount>
+
+  <!-- Computer to simulate. Used to initialize var 20, var 22 and flag 11. -->
+  <!-- Values: 0=PC, 1=PCJunior, 2=Tandy, 4=AtariST, 5=Amiga, 7=AppleIIgs, 8=PS2 -->
+  <Computer>0</Computer>
+
+  <!-- Display to simulate. Used to initialize var 26. -->
+  <!-- Values: 0=CGA, 1=RGB, 2=Hercules, 3=Ega, 4=MonoVga -->
+  <Display>0</Display>
+</Settings>
