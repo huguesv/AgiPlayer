@@ -9,10 +9,7 @@ namespace Woohoo.Agi.Interpreter
 
     public class SoundManager
     {
-        private SoundChannel[] soundChannels;
-        private bool soundPlaying;
-
-        private short[] dissolveDataV2 = new short[]
+        private readonly short[] dissolveDataV2 = new short[]
         {
             -2, -3, -2, -1, 0x00, 0x00, 0x01, 0x01, 0x01,
             0x01, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,
@@ -25,7 +22,7 @@ namespace Woohoo.Agi.Interpreter
             0x0C, 0x0D, -100,
         };
 
-        private short[] dissolveDataV3 = new short[]
+        private readonly short[] dissolveDataV3 = new short[]
         {
             -2, -3, -2, -1,
             0, 0, 0, 0, 0,
@@ -44,6 +41,9 @@ namespace Woohoo.Agi.Interpreter
             0x0D,
             -100,
         };
+
+        private SoundChannel[] soundChannels;
+        private bool soundPlaying;
 
         public SoundManager(AgiInterpreter interpreter)
         {
@@ -106,14 +106,16 @@ namespace Woohoo.Agi.Interpreter
 
                 for (int i = 0; i < this.soundChannels.Length; i++)
                 {
-                    SoundChannel channel = new SoundChannel();
-                    channel.Data = resource.GetChannelData(i);
-                    channel.DataIndex = 0;
-                    channel.Duration = 0;
-                    channel.DissolveCount = 0xffff;
-                    channel.Avail = 0xffff;
-                    channel.FreqCount = 0;
-                    channel.ToneHandle = this.SoundDriver.Open(i);
+                    var channel = new SoundChannel
+                    {
+                        Data = resource.GetChannelData(i),
+                        DataIndex = 0,
+                        Duration = 0,
+                        DissolveCount = 0xffff,
+                        Avail = 0xffff,
+                        FreqCount = 0,
+                        ToneHandle = this.SoundDriver.Open(i),
+                    };
 
                     if (channel.ToneHandle == 0)
                     {
@@ -162,7 +164,7 @@ namespace Woohoo.Agi.Interpreter
                 return -1;
             }
 
-            SoundChannel soundChannel = this.soundChannels[channel];
+            var soundChannel = this.soundChannels[channel];
             if (soundChannel.Avail == 0)
             {
                 return -1;

@@ -15,7 +15,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
     {
         private const int SAMPLESIZE = 11028;
 
-        private static short[] zeroBuffer = new short[SAMPLESIZE];
+        private static readonly short[] zeroBuffer = new short[SAMPLESIZE];
 
         private AgiInterpreter interpreter;
         private byte handlesUsed = 0;
@@ -89,7 +89,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         {
             (this as ISoundPcmDriver).Lock();
 
-            SdlSoundChannel channel = new SdlSoundChannel();
+            var channel = new SdlSoundChannel();
             channel.Handle = this.CreateHandle();
             if (channel.Handle == 0)
             {
@@ -110,7 +110,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         void ISoundPcmDriver.Close(int handle)
         {
             SdlSoundChannel channel = null;
-            foreach (SdlSoundChannel current in this.channels)
+            foreach (var current in this.channels)
             {
                 if (current.Handle == handle)
                 {
@@ -185,7 +185,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
             Array.Copy(zeroBuffer, this.buffer, SAMPLESIZE);
 
-            foreach (SdlSoundChannel sdlChannel in this.channels)
+            foreach (var sdlChannel in this.channels)
             {
                 if (sdlChannel.Available != 0)
                 {

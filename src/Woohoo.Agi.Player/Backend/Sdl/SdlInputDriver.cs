@@ -14,7 +14,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         private const int DelayMultiplier = 50;
         private const int SdlTickScale = 50;
 
-        private static int[] systemAltAtoZMap = new int[]
+        private static readonly int[] systemAltAtoZMap = new int[]
         {
             30, 48, 46, 32, 18, 33, 34, 35, 23, 36, 37, 38, 50,
             49, 24, 25, 16, 19, 31, 20, 22, 47, 17, 45, 21, 44,
@@ -52,9 +52,10 @@ namespace Woohoo.Agi.Player.Backend.Sdl
             new SdlKey(SDL_Keycode.SDLK_PAGEDOWN, 0),
         };
 
+        private readonly InputEvent stopEgoEvent;
+
         private AgiInterpreter interpreter;
         private int tick;
-        private InputEvent stopEgoEvent;
         private IntPtr clockThread;
         private IntPtr joystick;
         private int joystickX;
@@ -65,9 +66,11 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         /// </summary>
         internal SdlInputDriver()
         {
-            this.stopEgoEvent = new InputEvent();
-            this.stopEgoEvent.Type = InputEventType.Direction;
-            this.stopEgoEvent.Data = InputEventDirection.None;
+            this.stopEgoEvent = new InputEvent
+            {
+                Type = InputEventType.Direction,
+                Data = InputEventDirection.None,
+            };
         }
 
         void IInputDriver.ClockInitStartThread()
@@ -111,9 +114,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         void IInputDriver.ClearEvents()
         {
             int x;
-            SDL_Event ev;
             int oneCount = 0;
-            while ((x = SDL_PollEvent(out ev)) != 0)
+            while ((x = SDL_PollEvent(out SDL_Event ev)) != 0)
             {
                 if (x == 1)
                 {
@@ -243,8 +245,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
         InputEvent IInputDriver.ReadEvent()
         {
-            InputEvent e = this.EventRead(false);
-            return e;
+            return this.EventRead(false);
         }
 
         internal void SetInterpreter(AgiInterpreter interpreter)
@@ -277,7 +278,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
         private int PollCharacter()
         {
-            InputEvent e = this.EventRead(false);
+            var e = this.EventRead(false);
             if (e == null)
             {
                 return 0;
@@ -305,11 +306,11 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
         private InputEvent UserEventDecode(IntPtr data1, IntPtr data2)
         {
-            InputEvent e = new InputEvent();
-            e.Type = data1.ToInt32();
-            e.Data = data2.ToInt32();
-
-            return e;
+            return new InputEvent
+            {
+                Type = data1.ToInt32(),
+                Data = data2.ToInt32(),
+            };
         }
 
         private int DirKeyMap(SDL_keysym keysym)
@@ -381,7 +382,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         {
             // if the key is a direction, then map it to that
             // else, return the ascii thing back
-            InputEvent e = new InputEvent();
+            var e = new InputEvent();
 
             int direction = this.DirKeyMap(keysym);
             if (direction != 0xffff)
@@ -472,8 +473,10 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
         private InputEvent EventMouseButton(int button, int x, int y)
         {
-            InputEvent e = new InputEvent();
-            e.Type = InputEventType.Mouse;
+            var e = new InputEvent
+            {
+                Type = InputEventType.Mouse,
+            };
 
             switch (button)
             {
@@ -502,8 +505,10 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
         private InputEvent EventJoyButton(int button)
         {
-            InputEvent e = new InputEvent();
-            e.Type = InputEventType.Ascii;
+            var e = new InputEvent
+            {
+                Type = InputEventType.Ascii,
+            };
 
             switch (button)
             {
@@ -540,8 +545,11 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                 if (axis == 0)
                 {
                     // Left-right
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                    };
+
                     if (val < 0)
                     {
                         e.Data = InputEventDirection.Left;
@@ -557,8 +565,11 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                 if (axis == 1)
                 {
                     // Up-Down
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                    };
+
                     if (val < 0)
                     {
                         e.Data = InputEventDirection.Up;
@@ -608,23 +619,29 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                 if (this.joystickY < -3200)
                 {
                     // left-up
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.Home;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.Home,
+                    };
                 }
                 else if (this.joystickY > 3200)
                 {
                     // left-down
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.End;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.End,
+                    };
                 }
                 else
                 {
                     // left
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.Left;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.Left,
+                    };
                 }
             }
             else if (this.joystickX > 3200)
@@ -632,23 +649,29 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                 if (this.joystickY < -3200)
                 {
                     // right-up
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.PageUp;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.PageUp,
+                    };
                 }
                 else if (this.joystickY > 3200)
                 {
                     // right-down
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.PageDown;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.PageDown,
+                    };
                 }
                 else
                 {
                     // right
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.Right;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.Right,
+                    };
                 }
             }
             else
@@ -656,16 +679,20 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                 if (this.joystickY < -3200)
                 {
                     // up
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.Up;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.Up,
+                    };
                 }
                 else if (this.joystickY > 3200)
                 {
                     // down
-                    e = new InputEvent();
-                    e.Type = InputEventType.Direction;
-                    e.Data = InputEventDirection.Down;
+                    e = new InputEvent
+                    {
+                        Type = InputEventType.Direction,
+                        Data = InputEventDirection.Down,
+                    };
                 }
                 else
                 {
@@ -682,8 +709,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
             InputEvent e = null;
             if (e == null)
             {
-                SDL_Event evt;
-                while (SDL_PollEvent(out evt) != 0 && e == null)
+                while (SDL_PollEvent(out SDL_Event evt) != 0 && e == null)
                 {
                     switch (evt.type)
                     {
