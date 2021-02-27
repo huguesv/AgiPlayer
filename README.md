@@ -16,7 +16,7 @@ Why? Because it's fun and it was an opportunity to learn more about the internal
 
 ## Requirements
 
-- .NET Framework 2.0 or later
+- .NET Framework 4.72 or later
 - Windows 7 or later, 32-bit or 64-bit
 
 ## Features
