@@ -21,9 +21,7 @@ jobs:
         dotnet-version: '5.0.x'
     - name: Clean
       run: dotnet clean ${{env.solutionFile}} --configuration Release && dotnet nuget locals all --clear
-    - name: Install dependencies
-      run: dotnet restore ${{env.solutionFile}}
     - name: Build
-      run: dotnet build ${{env.solutionFile}} --configuration Release --no-restore
+      run: dotnet build ${{env.solutionFile}} --configuration Release
     - name: Test
       run: dotnet test ${{env.solutionFile}} --no-restore --verbosity normal
