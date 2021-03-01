@@ -79,6 +79,7 @@ The Black Cauldron
 ![The Black Cauldron](images/bc.png?raw=true "The Black Cauldron")
 
 Christmas Card
+
 ![Christmas Card](images/cc.png?raw=true "Christmas Card")
 
 Donald Duck's Playground
@@ -86,6 +87,7 @@ Donald Duck's Playground
 ![Donald Duck's Playground](images/ddp.png?raw=true "Donald Duck's Playground")
 
 Gold Rush!
+
 ![Gold Rush!](images/gr.png?raw=true "Gold Rush!")
 
 King's Quest I
