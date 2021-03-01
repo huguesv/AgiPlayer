@@ -8,16 +8,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <OutputPath>$(SolutionDir)..\bin\$(Configuration)\$(MSBuildProjectName)</OutputPath>
+    <OutputPath>$(MSBuildThisFileDirectory)..\bin\$(Configuration)\$(MSBuildProjectName)</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
-    <BaseIntermediateOutputPath>$(SolutionDir)..\obj\$(Configuration)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\obj\$(Configuration)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <UseCommonOutputDirectory>False</UseCommonOutputDirectory>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="$(SolutionDir)Common\stylecop.json" Link="stylecop.json" />
-    <Compile Include="$(SolutionDir)Common\Common.AssemblyInfo.cs" Link="Common.AssemblyInfo.cs" />
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)Common\stylecop.json" Link="stylecop.json" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Common.AssemblyInfo.cs" Link="Common.AssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>
