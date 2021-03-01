@@ -45,6 +45,7 @@ namespace Woohoo.Agi.Player
                     }
                 }
 
+#if USE_ZIP
                 foreach (string zipFile in Directory.GetFiles(folder, "*.zip"))
                 {
                     var game = FindGame(detector, new GameZipArchive(zipFile));
@@ -53,6 +54,7 @@ namespace Woohoo.Agi.Player
                         games.Add(game);
                     }
                 }
+#endif
             }
 
             return games.ToArray();

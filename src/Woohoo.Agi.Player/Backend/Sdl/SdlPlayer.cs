@@ -18,10 +18,10 @@ namespace Woohoo.Agi.Player.Backend.Sdl
             var graphicsDriver = new SdlGraphicsDriver();
             var soundDriver = new PcmSoundDriver(new SdlSoundPcmDriver());
 
-            this.interpreter = new AgiInterpreter(inputDriver, graphicsDriver, soundDriver);
+            this.Interpreter = new AgiInterpreter(inputDriver, graphicsDriver, soundDriver);
 
-            inputDriver.SetInterpreter(this.interpreter);
-            soundDriver.SetInterpreter(this.interpreter);
+            inputDriver.SetInterpreter(this.Interpreter);
+            soundDriver.SetInterpreter(this.Interpreter);
         }
 
         protected override void Quit()

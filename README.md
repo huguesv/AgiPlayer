@@ -16,7 +16,7 @@ Why? Because it's fun and it was an opportunity to learn more about the internal
 
 ## Requirements
 
-- .NET Framework 4.72 or later
+- .NET 5 or later
 - Windows 7 or later, 32-bit or 64-bit
 
 ## Features
@@ -78,7 +78,7 @@ Official Sierra demos also work. Fan games probably work too, but are untested.
 
 COPYRIGHT AND PERMISSION NOTICE
 
-Copyright (c) 2006-2018 Hugues Valois
+Copyright (c) 2006-2021 Hugues Valois
 
 Copyright (c) 2000-2002 Nick Sonneveld
 

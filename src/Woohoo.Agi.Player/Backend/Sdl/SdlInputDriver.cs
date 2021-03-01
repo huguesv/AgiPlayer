@@ -14,7 +14,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         private const int DelayMultiplier = 50;
         private const int SdlTickScale = 50;
 
-        private static readonly int[] systemAltAtoZMap = new int[]
+        private static readonly int[] SystemAltAtoZMap = new int[]
         {
             30, 48, 46, 32, 18, 33, 34, 35, 23, 36, 37, 38, 50,
             49, 24, 25, 16, 19, 31, 20, 22, 47, 17, 45, 21, 44,
@@ -337,7 +337,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
             {
                 if (keysym.sym >= SDL_Keycode.SDLK_a && keysym.sym <= SDL_Keycode.SDLK_z)
                 {
-                    return systemAltAtoZMap[keysym.sym - SDL_Keycode.SDLK_a] << 8;
+                    return SystemAltAtoZMap[keysym.sym - SDL_Keycode.SDLK_a] << 8;
                 }
             }
             else if ((keysym.mod & SDL_Keymod.KMOD_CTRL) != 0)

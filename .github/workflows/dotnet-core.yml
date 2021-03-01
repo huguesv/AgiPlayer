@@ -1,0 +1,27 @@
+name: .NET 5
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    env:
+      solutionFile: src/AgiPlayer.sln
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET 5
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+    - name: Clean
+      run: dotnet clean ${{env.solutionFile}} --configuration Release && dotnet nuget locals all --clear
+    - name: Build
+      run: dotnet build ${{env.solutionFile}} --configuration Release
+    - name: Test
+      run: dotnet test ${{env.solutionFile}} --no-restore --verbosity normal

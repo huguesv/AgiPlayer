@@ -224,7 +224,7 @@
     <value>Agi Player</value>
   </data>
   <data name="PlayerVersion" xml:space="preserve">
-    <value>1.0.0</value>
+    <value>1.1.0</value>
   </data>
   <data name="QuitButton" xml:space="preserve">
     <value>Quit</value>

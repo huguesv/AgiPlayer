@@ -11,7 +11,233 @@ namespace Woohoo.Agi.Player.Backend.Sdl
     [SuppressUnmanagedCodeSecurity]
     internal static class NativeMethods
     {
+        public const int SDL_INIT_TIMER = 1;
+
+        public const int SDL_INIT_AUDIO = 16;
+
+        public const int SDL_INIT_VIDEO = 32;
+
+        public const int SDL_INIT_CDROM = 256;
+
+        public const int SDL_INIT_JOYSTICK = 512;
+
+        public const int SDL_INIT_NOPARACHUTE = 1048576;
+
+        public const int SDL_INIT_EVENTTHREAD = 16777216;
+
+        public const int SDL_INIT_EVERYTHING = 65535;
+
+        public const byte SDL_PRESSED = 1;
+
+        public const byte SDL_RELEASED = 0;
+
+        public const int SDL_ALLEVENTS = -1;
+
+        public const int SDL_QUERY = -1;
+
+        public const int SDL_IGNORE = 0;
+
+        public const int SDL_DISABLE = 0;
+
+        public const int SDL_ENABLE = 1;
+
+        public const int SDL_ALL_HOTKEYS = -1;
+
+        public const int SDL_DEFAULT_REPEAT_DELAY = 500;
+
+        public const int SDL_DEFAULT_REPEAT_INTERVAL = 30;
+
+        public const byte SDL_BUTTON_LEFT = 1;
+
+        public const byte SDL_BUTTON_MIDDLE = 2;
+
+        public const byte SDL_BUTTON_RIGHT = 3;
+
+        public const byte SDL_BUTTON_WHEELUP = 4;
+
+        public const byte SDL_BUTTON_WHEELDOWN = 5;
+
+        public const byte SDL_BUTTON_X1 = 6;
+
+        public const byte SDL_BUTTON_X2 = 7;
+
+        public const byte SDL_BUTTON_LMASK = 1;
+
+        public const byte SDL_BUTTON_MMASK = 2;
+
+        public const byte SDL_BUTTON_RMASK = 4;
+
+        public const byte SDL_BUTTON_X1MASK = 32;
+
+        public const byte SDL_BUTTON_X2MASK = 64;
+
+        public const int SDL_ANYFORMAT = 268435456;
+
+        public const int SDL_HWPALETTE = 536870912;
+
+        public const int SDL_DOUBLEBUF = 1073741824;
+
+        public const int SDL_FULLSCREEN = -2147483648;
+
+        public const int SDL_RESIZABLE = 16;
+
+        public const byte SDL_LOGPAL = 1;
+
+        public const byte SDL_PHYSPAL = 2;
+
         private const string nativeLibName = "SDL";
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void SDL_AudioCallback(IntPtr userdata, IntPtr stream, int len);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SDL_EventFilter([Out] SDL_Event evt);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SDL_ThreadCallback();
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SDL_TimerCallback(int interval);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SDL_NewTimerCallback(int interval);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_Init(int flags);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_QuitSubSystem(int flags);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Quit();
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_OpenAudio(IntPtr desired, IntPtr obtained);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_PauseAudio(int pause_on);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_LockAudio();
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_UnlockAudio();
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_CloseAudio();
+
+        public static string SDL_GetError()
+        {
+            return Marshal.PtrToStringAnsi(__SDL_GetError());
+        }
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_PumpEvents();
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_PeepEvents([In][Out] SDL_Event[] events, int numevents, int action, int mask);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_PollEvent(out SDL_Event sdlEvent);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_PushEvent(out SDL_Event evt);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_EventState(byte type, int state);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_NumJoysticks();
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_JoystickOpen(int device_index);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_JoystickEventState(int state);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_EnableUNICODE(int enable);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_EnableKeyRepeat(int rate, int delay);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern byte SDL_GetMouseState(out int x, out int y);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_CreateThread(SDL_ThreadCallback fn, object data);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_WaitThread(IntPtr thread, out int status);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetTicks();
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Delay(int ms);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_SetVideoMode(int width, int height, int bpp, int flags);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_UpdateRect(IntPtr screen, int x, int y, int w, int h);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetPalette(IntPtr surface, int flags, [In][Out] SDL_Color[] colors, int firstcolor, int ncolors);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetClipRect(IntPtr surface, ref SDL_Rect rect);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_FillRect(IntPtr surface, ref SDL_Rect rect, int color);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_WM_SetCaption(string title, string icon);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_WM_SetIcon(IntPtr icon, byte[] mask);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_WM_IconifyWindow();
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_WM_ToggleFullScreen(IntPtr surface);
+
+        [SuppressUnmanagedCodeSecurity]
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetError")]
+        private static extern IntPtr __SDL_GetError();
 
         [StructLayout(LayoutKind.Sequential, Pack = 4)]
         public struct SDL_AudioSpec
@@ -271,7 +497,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                     ", w: ",
                     this.w,
                     ", h: ",
-                    this.h
+                    this.h,
                 });
             }
         }
@@ -335,95 +561,6 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
             public int refcount;
         }
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SDL_AudioCallback(IntPtr userdata, IntPtr stream, int len);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SDL_EventFilter([Out] SDL_Event evt);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SDL_ThreadCallback();
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SDL_TimerCallback(int interval);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SDL_NewTimerCallback(int interval);
-
-        public const int SDL_INIT_TIMER = 1;
-
-        public const int SDL_INIT_AUDIO = 16;
-
-        public const int SDL_INIT_VIDEO = 32;
-
-        public const int SDL_INIT_CDROM = 256;
-
-        public const int SDL_INIT_JOYSTICK = 512;
-
-        public const int SDL_INIT_NOPARACHUTE = 1048576;
-
-        public const int SDL_INIT_EVENTTHREAD = 16777216;
-
-        public const int SDL_INIT_EVERYTHING = 65535;
-
-        public const byte SDL_PRESSED = 1;
-
-        public const byte SDL_RELEASED = 0;
-
-        public const int SDL_ALLEVENTS = -1;
-
-        public const int SDL_QUERY = -1;
-
-        public const int SDL_IGNORE = 0;
-
-        public const int SDL_DISABLE = 0;
-
-        public const int SDL_ENABLE = 1;
-
-        public const int SDL_ALL_HOTKEYS = -1;
-
-        public const int SDL_DEFAULT_REPEAT_DELAY = 500;
-
-        public const int SDL_DEFAULT_REPEAT_INTERVAL = 30;
-
-        public const byte SDL_BUTTON_LEFT = 1;
-
-        public const byte SDL_BUTTON_MIDDLE = 2;
-
-        public const byte SDL_BUTTON_RIGHT = 3;
-
-        public const byte SDL_BUTTON_WHEELUP = 4;
-
-        public const byte SDL_BUTTON_WHEELDOWN = 5;
-
-        public const byte SDL_BUTTON_X1 = 6;
-
-        public const byte SDL_BUTTON_X2 = 7;
-
-        public const byte SDL_BUTTON_LMASK = 1;
-
-        public const byte SDL_BUTTON_MMASK = 2;
-
-        public const byte SDL_BUTTON_RMASK = 4;
-
-        public const byte SDL_BUTTON_X1MASK = 32;
-
-        public const byte SDL_BUTTON_X2MASK = 64;
-
-        public const int SDL_ANYFORMAT = 268435456;
-
-        public const int SDL_HWPALETTE = 536870912;
-
-        public const int SDL_DOUBLEBUF = 1073741824;
-
-        public const int SDL_FULLSCREEN = -2147483648;
-
-        public const int SDL_RESIZABLE = 16;
-
-        public const byte SDL_LOGPAL = 1;
-
-        public const byte SDL_PHYSPAL = 2;
 
         public static class SDL_EventType
         {
@@ -1003,143 +1140,6 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
             public const int SDL_TRUE = 1;
         }
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_Init(int flags);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_QuitSubSystem(int flags);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Quit();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_OpenAudio(IntPtr desired, IntPtr obtained);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_PauseAudio(int pause_on);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LockAudio();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_UnlockAudio();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_CloseAudio();
-
-        public static string SDL_GetError()
-        {
-            return Marshal.PtrToStringAnsi(__SDL_GetError());
-        }
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetError")]
-        private static extern IntPtr __SDL_GetError();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_PumpEvents();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_PeepEvents([In] [Out] SDL_Event[] events, int numevents, int action, int mask);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_PollEvent(out SDL_Event sdlEvent);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_PushEvent(out SDL_Event evt);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_EventState(byte type, int state);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_NumJoysticks();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_JoystickOpen(int device_index);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_JoystickEventState(int state);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_EnableUNICODE(int enable);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_EnableKeyRepeat(int rate, int delay);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte SDL_GetMouseState(out int x, out int y);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_CreateThread(SDL_ThreadCallback fn, object data);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_WaitThread(IntPtr thread, out int status);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetTicks();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Delay(int ms);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_SetVideoMode(int width, int height, int bpp, int flags);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_UpdateRect(IntPtr screen, int x, int y, int w, int h);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetPalette(IntPtr surface, int flags, [In] [Out] SDL_Color[] colors, int firstcolor, int ncolors);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetClipRect(IntPtr surface, ref SDL_Rect rect);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_FillRect(IntPtr surface, ref SDL_Rect rect, int color);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_WM_SetCaption(string title, string icon);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_WM_SetIcon(IntPtr icon, byte[] mask);
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_WM_IconifyWindow();
-
-        [SuppressUnmanagedCodeSecurity]
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_WM_ToggleFullScreen(IntPtr surface);
     }
 #endif
 }

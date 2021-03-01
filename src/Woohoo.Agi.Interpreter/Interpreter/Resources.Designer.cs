@@ -39,7 +39,7 @@ namespace Woohoo.Agi.Interpreter {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Woohoo.Agi.Interpreter.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Woohoo.Agi.Interpreter.Interpreter.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -382,7 +382,7 @@ namespace Woohoo.Agi.Interpreter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.0.0.
+        ///   Looks up a localized string similar to 1.1.0.
         /// </summary>
         internal static string PlayerVersion {
             get {
