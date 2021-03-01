@@ -15,7 +15,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
     {
         private const int SAMPLESIZE = 11028;
 
-        private static readonly short[] zeroBuffer = new short[SAMPLESIZE];
+        private static readonly short[] ZeroBuffer = new short[SAMPLESIZE];
 
         private AgiInterpreter interpreter;
         private byte handlesUsed = 0;
@@ -183,7 +183,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
             int numChan = this.channels.Count;
             int count = len / sizeof(short);
 
-            Array.Copy(zeroBuffer, this.buffer, SAMPLESIZE);
+            Array.Copy(ZeroBuffer, this.buffer, SAMPLESIZE);
 
             foreach (var sdlChannel in this.channels)
             {

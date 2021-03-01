@@ -31,8 +31,6 @@ namespace Woohoo.Agi.Player
 #endif
         }
 
-        protected abstract void Quit();
-
         public int Run(string[] args)
         {
             this.DisplayInfo();
@@ -54,7 +52,7 @@ namespace Woohoo.Agi.Player
             }
             catch (ExitException)
             {
-                Quit();
+                this.Quit();
             }
             catch (AbortException)
             {
@@ -64,12 +62,14 @@ namespace Woohoo.Agi.Player
                 }
                 catch (ExitException)
                 {
-                    Quit();
+                    this.Quit();
                 }
             }
 
             return 0;
         }
+
+        protected abstract void Quit();
 
         private void DisplayInfo()
         {

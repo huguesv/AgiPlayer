@@ -1,4 +1,5 @@
-﻿#region License
+﻿#pragma warning disable SA1636
+
 /* SDL2# - C# Wrapper for SDL2
  *
  * Copyright (c) 2013-2016 Ethan Lee.
@@ -24,25 +25,16 @@
  * Ethan "flibitijibibo" Lee <flibitijibibo@flibitijibibo.com>
  *
  */
-#endregion
 #if USE_SDL2
 
-#region Using Statements
 using System;
 using System.Runtime.InteropServices;
-#endregion
 
 namespace Woohoo.Agi.Player.Backend.Sdl2
 {
     public static partial class NativeMethods
     {
-#region SDL2# Variables
-
         private const string nativeLibName = "SDL2";
-
-#endregion
-
-#region UTF8 Marshaling
 
         internal static byte[] UTF8_ToNative(string s)
         {
@@ -105,9 +97,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             return result;
         }
 
-#endregion
-
-#region SDL_stdinc.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_stdinc.h
 
         public static uint SDL_FOURCC(byte A, byte B, byte C, byte D)
         {
@@ -128,9 +119,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void SDL_free(IntPtr memblock);
 
-#endregion
-
-#region SDL_rwops.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_rwops.h
 
         /* Note about SDL2# and Internal RWops:
 		 * These functions are currently not supported for public use.
@@ -163,9 +153,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RWFromMem(IntPtr mem, int size);
 
-#endregion
-
-#region SDL_main.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_main.h
 
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetMainReady();
@@ -180,9 +169,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             IntPtr reserved
         );
 
-#endregion
-
-#region SDL.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL.h
 
         public const uint SDL_INIT_TIMER = 0x00000001;
         public const uint SDL_INIT_AUDIO = 0x00000010;
@@ -214,9 +202,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_WasInit(uint flags);
 
-#endregion
-
-#region SDL_platform.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_platform.h
 
         [DllImport(nativeLibName, EntryPoint = "SDL_GetPlatform", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr INTERNAL_SDL_GetPlatform();
@@ -225,9 +212,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             return UTF8_ToManaged(INTERNAL_SDL_GetPlatform());
         }
 
-#endregion
-
-#region SDL_hints.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_hints.h
 
         public const string SDL_HINT_FRAMEBUFFER_ACCELERATION =
             "SDL_FRAMEBUFFER_ACCELERATION";
@@ -440,9 +426,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             );
         }
 
-#endregion
-
-#region SDL_error.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_error.h
 
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_ClearError();
@@ -464,9 +449,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             );
         }
 
-#endregion
-
-#region SDL_log.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_log.h
 
         /* Begin nameless enum SDL_LOG_CATEGORY */
         public const int SDL_LOG_CATEGORY_APPLICATION = 0;
@@ -729,9 +713,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             IntPtr userdata
         );
 
-#endregion
-
-#region SDL_messagebox.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_messagebox.h
 
         [Flags]
         public enum SDL_MessageBoxFlags : uint
@@ -896,9 +879,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             );
         }
 
-#endregion
-
-#region SDL_version.h, SDL_revision.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_version.h, SDL_revision.h
 
         /* Similar to the headers, this is the version we're expecting to be
 		 * running with. You will likely want to check this somewhere in your
@@ -952,9 +934,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetRevisionNumber();
 
-#endregion
-
-#region SDL_video.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_video.h
 
         public enum SDL_GLattr
         {
@@ -1722,9 +1703,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetGrabbedWindow();
 
-#endregion
-
-#region SDL_blendmode.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_blendmode.h
 
         [Flags]
         public enum SDL_BlendMode
@@ -1770,9 +1750,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             SDL_BlendOperation alphaOperation
         );
 
-#endregion
-
-#region SDL_vulkan.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_vulkan.h
 
         /* Only available in 2.0.6 */
         [DllImport(nativeLibName, EntryPoint = "SDL_Vulkan_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
@@ -1826,9 +1805,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             out int h
         );
 
-#endregion
-
-#region SDL_render.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_render.h
 
         [Flags]
         public enum SDL_RendererFlags : uint
@@ -2468,9 +2446,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SDL_bool SDL_RenderIsClipEnabled(IntPtr renderer);
 
-#endregion
-
-#region SDL_pixels.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_pixels.h
 
         public static uint SDL_DEFINE_PIXELFOURCC(byte A, byte B, byte C, byte D)
         {
@@ -3009,9 +2986,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             IntPtr palette
         );
 
-#endregion
-
-#region SDL_rect.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_rect.h
 
         [StructLayout(LayoutKind.Sequential)]
         public struct SDL_Point
@@ -3098,9 +3074,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             out SDL_Rect result
         );
 
-#endregion
-
-#region SDL_surface.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_surface.h
 
         public const uint SDL_SWSURFACE = 0x00000000;
         public const uint SDL_PREALLOC = 0x00000001;
@@ -3526,9 +3501,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_DuplicateSurface(IntPtr surface);
 
-#endregion
-
-#region SDL_clipboard.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_clipboard.h
 
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SDL_bool SDL_HasClipboardText();
@@ -3553,9 +3527,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             );
         }
 
-#endregion
-
-#region SDL_events.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_events.h
 
         /* General keyboard/mouse state definitions. */
         public const byte SDL_PRESSED = 1;
@@ -4234,9 +4207,9 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         /* Allocate a set of user-defined events */
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern UInt32 SDL_RegisterEvents(int numevents);
-#endregion
 
-#region SDL_scancode.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_scancode.h
 
         /* Scancodes based off USB keyboard page (0x07) */
         public enum SDL_Scancode
@@ -4511,9 +4484,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             SDL_NUM_SCANCODES = 512
         }
 
-#endregion
-
-#region SDL_keycode.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_keycode.h
 
         public const int SDLK_SCANCODE_MASK = (1 << 30);
         public static SDL_Keycode SDL_SCANCODE_TO_KEYCODE(SDL_Scancode X)
@@ -4817,9 +4789,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             KMOD_GUI = (KMOD_LGUI | KMOD_RGUI)
         }
 
-#endregion
-
-#region SDL_keyboard.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_keyboard.h
 
         [StructLayout(LayoutKind.Sequential)]
         public struct SDL_Keysym
@@ -4924,9 +4895,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SDL_bool SDL_IsScreenKeyboardShown(IntPtr window);
 
-#endregion
-
-#region SDL_mouse.c
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_mouse.c
 
         /* Note: SDL_Cursor is a typedef normally. We'll treat it as
 		 * an IntPtr, because C# doesn't do typedefs. Yay!
@@ -5087,9 +5057,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         public static readonly UInt32 SDL_BUTTON_X1MASK = SDL_BUTTON(SDL_BUTTON_X1);
         public static readonly UInt32 SDL_BUTTON_X2MASK = SDL_BUTTON(SDL_BUTTON_X2);
 
-#endregion
-
-#region SDL_touch.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_touch.h
 
         public const uint SDL_TOUCH_MOUSEID = uint.MaxValue;
 
@@ -5126,9 +5095,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetTouchFinger(long touchID, int index);
 
-#endregion
-
-#region SDL_joystick.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_joystick.h
 
         public const byte SDL_HAT_CENTERED = 0x00;
         public const byte SDL_HAT_UP = 0x01;
@@ -5378,9 +5346,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockJoysticks();
 
-#endregion
-
-#region SDL_gamecontroller.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_gamecontroller.h
 
         public enum SDL_GameControllerBindType
         {
@@ -5757,9 +5724,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GameControllerFromInstanceID(int joyid);
 
-#endregion
-
-#region SDL_haptic.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_haptic.h
 
         /* SDL_HapticEffect type */
         public const ushort SDL_HAPTIC_CONSTANT = (1 << 0);
@@ -6092,9 +6058,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_NumHaptics();
 
-#endregion
-
-#region SDL_sensor.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_sensor.h
 
         /* This region is only available in 2.0.9 or higher. */
 
@@ -6172,9 +6137,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SensorUpdate();
 
-#endregion
-
-#region SDL_audio.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_audio.h
 
         public const ushort SDL_AUDIO_MASK_BITSIZE = 0xFF;
         public const ushort SDL_AUDIO_MASK_DATATYPE = (1 << 8);
@@ -6549,9 +6513,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeAudioStream(IntPtr stream);
 
-#endregion
-
-#region SDL_timer.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_timer.h
 
         /* System timers rely on different OS mechanisms depending on
 		 * which operating system SDL2 is compiled against.
@@ -6597,9 +6560,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SDL_bool SDL_RemoveTimer(int id);
 
-#endregion
-
-#region SDL_system.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_system.h
 
         /* Windows */
 
@@ -6698,9 +6660,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SDL_bool SDL_IsTablet();
 
-#endregion
-
-#region SDL_syswm.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_syswm.h
 
         public enum SDL_SYSWM_TYPE
         {
@@ -6821,9 +6782,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             ref SDL_SysWMinfo info
         );
 
-#endregion
-
-#region SDL_filesystem.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_filesystem.h
 
         /* Only available in 2.0.1 */
         [DllImport(nativeLibName, EntryPoint = "SDL_GetBasePath", CallingConvention = CallingConvention.Cdecl)]
@@ -6850,9 +6810,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             );
         }
 
-#endregion
-
-#region SDL_power.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_power.h
 
         public enum SDL_PowerState
         {
@@ -6869,9 +6828,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
             out int pct
         );
 
-#endregion
-
-#region SDL_cpuinfo.h
+        ///////////////////////////////////////////////////////////////////////
+        // SDL_cpuinfo.h
 
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetCPUCount();
@@ -6880,7 +6838,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl2
         [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetSystemRAM();
 
-#endregion
     }
 }
 #endif
+
+#pragma warning restore SA1636
