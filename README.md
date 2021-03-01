@@ -74,34 +74,118 @@ AGI Demo 3
 
 ![AGI Demo 3](images/demo3.png?raw=true "AGI Demo 3")
 
+The Black Cauldron
+
 ![The Black Cauldron](images/bc.png?raw=true "The Black Cauldron")
+
+Christmas Card
 ![Christmas Card](images/cc.png?raw=true "Christmas Card")
+
+Donald Duck's Playground
+
 ![Donald Duck's Playground](images/ddp.png?raw=true "Donald Duck's Playground")
+
+Gold Rush!
 ![Gold Rush!](images/gr.png?raw=true "Gold Rush!")
+
+King's Quest I
+
 ![King's Quest I](images/kq1.png?raw=true "King's Quest I")
+
+King's Quest II
+
 ![King's Quest II](images/kq2.png?raw=true "King's Quest II")
+
+King's Quest III
+
 ![King's Quest III](images/kq3.png?raw=true "King's Quest III")
+
+King's Quest IV
+
 ![King's Quest IV](images/kq4.png?raw=true "King's Quest IV")
+
+King's Quest IV Demo
+
 ![King's Quest IV Demo](images/kq4demo.png?raw=true "King's Quest IV Demo")
+
+Leisure Suit Larry in the Land of the Lounge Lizards
+
 ![Leisure Suit Larry in the Land of the Lounge Lizards](images/lsl1.png?raw=true "Leisure Suit Larry in the Land of the Lounge Lizards")
+
+Manhunter: New York
+
 ![Manhunter: New York](images/mh1.png?raw=true "Manhunter: New York")
+
+Manhunter: San Francisco
+
 ![Manhunter: San Francisco](images/mh2.png?raw=true "Manhunter: San Francisco")
+
+Mixed-Up Mother Goose
+
 ![Mixed-Up Mother Goose](images/mumg.png?raw=true "Mixed-Up Mother Goose")
+
+Police Quest: In Pursuit of the Death Angel
+
 ![Police Quest: In Pursuit of the Death Angel](images/pq1.png?raw=true "Police Quest: In Pursuit of the Death Angel")
+
+Space Quest I: The Sarien Encounter
+
 ![Space Quest I: The Sarien Encounter](images/sq1.png?raw=true "Space Quest I: The Sarien Encounter")
+
+Space Quest II: Vohaul's Revenge
+
 ![Space Quest II: Vohaul's Revenge](images/sq2.png?raw=true "Space Quest II: Vohaul's Revenge")
+
+Input Box
+
 ![Input Box](images/input-box.png?raw=true "Input Box")
+
+Input List
+
 ![Input List](images/input-list.png?raw=true "Input List")
+
+Theme - CGA 1
+
 ![Theme CGA 1](images/theme-cga1.png?raw=true "Theme CGA 1")
+
+Theme - CGA 2
+
 ![Theme CGA 2](images/theme-cga2.png?raw=true "Theme CGA 2")
+
+Theme - Hercules White
+
 ![Theme Hercules White](images/theme-hercules-white.png?raw=true "Theme Hercules White")
+
+Theme - Hercules Green
+
 ![Theme Hercules Green](images/theme-hercules-green.png?raw=true "Theme Hercules Green")
+
+Theme - Hercules Amber
+
 ![Theme Hercules Amber](images/theme-hercules-amber.png?raw=true "Theme Hercules Amber")
+
+Theme - Atari ST
+
 ![Theme Atari ST](images/theme-atarist.png?raw=true "Theme Atari ST")
+
+Theme - Amiga 1
+
 ![Theme Amiga 1](images/theme-amiga1.png?raw=true "Theme Amiga 1")
+
+Theme - Amiga 2
+
 ![Theme Amiga 2](images/theme-amiga2.png?raw=true "Theme Amiga 2")
+
+Theme - Amiga 3
+
 ![Theme Amiga 3](images/theme-amiga3.png?raw=true "Theme Amiga 3")
+
+Theme - Apple IIgs
+
 ![Theme Apple IIgs](images/theme-apple2gs.png?raw=true "Theme Apple IIgs")
+
+Custom Horizontal/Vertical Scaling
+
 ![Custom Horizontal/Vertical Scaling](images/scaling.png?raw=true "Custom Horizontal/Vertical Scaling")
 
 ## License
