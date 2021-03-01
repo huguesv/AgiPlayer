@@ -56,23 +56,139 @@ In addition to the PC versions of AGI v2 and v3 games, most Atari ST and Amiga v
 
 Official Sierra demos also work. Fan games probably work too, but are untested.
 
-![AGI Demo 1](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/AGI%20Demo%201.png "AGI Demo 1")
-![AGI Demo 2](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/AGI%20Demo%202.png "AGI Demo 2")
-![AGI Demo 3](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/AGI%20Demo%203.png "AGI Demo 3")
-![The Black Cauldron](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/The%20Black%20Cauldron%202.00.png "The Black Cauldron")
-![Christmas Card](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Christmas%20Card%20v1.png "Christmas Card")
-![Donald Duck's Playground](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Donald%20Duck's%20Playground%201.0A.png "Donald Duck's Playground")
-![King's Quest I](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/King's%20Quest%20I%202.0F.png "King's Quest I")
-![King's Quest II](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/King's%20Quest%20II%202.1.png "King's Quest II")
-![King's Quest III](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/King's%20Quest%20III%201.01.png "King's Quest III")
-![King's Quest IV](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/King's%20Quest%20IV%202.0.png "King's Quest IV")
-![Leisure Suit Larry in the Land of the Lounge Lizards](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Leisure%20Suit%20Larry%20I%201.05.png "Leisure Suit Larry in the Land of the Lounge Lizards")
-![Manhunter: New York](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Manhunter%20New%20York%201.22.png "Manhunter: New York")
-![Manhunter: San Francisco](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Manhunter%20San%20Francisco%203.02.png "Manhunter: San Francisco")
-![Mixed-Up Mother Goose](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Mixed-Up%20Mother%20Goose.png "Mixed-Up Mother Goose")
-![Police Quest: In Pursuit of the Death Angel](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Police%20Quest%20I%202.0G.png "Police Quest: In Pursuit of the Death Angel")
-![Space Quest I: The Sarien Encounter](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Space%20Quest%20I%202.2.png "Space Quest I: The Sarien Encounter")
-![Space Quest II: Vohaul's Revenge](http://www.huguesvalois.com/Content/Images/AgiPlayer/Title/Space%20Quest%20II%202.0F.png "Space Quest II: Vohaul's Revenge")
+## Screenshots
+
+Game selection menu
+
+![Menu](images/menu.png?raw=true "Menu")
+
+AGI Demo 1
+
+![AGI Demo 1](images/demo1.png?raw=true "AGI Demo 1")
+
+AGI Demo 2
+
+![AGI Demo 2](images/demo2.png?raw=true "AGI Demo 2")
+
+AGI Demo 3
+
+![AGI Demo 3](images/demo3.png?raw=true "AGI Demo 3")
+
+The Black Cauldron
+
+![The Black Cauldron](images/bc.png?raw=true "The Black Cauldron")
+
+Christmas Card
+
+![Christmas Card](images/cc.png?raw=true "Christmas Card")
+
+Donald Duck's Playground
+
+![Donald Duck's Playground](images/ddp.png?raw=true "Donald Duck's Playground")
+
+Gold Rush!
+
+![Gold Rush!](images/gr.png?raw=true "Gold Rush!")
+
+King's Quest I
+
+![King's Quest I](images/kq1.png?raw=true "King's Quest I")
+
+King's Quest II
+
+![King's Quest II](images/kq2.png?raw=true "King's Quest II")
+
+King's Quest III
+
+![King's Quest III](images/kq3.png?raw=true "King's Quest III")
+
+King's Quest IV
+
+![King's Quest IV](images/kq4.png?raw=true "King's Quest IV")
+
+King's Quest IV Demo
+
+![King's Quest IV Demo](images/kq4demo.png?raw=true "King's Quest IV Demo")
+
+Leisure Suit Larry in the Land of the Lounge Lizards
+
+![Leisure Suit Larry in the Land of the Lounge Lizards](images/lsl1.png?raw=true "Leisure Suit Larry in the Land of the Lounge Lizards")
+
+Manhunter: New York
+
+![Manhunter: New York](images/mh1.png?raw=true "Manhunter: New York")
+
+Manhunter: San Francisco
+
+![Manhunter: San Francisco](images/mh2.png?raw=true "Manhunter: San Francisco")
+
+Mixed-Up Mother Goose
+
+![Mixed-Up Mother Goose](images/mumg.png?raw=true "Mixed-Up Mother Goose")
+
+Police Quest: In Pursuit of the Death Angel
+
+![Police Quest: In Pursuit of the Death Angel](images/pq1.png?raw=true "Police Quest: In Pursuit of the Death Angel")
+
+Space Quest I: The Sarien Encounter
+
+![Space Quest I: The Sarien Encounter](images/sq1.png?raw=true "Space Quest I: The Sarien Encounter")
+
+Space Quest II: Vohaul's Revenge
+
+![Space Quest II: Vohaul's Revenge](images/sq2.png?raw=true "Space Quest II: Vohaul's Revenge")
+
+Input Box
+
+![Input Box](images/input-box.png?raw=true "Input Box")
+
+Input List
+
+![Input List](images/input-list.png?raw=true "Input List")
+
+Theme - CGA 1
+
+![Theme CGA 1](images/theme-cga1.png?raw=true "Theme CGA 1")
+
+Theme - CGA 2
+
+![Theme CGA 2](images/theme-cga2.png?raw=true "Theme CGA 2")
+
+Theme - Hercules White
+
+![Theme Hercules White](images/theme-hercules-white.png?raw=true "Theme Hercules White")
+
+Theme - Hercules Green
+
+![Theme Hercules Green](images/theme-hercules-green.png?raw=true "Theme Hercules Green")
+
+Theme - Hercules Amber
+
+![Theme Hercules Amber](images/theme-hercules-amber.png?raw=true "Theme Hercules Amber")
+
+Theme - Atari ST
+
+![Theme Atari ST](images/theme-atarist.png?raw=true "Theme Atari ST")
+
+Theme - Amiga 1
+
+![Theme Amiga 1](images/theme-amiga1.png?raw=true "Theme Amiga 1")
+
+Theme - Amiga 2
+
+![Theme Amiga 2](images/theme-amiga2.png?raw=true "Theme Amiga 2")
+
+Theme - Amiga 3
+
+![Theme Amiga 3](images/theme-amiga3.png?raw=true "Theme Amiga 3")
+
+Theme - Apple IIgs
+
+![Theme Apple IIgs](images/theme-apple2gs.png?raw=true "Theme Apple IIgs")
+
+Custom Horizontal/Vertical Scaling
+
+![Custom Horizontal/Vertical Scaling](images/scaling.png?raw=true "Custom Horizontal/Vertical Scaling")
 
 ## License
 
