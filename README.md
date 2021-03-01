@@ -58,10 +58,22 @@ Official Sierra demos also work. Fan games probably work too, but are untested.
 
 ## Screenshots
 
+Game selection menu
+
 ![Menu](images/menu.png?raw=true "Menu")
+
+AGI Demo 1
+
 ![AGI Demo 1](images/demo1.png?raw=true "AGI Demo 1")
+
+AGI Demo 2
+
 ![AGI Demo 2](images/demo2.png?raw=true "AGI Demo 2")
+
+AGI Demo 3
+
 ![AGI Demo 3](images/demo3.png?raw=true "AGI Demo 3")
+
 ![The Black Cauldron](images/bc.png?raw=true "The Black Cauldron")
 ![Christmas Card](images/cc.png?raw=true "Christmas Card")
 ![Donald Duck's Playground](images/ddp.png?raw=true "Donald Duck's Playground")
