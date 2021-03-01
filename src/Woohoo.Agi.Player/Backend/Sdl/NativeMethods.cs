@@ -271,7 +271,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                     ", w: ",
                     this.w,
                     ", h: ",
-                    this.h
+                    this.h,
                 });
             }
         }

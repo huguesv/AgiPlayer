@@ -39,7 +39,7 @@ namespace Woohoo.Agi.Detection {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Woohoo.Agi.Detection.Databases", typeof(Databases).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Woohoo.Agi.Interpreter.Detection.Databases", typeof(Databases).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -11,7 +11,7 @@ namespace Woohoo.Agi.Player
 
     internal abstract class AgiPlayer
     {
-        protected AgiInterpreter interpreter;
+        protected AgiInterpreter Interpreter { get; set; }
 
         /// <summary>
         /// The main entry point for the application.
@@ -60,7 +60,7 @@ namespace Woohoo.Agi.Player
             {
                 try
                 {
-                    this.interpreter.ExitAgi();
+                    this.Interpreter.ExitAgi();
                 }
                 catch (ExitException)
                 {
@@ -103,7 +103,7 @@ namespace Woohoo.Agi.Player
         {
             GameStartInfo[] startInfos = GameFinder.FindGames(folder, true);
 
-            this.interpreter.Start(startInfos, this.ReadPreferences());
+            this.Interpreter.Start(startInfos, this.ReadPreferences());
 
             return 0;
         }
@@ -115,7 +115,7 @@ namespace Woohoo.Agi.Player
                 GameStartInfo startInfo = GameFinder.FindGame(folder);
                 if (startInfo != null)
                 {
-                    this.interpreter.Start(startInfo, this.ReadPreferences());
+                    this.Interpreter.Start(startInfo, this.ReadPreferences());
 
                     return 0;
                 }

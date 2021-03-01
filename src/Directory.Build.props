@@ -1,0 +1,23 @@
+<Project>
+
+  <PropertyGroup>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors Condition="'$(TreatWarningsAsErrors)' == ''">false</TreatWarningsAsErrors>
+    <NoWarn>CS1591;SA1600;SA0001</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)..\bin\$(Configuration)\$(MSBuildProjectName)</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <BaseIntermediateOutputPath>$(SolutionDir)..\obj\$(Configuration)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <UseCommonOutputDirectory>False</UseCommonOutputDirectory>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SolutionDir)Common\stylecop.json" Link="stylecop.json" />
+    <Compile Include="$(SolutionDir)Common\Common.AssemblyInfo.cs" Link="Common.AssemblyInfo.cs" />
+  </ItemGroup>
+
+</Project>

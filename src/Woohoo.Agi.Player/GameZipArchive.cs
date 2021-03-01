@@ -3,6 +3,7 @@
 
 namespace Woohoo.Agi.Player
 {
+#if USE_ZIP
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
@@ -129,4 +130,5 @@ namespace Woohoo.Agi.Player
             return files.ToArray();
         }
     }
+#endif
 }
