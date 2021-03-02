@@ -10,7 +10,6 @@
   <PropertyGroup>
     <OutputPath>$(MSBuildThisFileDirectory)..\bin\$(Configuration)\$(MSBuildProjectName)</OutputPath>
     <OutDir>$(OutputPath)</OutDir>
-    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\obj\$(Configuration)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <UseCommonOutputDirectory>False</UseCommonOutputDirectory>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
