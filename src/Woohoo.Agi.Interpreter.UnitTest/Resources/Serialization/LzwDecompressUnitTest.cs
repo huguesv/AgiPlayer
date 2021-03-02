@@ -20,8 +20,6 @@ namespace Woohoo.Agi.Resources.Serialization.UnitTest
             Action act = () => decompress.Decompress(null, 0, 0, 0);
 
             act.Should().Throw<ArgumentNullException>();
-
-            true.Should().BeFalse();
         }
 
         [TestMethod]
