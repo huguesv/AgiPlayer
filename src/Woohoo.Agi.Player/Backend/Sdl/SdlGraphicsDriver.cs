@@ -121,7 +121,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                         {
                             for (int deltaX = 0; deltaX < this.displayScaleX; deltaX++)
                             {
-                                Marshal.WriteByte(new IntPtr(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
+                                IntPtr destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
+                                Marshal.WriteByte(destPtr, pixel);
                             }
                         }
                     }
@@ -158,7 +159,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                                 {
                                     for (int deltaX = 0; deltaX < this.displayScaleX; deltaX++)
                                     {
-                                        Marshal.WriteByte(new IntPtr(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
+                                        IntPtr destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
+                                        Marshal.WriteByte(destPtr, pixel);
                                     }
                                 }
                             }
@@ -201,10 +203,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                 // Draw screen at offset
                 for (int j = 0; j < this.displayHeight - scaledOffsetY; j++)
                 {
-                    int x = surface.pixels.ToInt32() + ((j + scaledOffsetY) * surface.pitch) + scaledOffsetY;
-
                     int length = this.displayWidth - scaledOffsetX;
-                    IntPtr ptr = new IntPtr(x);
+                    IntPtr ptr = surface.pixels + (((j + scaledOffsetY) * surface.pitch) + scaledOffsetY);
                     Marshal.Copy(backup, j * surface.pitch, ptr, length);
                 }
 
@@ -239,7 +239,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl
                     {
                         for (int deltaX = 0; deltaX < fontScaleX; deltaX++)
                         {
-                            Marshal.WriteByte(new IntPtr(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
+                            IntPtr destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
+                            Marshal.WriteByte(destPtr, pixel);
                         }
                     }
                 }
@@ -274,8 +275,8 @@ namespace Woohoo.Agi.Player.Backend.Sdl
 
             for (int j = 0; j < scaledHeight; j++)
             {
-                IntPtr targetPtr = new IntPtr(surface.pixels.ToInt32() + (targetY * surface.pitch) + scaledX);
-                IntPtr sourcePtr = new IntPtr(surface.pixels.ToInt32() + ((targetY + sourceYOffset) * surface.pitch) + scaledX);
+                IntPtr targetPtr = surface.pixels + ((targetY * surface.pitch) + scaledX);
+                IntPtr sourcePtr = surface.pixels + (((targetY + sourceYOffset) * surface.pitch) + scaledX);
 
                 Marshal.Copy(sourcePtr, buffer, 0, scaledWidth);
                 Marshal.Copy(buffer, 0, targetPtr, scaledWidth);
