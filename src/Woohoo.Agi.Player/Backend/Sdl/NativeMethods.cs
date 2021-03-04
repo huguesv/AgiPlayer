@@ -530,7 +530,11 @@ namespace Woohoo.Agi.Player.Backend.Sdl
             }
         }
 
+#if X86
         [StructLayout(LayoutKind.Sequential, Pack = 4)]
+#elif X64
+        [StructLayout(LayoutKind.Sequential, Pack = 8)]
+#endif
         public struct SDL_Surface
         {
             public int flags;
@@ -1142,4 +1146,4 @@ namespace Woohoo.Agi.Player.Backend.Sdl
         }
     }
 #endif
-}
+    }
