@@ -11,8 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woohoo.Agi.Player", "Woohoo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D37B1E3-A379-473F-976D-5AADC24EE1FC}"
 	ProjectSection(SolutionItems) = preProject
+		Common\Common.AssemblyInfo.cs = Common\Common.AssemblyInfo.cs
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
+		Common\stylecop.json = Common\stylecop.json
 	EndProjectSection
 EndProject
 Global
