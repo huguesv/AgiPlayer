@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-
     public sealed class GraphicsRendererDriverCga1 : GraphicsRendererDriverCga
     {
         private readonly byte[] cgaColorPalette = new byte[]

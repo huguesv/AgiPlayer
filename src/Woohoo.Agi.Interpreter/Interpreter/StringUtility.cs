@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Globalization;
-    using System.Text;
-
     /// <summary>
     /// Helper class to serialize agi strings into binary format.
     /// </summary>

@@ -3,9 +3,6 @@
 
 namespace Woohoo.Agi.Resources.Serialization.UnitTest
 {
-    using System;
-    using FluentAssertions;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Woohoo.Agi.Resources.Serialization;
 
     [TestClass]

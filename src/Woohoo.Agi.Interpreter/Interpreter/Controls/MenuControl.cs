@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-
     public class MenuControl
     {
         private const byte MenuForegroundColor = 0x00;

@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Globalization;
     using Woohoo.Agi.Resources;
 
     public partial class AgiInterpreter : IKernel

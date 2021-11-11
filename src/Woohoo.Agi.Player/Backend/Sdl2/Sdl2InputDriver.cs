@@ -4,8 +4,6 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2
 {
 #if USE_SDL2
-    using System;
-    using System.Diagnostics;
     using Woohoo.Agi.Interpreter;
     using static Woohoo.Agi.Player.Backend.Sdl2.NativeMethods;
 

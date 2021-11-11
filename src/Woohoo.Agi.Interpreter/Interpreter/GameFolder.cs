@@ -3,11 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
-
     public sealed class GameFolder : IGameContainer
     {
         private string folderPath;

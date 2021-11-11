@@ -3,9 +3,6 @@
 
 namespace Woohoo.Agi.Player
 {
-    using System;
-    using System.Runtime.Serialization;
-
     [Serializable]
     internal class AbortException : Exception
     {

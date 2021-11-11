@@ -3,9 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-    using System.Globalization;
-
     public class SaveRestoreGameBrowseControl
     {
         private const byte ListBoxForegroundColor = 0x00;

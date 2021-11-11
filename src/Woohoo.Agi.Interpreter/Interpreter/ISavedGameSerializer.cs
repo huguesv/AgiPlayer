@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System.IO;
-
     /// <summary>
     /// Save/restore game functionality.
     /// </summary>

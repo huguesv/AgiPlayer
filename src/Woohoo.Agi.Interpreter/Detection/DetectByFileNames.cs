@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Detection
 {
-    using System;
-    using System.Globalization;
     using Woohoo.Agi.Interpreter;
 
     /// <summary>

@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-
     public class InputBoxControl
     {
         private const int DefaultWindowWidth = 0x22;

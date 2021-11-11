@@ -3,7 +3,6 @@
 
 namespace Woohoo.Agi.Detection
 {
-    using System;
     using Woohoo.Agi.Interpreter;
 
     /// <summary>

@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-    using System.Collections.Generic;
     using Woohoo.Agi.Resources;
 
     public class InventoryControl

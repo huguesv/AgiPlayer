@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System.Collections.Generic;
-
     public class LogicProcedureTable
     {
         private LogicCommand[] procedures;

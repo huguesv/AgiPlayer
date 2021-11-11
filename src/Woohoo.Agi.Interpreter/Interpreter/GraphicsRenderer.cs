@@ -3,7 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System.Collections.Generic;
     using Woohoo.Agi.Resources;
 
     public class GraphicsRenderer

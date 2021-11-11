@@ -3,7 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
     using Woohoo.Agi.Resources;
 
     public sealed class GraphicsRendererDriverHercules : GraphicsRendererDriver

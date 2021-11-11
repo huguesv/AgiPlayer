@@ -3,9 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-    using System.Text;
-
     public class TextBoxControl
     {
         public TextBoxControl(AgiInterpreter interpreter)

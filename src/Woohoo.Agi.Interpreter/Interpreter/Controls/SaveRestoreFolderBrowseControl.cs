@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-    using System.Globalization;
-    using System.IO;
-
     public class SaveRestoreFolderBrowseControl
     {
         public SaveRestoreFolderBrowseControl(AgiInterpreter interpreter)

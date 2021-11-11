@@ -3,12 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.IO;
-    using System.Text;
-    using System.Xml;
     using Woohoo.Agi.Resources;
 
     /// <summary>

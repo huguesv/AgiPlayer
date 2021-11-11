@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System.Globalization;
-
     public static class UserInterface
     {
         public static string PlayerName => StringUtility.ConvertSystemResourceText(Resources.PlayerName);

@@ -4,9 +4,6 @@
 namespace Woohoo.Agi.Player
 {
 #if USE_ZIP
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
     using ICSharpCode.SharpZipLib.Zip;
     using Woohoo.Agi.Interpreter;
 

@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-
     public class GameSelectionControl
     {
         private const byte GameSelectionListBoxHeight = 19;

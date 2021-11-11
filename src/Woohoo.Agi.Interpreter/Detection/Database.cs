@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Detection
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Xml;
     using Woohoo.Agi.Interpreter;
 
     /// <summary>
