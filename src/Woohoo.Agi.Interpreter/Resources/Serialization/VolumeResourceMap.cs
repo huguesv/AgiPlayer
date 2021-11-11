@@ -1,45 +1,44 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Resources.Serialization
+namespace Woohoo.Agi.Resources.Serialization;
+
+/// <summary>
+/// The resource map contains the location (in the volumes) of all the game resources.
+/// </summary>
+/// <remarks>
+/// Vocabulary and inventory resources are not stored in volumes, so there is no resource map entries for them.
+/// </remarks>
+public class VolumeResourceMap
 {
     /// <summary>
-    /// The resource map contains the location (in the volumes) of all the game resources.
+    /// Initializes a new instance of the <see cref="VolumeResourceMap"/> class.
     /// </summary>
-    /// <remarks>
-    /// Vocabulary and inventory resources are not stored in volumes, so there is no resource map entries for them.
-    /// </remarks>
-    public class VolumeResourceMap
+    public VolumeResourceMap()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VolumeResourceMap"/> class.
-        /// </summary>
-        public VolumeResourceMap()
-        {
-            this.SoundResources = new VolumeResourceMapEntryCollection();
-            this.ViewResources = new VolumeResourceMapEntryCollection();
-            this.LogicResources = new VolumeResourceMapEntryCollection();
-            this.PictureResources = new VolumeResourceMapEntryCollection();
-        }
-
-        /// <summary>
-        /// Gets resource map entries for the sound resources.
-        /// </summary>
-        public VolumeResourceMapEntryCollection SoundResources { get; }
-
-        /// <summary>
-        /// Gets resource map entries for the view resources.
-        /// </summary>
-        public VolumeResourceMapEntryCollection ViewResources { get; }
-
-        /// <summary>
-        /// Gets resource map entries for the logic resources.
-        /// </summary>
-        public VolumeResourceMapEntryCollection LogicResources { get; }
-
-        /// <summary>
-        /// Gets resource map entries for the picture resources.
-        /// </summary>
-        public VolumeResourceMapEntryCollection PictureResources { get; }
+        this.SoundResources = new VolumeResourceMapEntryCollection();
+        this.ViewResources = new VolumeResourceMapEntryCollection();
+        this.LogicResources = new VolumeResourceMapEntryCollection();
+        this.PictureResources = new VolumeResourceMapEntryCollection();
     }
+
+    /// <summary>
+    /// Gets resource map entries for the sound resources.
+    /// </summary>
+    public VolumeResourceMapEntryCollection SoundResources { get; }
+
+    /// <summary>
+    /// Gets resource map entries for the view resources.
+    /// </summary>
+    public VolumeResourceMapEntryCollection ViewResources { get; }
+
+    /// <summary>
+    /// Gets resource map entries for the logic resources.
+    /// </summary>
+    public VolumeResourceMapEntryCollection LogicResources { get; }
+
+    /// <summary>
+    /// Gets resource map entries for the picture resources.
+    /// </summary>
+    public VolumeResourceMapEntryCollection PictureResources { get; }
 }

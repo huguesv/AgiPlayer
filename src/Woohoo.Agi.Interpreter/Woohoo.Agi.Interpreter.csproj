@@ -11,6 +11,7 @@
     <Using Include="System.Diagnostics"/>
     <Using Include="System.Globalization"/>
     <Using Include="System.Reflection"/>
+    <Using Include="System.Runtime.InteropServices"/>
     <Using Include="System.Runtime.Serialization"/>
     <Using Include="System.Security.Cryptography"/>
     <Using Include="System.Text"/>

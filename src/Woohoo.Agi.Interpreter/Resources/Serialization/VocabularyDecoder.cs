@@ -1,93 +1,90 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Resources.Serialization
+namespace Woohoo.Agi.Resources.Serialization;
+
+using Woohoo.Agi.Resources;
+
+/// <summary>
+/// Vocabulary resource decoder.
+/// </summary>
+public static class VocabularyDecoder
 {
-    using System.Collections.Generic;
-    using System.Text;
-    using Woohoo.Agi.Resources;
-
     /// <summary>
-    /// Vocabulary resource decoder.
+    /// Decode the vocabulary resource from byte array.
     /// </summary>
-    public static class VocabularyDecoder
+    /// <param name="data">Vocabulary data.</param>
+    /// <returns>Vocabulary resource.</returns>
+    public static VocabularyResource ReadVocabulary(byte[] data)
     {
-        /// <summary>
-        /// Decode the vocabulary resource from byte array.
-        /// </summary>
-        /// <param name="data">Vocabulary data.</param>
-        /// <returns>Vocabulary resource.</returns>
-        public static VocabularyResource ReadVocabulary(byte[] data)
+        var families = new List<VocabularyWordFamily>();
+
+        int offset = 52;
+
+        var currentWord = new StringBuilder();
+        while (offset < data.Length - 1)
         {
-            var families = new List<VocabularyWordFamily>();
+            string previousWord = currentWord.ToString();
+            currentWord = new StringBuilder();
 
-            int offset = 52;
+            // [0] = Number of characters to include from start of previous word
+            int includeNumChars = data[offset];
+            offset += 1;
 
-            var currentWord = new StringBuilder();
-            while (offset < data.Length - 1)
+            // Copy the characters from the previous word
+            if (includeNumChars > 0)
             {
-                string previousWord = currentWord.ToString();
-                currentWord = new StringBuilder();
-
-                // [0] = Number of characters to include from start of previous word
-                int includeNumChars = data[offset];
-                offset += 1;
-
-                // Copy the characters from the previous word
-                if (includeNumChars > 0)
+                if (previousWord.Length < includeNumChars)
                 {
-                    if (previousWord.Length < includeNumChars)
-                    {
-                        throw new VocabularyInvalidRepeatCountException();
-                    }
-
-                    currentWord.Append(previousWord.Substring(0, includeNumChars));
-                }
-                else
-                {
-                    if (data[offset] == 0x00)
-                    {
-                        break;
-                    }
+                    throw new VocabularyInvalidRepeatCountException();
                 }
 
-                // Last character in the word will be 0x80 more than the others
-                while (data[offset] < 0x80)
+                currentWord.Append(previousWord.Substring(0, includeNumChars));
+            }
+            else
+            {
+                if (data[offset] == 0x00)
                 {
-                    // Decode the character (XOR with 0x7f)
-                    currentWord.Append((char)(data[offset] ^ 0x7f));
-                    offset += 1;
+                    break;
                 }
-
-                // Decode the last character, after substracting the extra 0x80 (XOR with 0x7f)
-                currentWord.Append((char)((data[offset] - 0x80) ^ 0x7f));
-                offset += 1;
-
-                // Read the group number
-                int group = (data[offset] * 0x100) + data[offset + 1];
-                offset += 2;
-
-                // Add to resource, in the correct word group
-                VocabularyWordFamily wordGroup = null;
-                foreach (VocabularyWordFamily fam in families)
-                {
-                    if (fam.Identifier == group)
-                    {
-                        wordGroup = fam;
-                        break;
-                    }
-                }
-
-                if (wordGroup == null)
-                {
-                    wordGroup = new VocabularyWordFamily(group);
-                    families.Add(wordGroup);
-                }
-
-                wordGroup.Words.Add(currentWord.ToString());
             }
 
-            return new VocabularyResource(families.ToArray());
+            // Last character in the word will be 0x80 more than the others
+            while (data[offset] < 0x80)
+            {
+                // Decode the character (XOR with 0x7f)
+                currentWord.Append((char)(data[offset] ^ 0x7f));
+                offset += 1;
+            }
+
+            // Decode the last character, after substracting the extra 0x80 (XOR with 0x7f)
+            currentWord.Append((char)((data[offset] - 0x80) ^ 0x7f));
+            offset += 1;
+
+            // Read the group number
+            int group = (data[offset] * 0x100) + data[offset + 1];
+            offset += 2;
+
+            // Add to resource, in the correct word group
+            VocabularyWordFamily wordGroup = null;
+            foreach (VocabularyWordFamily fam in families)
+            {
+                if (fam.Identifier == group)
+                {
+                    wordGroup = fam;
+                    break;
+                }
+            }
+
+            if (wordGroup == null)
+            {
+                wordGroup = new VocabularyWordFamily(group);
+                families.Add(wordGroup);
+            }
+
+            wordGroup.Words.Add(currentWord.ToString());
         }
+
+        return new VocabularyResource(families.ToArray());
     }
 }

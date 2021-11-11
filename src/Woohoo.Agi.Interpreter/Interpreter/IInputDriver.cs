@@ -1,40 +1,39 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+public interface IInputDriver
 {
-    public interface IInputDriver
-    {
-        void ClockInitStartThread();
+    void ClockInitStartThread();
 
-        void ClockDenitStopThread();
+    void ClockDenitStopThread();
 
-        void InitializeEvents();
+    void InitializeEvents();
 
-        void InitializeDelay();
+    void InitializeDelay();
 
-        byte CharacterPollLoop();
+    byte CharacterPollLoop();
 
-        void ClearEvents();
+    void ClearEvents();
 
-        void DoDelay();
+    void DoDelay();
 
-        int Tick();
+    int Tick();
 
-        int TickScale();
+    int TickScale();
 
-        void Sleep(int milliseconds);
+    void Sleep(int milliseconds);
 
-        int WaitCharacter();
+    int WaitCharacter();
 
-        bool WriteEvent(int type, int data);
+    bool WriteEvent(int type, int data);
 
-        void PollMouse(out int button, out int screenScaledX, out int screenScaledY);
+    void PollMouse(out int button, out int screenScaledX, out int screenScaledY);
 
-        bool PollAcceptOrCancel(int timeout);
+    bool PollAcceptOrCancel(int timeout);
 
-        InputEvent PollEvent();
+    InputEvent PollEvent();
 
-        InputEvent ReadEvent();
-    }
+    InputEvent ReadEvent();
 }

@@ -1,26 +1,25 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+public delegate int AudioCallback(ToneChannel ch, short[] buffer, int count);
+
+public interface ISoundPcmDriver
 {
-    public delegate int AudioCallback(ToneChannel ch, short[] buffer, int count);
+    void SetInterpreter(AgiInterpreter interpreter);
 
-    public interface ISoundPcmDriver
-    {
-        void SetInterpreter(AgiInterpreter interpreter);
+    int Initialize(int freq, int format);
 
-        int Initialize(int freq, int format);
+    void Shutdown();
 
-        void Shutdown();
+    int Open(AudioCallback callback, ToneChannel tc);
 
-        int Open(AudioCallback callback, ToneChannel tc);
+    void Close(int handle);
 
-        void Close(int handle);
+    void SetState(bool playing);
 
-        void SetState(bool playing);
+    void Lock();
 
-        void Lock();
-
-        void Unlock();
-    }
+    void Unlock();
 }

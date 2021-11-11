@@ -1,21 +1,20 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+/// <summary>
+/// Represents the brush patterns.
+/// </summary>
+public enum PictureBrushPattern
 {
     /// <summary>
-    /// Represents the brush patterns.
+    /// Solid fill.
     /// </summary>
-    public enum PictureBrushPattern
-    {
-        /// <summary>
-        /// Solid fill.
-        /// </summary>
-        Solid,
+    Solid,
 
-        /// <summary>
-        /// Splatter fill.
-        /// </summary>
-        Splatter,
-    }
+    /// <summary>
+    /// Splatter fill.
+    /// </summary>
+    Splatter,
 }

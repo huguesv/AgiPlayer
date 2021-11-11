@@ -1,116 +1,115 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Detection
+namespace Woohoo.Agi.Detection;
+
+using Woohoo.Agi.Interpreter;
+
+/// <summary>
+/// Game detection algorithm which uses a text file
+/// created by WinAGI.
+/// </summary>
+public sealed class DetectByWinAgiGameInfo : IGameDetectorAlgorithm
 {
-    using Woohoo.Agi.Interpreter;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DetectByWinAgiGameInfo"/> class.
+    /// </summary>
+    public DetectByWinAgiGameInfo()
+    {
+    }
 
     /// <summary>
-    /// Game detection algorithm which uses a text file
-    /// created by WinAGI.
+    /// Detect a game in the specified folder.
     /// </summary>
-    public sealed class DetectByWinAgiGameInfo : IGameDetectorAlgorithm
+    /// <param name="container">Game container.</param>
+    /// <returns>Detection result.</returns>
+    GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DetectByWinAgiGameInfo"/> class.
-        /// </summary>
-        public DetectByWinAgiGameInfo()
+        if (container == null)
         {
+            throw new ArgumentNullException(nameof(container));
         }
 
-        /// <summary>
-        /// Detect a game in the specified folder.
-        /// </summary>
-        /// <param name="container">Game container.</param>
-        /// <returns>Detection result.</returns>
-        GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
+        var result = new GameDetectorResult();
+
+        const string GameInfoExtension = ".wag";
+
+        var files = container.GetFilesByExtension(GameInfoExtension);
+        if (files.Length > 0)
         {
-            if (container == null)
+            try
             {
-                throw new ArgumentNullException(nameof(container));
-            }
+                var id = new StringBuilder();
+                var description = new StringBuilder();
+                var interpreter = new StringBuilder();
+                var version = new StringBuilder();
 
-            var result = new GameDetectorResult();
-
-            const string GameInfoExtension = ".wag";
-
-            var files = container.GetFilesByExtension(GameInfoExtension);
-            if (files.Length > 0)
-            {
-                try
+                // Last 16 bytes are not stored as properties, it's the
+                // WinAGI version string. Ex: "PMWINAGI v1.0"
+                var data = container.Read(files[0]);
+                var index = 0;
+                while (index < (data.Length - 16))
                 {
-                    var id = new StringBuilder();
-                    var description = new StringBuilder();
-                    var interpreter = new StringBuilder();
-                    var version = new StringBuilder();
+                    byte code = data[index++];
+                    index++; // type - not used
+                    index++; // num - not used
+                    int size = data[index++] + (data[index++] * 256);
 
-                    // Last 16 bytes are not stored as properties, it's the
-                    // WinAGI version string. Ex: "PMWINAGI v1.0"
-                    var data = container.Read(files[0]);
-                    var index = 0;
-                    while (index < (data.Length - 16))
+                    switch (code)
                     {
-                        byte code = data[index++];
-                        index++; // type - not used
-                        index++; // num - not used
-                        int size = data[index++] + (data[index++] * 256);
+                        case 129:
+                            // game description
+                            for (int i = 0; i < size; i++)
+                            {
+                                description.Append((char)data[index + i]);
+                            }
 
-                        switch (code)
-                        {
-                            case 129:
-                                // game description
-                                for (int i = 0; i < size; i++)
-                                {
-                                    description.Append((char)data[index + i]);
-                                }
+                            break;
 
-                                break;
+                        case 131:
+                            // game id
+                            for (int i = 0; i < size; i++)
+                            {
+                                id.Append((char)data[index + i]);
+                            }
 
-                            case 131:
-                                // game id
-                                for (int i = 0; i < size; i++)
-                                {
-                                    id.Append((char)data[index + i]);
-                                }
+                            break;
 
-                                break;
+                        case 132:
+                            // interpreter
+                            for (int i = 0; i < size; i++)
+                            {
+                                interpreter.Append((char)data[index + i]);
+                            }
 
-                            case 132:
-                                // interpreter
-                                for (int i = 0; i < size; i++)
-                                {
-                                    interpreter.Append((char)data[index + i]);
-                                }
+                            break;
 
-                                break;
+                        case 134:
+                            // game version
+                            for (int i = 0; i < size; i++)
+                            {
+                                version.Append((char)data[index + i]);
+                            }
 
-                            case 134:
-                                // game version
-                                for (int i = 0; i < size; i++)
-                                {
-                                    version.Append((char)data[index + i]);
-                                }
-
-                                break;
-                        }
-
-                        index += size;
+                            break;
                     }
 
-                    var name = description.Length > 0 ? description.ToString() : id.ToString();
-                    var platform = Platform.PC;
+                    index += size;
+                }
 
-                    result = new GameDetectorResult(name, GameInfoParser.ParseInterpreterVersion(interpreter.ToString()), platform, version.ToString());
-                }
-                catch (IOException)
-                {
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                }
+                var name = description.Length > 0 ? description.ToString() : id.ToString();
+                var platform = Platform.PC;
+
+                result = new GameDetectorResult(name, GameInfoParser.ParseInterpreterVersion(interpreter.ToString()), platform, version.ToString());
             }
-
-            return result;
+            catch (IOException)
+            {
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+            }
         }
+
+        return result;
     }
 }
