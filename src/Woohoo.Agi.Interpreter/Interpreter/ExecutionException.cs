@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 [Serializable]
@@ -27,7 +29,7 @@ public class ExecutionException : Exception
     /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
     /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
-    public ExecutionException(string message, Exception innerException)
+    public ExecutionException(string message, Exception? innerException)
         : base(message, innerException)
     {
     }
