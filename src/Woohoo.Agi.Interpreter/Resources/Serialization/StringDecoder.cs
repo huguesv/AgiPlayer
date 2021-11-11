@@ -16,7 +16,7 @@ public static class StringDecoder
     /// <returns>Agi string.</returns>
     public static string GetNullTerminatedString(byte[] data, int offset)
     {
-        if (data == null)
+        if (data is null)
         {
             throw new ArgumentNullException(nameof(data));
         }

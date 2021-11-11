@@ -43,7 +43,7 @@ public class ViewObjectManager
 
     public static bool IsUpdated(ViewObject view)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
@@ -53,7 +53,7 @@ public class ViewObjectManager
 
     public static bool IsStatic(ViewObject view)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
@@ -63,7 +63,7 @@ public class ViewObjectManager
 
     public static void SetLoopData(ViewObject view, byte loopNum)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
@@ -80,7 +80,7 @@ public class ViewObjectManager
 
     public static void SetCelData(ViewObject view, byte celNum)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
@@ -120,7 +120,7 @@ public class ViewObjectManager
 
     public void MoveUpdate(ViewObject view)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
@@ -155,7 +155,7 @@ public class ViewObjectManager
 
     public void ShufflePosition(ViewObject view)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
@@ -332,7 +332,7 @@ public class ViewObjectManager
 
     public void SetView(ViewObject view, ViewResource resource)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
@@ -353,12 +353,12 @@ public class ViewObjectManager
 
     public void SetViewCel(ViewObject view, byte celNumber)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
 
-        if (view.ViewResource == null)
+        if (view.ViewResource is null)
         {
             this.Error(ErrorCodes.ObjectCelSetViewNotSet, this.ObjectTable.IndexOf(view));
         }
@@ -389,12 +389,12 @@ public class ViewObjectManager
 
     public void SetViewLoop(ViewObject view, byte loopNumber)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }
 
-        if (view.ViewResource == null)
+        if (view.ViewResource is null)
         {
             this.Error(ErrorCodes.ObjectLoopSetViewNotSet, this.ObjectTable.IndexOf(view));
         }
@@ -416,7 +416,7 @@ public class ViewObjectManager
 
     public void ViewLoopUpdate(ViewObject view)
     {
-        if (view == null)
+        if (view is null)
         {
             throw new ArgumentNullException(nameof(view));
         }

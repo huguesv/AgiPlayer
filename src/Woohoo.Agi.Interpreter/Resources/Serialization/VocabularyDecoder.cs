@@ -76,7 +76,7 @@ public static class VocabularyDecoder
                 }
             }
 
-            if (wordGroup == null)
+            if (wordGroup is null)
             {
                 wordGroup = new VocabularyWordFamily(group);
                 families.Add(wordGroup);

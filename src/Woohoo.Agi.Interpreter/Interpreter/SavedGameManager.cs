@@ -20,12 +20,12 @@ public class SavedGameManager
 
     public void SaveTo(string filePath, string description)
     {
-        if (filePath == null)
+        if (filePath is null)
         {
             throw new ArgumentNullException(nameof(filePath));
         }
 
-        if (description == null)
+        if (description is null)
         {
             throw new ArgumentNullException(nameof(description));
         }
@@ -39,7 +39,7 @@ public class SavedGameManager
 
     public string GetGameDescription(int index, string folderPath)
     {
-        if (folderPath == null)
+        if (folderPath is null)
         {
             throw new ArgumentNullException(nameof(folderPath));
         }
@@ -49,7 +49,7 @@ public class SavedGameManager
 
     public string GetGameDescription(string filePath)
     {
-        if (filePath == null)
+        if (filePath is null)
         {
             throw new ArgumentNullException(nameof(filePath));
         }
@@ -70,7 +70,7 @@ public class SavedGameManager
 
     public DateTime GetFileDateTime(int index, string folderPath)
     {
-        if (folderPath == null)
+        if (folderPath is null)
         {
             throw new ArgumentNullException(nameof(folderPath));
         }
@@ -82,7 +82,7 @@ public class SavedGameManager
 
     public string GetFilePath(int index, string folderPath)
     {
-        if (folderPath == null)
+        if (folderPath is null)
         {
             throw new ArgumentNullException(nameof(folderPath));
         }
@@ -93,7 +93,7 @@ public class SavedGameManager
 
     public void GetSaveSlotInformation(string folderPath, out int[] slotNumbers, out string[] descriptions, out int slotCount, out int current)
     {
-        if (folderPath == null)
+        if (folderPath is null)
         {
             throw new ArgumentNullException(nameof(folderPath));
         }
@@ -125,7 +125,7 @@ public class SavedGameManager
 
     public void GetRestoreSlotInformation(string folderPath, out int[] slotNumbers, out string[] descriptions, out int slotCount, out int current)
     {
-        if (folderPath == null)
+        if (folderPath is null)
         {
             throw new ArgumentNullException(nameof(folderPath));
         }

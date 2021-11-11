@@ -43,12 +43,12 @@ public sealed class VolumeDecoderV2 : IVolumeDecoder
     /// <returns>Binary data for the resource.  This is always uncompressed.  If the data is compressed in the volume, the volume decoder must decompress it.</returns>
     byte[] IVolumeDecoder.ExtractResource(IGameContainer container, string fileName, VolumeResourceMapEntry dirEntry, out bool wasCompressed)
     {
-        if (container == null)
+        if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
 
-        if (fileName == null)
+        if (fileName is null)
         {
             throw new ArgumentNullException(nameof(fileName));
         }
@@ -58,7 +58,7 @@ public sealed class VolumeDecoderV2 : IVolumeDecoder
             throw new ArgumentException(Errors.FilePathEmpty, nameof(fileName));
         }
 
-        if (dirEntry == null)
+        if (dirEntry is null)
         {
             throw new ArgumentNullException(nameof(dirEntry));
         }
@@ -82,7 +82,7 @@ public sealed class VolumeDecoderV2 : IVolumeDecoder
     /// <returns>Resource map.</returns>
     VolumeResourceMap IVolumeDecoder.LoadResourceMap(IGameContainer container)
     {
-        if (container == null)
+        if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
@@ -99,7 +99,7 @@ public sealed class VolumeDecoderV2 : IVolumeDecoder
 
     private static byte[] ExtractResource(byte[] volumeData, int offset)
     {
-        if (volumeData == null)
+        if (volumeData is null)
         {
             throw new ArgumentNullException(nameof(volumeData));
         }

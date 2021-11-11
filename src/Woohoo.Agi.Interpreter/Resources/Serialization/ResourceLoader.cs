@@ -37,12 +37,12 @@ public class ResourceLoader
     /// <param name="version">Interpreter version.</param>
     public ResourceLoader(IGameContainer gameContainer, string gameId, Platform platform, InterpreterVersion version)
     {
-        if (gameContainer == null)
+        if (gameContainer is null)
         {
             throw new ArgumentNullException(nameof(gameContainer));
         }
 
-        if (gameId == null)
+        if (gameId is null)
         {
             throw new ArgumentNullException(nameof(gameId));
         }
@@ -77,7 +77,7 @@ public class ResourceLoader
     /// <returns>True if a game is found in the folder, false otherwise.</returns>
     public static bool IsGameFolder(IGameContainer gameContainer)
     {
-        if (gameContainer == null)
+        if (gameContainer is null)
         {
             throw new ArgumentNullException(nameof(gameContainer));
         }
@@ -102,7 +102,7 @@ public class ResourceLoader
     /// <returns>Game id.</returns>
     public static string GetGameId(IGameContainer gameContainer)
     {
-        if (gameContainer == null)
+        if (gameContainer is null)
         {
             throw new ArgumentNullException(nameof(gameContainer));
         }

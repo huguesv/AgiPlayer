@@ -51,7 +51,7 @@ public class ListBoxControl
 
     public void SetItems(string[] items)
     {
-        if (items == null)
+        if (items is null)
         {
             throw new ArgumentNullException(nameof(items));
         }

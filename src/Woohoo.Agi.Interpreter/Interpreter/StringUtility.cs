@@ -17,7 +17,7 @@ public static class StringUtility
     /// <returns>Reversed text.</returns>
     public static string Reverse(string text)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -71,7 +71,7 @@ public static class StringUtility
     /// <returns>Text padded with zeros.</returns>
     public static string PadWithZeros(string text, int paddingSize)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -90,7 +90,7 @@ public static class StringUtility
     /// <returns>Value.</returns>
     public static byte ParseNumber(string text)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -122,7 +122,7 @@ public static class StringUtility
     /// <returns>Value.</returns>
     public static int ParseNumber(string text, ref int index)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -145,7 +145,7 @@ public static class StringUtility
     /// <returns>Converted text.</returns>
     public static string ConvertSystemResourceText(string text)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }

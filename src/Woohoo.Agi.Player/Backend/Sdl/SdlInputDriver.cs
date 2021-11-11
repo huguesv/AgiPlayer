@@ -277,7 +277,7 @@ internal class SdlInputDriver : IInputDriver
     private int PollCharacter()
     {
         var e = this.EventRead(false);
-        if (e == null)
+        if (e is null)
         {
             return 0;
         }
@@ -705,9 +705,9 @@ internal class SdlInputDriver : IInputDriver
     {
         // AgiEvent e = this.previous_event_joy_axis();
         InputEvent e = null;
-        if (e == null)
+        if (e is null)
         {
-            while (SDL_PollEvent(out SDL_Event evt) != 0 && e == null)
+            while (SDL_PollEvent(out SDL_Event evt) != 0 && e is null)
             {
                 switch (evt.type)
                 {
@@ -754,12 +754,12 @@ internal class SdlInputDriver : IInputDriver
         do
         {
             e = this.EventRead(includeJoystickAxis);
-            if (e == null)
+            if (e is null)
             {
                 (this as IInputDriver).Sleep(10);
             }
         }
-        while (e == null);
+        while (e is null);
 
         return e;
     }

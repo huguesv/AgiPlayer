@@ -32,7 +32,7 @@ internal class GameFinder
             foreach (string subfolder in Directory.GetDirectories(folder))
             {
                 var game = FindGame(detector, new GameFolder(subfolder));
-                if (game != null)
+                if (game is not null)
                 {
                     // A game was found, so we do not go any further down that folder
                     games.Add(game);
@@ -47,7 +47,7 @@ internal class GameFinder
             foreach (string zipFile in Directory.GetFiles(folder, "*.zip"))
             {
                 var game = FindGame(detector, new GameZipArchive(zipFile));
-                if (game != null)
+                if (game is not null)
                 {
                     games.Add(game);
                 }

@@ -28,7 +28,7 @@ internal sealed class GameZipArchive : IGameContainer
         if (entryIndex != -1)
         {
             ZipEntry entry = this.zipFile[entryIndex];
-            if (entry != null)
+            if (entry is not null)
             {
                 using (Stream stream = this.zipFile.GetInputStream(entry))
                 {

@@ -37,7 +37,7 @@ public class ViewCel
             throw new ArgumentOutOfRangeException(nameof(transparentColor));
         }
 
-        if (pixels == null)
+        if (pixels is null)
         {
             throw new ArgumentNullException(nameof(pixels));
         }

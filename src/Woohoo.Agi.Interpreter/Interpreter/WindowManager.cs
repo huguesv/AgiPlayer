@@ -168,7 +168,7 @@ public class WindowManager
 
     public void DisplayMessageBox(string text, int row, int width, bool toggle)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -262,7 +262,7 @@ public class WindowManager
 
     public void PrintFormatted(string text, params object[] args)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -371,7 +371,7 @@ public class WindowManager
 
     public void DisplayAt(string text, TextPosition pos)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException("text");
         }
@@ -456,7 +456,7 @@ public class WindowManager
 
     public string WrapText(string text, int count)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException("text");
         }
@@ -484,7 +484,7 @@ public class WindowManager
 
     public void PrintAt(string text, TextPosition pos, byte width)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -548,7 +548,7 @@ public class WindowManager
     private void DrawCharacter(char ch, byte color, byte flags)
     {
         byte[] pixels = this.font.GetPixels(ch, color, (flags & TextInvertBit) != 0, (flags & TextShadeBit) != 0, this.Interpreter.GraphicsRenderer.TextMode);
-        if (pixels != null)
+        if (pixels is not null)
         {
             this.Interpreter.GraphicsDriver.RenderCharacter(new RenderPoint(this.textPosition.Column * this.Interpreter.GraphicsRenderer.RenderFontWidth, this.textPosition.Row * this.Interpreter.GraphicsRenderer.RenderFontHeight), new RenderSize(this.Interpreter.GraphicsRenderer.RenderFontWidth, this.Interpreter.GraphicsRenderer.RenderFontHeight), flags, pixels, this.font.Width, this.font.Height);
             this.InvalidateTextRegion(new RenderRectangle(this.textPosition.Column * this.Interpreter.GraphicsRenderer.RenderFontWidth, this.textPosition.Row * this.Interpreter.GraphicsRenderer.RenderFontHeight, this.Interpreter.GraphicsRenderer.RenderFontWidth, this.Interpreter.GraphicsRenderer.RenderFontHeight));
@@ -681,7 +681,7 @@ public class WindowManager
                                 case 'g':
                                     num = StringUtility.ParseNumber(text, ref textIndex);
                                     embedded = this.Interpreter.ResourceManager.LogicResources[0].GetMessage(num);
-                                    if (embedded != null)
+                                    if (embedded is not null)
                                     {
                                         this.Display(embedded, message);
                                     }
@@ -690,7 +690,7 @@ public class WindowManager
                                 case 'm':
                                     num = StringUtility.ParseNumber(text, ref textIndex);
                                     embedded = this.Interpreter.LogicInterpreter.CurrentLogic.GetMessage(num);
-                                    if (embedded != null)
+                                    if (embedded is not null)
                                     {
                                         this.Display(embedded, message);
                                     }

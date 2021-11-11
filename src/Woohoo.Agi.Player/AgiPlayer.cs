@@ -110,7 +110,7 @@ internal abstract class AgiPlayer
         if (ResourceLoader.IsGameFolder(new GameFolder(folder)))
         {
             GameStartInfo startInfo = GameFinder.FindGame(folder);
-            if (startInfo != null)
+            if (startInfo is not null)
             {
                 this.Interpreter.Start(startInfo, this.ReadPreferences());
 

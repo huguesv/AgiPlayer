@@ -48,7 +48,7 @@ public class VocabularyResource
     /// <returns>Family identifier, or NoFamily if not found.</returns>
     public int GetWordIdentifier(string word)
     {
-        if (word == null)
+        if (word is null)
         {
             throw new ArgumentNullException(nameof(word));
         }

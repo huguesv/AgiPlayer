@@ -18,12 +18,12 @@ public static class PreferencesSerializer
     /// </remarks>
     public static void LoadFrom(Preferences prefs, string filePath)
     {
-        if (prefs == null)
+        if (prefs is null)
         {
             throw new ArgumentNullException(nameof(prefs));
         }
 
-        if (filePath == null)
+        if (filePath is null)
         {
             throw new ArgumentNullException(nameof(filePath));
         }

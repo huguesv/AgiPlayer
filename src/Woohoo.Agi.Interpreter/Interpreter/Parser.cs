@@ -35,7 +35,7 @@ public class Parser
     /// <returns>Results of the parsing as (word, family identifier) pairs.</returns>
     public ParserResult[] Parse(string text)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }

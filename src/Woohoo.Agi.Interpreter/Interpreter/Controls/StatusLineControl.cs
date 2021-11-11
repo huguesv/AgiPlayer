@@ -68,7 +68,7 @@ public class StatusLineControl
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
     public bool ProcessEvent(InputEvent e)
     {
-        if (e == null)
+        if (e is null)
         {
             throw new ArgumentNullException(nameof(e));
         }

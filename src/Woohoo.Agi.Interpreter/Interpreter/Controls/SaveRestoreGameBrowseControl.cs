@@ -33,12 +33,12 @@ public class SaveRestoreGameBrowseControl
 
     public void SetSlotInformation(int[] slotNumbers, string[] descriptions, int slotCount)
     {
-        if (slotNumbers == null)
+        if (slotNumbers is null)
         {
             throw new ArgumentNullException(nameof(slotNumbers));
         }
 
-        if (descriptions == null)
+        if (descriptions is null)
         {
             throw new ArgumentNullException(nameof(descriptions));
         }

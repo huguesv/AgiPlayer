@@ -137,7 +137,7 @@ public sealed partial class AgiInterpreter
         }
 
         InputEvent e = this.MapControlKey(this.InputDriver.ReadEvent());
-        while (e != null && !this.State.Flags[Flags.PlayerCommandLine])
+        while (e is not null && !this.State.Flags[Flags.PlayerCommandLine])
         {
             this.ProcessEvent(e);
 
@@ -262,7 +262,7 @@ public sealed partial class AgiInterpreter
     {
         var control = new GameSelectionControl(this);
         this.GameInfo = control.DoModal(startInfos);
-        if (this.GameInfo == null)
+        if (this.GameInfo is null)
         {
             this.ShutdownPlayer();
         }
@@ -622,7 +622,7 @@ public sealed partial class AgiInterpreter
         bool loaded = false;
 
         var resource = this.ResourceManager.FindLogic(logicResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             resource = this.LoadLogic(logicResourceIndex, false);
             loaded = true;
@@ -653,7 +653,7 @@ public sealed partial class AgiInterpreter
     private LogicResource LoadLogic(byte resourceIndex, bool writeToScript)
     {
         var resource = this.ResourceManager.FindLogic(resourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.BlistsErase();
 
@@ -692,13 +692,13 @@ public sealed partial class AgiInterpreter
     private PictureResource LoadPicture(byte pictureResourceIndex)
     {
         var resource = this.ResourceManager.FindPicture(pictureResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.BlistsErase();
             this.ScriptManager.Write(ScriptCodes.LoadPicture, pictureResourceIndex);
 
             resource = this.ResourceLoader.LoadPicture(pictureResourceIndex);
-            if (resource != null)
+            if (resource is not null)
             {
                 this.ResourceManager.PictureResources.Add(resource);
 
@@ -712,13 +712,13 @@ public sealed partial class AgiInterpreter
     private SoundResource LoadSound(byte soundResourceIndex)
     {
         var resource = this.ResourceManager.FindSound(soundResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.BlistsErase();
             this.ScriptManager.Write(ScriptCodes.LoadSound, soundResourceIndex);
 
             resource = this.ResourceLoader.LoadSound(soundResourceIndex);
-            if (resource != null)
+            if (resource is not null)
             {
                 this.ResourceManager.SoundResources.Add(resource);
 
@@ -732,20 +732,20 @@ public sealed partial class AgiInterpreter
     private ViewResource LoadView(byte viewResourceIndex, bool forceLoad)
     {
         var resource = this.ResourceManager.FindView(viewResourceIndex);
-        if (resource != null && !forceLoad)
+        if (resource is not null && !forceLoad)
         {
             return resource;
         }
 
         this.BlistsErase();
 
-        if (resource == null)
+        if (resource is null)
         {
             this.ScriptManager.Write(ScriptCodes.LoadView, viewResourceIndex);
         }
 
         resource = this.ResourceLoader.LoadView(viewResourceIndex);
-        if (resource != null)
+        if (resource is not null)
         {
             this.ResourceManager.ViewResources.Add(resource);
 
@@ -758,7 +758,7 @@ public sealed partial class AgiInterpreter
     private void OverlayPicture(byte pictureResourceIndex)
     {
         var resource = this.ResourceManager.FindPicture(pictureResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.ExecutionError(ErrorCodes.PictureOverlayResourceNotLoaded, pictureResourceIndex);
         }
@@ -776,7 +776,7 @@ public sealed partial class AgiInterpreter
     private void DrawPicture(byte pictureResourceIndex)
     {
         var resource = this.ResourceManager.FindPicture(pictureResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.ExecutionError(ErrorCodes.PictureDrawResourceNotLoaded, pictureResourceIndex);
         }
@@ -793,7 +793,7 @@ public sealed partial class AgiInterpreter
     private void DiscardPicture(byte pictureResourceIndex)
     {
         var resource = this.ResourceManager.FindPicture(pictureResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.ExecutionError(ErrorCodes.PictureDiscardPictureResourceNotLoaded, pictureResourceIndex);
         }
@@ -809,7 +809,7 @@ public sealed partial class AgiInterpreter
     private void DiscardView(byte viewResourceIndex)
     {
         var resource = this.ResourceManager.FindView(viewResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.ExecutionError(ErrorCodes.ViewDiscardViewResourceNotLoaded, viewResourceIndex);
         }
@@ -1097,7 +1097,7 @@ public sealed partial class AgiInterpreter
 
         this.ScriptManager.ResetIterator();
         byte[] scriptData = this.ScriptManager.IncrementIterator();
-        while (scriptData != null)
+        while (scriptData is not null)
         {
             switch (scriptData[0])
             {
@@ -1119,22 +1119,22 @@ public sealed partial class AgiInterpreter
                 case ScriptCodes.AddToPicture:
                     {
                         scriptData = this.ScriptManager.IncrementIterator();
-                        Debug.Assert(scriptData != null, "Null script data.");
-                        if (scriptData != null)
+                        Debug.Assert(scriptData is not null, "Null script data.");
+                        if (scriptData is not null)
                         {
                             byte addNum = scriptData[0];
                             byte addLoop = scriptData[1];
 
                             scriptData = this.ScriptManager.IncrementIterator();
-                            Debug.Assert(scriptData != null, "Null script data.");
-                            if (scriptData != null)
+                            Debug.Assert(scriptData is not null, "Null script data.");
+                            if (scriptData is not null)
                             {
                                 byte addCel = scriptData[0];
                                 byte addX = scriptData[1];
 
                                 scriptData = this.ScriptManager.IncrementIterator();
-                                Debug.Assert(scriptData != null, "Null script data.");
-                                if (scriptData != null)
+                                Debug.Assert(scriptData is not null, "Null script data.");
+                                if (scriptData is not null)
                                 {
                                     byte addY = scriptData[0];
                                     byte addPriority = scriptData[1];
@@ -1174,7 +1174,7 @@ public sealed partial class AgiInterpreter
             view.X = view.Number;
             view.Number = (byte)i;
 
-            if (this.ResourceManager.FindView(view.ViewCur) != null)
+            if (this.ResourceManager.FindView(view.ViewCur) is not null)
             {
                 this.ObjViewSet(view, view.ViewCur);
             }
@@ -1521,7 +1521,7 @@ public sealed partial class AgiInterpreter
         }
 
         var view = this.ObjectTable.GetAt(viewNum);
-        if (view.ViewCel == null)
+        if (view.ViewCel is null)
         {
             this.ExecutionError(ErrorCodes.ObjectDrawViewObjectCelNull, viewNum);
         }
@@ -1613,7 +1613,7 @@ public sealed partial class AgiInterpreter
     private void ObjViewSet(ViewObject view, byte viewResourceIndex)
     {
         var resource = this.ResourceManager.FindView(viewResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.ExecutionError(ErrorCodes.ObjectViewSetViewResourceNotLoaded, viewResourceIndex);
         }
@@ -1624,10 +1624,10 @@ public sealed partial class AgiInterpreter
     private void ShowView(byte viewResourceIndex)
     {
         this.ScriptManager.Block();
-        bool loaded = this.ResourceManager.FindView(viewResourceIndex) != null;
+        bool loaded = this.ResourceManager.FindView(viewResourceIndex) is not null;
 
         var resource = this.LoadView(viewResourceIndex, false);
-        if (resource == null)
+        if (resource is null)
         {
             this.Prompt(UserInterface.NotNow);
         }
@@ -2056,7 +2056,7 @@ public sealed partial class AgiInterpreter
 
     private InputEvent MapControlKey(InputEvent e)
     {
-        if (e != null)
+        if (e is not null)
         {
             if (e.Type == InputEventType.Ascii)
             {

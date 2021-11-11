@@ -56,7 +56,7 @@ public class GameControl
 
     public bool ProcessEvent(InputEvent e)
     {
-        if (e == null)
+        if (e is null)
         {
             throw new ArgumentNullException(nameof(e));
         }
@@ -123,7 +123,7 @@ public class GameControl
     public MouseDown PollMouse()
     {
         MouseDown m = this.PopMouseStack();
-        if (m == null)
+        if (m is null)
         {
             int button;
             int screenScaledX;

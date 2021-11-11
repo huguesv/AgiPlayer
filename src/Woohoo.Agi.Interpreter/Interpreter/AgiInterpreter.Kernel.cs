@@ -943,7 +943,7 @@ public partial class AgiInterpreter : IKernel
         this.State.Flags[flagDone] = false;
 
         SoundResource resource = this.ResourceManager.FindSound(numericSoundResourceIndex);
-        if (resource == null)
+        if (resource is null)
         {
             this.ExecutionError(ErrorCodes.SoundResourceIndexNotFound, numericSoundResourceIndex);
         }
@@ -1277,7 +1277,7 @@ public partial class AgiInterpreter : IKernel
         else
         {
             string text = this.LogicInterpreter.CurrentLogic.GetMessage(messageId);
-            if (text == null)
+            if (text is null)
             {
                 this.ExecutionError(ErrorCodes.InvalidMessageIndex, messageId);
             }

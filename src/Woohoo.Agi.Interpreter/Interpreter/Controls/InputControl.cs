@@ -38,7 +38,7 @@ public abstract class InputControl
 
     public bool ProcessEvent(InputEvent e)
     {
-        if (e == null)
+        if (e is null)
         {
             throw new ArgumentNullException(nameof(e));
         }

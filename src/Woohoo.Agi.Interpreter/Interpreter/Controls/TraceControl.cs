@@ -81,7 +81,7 @@ public class TraceControl
 
     public void Trace(LogicCommand command, int operatorIndex, bool said, int result, int messageIndexOffset)
     {
-        if (command == null)
+        if (command is null)
         {
             throw new ArgumentNullException(nameof(command));
         }
@@ -99,7 +99,7 @@ public class TraceControl
         }
 
         LogicResource originalLogic = this.LogicInterpreter.CurrentLogic;
-        if (this.TraceLogicIndex == 0 || (this.LogicInterpreter.CurrentLogic = this.ResourceManager.FindLogic(this.TraceLogicIndex)) == null)
+        if (this.TraceLogicIndex == 0 || (this.LogicInterpreter.CurrentLogic = this.ResourceManager.FindLogic(this.TraceLogicIndex)) is null)
         {
             this.WindowManager.PrintFormatted(UserInterface.TraceProcedureNumber, originalLogic.ResourceIndex, command.Code);
         }
@@ -112,7 +112,7 @@ public class TraceControl
             else
             {
                 string message = this.LogicInterpreter.CurrentLogic.GetMessage(command.Code + messageIndexOffset);
-                if (message != null)
+                if (message is not null)
                 {
                     this.WindowManager.PrintFormatted(UserInterface.TraceProcedureText, this.LogicInterpreter.CurrentLogic.ResourceIndex, message);
                 }
@@ -156,13 +156,13 @@ public class TraceControl
         while (this.TraceState != TraceState.Uninitialized)
         {
             e = this.InputDriver.ReadEvent();
-            if (e != null && e.Type == InputEventType.Ascii)
+            if (e is not null && e.Type == InputEventType.Ascii)
             {
                 break;
             }
         }
 
-        if (e != null && e.Data == '+')
+        if (e is not null && e.Data == '+')
         {
             return TraceState.Unknown;
         }

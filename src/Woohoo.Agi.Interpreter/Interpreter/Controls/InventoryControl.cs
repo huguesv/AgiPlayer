@@ -91,7 +91,7 @@ public class InventoryControl
 
     private void Display(InventoryControlItem[] egoItems, int selected)
     {
-        if (egoItems == null)
+        if (egoItems is null)
         {
             throw new ArgumentNullException(nameof(egoItems));
         }
@@ -235,12 +235,12 @@ public class InventoryControl
 
     private void ChangeSelection(InventoryControlItem oldItem, InventoryControlItem newItem)
     {
-        if (oldItem == null)
+        if (oldItem is null)
         {
             throw new ArgumentNullException(nameof(oldItem));
         }
 
-        if (newItem == null)
+        if (newItem is null)
         {
             throw new ArgumentNullException(nameof(newItem));
         }

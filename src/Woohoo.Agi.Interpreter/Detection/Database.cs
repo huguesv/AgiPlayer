@@ -31,7 +31,7 @@ internal class Database
     /// <returns>List of files.</returns>
     internal static GameFileCollection GetFolderGameFiles(IGameContainer container)
     {
-        if (container == null)
+        if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
@@ -56,7 +56,7 @@ internal class Database
     /// <returns>Matched game, or null if no match.</returns>
     internal Game FindMatch(GameFileCollection files)
     {
-        if (files == null)
+        if (files is null)
         {
             throw new ArgumentNullException(nameof(files));
         }
@@ -81,7 +81,7 @@ internal class Database
                 {
                     // Check this crc
                     GameFile crc = files[curCrc.Name];
-                    if (crc == null)
+                    if (crc is null)
                     {
                         // Filename not found, continue with next game
                         match = false;
@@ -121,7 +121,7 @@ internal class Database
     /// <param name="text">Text to load.</param>
     internal void LoadFromXml(string text)
     {
-        if (text == null)
+        if (text is null)
         {
             throw new ArgumentNullException(nameof(text));
         }
@@ -147,7 +147,7 @@ internal class Database
     /// <param name="reader">Xml reader.</param>
     internal void Load(XmlReader reader)
     {
-        if (reader == null)
+        if (reader is null)
         {
             throw new ArgumentNullException(nameof(reader));
         }

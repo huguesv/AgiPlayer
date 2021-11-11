@@ -25,7 +25,7 @@ public sealed class DetectByAgiDesignerGameInfo : IGameDetectorAlgorithm
     /// <returns>Detection result.</returns>
     GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
-        if (container == null)
+        if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
@@ -53,7 +53,7 @@ public sealed class DetectByAgiDesignerGameInfo : IGameDetectorAlgorithm
                 doc.Load(files[0]);
 
                 var node = doc.SelectSingleNode("game");
-                if (node != null)
+                if (node is not null)
                 {
                     var name = node.Attributes["name"].Value;
                     var platform = node.Attributes["platform"].Value;

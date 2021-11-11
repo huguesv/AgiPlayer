@@ -23,22 +23,22 @@ public class SoundResource
     /// <param name="channel4Data">Channel 4 sound byte code.</param>
     public SoundResource(byte resourceIndex, byte[] channel1Data, byte[] channel2Data, byte[] channel3Data, byte[] channel4Data)
     {
-        if (channel1Data == null)
+        if (channel1Data is null)
         {
             throw new ArgumentNullException(nameof(channel1Data));
         }
 
-        if (channel2Data == null)
+        if (channel2Data is null)
         {
             throw new ArgumentNullException(nameof(channel2Data));
         }
 
-        if (channel3Data == null)
+        if (channel3Data is null)
         {
             throw new ArgumentNullException(nameof(channel3Data));
         }
 
-        if (channel4Data == null)
+        if (channel4Data is null)
         {
             throw new ArgumentNullException(nameof(channel4Data));
         }

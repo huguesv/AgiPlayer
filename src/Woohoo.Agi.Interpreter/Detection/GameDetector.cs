@@ -28,7 +28,7 @@ public sealed class GameDetector
     /// <returns>Game detection result.</returns>
     public GameDetectorResult Detect(IGameContainer container)
     {
-        if (container == null)
+        if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }

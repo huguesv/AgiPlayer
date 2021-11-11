@@ -40,7 +40,7 @@ public class ScriptManager
     /// </summary>
     public void Clear()
     {
-        if (this.State.ScriptSize > 0 && this.ScriptData == null)
+        if (this.State.ScriptSize > 0 && this.ScriptData is null)
         {
             this.ScriptData = new byte[this.State.ScriptSize * 2];
         }

@@ -115,7 +115,7 @@ internal sealed class Sdl2SoundPcmDriver : ISoundPcmDriver
             }
         }
 
-        if (channel != null)
+        if (channel is not null)
         {
             this.FreeHandle(channel.Handle);
             this.channels.Remove(channel);

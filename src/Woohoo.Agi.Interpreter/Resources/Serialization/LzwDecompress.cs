@@ -36,7 +36,7 @@ public class LzwDecompress
     /// <returns>Decompressed data.</returns>
     public byte[] Decompress(byte[] encryptedData, int encryptedStartOffset, int encryptedLength, int decryptedLength)
     {
-        if (encryptedData == null)
+        if (encryptedData is null)
         {
             throw new ArgumentNullException(nameof(encryptedData));
         }

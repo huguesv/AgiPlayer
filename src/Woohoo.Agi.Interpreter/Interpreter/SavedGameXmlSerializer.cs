@@ -24,12 +24,12 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
 
     void ISavedGameSerializer.SaveTo(AgiInterpreter interpreter, string description, Stream stream)
     {
-        if (description == null)
+        if (description is null)
         {
             throw new ArgumentNullException(nameof(description));
         }
 
-        if (stream == null)
+        if (stream is null)
         {
             throw new ArgumentNullException(nameof(stream));
         }
@@ -48,7 +48,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
 
     void ISavedGameSerializer.LoadFrom(AgiInterpreter interpreter, Stream stream)
     {
-        if (stream == null)
+        if (stream is null)
         {
             throw new ArgumentNullException(nameof(stream));
         }
@@ -69,7 +69,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
 
     string ISavedGameSerializer.LoadDescriptionFrom(Stream stream)
     {
-        if (stream == null)
+        if (stream is null)
         {
             throw new ArgumentNullException(nameof(stream));
         }

@@ -92,7 +92,7 @@ public class SoundManager
 
     public void Play(SoundResource resource)
     {
-        if (resource == null)
+        if (resource is null)
         {
             throw new ArgumentNullException("resource");
         }
@@ -141,7 +141,7 @@ public class SoundManager
     {
         this.soundPlaying = false;
         this.SoundDriver.SetState(false);
-        if (this.soundChannels != null)
+        if (this.soundChannels is not null)
         {
             for (int i = 0; i < this.soundChannels.Length; i++)
             {

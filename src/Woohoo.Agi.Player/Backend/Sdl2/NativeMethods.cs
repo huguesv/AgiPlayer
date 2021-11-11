@@ -34,7 +34,7 @@ public static partial class NativeMethods
 
     internal static byte[] UTF8_ToNative(string s)
     {
-        if (s == null)
+        if (s is null)
         {
             return null;
         }
@@ -828,7 +828,7 @@ public static partial class NativeMethods
             };
         }
 
-        if (messageboxdata.colorScheme != null)
+        if (messageboxdata.colorScheme is not null)
         {
             data.colorScheme = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(SDL_MessageBoxColorScheme)));
             Marshal.StructureToPtr(messageboxdata.colorScheme.Value, data.colorScheme, false);

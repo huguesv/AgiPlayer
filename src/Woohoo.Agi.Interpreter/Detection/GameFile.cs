@@ -38,12 +38,12 @@ internal class GameFile
     /// <returns>Instance initialized with filename and checksum.</returns>
     internal static GameFile FromFile(IGameContainer container, string fileName)
     {
-        if (container == null)
+        if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
 
-        if (fileName == null)
+        if (fileName is null)
         {
             throw new ArgumentNullException(nameof(fileName));
         }

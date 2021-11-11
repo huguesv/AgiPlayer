@@ -18,7 +18,7 @@ public static class PictureCompression
     /// <returns>Uncompressed array of bytes.</returns>
     public static byte[] Decompress(byte[] compressedData, int compressedIndex, int compressedLength, int uncompressedLength)
     {
-        if (compressedData == null)
+        if (compressedData is null)
         {
             throw new ArgumentNullException(nameof(compressedData));
         }

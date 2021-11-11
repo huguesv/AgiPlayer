@@ -25,7 +25,7 @@ public sealed class DetectByWinAgiGameInfo : IGameDetectorAlgorithm
     /// <returns>Detection result.</returns>
     GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
-        if (container == null)
+        if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }

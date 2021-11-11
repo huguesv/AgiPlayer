@@ -37,7 +37,7 @@ public sealed class DetectByInternalDatabase : IGameDetectorAlgorithm
         {
             // Find a game match
             var match = this.database.FindMatch(files);
-            if (match != null)
+            if (match is not null)
             {
                 result = new GameDetectorResult(match.Name, GameInfoParser.ParseInterpreterVersion(match.Interpreter), GameInfoParser.ParsePlatform(match.Platform), match.Version);
             }

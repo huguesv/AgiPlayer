@@ -30,7 +30,7 @@ public class PictureRenderer
 
     public void DrawLine(PicturePoint[] points)
     {
-        if (points == null)
+        if (points is null)
         {
             throw new ArgumentNullException("points");
         }

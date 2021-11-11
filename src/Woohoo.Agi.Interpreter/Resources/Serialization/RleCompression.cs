@@ -19,7 +19,7 @@ public static class RleCompression
     /// <returns>Decompressed array of bytes (bitmap).</returns>
     public static byte[] Decompress(byte[] compressedData, int compressedIndex, int width, int height, byte transparentColor)
     {
-        if (compressedData == null)
+        if (compressedData is null)
         {
             throw new ArgumentNullException(nameof(compressedData));
         }

@@ -19,12 +19,12 @@ public class LogicResource
     /// <param name="messages">Resource messages.</param>
     public LogicResource(byte resourceIndex, byte[] code, string[] messages)
     {
-        if (code == null)
+        if (code is null)
         {
             throw new ArgumentNullException(nameof(code));
         }
 
-        if (messages == null)
+        if (messages is null)
         {
             throw new ArgumentNullException(nameof(messages));
         }
@@ -113,12 +113,12 @@ public class LogicResource
     /// <param name="patched">Byte code to replace with.</param>
     public void Patch(byte[] original, byte[] patched)
     {
-        if (original == null)
+        if (original is null)
         {
             throw new ArgumentNullException(nameof(original));
         }
 
-        if (patched == null)
+        if (patched is null)
         {
             throw new ArgumentNullException(nameof(patched));
         }

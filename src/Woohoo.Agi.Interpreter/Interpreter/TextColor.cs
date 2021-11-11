@@ -65,7 +65,7 @@ public struct TextColor
     /// <returns>true if obj is the same type and value; otherwise, false. </returns>
     public override bool Equals(object obj)
     {
-        if (obj != null)
+        if (obj is not null)
         {
             TextColor o = (TextColor)obj;
 

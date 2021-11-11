@@ -28,7 +28,7 @@ public class PictureInterpreter
     /// <param name="renderer">Picture renderer.</param>
     public void Execute(PictureResource resource, PictureRenderer renderer)
     {
-        if (resource == null)
+        if (resource is null)
         {
             throw new ArgumentNullException(nameof(resource));
         }
