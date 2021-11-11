@@ -1,24 +1,23 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Resources.Serialization
-{
-    using Woohoo.Agi.Resources;
+namespace Woohoo.Agi.Resources.Serialization;
 
+using Woohoo.Agi.Resources;
+
+/// <summary>
+/// Picture resource decoder.
+/// </summary>
+public static class PictureDecoder
+{
     /// <summary>
-    /// Picture resource decoder.
+    /// Decode the picture resource from byte array.
     /// </summary>
-    public static class PictureDecoder
+    /// <param name="resourceIndex">Resource index.</param>
+    /// <param name="data">Source array.</param>
+    /// <returns>Picture resource.</returns>
+    public static PictureResource ReadPicture(byte resourceIndex, byte[] data)
     {
-        /// <summary>
-        /// Decode the picture resource from byte array.
-        /// </summary>
-        /// <param name="resourceIndex">Resource index.</param>
-        /// <param name="data">Source array.</param>
-        /// <returns>Picture resource.</returns>
-        public static PictureResource ReadPicture(byte resourceIndex, byte[] data)
-        {
-            return new PictureResource(resourceIndex, data);
-        }
+        return new PictureResource(resourceIndex, data);
     }
 }

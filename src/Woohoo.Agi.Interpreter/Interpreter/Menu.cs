@@ -1,89 +1,88 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+/// <summary>
+/// Menu hierarchical structure.
+/// </summary>
+public class Menu
 {
+    public const int LastMenuColumn = 39;
+
     /// <summary>
-    /// Menu hierarchical structure.
+    /// Initializes a new instance of the <see cref="Menu"/> class.
     /// </summary>
-    public class Menu
+    public Menu()
     {
-        public const int LastMenuColumn = 39;
+        this.Items = new List<MenuParentItem>();
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Menu"/> class.
-        /// </summary>
-        public Menu()
+    /// <summary>
+    /// Gets top-level menu items (parent items).
+    /// </summary>
+    public IList<MenuParentItem> Items { get; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether once a menu is submitted, no changes are made to its structure.
+    /// </summary>
+    public bool Submitted { get; set; }
+
+    /// <summary>
+    /// Enable all the menu items.
+    /// </summary>
+    public void EnableAllItems()
+    {
+        foreach (var parent in this.Items)
         {
-            this.Items = new List<MenuParentItem>();
-        }
-
-        /// <summary>
-        /// Gets top-level menu items (parent items).
-        /// </summary>
-        public IList<MenuParentItem> Items { get; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether once a menu is submitted, no changes are made to its structure.
-        /// </summary>
-        public bool Submitted { get; set; }
-
-        /// <summary>
-        /// Enable all the menu items.
-        /// </summary>
-        public void EnableAllItems()
-        {
-            foreach (var parent in this.Items)
+            if (parent.Enabled)
             {
-                if (parent.Enabled)
+                foreach (var item in parent.Items)
                 {
-                    foreach (var item in parent.Items)
-                    {
-                        item.Enabled = true;
-                    }
+                    item.Enabled = true;
                 }
             }
         }
+    }
 
-        /// <summary>
-        /// Enable or disable the item(s) that use the specified controller.
-        /// </summary>
-        /// <param name="controller">Controller to search for.</param>
-        /// <param name="enable">Enable/disable menu item(s).</param>
-        public void SetItemEnabled(byte controller, bool enable)
+    /// <summary>
+    /// Enable or disable the item(s) that use the specified controller.
+    /// </summary>
+    /// <param name="controller">Controller to search for.</param>
+    /// <param name="enable">Enable/disable menu item(s).</param>
+    public void SetItemEnabled(byte controller, bool enable)
+    {
+        foreach (var parentItem in this.Items)
         {
-            foreach (var parentItem in this.Items)
+            foreach (var item in parentItem.Items)
             {
-                foreach (var item in parentItem.Items)
+                if (item.Controller == controller)
                 {
-                    if (item.Controller == controller)
-                    {
-                        item.Enabled = enable;
-                    }
+                    item.Enabled = enable;
                 }
             }
         }
+    }
 
-        /// <summary>
-        /// Append a parent menu item.
-        /// </summary>
-        /// <param name="text">Parent menu item text.</param>
-        public void AppendParentItem(string text)
+    /// <summary>
+    /// Append a parent menu item.
+    /// </summary>
+    /// <param name="text">Parent menu item text.</param>
+    public void AppendParentItem(string text)
+    {
+        byte column = 1;
+
+        foreach (var current in this.Items)
         {
-            byte column = 1;
-
-            foreach (var current in this.Items)
-            {
-                column += (byte)(current.Text.Length + 1);
-            }
-
-            var parentItem = new MenuParentItem();
-            parentItem.Column = column;
-            parentItem.Row = 0;
-            parentItem.Text = text;
-            parentItem.Enabled = true;
-
-            this.Items.Add(parentItem);
+            column += (byte)(current.Text.Length + 1);
         }
+
+        var parentItem = new MenuParentItem();
+        parentItem.Column = column;
+        parentItem.Row = 0;
+        parentItem.Text = text;
+        parentItem.Enabled = true;
+
+        this.Items.Add(parentItem);
     }
 }

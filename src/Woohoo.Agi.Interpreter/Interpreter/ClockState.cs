@@ -1,26 +1,25 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+/// <summary>
+/// State of the internal clock.
+/// </summary>
+public enum ClockState
 {
     /// <summary>
-    /// State of the internal clock.
+    /// Clock is running.
     /// </summary>
-    public enum ClockState
-    {
-        /// <summary>
-        /// Clock is running.
-        /// </summary>
-        Normal,
+    Normal,
 
-        /// <summary>
-        /// Clock is paused.
-        /// </summary>
-        Pause,
+    /// <summary>
+    /// Clock is paused.
+    /// </summary>
+    Pause,
 
-        /// <summary>
-        /// Clock stoppage requested.
-        /// </summary>
-        TurnOff,
-    }
+    /// <summary>
+    /// Clock stoppage requested.
+    /// </summary>
+    TurnOff,
 }

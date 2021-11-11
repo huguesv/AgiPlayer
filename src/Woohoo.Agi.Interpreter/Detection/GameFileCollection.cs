@@ -1,31 +1,30 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Detection
+namespace Woohoo.Agi.Detection;
+
+/// <summary>
+/// Collection of FileCrc objects.
+/// </summary>
+internal class GameFileCollection : Collection<GameFile>
 {
     /// <summary>
-    /// Collection of FileCrc objects.
+    /// Gets or sets the element at the specified index.
     /// </summary>
-    internal class GameFileCollection : Collection<GameFile>
+    /// <param name="filename">Name of file.</param>
+    internal GameFile this[string filename]
     {
-        /// <summary>
-        /// Gets or sets the element at the specified index.
-        /// </summary>
-        /// <param name="filename">Name of file.</param>
-        internal GameFile this[string filename]
+        get
         {
-            get
+            foreach (GameFile file in this)
             {
-                foreach (GameFile file in this)
+                if (string.Compare(file.Name, filename, StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    if (string.Compare(file.Name, filename, StringComparison.OrdinalIgnoreCase) == 0)
-                    {
-                        return file;
-                    }
+                    return file;
                 }
-
-                return null;
             }
+
+            return null;
         }
     }
 }

@@ -1,20 +1,19 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+public class InputEvent
 {
-    public class InputEvent
+    public InputEvent()
     {
-        public InputEvent()
-        {
-        }
-
-        public int Type { get; set; }
-
-        public int Data { get; set; }
-
-        public int X { get; set; }
-
-        public int Y { get; set; }
     }
+
+    public int Type { get; set; }
+
+    public int Data { get; set; }
+
+    public int X { get; set; }
+
+    public int Y { get; set; }
 }

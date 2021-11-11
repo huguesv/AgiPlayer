@@ -1,49 +1,48 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Detection
+namespace Woohoo.Agi.Detection;
+
+using Woohoo.Agi.Interpreter;
+
+/// <summary>
+/// Game detection algorithm which uses MD5 checksum to identify
+/// the game using an internal database.
+/// </summary>
+public sealed class DetectByInternalDatabase : IGameDetectorAlgorithm
 {
-    using Woohoo.Agi.Interpreter;
+    private readonly Database database;
 
     /// <summary>
-    /// Game detection algorithm which uses MD5 checksum to identify
-    /// the game using an internal database.
+    /// Initializes a new instance of the <see cref="DetectByInternalDatabase"/> class.
     /// </summary>
-    public sealed class DetectByInternalDatabase : IGameDetectorAlgorithm
+    public DetectByInternalDatabase()
     {
-        private readonly Database database;
+        this.database = new Database();
+        this.database.LoadFromXml(Databases.Agi);
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DetectByInternalDatabase"/> class.
-        /// </summary>
-        public DetectByInternalDatabase()
+    /// <summary>
+    /// Detect a game in the specified folder.
+    /// </summary>
+    /// <param name="container">Game container.</param>
+    /// <returns>Detection result.</returns>
+    GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
+    {
+        var result = new GameDetectorResult();
+
+        // Look in the current directory for all game files
+        var files = Database.GetFolderGameFiles(container);
+        if (files.Count > 0)
         {
-            this.database = new Database();
-            this.database.LoadFromXml(Databases.Agi);
-        }
-
-        /// <summary>
-        /// Detect a game in the specified folder.
-        /// </summary>
-        /// <param name="container">Game container.</param>
-        /// <returns>Detection result.</returns>
-        GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
-        {
-            var result = new GameDetectorResult();
-
-            // Look in the current directory for all game files
-            var files = Database.GetFolderGameFiles(container);
-            if (files.Count > 0)
+            // Find a game match
+            var match = this.database.FindMatch(files);
+            if (match != null)
             {
-                // Find a game match
-                var match = this.database.FindMatch(files);
-                if (match != null)
-                {
-                    result = new GameDetectorResult(match.Name, GameInfoParser.ParseInterpreterVersion(match.Interpreter), GameInfoParser.ParsePlatform(match.Platform), match.Version);
-                }
+                result = new GameDetectorResult(match.Name, GameInfoParser.ParseInterpreterVersion(match.Interpreter), GameInfoParser.ParsePlatform(match.Platform), match.Version);
             }
-
-            return result;
         }
+
+        return result;
     }
 }

@@ -1,58 +1,54 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Resources.Serialization
+namespace Woohoo.Agi.Resources.Serialization;
+
+/// <summary>
+/// Collection of resource map entries.
+/// </summary>
+public class VolumeResourceMapEntryCollection : List<VolumeResourceMapEntry>
 {
-    using System;
-    using System.Collections.Generic;
+    /// <summary>
+    /// Find the index in the collection of the resource map entry for the specified resource index.
+    /// </summary>
+    /// <param name="resourceIndex">Resource index.</param>
+    /// <returns>Index in the resource map entry collection.</returns>
+    public int IndexOf(int resourceIndex)
+    {
+        if (resourceIndex < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
+        }
+
+        for (int i = 0; i < this.Count; i++)
+        {
+            if (this[i].Index == resourceIndex)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
 
     /// <summary>
-    /// Collection of resource map entries.
+    /// Get the resource map entry for the specified resource index.
     /// </summary>
-    public class VolumeResourceMapEntryCollection : List<VolumeResourceMapEntry>
+    /// <param name="resourceIndex">Resource index.  This is not the same as the index in the collection.</param>
+    /// <returns>Resource map entry.</returns>
+    public VolumeResourceMapEntry GetEntry(int resourceIndex)
     {
-        /// <summary>
-        /// Find the index in the collection of the resource map entry for the specified resource index.
-        /// </summary>
-        /// <param name="resourceIndex">Resource index.</param>
-        /// <returns>Index in the resource map entry collection.</returns>
-        public int IndexOf(int resourceIndex)
+        if (resourceIndex < 0)
         {
-            if (resourceIndex < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(resourceIndex));
-            }
-
-            for (int i = 0; i < this.Count; i++)
-            {
-                if (this[i].Index == resourceIndex)
-                {
-                    return i;
-                }
-            }
-
-            return -1;
+            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
         }
 
-        /// <summary>
-        /// Get the resource map entry for the specified resource index.
-        /// </summary>
-        /// <param name="resourceIndex">Resource index.  This is not the same as the index in the collection.</param>
-        /// <returns>Resource map entry.</returns>
-        public VolumeResourceMapEntry GetEntry(int resourceIndex)
+        int i = this.IndexOf(resourceIndex);
+        if (i >= 0)
         {
-            if (resourceIndex < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(resourceIndex));
-            }
-
-            int i = this.IndexOf(resourceIndex);
-            if (i >= 0)
-            {
-                return this[i];
-            }
-
-            return null;
+            return this[i];
         }
+
+        return null;
     }
 }

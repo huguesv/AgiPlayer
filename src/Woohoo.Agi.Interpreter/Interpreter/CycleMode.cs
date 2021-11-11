@@ -1,31 +1,30 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+/// <summary>
+/// View cycling mode.
+/// </summary>
+public enum CycleMode
 {
     /// <summary>
-    /// View cycling mode.
+    /// Normal cycle.
     /// </summary>
-    public enum CycleMode
-    {
-        /// <summary>
-        /// Normal cycle.
-        /// </summary>
-        Normal,
+    Normal,
 
-        /// <summary>
-        /// Normal cycle, stop at the end.
-        /// </summary>
-        NormalEnd,
+    /// <summary>
+    /// Normal cycle, stop at the end.
+    /// </summary>
+    NormalEnd,
 
-        /// <summary>
-        /// Reverse cycle, stop at the end.
-        /// </summary>
-        ReverseEnd,
+    /// <summary>
+    /// Reverse cycle, stop at the end.
+    /// </summary>
+    ReverseEnd,
 
-        /// <summary>
-        /// Reverse cycle.
-        /// </summary>
-        Reverse,
-    }
+    /// <summary>
+    /// Reverse cycle.
+    /// </summary>
+    Reverse,
 }

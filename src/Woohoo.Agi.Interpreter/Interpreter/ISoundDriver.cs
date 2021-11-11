@@ -1,22 +1,21 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Interpreter
+namespace Woohoo.Agi.Interpreter;
+
+public interface ISoundDriver
 {
-    public interface ISoundDriver
-    {
-        int Initialize();
+    int Initialize();
 
-        int Open(int channel);
+    int Open(int channel);
 
-        void Close(int handle);
+    void Close(int handle);
 
-        void Lock();
+    void Lock();
 
-        void Unlock();
+    void Unlock();
 
-        void SetState(bool playing);
+    void SetState(bool playing);
 
-        void Shutdown();
-    }
+    void Shutdown();
 }
