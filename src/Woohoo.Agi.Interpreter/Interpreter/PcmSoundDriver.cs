@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System.Collections.Generic;
-
     public sealed class PcmSoundDriver : ISoundDriver
     {
         public const int GenerateSilence = 0;

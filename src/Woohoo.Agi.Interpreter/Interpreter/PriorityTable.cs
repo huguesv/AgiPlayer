@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-
     /// <summary>
     /// Priority table contains the priority for each vertical position in the picture.
     /// </summary>

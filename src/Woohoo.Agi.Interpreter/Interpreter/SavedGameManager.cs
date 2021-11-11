@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Globalization;
-    using System.IO;
-
     public class SavedGameManager
     {
         public SavedGameManager(AgiInterpreter interpreter, ISavedGameSerializer gameSerializer)

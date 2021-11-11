@@ -3,7 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
     using Woohoo.Agi.Resources;
 
     public class TraceControl

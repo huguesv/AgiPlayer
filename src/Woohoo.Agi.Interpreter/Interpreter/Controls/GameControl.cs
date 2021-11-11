@@ -3,9 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-    using System.Collections.Generic;
-
     public class GameControl
     {
         private Stack<MouseDown> mouseDownStack;

@@ -3,7 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System.Collections.ObjectModel;
     using Woohoo.Agi.Resources;
 
     /// <summary>

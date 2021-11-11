@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Resources.Serialization.UnitTest
 {
-    using System;
-    using FluentAssertions;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     [TestClass]
     public class RleCompressionUnitTest
     {

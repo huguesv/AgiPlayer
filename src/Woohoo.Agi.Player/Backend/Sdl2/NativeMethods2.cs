@@ -4,10 +4,6 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2
 {
 #if USE_SDL2
-    using System;
-    using System.Runtime.InteropServices;
-    using System.Security;
-
     public static partial class NativeMethods
     {
         //

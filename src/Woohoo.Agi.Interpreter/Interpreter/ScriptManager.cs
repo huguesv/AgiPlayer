@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-
     public class ScriptManager
     {
         private bool scriptWriteAllowed;

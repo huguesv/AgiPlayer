@@ -3,11 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.IO;
     using Woohoo.Agi.Interpreter.Controls;
     using Woohoo.Agi.Resources;
     using Woohoo.Agi.Resources.Serialization;

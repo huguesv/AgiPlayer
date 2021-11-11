@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-
     public class PictureRenderer
     {
         private const byte DefaultVisualColor = 0x0f;

@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-
     /// <summary>
     /// Random number generator.
     /// </summary>

@@ -3,7 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
     using Woohoo.Agi.Resources;
 
     public class ViewObjectManager

@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Diagnostics;
     using Woohoo.Agi.Resources;
 
     public class PictureBuffer
@@ -98,7 +94,7 @@ namespace Woohoo.Agi.Interpreter
 
         public void DrawFill(int x1, int y1)
         {
-            var queue = new Queue();
+            var queue = new Queue<int>();
 
             queue.Enqueue(x1);
             queue.Enqueue(y1);

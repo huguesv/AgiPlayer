@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-
     public class ToneChannelNoise
     {
         public int Feedback { get; set; }

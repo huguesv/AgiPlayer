@@ -4,10 +4,6 @@
 namespace Woohoo.Agi.Player.Backend.Sdl
 {
 #if USE_SDL
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Runtime.InteropServices;
     using Woohoo.Agi.Interpreter;
     using static Woohoo.Agi.Player.Backend.Sdl.NativeMethods;
 

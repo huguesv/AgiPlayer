@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-
     public abstract class InputControl
     {
         protected InputControl(AgiInterpreter interpreter)

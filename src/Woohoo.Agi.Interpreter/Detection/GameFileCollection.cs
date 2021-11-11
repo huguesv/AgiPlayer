@@ -3,11 +3,6 @@
 
 namespace Woohoo.Agi.Detection
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Globalization;
-    using System.Xml;
-
     /// <summary>
     /// Collection of FileCrc objects.
     /// </summary>

@@ -3,9 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Runtime.Serialization;
-
     [Serializable]
     public class ExecutionException : Exception
     {

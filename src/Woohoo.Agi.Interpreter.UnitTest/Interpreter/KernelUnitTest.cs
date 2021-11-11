@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.UnitTest
 {
-    using FluentAssertions;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Woohoo.Agi.Resources;
 
     [TestClass]

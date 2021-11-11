@@ -3,9 +3,6 @@
 
 namespace Woohoo.Agi.Detection
 {
-    using System.Globalization;
-    using System.Text;
-
     internal static class GameInfoParser
     {
         internal static Platform ParsePlatform(string platformName)

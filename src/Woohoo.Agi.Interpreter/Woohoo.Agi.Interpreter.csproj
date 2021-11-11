@@ -3,10 +3,22 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+    <Using Include="System.Collections.ObjectModel"/>
+    <Using Include="System.Diagnostics"/>
+    <Using Include="System.Globalization"/>
+    <Using Include="System.Reflection"/>
+    <Using Include="System.Runtime.Serialization"/>
+    <Using Include="System.Security.Cryptography"/>
+    <Using Include="System.Text"/>
+    <Using Include="System.Xml"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.354">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

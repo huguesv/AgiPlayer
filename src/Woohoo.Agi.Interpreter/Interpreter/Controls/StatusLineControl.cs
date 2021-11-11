@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-
     public class StatusLineControl
     {
         private const int TextForegroundColor = 0x00;

@@ -4,10 +4,6 @@
 namespace Woohoo.Agi.Player.Backend.Sdl
 {
 #if USE_SDL
-    using System;
-    using System.Runtime.InteropServices;
-    using System.Security;
-
     [SuppressUnmanagedCodeSecurity]
     internal static class NativeMethods
     {

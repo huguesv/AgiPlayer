@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter.Controls
 {
-    using System;
-
     public class PromptControl
     {
         public PromptControl(AgiInterpreter interpreter)

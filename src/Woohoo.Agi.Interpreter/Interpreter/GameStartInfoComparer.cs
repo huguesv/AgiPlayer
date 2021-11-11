@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Comparer for alphabetical sorting of games.
     /// </summary>

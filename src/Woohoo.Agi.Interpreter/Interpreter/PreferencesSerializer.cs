@@ -3,10 +3,6 @@
 
 namespace Woohoo.Agi.Interpreter
 {
-    using System;
-    using System.Globalization;
-    using System.Xml;
-
     public static class PreferencesSerializer
     {
         /// <summary>

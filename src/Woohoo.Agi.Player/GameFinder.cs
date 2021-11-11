@@ -3,8 +3,6 @@
 
 namespace Woohoo.Agi.Player
 {
-    using System.Collections.Generic;
-    using System.IO;
     using Woohoo.Agi.Detection;
     using Woohoo.Agi.Interpreter;
     using Woohoo.Agi.Resources.Serialization;
