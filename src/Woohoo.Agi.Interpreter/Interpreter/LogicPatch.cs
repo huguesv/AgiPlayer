@@ -8,20 +8,20 @@ public class LogicPatch
     /// <summary>
     /// Gets the game ids this patch applies to.
     /// </summary>
-    public string[] GameIds { get; internal set; }
+    public string[] GameIds { get; init; }
 
     /// <summary>
     /// Gets the index of logic resource.
     /// </summary>
-    public byte ResourceIndex { get; internal set; }
+    public byte ResourceIndex { get; init; }
 
     /// <summary>
     /// Gets the original code.
     /// </summary>
-    public byte[] Original { get; internal set; }
+    public byte[] Original { get; init; }
 
     /// <summary>
     /// Gets the patched code.
     /// </summary>
-    public byte[] Patched { get; internal set; }
+    public byte[] Patched { get; init; }
 }

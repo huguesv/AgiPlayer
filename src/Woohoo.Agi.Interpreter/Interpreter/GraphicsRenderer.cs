@@ -147,14 +147,14 @@ public class GraphicsRenderer
     public void DrawPictureToPictureBuffer(PictureResource resource, bool overlay)
     {
         PictureRenderer renderer = new PictureRenderer(this.PictureBuffer);
-        PictureInterpreter interpreter = new PictureInterpreter();
+        PictureInterpreter interpreter = new PictureInterpreter(renderer);
 
         if (!overlay)
         {
             renderer.Clear();
         }
 
-        interpreter.Execute(resource, renderer);
+        interpreter.Execute(resource);
     }
 
     public void DrawViewToPictureBuffer(ViewObject view)

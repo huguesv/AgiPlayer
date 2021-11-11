@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 public class SoundChannel
@@ -24,5 +26,5 @@ public class SoundChannel
     public int Duration { get; set; }
 
     [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
-    public byte[] Data { get; set; }
+    public byte[]? Data { get; set; }
 }

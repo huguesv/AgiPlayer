@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 /// <summary>
@@ -63,9 +65,14 @@ public struct GraphicsColor
     /// </summary>
     /// <param name="obj">An object to compare to this instance.</param>
     /// <returns>true if obj is the same type and value; otherwise, false. </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        return (this.R == this.G) && (this.G == this.B);
+        if (obj is GraphicsColor color)
+        {
+            return this.R == color.R && this.G == color.G && this.B == color.B;
+        }
+
+        return false;
     }
 
     /// <summary>

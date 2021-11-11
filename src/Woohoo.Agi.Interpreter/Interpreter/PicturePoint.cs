@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 /// <summary>
@@ -56,12 +58,10 @@ public struct PicturePoint
     /// </summary>
     /// <param name="obj">An object to compare to this instance.</param>
     /// <returns>true if obj is the same type and value; otherwise, false. </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        if (obj is not null)
+        if (obj is PicturePoint o)
         {
-            PicturePoint o = (PicturePoint)obj;
-
             if (this.X != o.X)
             {
                 return false;

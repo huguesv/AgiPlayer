@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 using Woohoo.Agi.Resources;
@@ -44,19 +46,19 @@ public class ResourceManager
     /// <summary>
     /// Gets or sets vocabulary resource.
     /// </summary>
-    public VocabularyResource VocabularyResource { get; set; }
+    public VocabularyResource? VocabularyResource { get; set; }
 
     /// <summary>
     /// Gets or sets inventory resource.
     /// </summary>
-    public InventoryResource InventoryResource { get; set; }
+    public InventoryResource? InventoryResource { get; set; }
 
     /// <summary>
     /// Find the logic resource with the specified resource index.
     /// </summary>
     /// <param name="logicResourceIndex">Resource index to find.</param>
     /// <returns>Logic resource, or null if not found.</returns>
-    public LogicResource FindLogic(int logicResourceIndex)
+    public LogicResource? FindLogic(int logicResourceIndex)
     {
         foreach (LogicResource resource in this.LogicResources)
         {
@@ -74,7 +76,7 @@ public class ResourceManager
     /// </summary>
     /// <param name="viewResourceIndex">Resource index to find.</param>
     /// <returns>View resource, or null if not found.</returns>
-    public ViewResource FindView(int viewResourceIndex)
+    public ViewResource? FindView(int viewResourceIndex)
     {
         foreach (ViewResource resource in this.ViewResources)
         {
@@ -92,7 +94,7 @@ public class ResourceManager
     /// </summary>
     /// <param name="soundResourceIndex">Resource index to find.</param>
     /// <returns>Sound resource, or null if not found.</returns>
-    public SoundResource FindSound(int soundResourceIndex)
+    public SoundResource? FindSound(int soundResourceIndex)
     {
         foreach (SoundResource resource in this.SoundResources)
         {
@@ -110,7 +112,7 @@ public class ResourceManager
     /// </summary>
     /// <param name="pictureResourceIndex">Resource index to find.</param>
     /// <returns>Picture resource, or null if not found.</returns>
-    public PictureResource FindPicture(int pictureResourceIndex)
+    public PictureResource? FindPicture(int pictureResourceIndex)
     {
         foreach (PictureResource resource in this.PictureResources)
         {

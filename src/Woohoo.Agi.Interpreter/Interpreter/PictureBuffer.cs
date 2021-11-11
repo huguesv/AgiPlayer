@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 using Woohoo.Agi.Resources;
@@ -81,7 +83,7 @@ public class PictureBuffer
 
     public byte PriorityColor { get; set; } = DefaultPriorityColor;
 
-    public GraphicsRendererDriver GraphicsRendererDriver { get; set; }
+    public GraphicsRendererDriver? GraphicsRendererDriver { get; set; }
 
     public void Clear(byte pixelVisual, byte pixelPriority)
     {
@@ -245,6 +247,11 @@ public class PictureBuffer
 
     public void DrawPixel(int x, int y)
     {
+        if (this.GraphicsRendererDriver == null)
+        {
+            throw new InvalidOperationException();
+        }
+
         if (x >= 0 && x < PictureResource.Width && y >= 0 && y < PictureResource.Height)
         {
             if (this.VisualEnabled)

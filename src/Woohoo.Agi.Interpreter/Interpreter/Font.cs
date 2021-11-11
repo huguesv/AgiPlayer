@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 /// <summary>
@@ -47,7 +49,7 @@ public class Font
     /// </summary>
     public byte Height { get; }
 
-    public byte[] GetPixels(char c, byte color, bool inverted, bool shaded, bool textMode)
+    public byte[]? GetPixels(char c, byte color, bool inverted, bool shaded, bool textMode)
     {
         if ((c * this.charSize) >= this.data.Length)
         {

@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 using Woohoo.Agi.Resources;
@@ -23,25 +25,25 @@ public class ViewObject
 
     public byte ViewCur { get; set; }
 
-    public ViewResource ViewResource { get; set; }
+    public ViewResource? ViewResource { get; set; }
 
     public byte LoopCur { get; set; }
 
     public byte LoopTotal { get; set; }
 
-    public ViewLoop ViewLoop { get; set; }
+    public ViewLoop? ViewLoop { get; set; }
 
     public byte CelCur { get; set; }
 
     public byte CelTotal { get; set; }
 
-    public ViewCel ViewCel { get; set; }
+    public ViewCel? ViewCel { get; set; }
 
     public byte CelPrevWidth { get; set; }
 
     public byte CelPrevHeight { get; set; }
 
-    public Blit Blit { get; set; }
+    public Blit? Blit { get; set; }
 
     public int PreviousX { get; set; }
 

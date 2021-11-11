@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 /// <summary>
@@ -27,13 +29,6 @@ public class ViewObjectTable
             this.objects[i] = new ViewObject();
             this.objects[i].Number = (byte)i;
         }
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ViewObjectTable"/> class.
-    /// </summary>
-    private ViewObjectTable()
-    {
     }
 
     /// <summary>

@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 using Woohoo.Agi.Resources;
@@ -10,30 +12,28 @@ using Woohoo.Agi.Resources;
 /// </summary>
 public class PictureInterpreter
 {
+    private readonly PictureRenderer renderer;
     private byte pattern;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PictureInterpreter"/> class.
     /// </summary>
-    public PictureInterpreter()
+    public PictureInterpreter(PictureRenderer renderer)
     {
+        this.renderer = renderer ?? throw new ArgumentNullException(nameof(renderer));
     }
-
-    private PictureRenderer Renderer { get; set; }
 
     /// <summary>
     /// Execute the specified picture resource.
     /// </summary>
     /// <param name="resource">Picture to execute.</param>
-    /// <param name="renderer">Picture renderer.</param>
-    public void Execute(PictureResource resource, PictureRenderer renderer)
+    public void Execute(PictureResource resource)
     {
         if (resource is null)
         {
             throw new ArgumentNullException(nameof(resource));
         }
 
-        this.Renderer = renderer ?? throw new ArgumentNullException(nameof(renderer));
         this.pattern = 0;
 
         byte[] pictureData = resource.Data;
@@ -47,20 +47,20 @@ public class PictureInterpreter
             switch (instruction)
             {
                 case PictureCode.VisualEnabled:
-                    this.Renderer.VisualEnabled = true;
-                    this.Renderer.VisualColor = pictureData[offset];
+                    this.renderer.VisualEnabled = true;
+                    this.renderer.VisualColor = pictureData[offset];
                     offset++;
                     break;
                 case PictureCode.VisualDisabled:
-                    this.Renderer.VisualEnabled = false;
+                    this.renderer.VisualEnabled = false;
                     break;
                 case PictureCode.PriorityEnabled:
-                    this.Renderer.PriorityEnabled = true;
-                    this.Renderer.PriorityColor = pictureData[offset];
+                    this.renderer.PriorityEnabled = true;
+                    this.renderer.PriorityColor = pictureData[offset];
                     offset++;
                     break;
                 case PictureCode.PriorityDisabled:
-                    this.Renderer.PriorityEnabled = false;
+                    this.renderer.PriorityEnabled = false;
                     break;
                 case PictureCode.YCorner:
                     offset = this.ReadYCorner(pictureData, offset);
@@ -124,7 +124,7 @@ public class PictureInterpreter
             x1 = x2;
         }
 
-        this.Renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine(points.ToArray());
 
         return offset;
     }
@@ -163,7 +163,7 @@ public class PictureInterpreter
             y1 = y2;
         }
 
-        this.Renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine(points.ToArray());
 
         return offset;
     }
@@ -193,7 +193,7 @@ public class PictureInterpreter
             y1 = y2;
         }
 
-        this.Renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine(points.ToArray());
 
         return offset;
     }
@@ -239,7 +239,7 @@ public class PictureInterpreter
             y1 += (byte)dy;
         }
 
-        this.Renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine(points.ToArray());
 
         return offset;
     }
@@ -254,7 +254,7 @@ public class PictureInterpreter
             byte y1 = pictureData[offset];
             offset++;
 
-            this.Renderer.DrawFill(new PicturePoint(x1, y1));
+            this.renderer.DrawFill(new PicturePoint(x1, y1));
         }
 
         return offset;
@@ -284,7 +284,7 @@ public class PictureInterpreter
             byte y1 = pictureData[offset];
             offset++;
 
-            this.Renderer.DrawBrush(new PicturePoint(x1, y1), size, shape, pattern, patternNumber);
+            this.renderer.DrawBrush(new PicturePoint(x1, y1), size, shape, pattern, patternNumber);
         }
 
         return offset;
