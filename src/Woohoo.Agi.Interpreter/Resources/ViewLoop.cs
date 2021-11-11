@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Resources;
 
 /// <summary>
@@ -22,7 +24,7 @@ public class ViewLoop
     /// <summary>
     /// Gets cels that make up this loop. Empty if this is loop is a mirror.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
+    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public ViewCel[] Cels { get; }
 
     /// <summary>

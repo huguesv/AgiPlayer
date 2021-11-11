@@ -21,7 +21,7 @@ public class ScriptManager
         this.Error = error ?? throw new ArgumentNullException(nameof(error));
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
+    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public byte[] ScriptData { get; private set; }
 
     protected AgiInterpreter Interpreter { get; }

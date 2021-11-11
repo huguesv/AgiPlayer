@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Resources.Serialization;
 
 /// <summary>
@@ -36,7 +38,7 @@ public class VolumeResourceMapEntryCollection : List<VolumeResourceMapEntry>
     /// </summary>
     /// <param name="resourceIndex">Resource index.  This is not the same as the index in the collection.</param>
     /// <returns>Resource map entry.</returns>
-    public VolumeResourceMapEntry GetEntry(int resourceIndex)
+    public VolumeResourceMapEntry? GetEntry(int resourceIndex)
     {
         if (resourceIndex < 0)
         {

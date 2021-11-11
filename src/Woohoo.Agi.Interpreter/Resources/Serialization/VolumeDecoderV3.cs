@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Resources.Serialization;
 
 using Woohoo.Agi.Interpreter;
@@ -138,7 +140,7 @@ public sealed class VolumeDecoderV3 : IVolumeDecoder
 
     private static byte[] ExtractResource(byte[] volumeData, int offset, out bool wasCompressed)
     {
-        byte[] resourceData = null;
+        byte[] resourceData;
 
         wasCompressed = false;
 

@@ -66,6 +66,10 @@ public class ResourceLoader
             this.volumeDecoder = new VolumeDecoderV3(gameId, platform);
             this.gameCompression = true;
         }
+        else
+        {
+            throw new NotSupportedException();
+        }
 
         this.resourceMap = this.volumeDecoder.LoadResourceMap(gameContainer);
     }

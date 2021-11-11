@@ -16,7 +16,7 @@ public class XorTransform
     /// <param name="key">XOR encryption key.</param>
     public XorTransform(byte[] key)
     {
-        this.key = key;
+        this.key = key ?? throw new ArgumentNullException(nameof(key));
     }
 
     /// <summary>
@@ -30,11 +30,6 @@ public class XorTransform
     /// <returns>The number of bytes written.</returns>
     public int TransformBlock(byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)
     {
-        if (this.key is null)
-        {
-            throw new ObjectDisposedException(nameof(this.key));
-        }
-
         if (inputBuffer is null)
         {
             throw new ArgumentNullException(nameof(inputBuffer));
@@ -73,11 +68,6 @@ public class XorTransform
     /// <returns>The computed transform.</returns>
     public byte[] TransformFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount)
     {
-        if (this.key is null)
-        {
-            throw new ObjectDisposedException(nameof(this.key));
-        }
-
         if (inputBuffer is null)
         {
             throw new ArgumentNullException(nameof(inputBuffer));

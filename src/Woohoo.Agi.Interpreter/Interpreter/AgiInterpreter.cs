@@ -40,7 +40,7 @@ public sealed partial class AgiInterpreter
 
     public ISoundDriver SoundDriver { get; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
+    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public ParserResult[] ParserResults { get; private set; }
 
     public SavedGameManager SavedGameManager { get; private set; }
@@ -1043,6 +1043,7 @@ public sealed partial class AgiInterpreter
         }
     }
 
+    [DoesNotReturn]
     private void ExecutionError(int a, int b)
     {
         this.SoundManager.StopPlaying();
@@ -2019,13 +2020,13 @@ public sealed partial class AgiInterpreter
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
+    [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
     private void SaveInterpreterState()
     {
         // TODO
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
+    [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
     private void RestoreInterpreterState()
     {
         // TODO

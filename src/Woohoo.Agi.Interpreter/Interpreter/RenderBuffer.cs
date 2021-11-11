@@ -5,7 +5,7 @@ namespace Woohoo.Agi.Interpreter;
 
 public class RenderBuffer
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Member", Justification = "Direct access to array items.")]
+    [SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Member", Justification = "Direct access to array items.")]
     private byte[,] pixels;
 
     public RenderBuffer(int width, int height)
@@ -18,7 +18,7 @@ public class RenderBuffer
         this.pixels[x, y] = color;
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Return", Justification = "Direct access to array items.")]
+    [SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Return", Justification = "Direct access to array items.")]
     public byte[,] GetBuffer()
     {
         return this.pixels;

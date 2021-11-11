@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Resources;
 
 /// <summary>
@@ -62,26 +64,13 @@ public class SoundResource
     /// <returns>Sound byte code.</returns>
     public byte[] GetChannelData(int channel)
     {
-        byte[] data = null;
-
-        switch (channel)
+        return channel switch
         {
-            case 0:
-                data = (byte[])this.channel1Data.Clone();
-                break;
-            case 1:
-                data = (byte[])this.channel2Data.Clone();
-                break;
-            case 2:
-                data = (byte[])this.channel3Data.Clone();
-                break;
-            case 3:
-                data = (byte[])this.channel4Data.Clone();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(channel));
-        }
-
-        return data;
+            0 => (byte[])this.channel1Data.Clone(),
+            1 => (byte[])this.channel2Data.Clone(),
+            2 => (byte[])this.channel3Data.Clone(),
+            3 => (byte[])this.channel4Data.Clone(),
+            _ => throw new ArgumentOutOfRangeException(nameof(channel)),
+        };
     }
 }

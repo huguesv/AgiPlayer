@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Resources;
 
 /// <summary>
@@ -55,7 +57,7 @@ public class LogicResource
     /// </summary>
     /// <param name="index">Index in the array of messages (1-based).</param>
     /// <returns>Message text, or null if out of bounds.</returns>
-    public string GetMessage(int index)
+    public string? GetMessage(int index)
     {
         if (index >= 1 && (index - 1) < this.messages.Length)
         {

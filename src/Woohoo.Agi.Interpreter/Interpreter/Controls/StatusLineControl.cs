@@ -65,7 +65,7 @@ public class StatusLineControl
         this.WindowManager.UpdateTextRegion();
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
+    [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
     public bool ProcessEvent(InputEvent e)
     {
         if (e is null)
