@@ -7,10 +7,6 @@ namespace Woohoo.Agi.Interpreter;
 
 public class InputEvent
 {
-    public InputEvent()
-    {
-    }
-
     public int Type { get; set; }
 
     public int Data { get; set; }

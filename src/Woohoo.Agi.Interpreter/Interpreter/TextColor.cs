@@ -8,10 +8,10 @@ namespace Woohoo.Agi.Interpreter;
 /// <summary>
 /// Text color components.
 /// </summary>
-public struct TextColor
+public record struct TextColor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="TextColor"/> struct.
+    /// Initializes a new instance of the <see cref="TextColor"/> class.
     /// </summary>
     /// <param name="foreground">Foreground color.</param>
     /// <param name="background">Background color.</param>
@@ -37,65 +37,4 @@ public struct TextColor
     /// Gets combined color.
     /// </summary>
     public byte Combine { get; }
-
-    /// <summary>
-    /// The equality operator (==) returns true if the values of its operands are equal, false otherwise.
-    /// </summary>
-    /// <param name="a">First object to compare.</param>
-    /// <param name="b">Second object to compare.</param>
-    /// <returns>true if the values are equal.</returns>
-    public static bool operator ==(TextColor a, TextColor b)
-    {
-        return a.Equals(b);
-    }
-
-    /// <summary>
-    /// The equality operator (!=) returns true if the values of its operands are not equal, false otherwise.
-    /// </summary>
-    /// <param name="a">First object to compare.</param>
-    /// <param name="b">Second object to compare.</param>
-    /// <returns>true if the values are not equal.</returns>
-    public static bool operator !=(TextColor a, TextColor b)
-    {
-        return !(a == b);
-    }
-
-    /// <summary>
-    /// Returns a value indicating whether this instance and a specified Object represent the same type and value.
-    /// </summary>
-    /// <param name="obj">An object to compare to this instance.</param>
-    /// <returns>true if obj is the same type and value; otherwise, false. </returns>
-    public override bool Equals(object? obj)
-    {
-        if (obj is TextColor o)
-        {
-            if (this.Foreground != o.Foreground)
-            {
-                return false;
-            }
-
-            if (this.Background != o.Background)
-            {
-                return false;
-            }
-
-            if (this.Combine != o.Combine)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Returns the hash code for this instance.
-    /// </summary>
-    /// <returns>A 32-bit signed integer hash code.</returns>
-    public override int GetHashCode()
-    {
-        return this.Foreground ^ this.Background ^ this.Combine;
-    }
 }
