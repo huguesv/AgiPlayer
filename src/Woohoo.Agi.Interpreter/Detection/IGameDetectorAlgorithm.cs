@@ -16,6 +16,6 @@ public interface IGameDetectorAlgorithm
     /// Detect a game in the specified folder.
     /// </summary>
     /// <param name="container">Game container.</param>
-    /// <returns>Detection result.</returns>
-    GameDetectorResult Detect(IGameContainer container);
+    /// <returns>Detected game or null otherwise.</returns>
+    GameDetectorResult? Detect(IGameContainer container);
 }

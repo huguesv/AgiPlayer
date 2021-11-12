@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Detection;
 
 using Woohoo.Agi.Interpreter;
@@ -15,7 +17,7 @@ internal class Database
     /// </summary>
     internal Database()
     {
-        this.Games = new Game[0];
+        this.Games = Array.Empty<Game>();
     }
 
     /// <summary>
@@ -54,7 +56,7 @@ internal class Database
     /// </summary>
     /// <param name="files">File set.</param>
     /// <returns>Matched game, or null if no match.</returns>
-    internal Game FindMatch(GameFileCollection files)
+    internal Game? FindMatch(GameFileCollection files)
     {
         if (files is null)
         {
@@ -80,7 +82,7 @@ internal class Database
                 foreach (GameFile curCrc in curGame.Files)
                 {
                     // Check this crc
-                    GameFile crc = files[curCrc.Name];
+                    GameFile? crc = files[curCrc.Name];
                     if (crc is null)
                     {
                         // Filename not found, continue with next game
@@ -171,10 +173,10 @@ internal class Database
         {
             var game = new Game
             {
-                Name = reader.GetAttribute("name", string.Empty),
-                Interpreter = reader.GetAttribute("interpreter", string.Empty),
-                Platform = reader.GetAttribute("platform", string.Empty),
-                Version = reader.GetAttribute("version", string.Empty),
+                Name = reader.GetAttribute("name", string.Empty) ?? string.Empty,
+                Interpreter = reader.GetAttribute("interpreter", string.Empty) ?? string.Empty,
+                Platform = reader.GetAttribute("platform", string.Empty) ?? string.Empty,
+                Version = reader.GetAttribute("version", string.Empty) ?? string.Empty,
             };
 
             reader.ReadStartElement("game");
@@ -184,8 +186,8 @@ internal class Database
             {
                 var file = new GameFile
                 {
-                    Name = reader.GetAttribute("name", string.Empty),
-                    Sha1 = reader.GetAttribute("sha1", string.Empty),
+                    Name = reader.GetAttribute("name", string.Empty) ?? string.Empty,
+                    Sha1 = reader.GetAttribute("sha1", string.Empty) ?? string.Empty,
                 };
 
                 game.Files.Add(file);

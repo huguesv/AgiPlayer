@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Detection;
 
 /// <summary>
@@ -21,24 +23,24 @@ internal class Game
     }
 
     /// <summary>
-    /// Gets or sets name of the game.
+    /// Gets name of the game.
     /// </summary>
-    internal string Name { get; set; }
+    internal string Name { get; init; }
 
     /// <summary>
-    /// Gets or sets platform.
+    /// Gets platform.
     /// </summary>
-    internal string Platform { get; set; }
+    internal string Platform { get; init; }
 
     /// <summary>
-    /// Gets or sets version.
+    /// Gets version.
     /// </summary>
-    internal string Version { get; set; }
+    internal string Version { get; init; }
 
     /// <summary>
-    /// Gets or sets version of the game interpreter.
+    /// Gets version of the game interpreter.
     /// </summary>
-    internal string Interpreter { get; set; }
+    internal string Interpreter { get; init; }
 
     /// <summary>
     /// Gets game data files.

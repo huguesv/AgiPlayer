@@ -30,14 +30,12 @@ public sealed class DetectByFileNames : IGameDetectorAlgorithm
     /// </summary>
     /// <param name="container">Game container.</param>
     /// <returns>Detection result.</returns>
-    GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
+    GameDetectorResult? IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
         if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
-
-        var result = new GameDetectorResult();
 
         var files = container.GetGameFiles();
         var id = container.GetGameId();
@@ -81,9 +79,9 @@ public sealed class DetectByFileNames : IGameDetectorAlgorithm
             var interpreter = id.Length > 0 ? InterpreterVersion.V3002149 : InterpreterVersion.V2936;
             var version = string.Empty;
 
-            result = new GameDetectorResult(name, interpreter, platform, version);
+            return new GameDetectorResult(name, interpreter, platform, version);
         }
 
-        return result;
+        return null;
     }
 }

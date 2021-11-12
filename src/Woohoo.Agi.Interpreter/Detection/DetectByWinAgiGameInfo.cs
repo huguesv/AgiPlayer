@@ -25,14 +25,12 @@ public sealed class DetectByWinAgiGameInfo : IGameDetectorAlgorithm
     /// </summary>
     /// <param name="container">Game container.</param>
     /// <returns>Detection result.</returns>
-    GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
+    GameDetectorResult? IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
         if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
-
-        var result = new GameDetectorResult();
 
         const string GameInfoExtension = ".wag";
 
@@ -102,7 +100,7 @@ public sealed class DetectByWinAgiGameInfo : IGameDetectorAlgorithm
                 var name = description.Length > 0 ? description.ToString() : id.ToString();
                 var platform = Platform.PC;
 
-                result = new GameDetectorResult(name, GameInfoParser.ParseInterpreterVersion(interpreter.ToString()), platform, version.ToString());
+                return new GameDetectorResult(name, GameInfoParser.ParseInterpreterVersion(interpreter.ToString()), platform, version.ToString());
             }
             catch (IOException)
             {
@@ -112,6 +110,6 @@ public sealed class DetectByWinAgiGameInfo : IGameDetectorAlgorithm
             }
         }
 
-        return result;
+        return null;
     }
 }

@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Detection;
 
 using Woohoo.Agi.Interpreter;
@@ -26,22 +28,22 @@ public sealed class GameDetector
     /// </summary>
     /// <param name="container">Game container to search.</param>
     /// <returns>Game detection result.</returns>
-    public GameDetectorResult Detect(IGameContainer container)
+    public GameDetectorResult? Detect(IGameContainer container)
     {
         if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
 
-        var result = new GameDetectorResult();
-
-        int i = 0;
-        while (!result.Detected && i < this.algorithms.Length)
+        foreach (var detector in this.algorithms)
         {
-            result = this.algorithms[i].Detect(container);
-            i++;
+            var result = detector.Detect(container);
+            if (result is not null)
+            {
+                return result;
+            }
         }
 
-        return result;
+        return null;
     }
 }

@@ -63,7 +63,7 @@ internal class GameFinder
         GameStartInfo startInfo = null;
 
         var result = detector.Detect(container);
-        if (result.Detected)
+        if (result is not null)
         {
             string id = ResourceLoader.GetGameId(container);
 

@@ -29,10 +29,8 @@ public sealed class DetectByInternalDatabase : IGameDetectorAlgorithm
     /// </summary>
     /// <param name="container">Game container.</param>
     /// <returns>Detection result.</returns>
-    GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
+    GameDetectorResult? IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
-        var result = new GameDetectorResult();
-
         // Look in the current directory for all game files
         var files = Database.GetFolderGameFiles(container);
         if (files.Count > 0)
@@ -41,10 +39,10 @@ public sealed class DetectByInternalDatabase : IGameDetectorAlgorithm
             var match = this.database.FindMatch(files);
             if (match is not null)
             {
-                result = new GameDetectorResult(match.Name, GameInfoParser.ParseInterpreterVersion(match.Interpreter), GameInfoParser.ParsePlatform(match.Platform), match.Version);
+                return new GameDetectorResult(match.Name, GameInfoParser.ParseInterpreterVersion(match.Interpreter), GameInfoParser.ParsePlatform(match.Platform), match.Version);
             }
         }
 
-        return result;
+        return null;
     }
 }

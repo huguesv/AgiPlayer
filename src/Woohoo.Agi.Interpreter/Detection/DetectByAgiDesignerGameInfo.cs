@@ -25,14 +25,12 @@ public sealed class DetectByAgiDesignerGameInfo : IGameDetectorAlgorithm
     /// </summary>
     /// <param name="container">Game container.</param>
     /// <returns>Detection result.</returns>
-    GameDetectorResult IGameDetectorAlgorithm.Detect(IGameContainer container)
+    GameDetectorResult? IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
         if (container is null)
         {
             throw new ArgumentNullException(nameof(container));
         }
-
-        var result = new GameDetectorResult();
 
         const string GameInfoExtension = ".agigame";
 
@@ -62,7 +60,7 @@ public sealed class DetectByAgiDesignerGameInfo : IGameDetectorAlgorithm
                     var interpreter = node.Attributes["interpreter"]?.Value ?? string.Empty;
                     var version = node.Attributes["version"]?.Value ?? string.Empty;
 
-                    result = new GameDetectorResult(name, GameInfoParser.ParseInterpreterVersion(interpreter), GameInfoParser.ParsePlatform(platform), version);
+                    return new GameDetectorResult(name, GameInfoParser.ParseInterpreterVersion(interpreter), GameInfoParser.ParsePlatform(platform), version);
                 }
             }
             catch (XmlException)
@@ -70,6 +68,6 @@ public sealed class DetectByAgiDesignerGameInfo : IGameDetectorAlgorithm
             }
         }
 
-        return result;
+        return null;
     }
 }
