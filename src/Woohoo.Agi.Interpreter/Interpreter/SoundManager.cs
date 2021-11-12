@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 using Woohoo.Agi.Resources;
@@ -46,6 +48,7 @@ public class SoundManager
     public SoundManager(AgiInterpreter interpreter)
     {
         this.Interpreter = interpreter ?? throw new ArgumentNullException(nameof(interpreter));
+        this.soundChannels = Array.Empty<SoundChannel>();
     }
 
     public byte SoundFlag { get; set; }
@@ -104,16 +107,14 @@ public class SoundManager
 
             for (int i = 0; i < this.soundChannels.Length; i++)
             {
-                var channel = new SoundChannel
-                {
-                    Data = resource.GetChannelData(i),
-                    DataIndex = 0,
-                    Duration = 0,
-                    DissolveCount = 0xffff,
-                    Avail = 0xffff,
-                    FreqCount = 0,
-                    ToneHandle = this.SoundDriver.Open(i),
-                };
+                var channel = new SoundChannel(
+                    data: resource.GetChannelData(i),
+                    dataIndex: 0,
+                    duration: 0,
+                    dissolveCount: 0xffff,
+                    avail: 0xffff,
+                    freqCount: 0,
+                    toneHandle: this.SoundDriver.Open(i));
 
                 if (channel.ToneHandle == 0)
                 {
@@ -257,7 +258,7 @@ public class SoundManager
 
     private int CalculateVolume(SoundChannel soundChannel)
     {
-        short[] dissolveData = null;
+        short[] dissolveData;
 
         switch (this.Preferences.SoundDissolve)
         {

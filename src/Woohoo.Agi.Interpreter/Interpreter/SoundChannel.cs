@@ -7,6 +7,17 @@ namespace Woohoo.Agi.Interpreter;
 
 public class SoundChannel
 {
+    public SoundChannel(byte[] data, int dataIndex, int duration, int dissolveCount, int avail, int freqCount, int toneHandle)
+    {
+        this.Data = data;
+        this.DataIndex = dataIndex;
+        this.Duration = duration;
+        this.DissolveCount = dissolveCount;
+        this.Avail = avail;
+        this.FreqCount = freqCount;
+        this.ToneHandle = toneHandle;
+    }
+
     public int DataIndex { get; set; }
 
     public int AttenuationCopy { get; set; }
@@ -14,8 +25,6 @@ public class SoundChannel
     public int Attenuation { get; set; }
 
     public int GenType { get; set; }
-
-    public int ToneHandle { get; set; }
 
     public int FreqCount { get; set; }
 
@@ -25,6 +34,8 @@ public class SoundChannel
 
     public int Duration { get; set; }
 
+    public int ToneHandle { get; }
+
     [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
-    public byte[]? Data { get; set; }
+    public byte[] Data { get; }
 }

@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Interpreter;
 
 public class ScriptManager
@@ -22,7 +24,7 @@ public class ScriptManager
     }
 
     [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
-    public byte[] ScriptData { get; private set; }
+    public byte[]? ScriptData { get; private set; }
 
     protected AgiInterpreter Interpreter { get; }
 
@@ -76,6 +78,7 @@ public class ScriptManager
                     this.Error(ErrorCodes.ScriptFull, this.scriptMemory);
                 }
 
+                Debug.Assert(this.ScriptData is not null, "ScriptData is null.");
                 this.ScriptData[this.scriptNextIndex++] = script;
                 this.ScriptData[this.scriptNextIndex++] = resourceIndex;
                 this.State.ScriptCount++;
@@ -94,12 +97,13 @@ public class ScriptManager
         this.scriptNextIndex = this.State.ScriptCount * 2;
     }
 
-    public byte[] IncrementIterator()
+    public byte[]? IncrementIterator()
     {
-        byte[] data = null;
+        byte[]? data = null;
 
         if (this.scriptIteratorIndex < this.scriptNextIndex)
         {
+            Debug.Assert(this.ScriptData is not null, "ScriptData is null.");
             data = new byte[2];
             data[0] = this.ScriptData[this.scriptIteratorIndex++];
             data[1] = this.ScriptData[this.scriptIteratorIndex++];
