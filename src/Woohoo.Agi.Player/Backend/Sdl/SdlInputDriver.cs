@@ -259,19 +259,12 @@ internal class SdlInputDriver : IInputDriver
 
     private int HasUserReply()
     {
-        switch (this.PollCharacter())
+        return this.PollCharacter() switch
         {
-            case 0x0d:
-                // enter
-                return 1;
-
-            case 0x1b:
-                // esc
-                return 0;
-
-            default:
-                return 0xffff;
-        }
+            0x0d => 1, // enter
+            0x1b => 0, // esc
+            _ => 0xffff,
+        };
     }
 
     private int PollCharacter()

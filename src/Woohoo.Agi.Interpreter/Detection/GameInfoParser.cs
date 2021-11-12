@@ -7,39 +7,16 @@ internal static class GameInfoParser
 {
     internal static Platform ParsePlatform(string platformName)
     {
-        switch (platformName.Replace(" ", string.Empty).ToLower(CultureInfo.CurrentCulture))
+        return platformName.Replace(" ", string.Empty).ToLower(CultureInfo.CurrentCulture) switch
         {
-            case "pc":
-            case "ibm":
-            case "dos":
-            case "msdos":
-            case "ms-dos":
-                return Platform.PC;
-
-            case "amiga":
-            case "commodore":
-                return Platform.Amiga;
-
-            case "appleiigs":
-            case "apple2gs":
-            case "2gs":
-                return Platform.AppleIIgs;
-
-            case "appleii":
-            case "apple2":
-                return Platform.AppleII;
-
-            case "atarist":
-            case "atari":
-            case "st":
-                return Platform.AtariST;
-
-            case "macintosh":
-            case "mac":
-                return Platform.Macintosh;
-        }
-
-        return Platform.PC;
+            "pc" or "ibm" or "dos" or "msdos" or "ms-dos" => Platform.PC,
+            "amiga" or "commodore" => Platform.Amiga,
+            "appleiigs" or "apple2gs" or "2gs" => Platform.AppleIIgs,
+            "appleii" or "apple2" => Platform.AppleII,
+            "atarist" or "atari" or "st" => Platform.AtariST,
+            "macintosh" or "mac" => Platform.Macintosh,
+            _ => Platform.PC,
+        };
     }
 
     internal static InterpreterVersion ParseInterpreterVersion(string interpreterVersionText)
@@ -53,63 +30,27 @@ internal static class GameInfoParser
             }
         }
 
-        switch (s.ToString())
+        return s.ToString() switch
         {
-            case "2089":
-                return InterpreterVersion.V2089;
-
-            case "2272":
-                return InterpreterVersion.V2272;
-
-            case "2411":
-                return InterpreterVersion.V2411;
-
-            case "2425":
-                return InterpreterVersion.V2425;
-
-            case "2426":
-                return InterpreterVersion.V2426;
-
-            case "2435":
-                return InterpreterVersion.V2435;
-
-            case "2439":
-                return InterpreterVersion.V2439;
-
-            case "2440":
-                return InterpreterVersion.V2440;
-
-            case "2903":
-                return InterpreterVersion.V2903;
-
-            case "2912":
-                return InterpreterVersion.V2912;
-
-            case "2915":
-                return InterpreterVersion.V2915;
-
-            case "2917":
-                return InterpreterVersion.V2917;
-
-            case "2936":
-                return InterpreterVersion.V2936;
-
-            case "3002086":
-                return InterpreterVersion.V3002086;
-
-            case "3002098":
-                return InterpreterVersion.V3002098;
-
-            case "3002102":
-                return InterpreterVersion.V3002102;
-
-            case "3002107":
-                return InterpreterVersion.V3002107;
-
-            case "3002149":
-                return InterpreterVersion.V3002149;
-        }
-
-        return InterpreterVersion.V2917;
+            "2089" => InterpreterVersion.V2089,
+            "2272" => InterpreterVersion.V2272,
+            "2411" => InterpreterVersion.V2411,
+            "2425" => InterpreterVersion.V2425,
+            "2426" => InterpreterVersion.V2426,
+            "2435" => InterpreterVersion.V2435,
+            "2439" => InterpreterVersion.V2439,
+            "2440" => InterpreterVersion.V2440,
+            "2903" => InterpreterVersion.V2903,
+            "2912" => InterpreterVersion.V2912,
+            "2915" => InterpreterVersion.V2915,
+            "2917" => InterpreterVersion.V2917,
+            "2936" => InterpreterVersion.V2936,
+            "3002086" => InterpreterVersion.V3002086,
+            "3002098" => InterpreterVersion.V3002098,
+            "3002102" => InterpreterVersion.V3002102,
+            "3002107" => InterpreterVersion.V3002107,
+            "3002149" => InterpreterVersion.V3002149,
+            _ => InterpreterVersion.V2917,
+        };
     }
 }
