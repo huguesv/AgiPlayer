@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Detection;
 
 using Woohoo.Agi.Interpreter;
@@ -53,12 +55,12 @@ public sealed class DetectByAgiDesignerGameInfo : IGameDetectorAlgorithm
                 doc.Load(files[0]);
 
                 var node = doc.SelectSingleNode("game");
-                if (node is not null)
+                if (node?.Attributes is not null)
                 {
-                    var name = node.Attributes["name"].Value;
-                    var platform = node.Attributes["platform"].Value;
-                    var interpreter = node.Attributes["interpreter"].Value;
-                    var version = node.Attributes["version"].Value;
+                    var name = node.Attributes["name"]?.Value ?? string.Empty;
+                    var platform = node.Attributes["platform"]?.Value ?? string.Empty;
+                    var interpreter = node.Attributes["interpreter"]?.Value ?? string.Empty;
+                    var version = node.Attributes["version"]?.Value ?? string.Empty;
 
                     result = new GameDetectorResult(name, GameInfoParser.ParseInterpreterVersion(interpreter), GameInfoParser.ParsePlatform(platform), version);
                 }

@@ -1,6 +1,8 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
+#nullable enable
+
 namespace Woohoo.Agi.Detection;
 
 /// <summary>
@@ -39,12 +41,7 @@ public sealed class GameDetectorResult
     /// <summary>
     /// Gets game name.
     /// </summary>
-    public string Name { get; }
-
-    /// <summary>
-    /// Gets or sets distribution media.
-    /// </summary>
-    public string Media { get; set; }
+    public string? Name { get; }
 
     /// <summary>
     /// Gets interpreter version.
@@ -59,5 +56,5 @@ public sealed class GameDetectorResult
     /// <summary>
     /// Gets game version.
     /// </summary>
-    public string Version { get; }
+    public string? Version { get; }
 }
