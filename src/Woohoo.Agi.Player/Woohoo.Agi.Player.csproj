@@ -64,7 +64,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SharpZipLib" Version="1.4.0" Condition="'$(ZipSupport)'=='true'" />
+    <PackageReference Include="SharpZipLib" Version="1.4.1" Condition="'$(ZipSupport)'=='true'" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
