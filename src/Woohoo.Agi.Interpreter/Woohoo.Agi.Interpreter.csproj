@@ -7,20 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="System.Collections.ObjectModel"/>
-    <Using Include="System.Diagnostics"/>
-    <Using Include="System.Diagnostics.CodeAnalysis"/>
-    <Using Include="System.Globalization"/>
-    <Using Include="System.Reflection"/>
-    <Using Include="System.Runtime.InteropServices"/>
-    <Using Include="System.Runtime.Serialization"/>
-    <Using Include="System.Security.Cryptography"/>
-    <Using Include="System.Text"/>
-    <Using Include="System.Xml"/>
+    <Using Include="System.Collections.ObjectModel" />
+    <Using Include="System.Diagnostics" />
+    <Using Include="System.Diagnostics.CodeAnalysis" />
+    <Using Include="System.Globalization" />
+    <Using Include="System.Reflection" />
+    <Using Include="System.Runtime.InteropServices" />
+    <Using Include="System.Runtime.Serialization" />
+    <Using Include="System.Security.Cryptography" />
+    <Using Include="System.Text" />
+    <Using Include="System.Xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507">
+    <PackageReference Include="StyleCop.Analyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
