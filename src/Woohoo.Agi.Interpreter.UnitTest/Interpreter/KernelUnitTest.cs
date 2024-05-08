@@ -8,6 +8,8 @@ using Woohoo.Agi.Resources;
 [TestClass]
 public class KernelUnitTest
 {
+    private const string TestNotImplemented = "Test not implemented.";
+
     private AgiInterpreter interpreter;
     private IKernel kernel;
 
@@ -122,40 +124,40 @@ public class KernelUnitTest
         this.kernel.Has(1).Should().BeFalse();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PosN()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CenterPosN()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void RightPosN()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObjInBox()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Controller()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObjInRoom()
     {
-        Assert.Inconclusive();
     }
 
     [TestMethod]
@@ -193,10 +195,10 @@ public class KernelUnitTest
         this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void HaveKey()
     {
-        Assert.Inconclusive();
     }
 
     [TestMethod]
@@ -380,142 +382,142 @@ public class KernelUnitTest
         this.interpreter.State.Flags[23].Should().BeTrue();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void NewRoom()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void NewRoomV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void LoadLogics()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void LoadLogicsV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Call()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CallV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void LoadPicture()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void DrawPicture()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ShowPicture()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void DiscardPicture()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void OverlayPicture()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ShowPriScreen()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void LoadView()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void LoadViewV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void DiscardView()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void AnimateObj()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void UnanimateAll()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Draw()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Erase()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Position()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PositionV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetPosition()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Reposition()
     {
-        Assert.Inconclusive();
     }
 
     [TestMethod]
@@ -602,262 +604,262 @@ public class KernelUnitTest
         (view.Flags & ViewObjectFlags.LoopFixed).Should().Be(0);
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetCel()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetCelV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void LastCel()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CurrentCel()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CurrentLoop()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CurrentView()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void NumberOfLoops()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetPriority()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetPriorityV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ReleasePriority()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetPriority()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StopUpdate()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StartUpdate()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ForceUpdate()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void IgnoreHorizon()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObserveHorizon()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetHorizon()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObjectOnWater()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObjectOnLand()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObjectOnAnything()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void IgnoreObjects()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObserveObjects()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Distance()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StopCycling()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StartCycling()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void NormalCycle()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void EndOfLoop()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ReverseCycle()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ReverseLoop()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CycleTime()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StopMotion()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StartMotion()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StepSize()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StepTime()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void MoveObj()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void MoveObjV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void FollowEgo()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Wander()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void NormalMotion()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetDir()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetDir()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void IgnoreBlocks()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObserveBlocks()
     {
-        Assert.Inconclusive();
     }
 
     [TestMethod]
@@ -880,442 +882,442 @@ public class KernelUnitTest
         this.interpreter.State.BlockIsSet.Should().BeFalse();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Get()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Drop()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Put()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PutV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetRoomV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void LoadSound()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Sound()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StopSound()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Print()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PrintV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Display()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void DisplayV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ClearLines()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void TextScreen()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Graphics()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetCursorChar()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetTextAttribute()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ShakeScreen()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ConfigureScreen()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StatusLineOn()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void StatusLineOff()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetString()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetString()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void WordToString()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Parse()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetNumber()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PreventInput()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void AcceptInput()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetKey()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void AddToPicture()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void AddToPictureV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Status()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SaveGame()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void RestoreGame()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void InitDisk()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void RestartGame()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ShowObj()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Random()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ProgramControl()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PlayerControl()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ObjectStatusV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Quit()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ShowMemory()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Pause()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void EchoLine()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CancelLine()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void InitJoy()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ToggleMonitor()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Version()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ScriptSize()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetGameId()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Log()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetScanStart()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ResetScanStart()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void RepositionTo()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void RepositionToV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void TraceOn()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void TraceInfo()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PrintAt()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PrintAtV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void DiscardViewV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ClearTextRectangle()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetUpperLeft()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetMenu()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetMenuItem()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SubmitMenu()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void EnableItem()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void DisableItem()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void MenuInput()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ShowObjV()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void OpenDialogue()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CloseDialogue()
     {
-        Assert.Inconclusive();
     }
 
     [TestMethod]
@@ -1354,34 +1356,34 @@ public class KernelUnitTest
         this.interpreter.State.Variables[22].Should().Be(6);
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void CloseWindow()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void SetSimple()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PollMouse()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PushScript()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PopScript()
     {
-        Assert.Inconclusive();
     }
 
     [TestMethod]
@@ -1402,40 +1404,40 @@ public class KernelUnitTest
         this.interpreter.PriorityTable.GetPriorityAt(6).Should().Be(5);
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void DiscardSound()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void HideMouse()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void AllowMenu()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void ShowMouse()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void FenceMouse()
     {
-        Assert.Inconclusive();
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void MousePosN()
     {
-        Assert.Inconclusive();
     }
 
     [TestMethod]
@@ -1446,10 +1448,10 @@ public class KernelUnitTest
         this.interpreter.State.WalkMode.Should().Be(WalkMode.ReleaseKey);
     }
 
+    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void AdjEgoMoveToXY()
     {
-        Assert.Inconclusive();
     }
 
     private static ViewResource CreateTestViewResource(byte resourceIndex)
