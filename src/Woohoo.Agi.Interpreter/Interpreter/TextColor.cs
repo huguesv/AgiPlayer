@@ -8,10 +8,10 @@ namespace Woohoo.Agi.Interpreter;
 /// <summary>
 /// Text color components.
 /// </summary>
-public record struct TextColor
+public readonly record struct TextColor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="TextColor"/> class.
+    /// Initializes a new instance of the <see cref="TextColor"/> struct.
     /// </summary>
     /// <param name="foreground">Foreground color.</param>
     /// <param name="background">Background color.</param>

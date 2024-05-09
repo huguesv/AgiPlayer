@@ -39,6 +39,5 @@ public class PictureResource
     /// <summary>
     /// Gets picture byte code.
     /// </summary>
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public byte[] Data { get; }
 }

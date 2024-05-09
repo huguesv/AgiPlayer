@@ -18,10 +18,10 @@ public class VolumeResourceMap
     /// </summary>
     public VolumeResourceMap()
     {
-        this.SoundResources = new VolumeResourceMapEntryCollection();
-        this.ViewResources = new VolumeResourceMapEntryCollection();
-        this.LogicResources = new VolumeResourceMapEntryCollection();
-        this.PictureResources = new VolumeResourceMapEntryCollection();
+        this.SoundResources = [];
+        this.ViewResources = [];
+        this.LogicResources = [];
+        this.PictureResources = [];
     }
 
     /// <summary>

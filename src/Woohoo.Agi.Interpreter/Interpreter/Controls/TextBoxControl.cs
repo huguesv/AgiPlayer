@@ -71,7 +71,7 @@ public class TextBoxControl
                     return false;
 
                 default:
-                    editText.Append(((char)c).ToString());
+                    editText.Append((char)c);
 
                     if ((editText.Length - displayStartOffset) < this.MaxTextLength)
                     {
@@ -105,7 +105,7 @@ public class TextBoxControl
         else
         {
             this.WindowManager.DisplayCharacter((char)0x1b);
-            this.Display2(editText.Substring(displayStartOffset), pos, displaySize, 1);
+            this.Display2(editText[displayStartOffset..], pos, displaySize, 1);
         }
 
         return displayStartOffset;

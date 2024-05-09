@@ -40,7 +40,6 @@ public class VocabularyResource
     /// <summary>
     /// Gets array of families of words.
     /// </summary>
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public VocabularyWordFamily[] Families { get; }
 
     /// <summary>
@@ -50,10 +49,7 @@ public class VocabularyResource
     /// <returns>Family identifier, or NoFamily if not found.</returns>
     public int GetWordIdentifier(string word)
     {
-        if (word is null)
-        {
-            throw new ArgumentNullException(nameof(word));
-        }
+        ArgumentNullException.ThrowIfNull(word);
 
         int identifier = NoFamily;
 
@@ -86,6 +82,6 @@ public class VocabularyResource
 
         items.Sort();
 
-        return items.ToArray();
+        return [.. items];
     }
 }

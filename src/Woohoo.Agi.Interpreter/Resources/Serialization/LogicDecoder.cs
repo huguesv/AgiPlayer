@@ -15,7 +15,7 @@ public static class LogicDecoder
     /// <summary>
     /// Key used to encrypt the messages. The key is the string "Avis Durgan".
     /// </summary>
-    private static readonly byte[] Key = { 0x41, 0x76, 0x69, 0x73, 0x20, 0x44, 0x75, 0x72, 0x67, 0x61, 0x6e };
+    private static readonly byte[] Key = [0x41, 0x76, 0x69, 0x73, 0x20, 0x44, 0x75, 0x72, 0x67, 0x61, 0x6e];
 
     /// <summary>
     /// Decode the logic resource from byte array.
@@ -48,7 +48,7 @@ public static class LogicDecoder
 
         var messages = DecompileMessages(messageData, !gameCompression || !wasCompressed);
 
-        return new LogicResource(resourceIndex, scriptData, messages.ToArray());
+        return new LogicResource(resourceIndex, scriptData, [.. messages]);
     }
 
     /// <summary>

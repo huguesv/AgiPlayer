@@ -81,10 +81,7 @@ public class TraceControl
 
     public void Trace(LogicCommand command, int operatorIndex, bool said, int result, int messageIndexOffset)
     {
-        if (command is null)
-        {
-            throw new ArgumentNullException(nameof(command));
-        }
+        ArgumentNullException.ThrowIfNull(command);
 
         this.WindowManager.PushTextPosition();
         this.WindowManager.PushTextColor();

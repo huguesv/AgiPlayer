@@ -17,7 +17,7 @@ internal class Database
     /// </summary>
     internal Database()
     {
-        this.Games = Array.Empty<Game>();
+        this.Games = [];
     }
 
     /// <summary>
@@ -33,15 +33,12 @@ internal class Database
     /// <returns>List of files.</returns>
     internal static GameFileCollection GetFolderGameFiles(IGameContainer container)
     {
-        if (container is null)
-        {
-            throw new ArgumentNullException(nameof(container));
-        }
+        ArgumentNullException.ThrowIfNull(container);
 
         string[] gameFiles = container.GetGameFiles();
 
         // Calculate the checksum for each game file
-        GameFileCollection crcs = new GameFileCollection();
+        var crcs = new GameFileCollection();
         foreach (string file in gameFiles)
         {
             GameFile crc = GameFile.FromFile(container, file);
@@ -58,10 +55,7 @@ internal class Database
     /// <returns>Matched game, or null if no match.</returns>
     internal Game? FindMatch(GameFileCollection files)
     {
-        if (files is null)
-        {
-            throw new ArgumentNullException(nameof(files));
-        }
+        ArgumentNullException.ThrowIfNull(files);
 
         // If there are no game data files, then don't return a match
         if (files.Count == 0)
@@ -123,10 +117,7 @@ internal class Database
     /// <param name="text">Text to load.</param>
     internal void LoadFromXml(string text)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         using (var textReader = new StringReader(text))
         {
@@ -149,10 +140,7 @@ internal class Database
     /// <param name="reader">Xml reader.</param>
     internal void Load(XmlReader reader)
     {
-        if (reader is null)
-        {
-            throw new ArgumentNullException(nameof(reader));
-        }
+        ArgumentNullException.ThrowIfNull(reader);
 
         reader.MoveToContent();
         reader.ReadStartElement("database");
@@ -210,6 +198,6 @@ internal class Database
 
         reader.ReadEndElement();
 
-        return games.ToArray();
+        return [.. games];
     }
 }

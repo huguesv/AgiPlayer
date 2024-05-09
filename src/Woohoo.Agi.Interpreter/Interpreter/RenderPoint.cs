@@ -13,7 +13,7 @@ namespace Woohoo.Agi.Interpreter;
 public record struct RenderPoint
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RenderPoint"/> class.
+    /// Initializes a new instance of the <see cref="RenderPoint"/> struct.
     /// </summary>
     /// <param name="x">X coordinate.</param>
     /// <param name="y">Y coordinate.</param>

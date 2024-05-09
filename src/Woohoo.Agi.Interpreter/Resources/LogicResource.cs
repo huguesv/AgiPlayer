@@ -21,15 +21,8 @@ public class LogicResource
     /// <param name="messages">Resource messages.</param>
     public LogicResource(byte resourceIndex, byte[] code, string[] messages)
     {
-        if (code is null)
-        {
-            throw new ArgumentNullException(nameof(code));
-        }
-
-        if (messages is null)
-        {
-            throw new ArgumentNullException(nameof(messages));
-        }
+        ArgumentNullException.ThrowIfNull(code);
+        ArgumentNullException.ThrowIfNull(messages);
 
         this.ResourceIndex = resourceIndex;
         this.code = (byte[])code.Clone();
@@ -84,10 +77,7 @@ public class LogicResource
     /// <returns>Byte code value.</returns>
     public int GetCodeLE16(int index)
     {
-        if (index == int.MaxValue)
-        {
-            throw new ArgumentOutOfRangeException(nameof(index));
-        }
+        ArgumentOutOfRangeException.ThrowIfEqual(index, int.MaxValue);
 
         ushort temp = (ushort)((this.code[index + 1] << 8) | this.code[index]);
         return (short)temp;
@@ -100,10 +90,7 @@ public class LogicResource
     /// <returns>Byte code value.</returns>
     public int GetCodeBE16(int index)
     {
-        if (index == int.MaxValue)
-        {
-            throw new ArgumentOutOfRangeException(nameof(index));
-        }
+        ArgumentOutOfRangeException.ThrowIfEqual(index, int.MaxValue);
 
         return (this.code[index] << 8) | this.code[index + 1];
     }
@@ -115,15 +102,8 @@ public class LogicResource
     /// <param name="patched">Byte code to replace with.</param>
     public void Patch(byte[] original, byte[] patched)
     {
-        if (original is null)
-        {
-            throw new ArgumentNullException(nameof(original));
-        }
-
-        if (patched is null)
-        {
-            throw new ArgumentNullException(nameof(patched));
-        }
+        ArgumentNullException.ThrowIfNull(original);
+        ArgumentNullException.ThrowIfNull(patched);
 
         if (original.Length <= this.code.Length)
         {

@@ -15,7 +15,7 @@ public class MenuParentItem
     /// </summary>
     public MenuParentItem()
     {
-        this.Items = new List<MenuItem>();
+        this.Items = [];
         this.Text = string.Empty;
     }
 

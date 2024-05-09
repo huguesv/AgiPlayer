@@ -13,7 +13,7 @@ namespace Woohoo.Agi.Interpreter;
 public record struct RenderRectangle
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RenderRectangle"/> class.
+    /// Initializes a new instance of the <see cref="RenderRectangle"/> struct.
     /// </summary>
     /// <param name="x">X coordinate.</param>
     /// <param name="y">Y coordinate.</param>

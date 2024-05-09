@@ -8,10 +8,10 @@ namespace Woohoo.Agi.Interpreter;
 /// <summary>
 /// Represents a 24-bit color.
 /// </summary>
-public record struct GraphicsColor
+public readonly record struct GraphicsColor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GraphicsColor"/> class.
+    /// Initializes a new instance of the <see cref="GraphicsColor"/> struct.
     /// </summary>
     /// <param name="r">Red component.</param>
     /// <param name="g">Green component.</param>

@@ -16,7 +16,7 @@ public class ListBoxControl
         this.Title = string.Empty;
         this.Width = 10;
         this.Height = 10;
-        this.items = new string[0];
+        this.items = [];
     }
 
     public string Title { get; set; }
@@ -34,10 +34,7 @@ public class ListBoxControl
 
         set
         {
-            if (value < -1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(value));
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(value, -1);
 
             this.selectedItemIndex = value;
         }
@@ -51,10 +48,7 @@ public class ListBoxControl
 
     public void SetItems(string[] items)
     {
-        if (items is null)
-        {
-            throw new ArgumentNullException(nameof(items));
-        }
+        ArgumentNullException.ThrowIfNull(items);
 
         this.items = (string[])items.Clone();
     }
@@ -288,7 +282,7 @@ public class ListBoxControl
                 string text = string.Format(CultureInfo.CurrentCulture, UserInterface.ListBoxItemFormat, itemText);
                 if (text.Length > width)
                 {
-                    text = text.Substring(0, width);
+                    text = text[..width];
                 }
 
                 this.WindowManager.PrintFormatted(text);

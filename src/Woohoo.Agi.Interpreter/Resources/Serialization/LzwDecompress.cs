@@ -19,12 +19,13 @@ public class LzwDecompress
     private const int EndCode = 0x101;
     private const int FirstCode = 0x102;
 
+    private readonly uint[] prefixCode = new uint[TableSize]; // prefix codes
+    private readonly byte[] appendCharacter = new byte[TableSize]; // appended characters
+    private readonly byte[] decodeStack = new byte[StackSize]; // holds the decoded string
+
     private int bits;
     private int maxValue;
     private int maxCode;
-    private uint[] prefixCode = new uint[TableSize]; // prefix codes
-    private byte[] appendCharacter = new byte[TableSize]; // appended characters
-    private byte[] decodeStack = new byte[StackSize]; // holds the decoded string
     private int inputBitCount; // number of bits in input bit buffer
     private uint inputBitBuffer;
 
@@ -38,24 +39,15 @@ public class LzwDecompress
     /// <returns>Decompressed data.</returns>
     public byte[] Decompress(byte[] encryptedData, int encryptedStartOffset, int encryptedLength, int decryptedLength)
     {
-        if (encryptedData is null)
-        {
-            throw new ArgumentNullException(nameof(encryptedData));
-        }
+        ArgumentNullException.ThrowIfNull(encryptedData);
+        ArgumentOutOfRangeException.ThrowIfNegative(encryptedStartOffset);
+        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(encryptedStartOffset, encryptedData.Length);
+        ArgumentOutOfRangeException.ThrowIfNegative(encryptedLength);
+        ArgumentOutOfRangeException.ThrowIfNegative(decryptedLength);
 
-        if (encryptedStartOffset < 0 || encryptedStartOffset >= encryptedData.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(encryptedStartOffset));
-        }
-
-        if (encryptedLength < 0 || (encryptedStartOffset + encryptedLength) > encryptedData.Length)
+        if ((encryptedStartOffset + encryptedLength) > encryptedData.Length)
         {
             throw new ArgumentOutOfRangeException(nameof(encryptedLength));
-        }
-
-        if (decryptedLength < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(decryptedLength));
         }
 
         byte[] decryptedData = new byte[decryptedLength];
@@ -65,8 +57,6 @@ public class LzwDecompress
         uint oldCode;
         uint character;
         bool bitsFull;
-
-        int stringOffset = 0;
         int decodeStackOffset = 0;
         int decryptedOffset = 0;
         int encryptedOffset = encryptedStartOffset;
@@ -106,6 +96,8 @@ public class LzwDecompress
             }
             else
             {
+                int stringOffset;
+
                 // Handle special LZW scenario
                 if (newCode >= nextCode)
                 {
@@ -170,7 +162,7 @@ public class LzwDecompress
         }
 
         retVal = (uint)((this.inputBitBuffer & 0x7fff) % (1 << this.bits));
-        this.inputBitBuffer = this.inputBitBuffer >> this.bits;
+        this.inputBitBuffer >>= this.bits;
         this.inputBitCount -= this.bits;
 
         return retVal;

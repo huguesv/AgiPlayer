@@ -8,10 +8,10 @@ namespace Woohoo.Agi.Interpreter;
 /// <summary>
 /// A dithered AGI pixel is made of 2 pixels of 2 different colors.
 /// </summary>
-public record struct DitheredColor
+public readonly record struct DitheredColor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="DitheredColor"/> class.
+    /// Initializes a new instance of the <see cref="DitheredColor"/> struct.
     /// </summary>
     /// <param name="odd">Odd column color.</param>
     /// <param name="even">Even column color.</param>

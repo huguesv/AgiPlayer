@@ -51,8 +51,8 @@ public class LogicInterpreter
         this.TraceProcedure = traceProcedure;
         this.functionTable = new LogicFunctionTable();
 
-        this.functions = new FunctionDelegate[]
-        {
+        this.functions =
+        [
             this.LogicReturnFalse,
             this.LogicEqualN,
             this.LogicEqualV,
@@ -73,10 +73,10 @@ public class LogicInterpreter
             this.LogicCenterPosN,
             this.LogicRightPosN,
             this.LogicReturnFalse,
-        };
+        ];
 
-        this.procedures = new ProcedureDelegate[]
-        {
+        this.procedures =
+        [
             this.LogicNoOp,
             this.LogicIncrement,
             this.LogicDecrement,
@@ -260,7 +260,7 @@ public class LogicInterpreter
             this.LogicMousePosN,
             this.LogicReleaseKey,
             this.LogicAdjEgoMoveToXY,
-        };
+        ];
     }
 
     /// <summary>

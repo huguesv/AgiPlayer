@@ -25,25 +25,10 @@ public class SoundResource
     /// <param name="channel4Data">Channel 4 sound byte code.</param>
     public SoundResource(byte resourceIndex, byte[] channel1Data, byte[] channel2Data, byte[] channel3Data, byte[] channel4Data)
     {
-        if (channel1Data is null)
-        {
-            throw new ArgumentNullException(nameof(channel1Data));
-        }
-
-        if (channel2Data is null)
-        {
-            throw new ArgumentNullException(nameof(channel2Data));
-        }
-
-        if (channel3Data is null)
-        {
-            throw new ArgumentNullException(nameof(channel3Data));
-        }
-
-        if (channel4Data is null)
-        {
-            throw new ArgumentNullException(nameof(channel4Data));
-        }
+        ArgumentNullException.ThrowIfNull(channel1Data);
+        ArgumentNullException.ThrowIfNull(channel2Data);
+        ArgumentNullException.ThrowIfNull(channel3Data);
+        ArgumentNullException.ThrowIfNull(channel4Data);
 
         this.ResourceIndex = resourceIndex;
         this.channel1Data = (byte[])channel1Data.Clone();

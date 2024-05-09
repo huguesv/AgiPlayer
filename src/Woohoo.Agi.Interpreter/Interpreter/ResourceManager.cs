@@ -17,10 +17,10 @@ public class ResourceManager
     /// </summary>
     public ResourceManager()
     {
-        this.LogicResources = new Collection<LogicResource>();
-        this.ViewResources = new Collection<ViewResource>();
-        this.PictureResources = new Collection<PictureResource>();
-        this.SoundResources = new Collection<SoundResource>();
+        this.LogicResources = [];
+        this.ViewResources = [];
+        this.PictureResources = [];
+        this.SoundResources = [];
     }
 
     /// <summary>

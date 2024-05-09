@@ -10,10 +10,10 @@ namespace Woohoo.Agi.Interpreter;
 /// The system maximum X and Y values depend on the render buffer that is used
 /// (low resolution vs. high resolution).
 /// </summary>
-public record struct RenderSize
+public readonly record struct RenderSize
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RenderSize"/> class.
+    /// Initializes a new instance of the <see cref="RenderSize"/> struct.
     /// </summary>
     /// <param name="width">Width.</param>
     /// <param name="height">Height.</param>

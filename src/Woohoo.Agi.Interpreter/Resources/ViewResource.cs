@@ -35,7 +35,6 @@ public class ViewResource
     /// <summary>
     /// Gets array of view loops.
     /// </summary>
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public ViewLoop[] Loops { get; }
 
     /// <summary>

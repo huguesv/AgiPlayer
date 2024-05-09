@@ -9,10 +9,10 @@ using Woohoo.Agi.Resources;
 
 public abstract class GraphicsRendererDriverCga : GraphicsRendererDriver
 {
-    private readonly byte[] cgaTextConversion = new byte[]
-    {
+    private readonly byte[] cgaTextConversion =
+    [
         0, 1, 1, 1, 2, 2, 2, 3, 3, 1, 1, 1, 2, 2, 2,
-    };
+    ];
 
     protected GraphicsRendererDriverCga()
     {

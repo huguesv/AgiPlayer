@@ -48,9 +48,12 @@ public class InputBoxControl
         this.WindowManager.ClearWindow(new TextPosition((byte)this.WindowManager.MessageState.TextLowRow, (byte)this.WindowManager.MessageState.TextLeftColumn), new TextPosition((byte)this.WindowManager.MessageState.TextLowRow, (byte)(this.WindowManager.MessageState.TextRightColumn - 1)), 0);
         this.WindowManager.SetTextColor(TextBoxForegroundColor, TextBoxBackgroundColor);
 
-        TextBoxControl textBox = new TextBoxControl(this.Interpreter);
-        textBox.Text = this.Text;
-        textBox.MaxTextLength = this.MaxTextLength;
+        var textBox = new TextBoxControl(this.Interpreter)
+        {
+            Text = this.Text,
+            MaxTextLength = this.MaxTextLength,
+        };
+
         bool result = textBox.DoModal();
         this.Text = result ? textBox.Text : string.Empty;
 

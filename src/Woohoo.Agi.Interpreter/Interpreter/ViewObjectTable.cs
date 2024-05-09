@@ -26,8 +26,10 @@ public class ViewObjectTable
         this.objects = new ViewObject[size];
         for (int i = 0; i < this.objects.Length; i++)
         {
-            this.objects[i] = new ViewObject();
-            this.objects[i].Number = (byte)i;
+            this.objects[i] = new ViewObject
+            {
+                Number = (byte)i,
+            };
         }
     }
 

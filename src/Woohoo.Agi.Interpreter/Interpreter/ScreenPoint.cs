@@ -11,7 +11,7 @@ namespace Woohoo.Agi.Interpreter;
 public record struct ScreenPoint
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ScreenPoint"/> class.
+    /// Initializes a new instance of the <see cref="ScreenPoint"/> struct.
     /// </summary>
     /// <param name="x">X coordinate.</param>
     /// <param name="y">Y coordinate.</param>

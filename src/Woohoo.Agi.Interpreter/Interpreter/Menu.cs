@@ -17,7 +17,7 @@ public class Menu
     /// </summary>
     public Menu()
     {
-        this.Items = new List<MenuParentItem>();
+        this.Items = [];
     }
 
     /// <summary>
@@ -79,11 +79,13 @@ public class Menu
             column += (byte)(current.Text.Length + 1);
         }
 
-        var parentItem = new MenuParentItem();
-        parentItem.Column = column;
-        parentItem.Row = 0;
-        parentItem.Text = text;
-        parentItem.Enabled = true;
+        var parentItem = new MenuParentItem
+        {
+            Column = column,
+            Row = 0,
+            Text = text,
+            Enabled = true,
+        };
 
         this.Items.Add(parentItem);
     }

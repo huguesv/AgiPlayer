@@ -19,10 +19,7 @@ public static class StringUtility
     /// <returns>Reversed text.</returns>
     public static string Reverse(string text)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         StringBuilder reversed = new StringBuilder();
 
@@ -56,7 +53,7 @@ public static class StringUtility
         do
         {
             int remain = val & 0x0f;
-            val = val >> 4;
+            val >>= 4;
 
             text.Append(HexConversionTable[remain]);
         }
@@ -73,10 +70,7 @@ public static class StringUtility
     /// <returns>Text padded with zeros.</returns>
     public static string PadWithZeros(string text, int paddingSize)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         StringBuilder builder = new StringBuilder();
         builder.Append('0', paddingSize - text.Length);
@@ -92,10 +86,7 @@ public static class StringUtility
     /// <returns>Value.</returns>
     public static byte ParseNumber(string text)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         text = text.Trim();
 
@@ -124,10 +115,7 @@ public static class StringUtility
     /// <returns>Value.</returns>
     public static int ParseNumber(string text, ref int index)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         int val = 0;
 
@@ -147,10 +135,7 @@ public static class StringUtility
     /// <returns>Converted text.</returns>
     public static string ConvertSystemResourceText(string text)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         return text.Replace("\\n", "\n");
     }

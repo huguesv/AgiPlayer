@@ -19,7 +19,7 @@ internal class Game
         this.Platform = string.Empty;
         this.Version = string.Empty;
         this.Interpreter = string.Empty;
-        this.Files = new GameFileCollection();
+        this.Files = [];
     }
 
     /// <summary>

@@ -13,7 +13,7 @@ public class ResourceManagerUnitTest
     public void FindExistingLogic()
     {
         var mgr = new ResourceManager();
-        mgr.LogicResources.Add(new LogicResource(44, new byte[0], new string[0]));
+        mgr.LogicResources.Add(new LogicResource(44, [], []));
 
         var resource = mgr.FindLogic(44);
         resource.Should().NotBeNull();
@@ -23,7 +23,7 @@ public class ResourceManagerUnitTest
     public void FindNonExistingLogic()
     {
         var mgr = new ResourceManager();
-        mgr.LogicResources.Add(new LogicResource(44, new byte[0], new string[0]));
+        mgr.LogicResources.Add(new LogicResource(44, [], []));
 
         var resource = mgr.FindLogic(45);
         resource.Should().BeNull();
@@ -33,7 +33,7 @@ public class ResourceManagerUnitTest
     public void FindExistingPicture()
     {
         var mgr = new ResourceManager();
-        mgr.PictureResources.Add(new PictureResource(54, new byte[0]));
+        mgr.PictureResources.Add(new PictureResource(54, []));
 
         var resource = mgr.FindPicture(54);
         resource.Should().NotBeNull();
@@ -43,7 +43,7 @@ public class ResourceManagerUnitTest
     public void FindNonExistingPicture()
     {
         var mgr = new ResourceManager();
-        mgr.PictureResources.Add(new PictureResource(54, new byte[0]));
+        mgr.PictureResources.Add(new PictureResource(54, []));
 
         var resource = mgr.FindPicture(55);
         resource.Should().BeNull();
@@ -53,7 +53,7 @@ public class ResourceManagerUnitTest
     public void FindExistingSound()
     {
         var mgr = new ResourceManager();
-        mgr.SoundResources.Add(new SoundResource(64, new byte[0], new byte[0], new byte[0], new byte[0]));
+        mgr.SoundResources.Add(new SoundResource(64, [], [], [], []));
 
         var resource = mgr.FindSound(64);
         resource.Should().NotBeNull();
@@ -63,7 +63,7 @@ public class ResourceManagerUnitTest
     public void FindNonExistingSound()
     {
         var mgr = new ResourceManager();
-        mgr.SoundResources.Add(new SoundResource(64, new byte[0], new byte[0], new byte[0], new byte[0]));
+        mgr.SoundResources.Add(new SoundResource(64, [], [], [], []));
 
         var resource = mgr.FindSound(65);
         resource.Should().BeNull();
@@ -73,7 +73,7 @@ public class ResourceManagerUnitTest
     public void FindExistingView()
     {
         var mgr = new ResourceManager();
-        mgr.ViewResources.Add(new ViewResource(74, new ViewLoop[0], string.Empty, 0, 0));
+        mgr.ViewResources.Add(new ViewResource(74, [], string.Empty, 0, 0));
 
         var resource = mgr.FindView(74);
         resource.Should().NotBeNull();
@@ -83,7 +83,7 @@ public class ResourceManagerUnitTest
     public void FindNonExistingView()
     {
         var mgr = new ResourceManager();
-        mgr.ViewResources.Add(new ViewResource(74, new ViewLoop[0], string.Empty, 0, 0));
+        mgr.ViewResources.Add(new ViewResource(74, [], string.Empty, 0, 0));
 
         var resource = mgr.FindView(75);
         resource.Should().BeNull();

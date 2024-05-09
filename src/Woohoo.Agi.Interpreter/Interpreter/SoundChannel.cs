@@ -36,6 +36,5 @@ public class SoundChannel
 
     public int ToneHandle { get; }
 
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public byte[] Data { get; }
 }

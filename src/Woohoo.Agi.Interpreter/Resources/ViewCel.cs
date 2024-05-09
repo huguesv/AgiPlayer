@@ -24,25 +24,10 @@ public class ViewCel
     /// <exception cref="ArgumentOutOfRangeException">The transparent color index is out of range.</exception>
     public ViewCel(byte width, byte height, byte transparentColor, bool mirror, byte mirrorLoopNumber, byte[] pixels)
     {
-        if (width < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(width));
-        }
-
-        if (height < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(height));
-        }
-
-        if (transparentColor < 0x00 || transparentColor > 0x0f)
-        {
-            throw new ArgumentOutOfRangeException(nameof(transparentColor));
-        }
-
-        if (pixels is null)
-        {
-            throw new ArgumentNullException(nameof(pixels));
-        }
+        ArgumentOutOfRangeException.ThrowIfZero(width);
+        ArgumentOutOfRangeException.ThrowIfZero(height);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(transparentColor, 0x0f);
+        ArgumentNullException.ThrowIfNull(pixels);
 
         this.Width = width;
         this.Height = height;
@@ -86,15 +71,8 @@ public class ViewCel
     /// <returns>Color index.</returns>
     public byte GetPixel(int x, int y)
     {
-        if (x < 0 || x >= this.Width)
-        {
-            throw new ArgumentOutOfRangeException(nameof(x));
-        }
-
-        if (y < 0 || y >= this.Height)
-        {
-            throw new ArgumentOutOfRangeException(nameof(y));
-        }
+        Debug.Assert(x >= 0 && x < this.Width, $"Invalid x coordinate: {x}");
+        Debug.Assert(y >= 0 && y < this.Height, $"Invalid y coordinate: {y}");
 
         return this.pixels[(y * this.Width) + x];
     }

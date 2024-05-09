@@ -51,17 +51,17 @@ public static class ViewDecoder
         var loops = new ViewLoop[numLoops];
         for (int loop = 0; loop < numLoops; loop++)
         {
-            var cels = new ViewCel[0];
+            ViewCel[] cels = [];
             int mirrorOfIndex = -1;
 
             // [0][1] = position of loop header
             int loopHeaderPos = (viewData[viewOffset + 1] * 0x100) + viewData[viewOffset];
             viewOffset += 2;
 
-            if (mapLoopHeaderPosToLoopNum.ContainsKey(loopHeaderPos))
+            if (mapLoopHeaderPosToLoopNum.TryGetValue(loopHeaderPos, out var value))
             {
                 // We have already seen this loop, looks like this is a mirror
-                mirrorOfIndex = mapLoopHeaderPosToLoopNum[loopHeaderPos];
+                mirrorOfIndex = value;
             }
             else
             {

@@ -17,10 +17,7 @@ public class VolumeResourceMapEntryCollection : List<VolumeResourceMapEntry>
     /// <returns>Index in the resource map entry collection.</returns>
     public int IndexOf(int resourceIndex)
     {
-        if (resourceIndex < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(resourceIndex);
 
         for (int i = 0; i < this.Count; i++)
         {
@@ -40,10 +37,7 @@ public class VolumeResourceMapEntryCollection : List<VolumeResourceMapEntry>
     /// <returns>Resource map entry.</returns>
     public VolumeResourceMapEntry? GetEntry(int resourceIndex)
     {
-        if (resourceIndex < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(resourceIndex);
 
         int i = this.IndexOf(resourceIndex);
         if (i >= 0)

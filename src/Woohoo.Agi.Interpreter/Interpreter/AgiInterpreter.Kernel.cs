@@ -1101,8 +1101,7 @@ public partial class AgiInterpreter : IKernel
 
     void IKernel.SetKey(int numericCode, byte controllerNumber)
     {
-        int i = 0;
-        for (i = 0; i < 39; i++)
+        for (int i = 0; i < 39; i++)
         {
             if (this.State.Controls[i].Key == 0)
             {

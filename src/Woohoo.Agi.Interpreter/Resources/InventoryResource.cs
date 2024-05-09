@@ -20,10 +20,7 @@ public class InventoryResource
     /// <param name="maxAnimatedObjects">Maximum number of animated objects.  Used to size the view object table.</param>
     public InventoryResource(InventoryItem[] items, int maxAnimatedObjects)
     {
-        if (maxAnimatedObjects < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(maxAnimatedObjects));
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(maxAnimatedObjects);
 
         this.Items = items ?? throw new ArgumentNullException(nameof(items));
         this.MaxAnimatedObjects = maxAnimatedObjects;
@@ -32,7 +29,6 @@ public class InventoryResource
     /// <summary>
     /// Gets inventory objects.
     /// </summary>
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public InventoryItem[] Items { get; }
 
     /// <summary>

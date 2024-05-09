@@ -20,24 +20,15 @@ public static class PictureCompression
     /// <returns>Uncompressed array of bytes.</returns>
     public static byte[] Decompress(byte[] compressedData, int compressedIndex, int compressedLength, int uncompressedLength)
     {
-        if (compressedData is null)
-        {
-            throw new ArgumentNullException(nameof(compressedData));
-        }
+        ArgumentNullException.ThrowIfNull(compressedData);
+        ArgumentOutOfRangeException.ThrowIfNegative(compressedIndex);
+        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(compressedIndex, compressedData.Length);
+        ArgumentOutOfRangeException.ThrowIfNegative(compressedLength);
+        ArgumentOutOfRangeException.ThrowIfNegative(uncompressedLength);
 
-        if (compressedIndex < 0 || compressedIndex >= compressedData.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(compressedIndex));
-        }
-
-        if (compressedLength < 0 || (compressedIndex + compressedLength) > compressedData.Length)
+        if ((compressedIndex + compressedLength) > compressedData.Length)
         {
             throw new ArgumentOutOfRangeException(nameof(compressedLength));
-        }
-
-        if (uncompressedLength < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(uncompressedLength));
         }
 
         byte[] uncompressedData = new byte[uncompressedLength];

@@ -54,7 +54,7 @@ public sealed class PcmSoundDriver : ISoundDriver
     public PcmSoundDriver(ISoundPcmDriver pcmDriver)
     {
         this.pcmDriver = pcmDriver;
-        this.channels = new List<ToneChannel>();
+        this.channels = [];
         for (int i = 0; i < this.zeroArray.Length; i++)
         {
             this.zeroArray[i] = 0;
@@ -79,16 +79,17 @@ public sealed class PcmSoundDriver : ISoundDriver
 
     int ISoundDriver.Open(int channel)
     {
-        ToneChannel tc = new ToneChannel();
-
-        tc.Attenuation = 0xf; // silence
-        tc.AgiChannel = channel;
-        tc.FreqCount = 250;
-        tc.FreqCountPrev = -1;
-        tc.GenType = GenerateTone;
-        tc.GenTypePrev = -1;
-        tc.NoteCount = 0;
-        tc.Avail = 1;
+        var tc = new ToneChannel
+        {
+            Attenuation = 0xf, // silence
+            AgiChannel = channel,
+            FreqCount = 250,
+            FreqCountPrev = -1,
+            GenType = GenerateTone,
+            GenTypePrev = -1,
+            NoteCount = 0,
+            Avail = 1,
+        };
 
         this.channels.Add(tc);
 
@@ -238,10 +239,12 @@ public sealed class PcmSoundDriver : ISoundDriver
             if (ch.NoteCount <= 0)
             {
                 // Get new tone data
-                Tone tone = new Tone();
-                tone.FrequencyCount = 0;
-                tone.Attenuation = 0x0f;
-                tone.Type = GenerateTone;
+                var tone = new Tone
+                {
+                    FrequencyCount = 0,
+                    Attenuation = 0x0f,
+                    Type = GenerateTone,
+                };
 
                 if (ch.Avail != 0 && this.interpreter.SoundManager.FillChannel(ch.AgiChannel, tone) == 0)
                 {

@@ -18,15 +18,9 @@ public static class StringDecoder
     /// <returns>Agi string.</returns>
     public static string GetNullTerminatedString(byte[] data, int offset)
     {
-        if (data is null)
-        {
-            throw new ArgumentNullException(nameof(data));
-        }
-
-        if (offset < 0 || offset >= data.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(offset));
-        }
+        ArgumentNullException.ThrowIfNull(data);
+        ArgumentOutOfRangeException.ThrowIfNegative(offset);
+        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(offset, data.Length);
 
         var str = new StringBuilder();
 

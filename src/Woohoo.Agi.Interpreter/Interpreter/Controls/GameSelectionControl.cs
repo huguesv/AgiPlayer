@@ -62,7 +62,7 @@ public class GameSelectionControl
             Height = GameSelectionListBoxHeight,
         };
 
-        listBox.SetItems(items.ToArray());
+        listBox.SetItems([.. items]);
 
         if (listBox.DoModal())
         {

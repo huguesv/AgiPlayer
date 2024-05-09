@@ -40,15 +40,8 @@ internal class GameFile
     /// <returns>Instance initialized with filename and checksum.</returns>
     internal static GameFile FromFile(IGameContainer container, string fileName)
     {
-        if (container is null)
-        {
-            throw new ArgumentNullException(nameof(container));
-        }
-
-        if (fileName is null)
-        {
-            throw new ArgumentNullException(nameof(fileName));
-        }
+        ArgumentNullException.ThrowIfNull(container);
+        ArgumentNullException.ThrowIfNull(fileName);
 
         var data = container.Read(fileName);
 
@@ -64,7 +57,7 @@ internal class GameFile
         using (var algo = SHA1.Create())
         {
             algo.TransformBlock(data, 0, data.Length, null, 0);
-            algo.TransformFinalBlock(new byte[0], 0, 0);
+            algo.TransformFinalBlock([], 0, 0);
 
             var checksum = new StringBuilder();
             foreach (byte b in algo.Hash ?? Enumerable.Empty<byte>())

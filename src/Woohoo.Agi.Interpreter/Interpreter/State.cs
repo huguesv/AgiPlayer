@@ -53,10 +53,8 @@ public class State
     /// </summary>
     public string Id { get; set; }
 
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public byte[] Variables { get; set; }
 
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public bool[] Flags { get; set; }
 
     [CLSCompliant(false)]
@@ -82,10 +80,8 @@ public class State
 
     public int ScriptSaved { get; set; }
 
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public ControlEntry[] Controls { get; set; }
 
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public string[] Strings { get; set; }
 
     public byte TextForeground { get; set; }

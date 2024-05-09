@@ -9,10 +9,10 @@ public class LogicPatch
 {
     public LogicPatch(string[] gameIds, byte resourceIndex, byte[] original, byte[] patched)
     {
-        this.GameIds = gameIds ?? throw new ArgumentException(nameof(gameIds));
+        this.GameIds = gameIds ?? throw new ArgumentNullException(nameof(gameIds));
         this.ResourceIndex = resourceIndex;
-        this.Original = original ?? throw new ArgumentException(nameof(original));
-        this.Patched = patched ?? throw new ArgumentException(nameof(patched));
+        this.Original = original ?? throw new ArgumentNullException(nameof(original));
+        this.Patched = patched ?? throw new ArgumentNullException(nameof(patched));
     }
 
     /// <summary>

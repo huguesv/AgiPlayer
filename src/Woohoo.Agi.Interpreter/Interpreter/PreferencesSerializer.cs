@@ -20,15 +20,8 @@ public static class PreferencesSerializer
     /// </remarks>
     public static void LoadFrom(Preferences prefs, string filePath)
     {
-        if (prefs is null)
-        {
-            throw new ArgumentNullException(nameof(prefs));
-        }
-
-        if (filePath is null)
-        {
-            throw new ArgumentNullException(nameof(filePath));
-        }
+        ArgumentNullException.ThrowIfNull(prefs);
+        ArgumentNullException.ThrowIfNull(filePath);
 
         var settings = new XmlReaderSettings
         {

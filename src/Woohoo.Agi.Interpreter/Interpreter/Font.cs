@@ -10,8 +10,8 @@ namespace Woohoo.Agi.Interpreter;
 /// </summary>
 public class Font
 {
-    private byte[] data;
-    private byte charSize;
+    private readonly byte[] data;
+    private readonly byte charSize;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Font"/> class.

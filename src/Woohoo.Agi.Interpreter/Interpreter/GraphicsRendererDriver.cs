@@ -7,8 +7,10 @@ public abstract class GraphicsRendererDriver
 {
     protected GraphicsRendererDriver()
     {
-        this.PictureBuffer = new PictureBuffer(0x04, 0x00);
-        this.PictureBuffer.GraphicsRendererDriver = this;
+        this.PictureBuffer = new PictureBuffer(0x04, 0x00)
+        {
+            GraphicsRendererDriver = this,
+        };
     }
 
     public RenderBuffer RenderBuffer { get; private set; }
@@ -80,24 +82,24 @@ public abstract class GraphicsRendererDriver
 
     protected virtual GraphicsColor[] GetPaletteTextColors()
     {
-        return new GraphicsColor[]
-        {
-            new GraphicsColor(0x00, 0x00, 0x00),
-            new GraphicsColor(0x00, 0x00, 0xa0),
-            new GraphicsColor(0x00, 0xa0, 0x00),
-            new GraphicsColor(0x00, 0xa0, 0xa0),
-            new GraphicsColor(0xa0, 0x00, 0x00),
-            new GraphicsColor(0x80, 0x00, 0xa0),
-            new GraphicsColor(0xa0, 0x50, 0x00),
-            new GraphicsColor(0xa0, 0xa0, 0xa0),
-            new GraphicsColor(0x50, 0x50, 0x50),
-            new GraphicsColor(0x50, 0x50, 0xff),
-            new GraphicsColor(0x00, 0xff, 0x50),
-            new GraphicsColor(0x50, 0xff, 0xff),
-            new GraphicsColor(0xff, 0x50, 0x50),
-            new GraphicsColor(0xff, 0x50, 0xff),
-            new GraphicsColor(0xff, 0xff, 0x50),
-            new GraphicsColor(0xff, 0xff, 0xff),
-        };
+        return
+        [
+            new(0x00, 0x00, 0x00),
+            new(0x00, 0x00, 0xa0),
+            new(0x00, 0xa0, 0x00),
+            new(0x00, 0xa0, 0xa0),
+            new(0xa0, 0x00, 0x00),
+            new(0x80, 0x00, 0xa0),
+            new(0xa0, 0x50, 0x00),
+            new(0xa0, 0xa0, 0xa0),
+            new(0x50, 0x50, 0x50),
+            new(0x50, 0x50, 0xff),
+            new(0x00, 0xff, 0x50),
+            new(0x50, 0xff, 0xff),
+            new(0xff, 0x50, 0x50),
+            new(0xff, 0x50, 0xff),
+            new(0xff, 0xff, 0x50),
+            new(0xff, 0xff, 0xff),
+        ];
     }
 }

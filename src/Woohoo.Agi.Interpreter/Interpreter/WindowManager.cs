@@ -168,10 +168,7 @@ public class WindowManager
 
     public void DisplayMessageBox(string text, int row, int width, bool toggle)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         if (this.MessageState.Active)
         {
@@ -212,7 +209,7 @@ public class WindowManager
                 break;
             }
 
-            text = string.Format(CultureInfo.CurrentCulture, UserInterface.MessageTooVerboseFormat, text.Substring(0, 20));
+            text = string.Format(CultureInfo.CurrentCulture, UserInterface.MessageTooVerboseFormat, text[..20]);
         }
 
         int deltaY;
@@ -262,10 +259,7 @@ public class WindowManager
 
     public void PrintFormatted(string text, params object[] args)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         int currentArgument = 0;
         int currentCharacter = 0;
@@ -371,10 +365,7 @@ public class WindowManager
 
     public void DisplayAt(string text, TextPosition pos)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException("text");
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         this.PushTextPosition();
         this.GotoPosition(pos);
@@ -451,15 +442,12 @@ public class WindowManager
     public void UpdateTextRegion()
     {
         this.Interpreter.GraphicsDriver.Update(this.invalidated);
-        this.invalidated = default(RenderRectangle);
+        this.invalidated = default;
     }
 
     public string WrapText(string text, int count)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException("text");
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         this.dispCharCur = 0;
         this.dispWidthMax = count;
@@ -484,10 +472,7 @@ public class WindowManager
 
     public void PrintAt(string text, TextPosition pos, byte width)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         this.MessageState.WantedRow = pos.Row;
         this.MessageState.WantedColumn = pos.Column;
@@ -559,10 +544,10 @@ public class WindowManager
     {
         if (rect.Width != 0 || rect.Height != 0)
         {
-            int x1 = 0;
-            int y1 = 0;
-            int x2 = 0;
-            int y2 = 0;
+            int x1;
+            int y1;
+            int x2;
+            int y2;
 
             // upper y
             if (rect.Y < this.invalidated.Y)
@@ -672,9 +657,8 @@ public class WindowManager
                         case (char)0x25:
                             // % control
                             textIndex++;
-
-                            int num = 0;
                             string embedded;
+                            int num;
 
                             switch (text[textIndex++])
                             {
@@ -775,18 +759,9 @@ public class WindowManager
             int copyWidth = (pos2.Column - pos1.Column + 1) * this.Interpreter.GraphicsRenderer.RenderFontWidth;
 
             int x = pos1.Column * this.Interpreter.GraphicsRenderer.RenderFontWidth;
-            int y = 0;
-
-            if (scroll > 0)
-            {
-                // Scrolling up
-                y = pos1.Row * this.Interpreter.GraphicsRenderer.RenderFontHeight;
-            }
-            else
-            {
-                // Scrolling down
-                y = (pos1.Row + scroll) * this.Interpreter.GraphicsRenderer.RenderFontHeight;
-            }
+            int y = scroll > 0
+                ? pos1.Row * this.Interpreter.GraphicsRenderer.RenderFontHeight
+                : (pos1.Row + scroll) * this.Interpreter.GraphicsRenderer.RenderFontHeight;
 
             this.Interpreter.GraphicsDriver.Scroll(new RenderRectangle(x, y, copyWidth, copyHeight), scroll * this.Interpreter.GraphicsRenderer.RenderFontHeight);
 

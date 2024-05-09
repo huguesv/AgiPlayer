@@ -7,7 +7,7 @@ namespace Woohoo.Agi.Interpreter;
 
 public class LogicFunctionTable
 {
-    private LogicCommand[] functions;
+    private readonly LogicCommand[] functions;
 
     public LogicFunctionTable()
     {
@@ -23,28 +23,28 @@ public class LogicFunctionTable
 
     private static LogicCommand[] CreateFunctions()
     {
-        LogicCommand[] cmds = new LogicCommand[]
-        {
-            new LogicCommand(0),
-            new LogicCommand(LogicFunctionCode.EqualN, LogicArgumentType.Variable, LogicArgumentType.Number),
-            new LogicCommand(LogicFunctionCode.EqualV, LogicArgumentType.Variable, LogicArgumentType.Variable),
-            new LogicCommand(LogicFunctionCode.LessN, LogicArgumentType.Variable, LogicArgumentType.Number),
-            new LogicCommand(LogicFunctionCode.LessV, LogicArgumentType.Variable, LogicArgumentType.Variable),
-            new LogicCommand(LogicFunctionCode.GreaterN, LogicArgumentType.Variable, LogicArgumentType.Number),
-            new LogicCommand(LogicFunctionCode.GreaterV, LogicArgumentType.Variable, LogicArgumentType.Variable),
-            new LogicCommand(LogicFunctionCode.IsSet, LogicArgumentType.Flag),
-            new LogicCommand(LogicFunctionCode.IsSetV, LogicArgumentType.Variable),
-            new LogicCommand(LogicFunctionCode.Has, LogicArgumentType.InventoryObject),
-            new LogicCommand(LogicFunctionCode.ObjInRoom, LogicArgumentType.InventoryObject, LogicArgumentType.Variable),
-            new LogicCommand(LogicFunctionCode.PosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
-            new LogicCommand(LogicFunctionCode.Controller, LogicArgumentType.Control),
-            new LogicCommand(LogicFunctionCode.HaveKey),
-            new LogicCommand(LogicFunctionCode.Said),
-            new LogicCommand(LogicFunctionCode.CompareStrings, LogicArgumentType.String, LogicArgumentType.String),
-            new LogicCommand(LogicFunctionCode.ObjInBox, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
-            new LogicCommand(LogicFunctionCode.CenterPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
-            new LogicCommand(LogicFunctionCode.RightPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
-        };
+        LogicCommand[] cmds =
+        [
+            new(0),
+            new(LogicFunctionCode.EqualN, LogicArgumentType.Variable, LogicArgumentType.Number),
+            new(LogicFunctionCode.EqualV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicFunctionCode.LessN, LogicArgumentType.Variable, LogicArgumentType.Number),
+            new(LogicFunctionCode.LessV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicFunctionCode.GreaterN, LogicArgumentType.Variable, LogicArgumentType.Number),
+            new(LogicFunctionCode.GreaterV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicFunctionCode.IsSet, LogicArgumentType.Flag),
+            new(LogicFunctionCode.IsSetV, LogicArgumentType.Variable),
+            new(LogicFunctionCode.Has, LogicArgumentType.InventoryObject),
+            new(LogicFunctionCode.ObjInRoom, LogicArgumentType.InventoryObject, LogicArgumentType.Variable),
+            new(LogicFunctionCode.PosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicFunctionCode.Controller, LogicArgumentType.Control),
+            new(LogicFunctionCode.HaveKey),
+            new(LogicFunctionCode.Said),
+            new(LogicFunctionCode.CompareStrings, LogicArgumentType.String, LogicArgumentType.String),
+            new(LogicFunctionCode.ObjInBox, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicFunctionCode.CenterPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicFunctionCode.RightPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+        ];
 
         return cmds;
     }

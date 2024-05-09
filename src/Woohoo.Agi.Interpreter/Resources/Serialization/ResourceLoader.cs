@@ -37,15 +37,8 @@ public class ResourceLoader
     /// <param name="version">Interpreter version.</param>
     public ResourceLoader(IGameContainer gameContainer, string gameId, Platform platform, InterpreterVersion version)
     {
-        if (gameContainer is null)
-        {
-            throw new ArgumentNullException(nameof(gameContainer));
-        }
-
-        if (gameId is null)
-        {
-            throw new ArgumentNullException(nameof(gameId));
-        }
+        ArgumentNullException.ThrowIfNull(gameContainer);
+        ArgumentNullException.ThrowIfNull(gameId);
 
         if (!IsGameFolder(gameContainer))
         {
@@ -81,10 +74,7 @@ public class ResourceLoader
     /// <returns>True if a game is found in the folder, false otherwise.</returns>
     public static bool IsGameFolder(IGameContainer gameContainer)
     {
-        if (gameContainer is null)
-        {
-            throw new ArgumentNullException(nameof(gameContainer));
-        }
+        ArgumentNullException.ThrowIfNull(gameContainer);
 
         bool result = false;
 
@@ -106,10 +96,7 @@ public class ResourceLoader
     /// <returns>Game id.</returns>
     public static string GetGameId(IGameContainer gameContainer)
     {
-        if (gameContainer is null)
-        {
-            throw new ArgumentNullException(nameof(gameContainer));
-        }
+        ArgumentNullException.ThrowIfNull(gameContainer);
 
         return gameContainer.GetGameId();
     }
@@ -164,7 +151,7 @@ public class ResourceLoader
     {
         var entry = this.resourceMap.ViewResources.GetEntry(resourceIndex);
         var fileName = this.volumeDecoder.GetVolumeFile(entry.Volume);
-        var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out bool wasCompressed);
+        var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out _);
 
         return ViewDecoder.ReadView(resourceIndex, data);
     }
@@ -178,7 +165,7 @@ public class ResourceLoader
     {
         var entry = this.resourceMap.SoundResources.GetEntry(resourceIndex);
         var fileName = this.volumeDecoder.GetVolumeFile(entry.Volume);
-        var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out bool wasCompressed);
+        var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out _);
 
         if (this.platform != Platform.AppleIIgs)
         {
@@ -186,7 +173,7 @@ public class ResourceLoader
         }
         else
         {
-            return new SoundResource(resourceIndex, new byte[0], new byte[0], new byte[0], new byte[0]);
+            return new SoundResource(resourceIndex, [], [], [], []);
         }
     }
 
@@ -199,7 +186,7 @@ public class ResourceLoader
     {
         var entry = this.resourceMap.PictureResources.GetEntry(resourceIndex);
         var fileName = this.volumeDecoder.GetVolumeFile(entry.Volume);
-        var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out bool wasCompressed);
+        var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out _);
 
         return PictureDecoder.ReadPicture(resourceIndex, data);
     }

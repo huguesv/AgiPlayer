@@ -12,7 +12,7 @@ using Woohoo.Agi.Interpreter;
 /// </summary>
 public sealed class GameDetector
 {
-    private IGameDetectorAlgorithm[] algorithms;
+    private readonly IGameDetectorAlgorithm[] algorithms;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GameDetector"/> class.
@@ -30,10 +30,7 @@ public sealed class GameDetector
     /// <returns>Game detection result.</returns>
     public GameDetectorResult? Detect(IGameContainer container)
     {
-        if (container is null)
-        {
-            throw new ArgumentNullException(nameof(container));
-        }
+        ArgumentNullException.ThrowIfNull(container);
 
         foreach (var detector in this.algorithms)
         {

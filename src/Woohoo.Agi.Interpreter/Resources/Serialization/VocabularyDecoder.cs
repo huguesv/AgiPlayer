@@ -41,7 +41,7 @@ public static class VocabularyDecoder
                     throw new VocabularyInvalidRepeatCountException();
                 }
 
-                currentWord.Append(previousWord.Substring(0, includeNumChars));
+                currentWord.Append(previousWord[..includeNumChars]);
             }
             else
             {
@@ -87,6 +87,6 @@ public static class VocabularyDecoder
             wordGroup.Words.Add(currentWord.ToString());
         }
 
-        return new VocabularyResource(families.ToArray());
+        return new VocabularyResource([.. families]);
     }
 }

@@ -7,7 +7,7 @@ namespace Woohoo.Agi.Interpreter;
 
 public class LogicCommand
 {
-    private LogicArgumentType[] parameterTypes;
+    private readonly LogicArgumentType[] parameterTypes;
 
     public LogicCommand(byte code, params LogicArgumentType[] parameterTypes)
     {

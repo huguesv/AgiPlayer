@@ -38,10 +38,7 @@ public abstract class InputControl
 
     public bool ProcessEvent(InputEvent e)
     {
-        if (e is null)
-        {
-            throw new ArgumentNullException(nameof(e));
-        }
+        ArgumentNullException.ThrowIfNull(e);
 
         if (e.Type == InputEventType.Ascii)
         {
@@ -107,7 +104,7 @@ public abstract class InputControl
             case (char)InputEventAscii.Backspace:
                 if (this.Input.Length > 0)
                 {
-                    this.Input = this.Input.Substring(0, this.Input.Length - 1);
+                    this.Input = this.Input[..^1];
                     this.WindowManager.DisplayCharacter(c);
                     this.WindowManager.UpdateTextRegion();
                 }

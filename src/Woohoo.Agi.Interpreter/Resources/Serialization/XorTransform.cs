@@ -30,25 +30,11 @@ public class XorTransform
     /// <returns>The number of bytes written.</returns>
     public int TransformBlock(byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)
     {
-        if (inputBuffer is null)
-        {
-            throw new ArgumentNullException(nameof(inputBuffer));
-        }
-
-        if (inputOffset < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(inputOffset));
-        }
-
-        if (inputCount < 0 || inputCount > inputBuffer.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(inputCount));
-        }
-
-        if ((inputBuffer.Length - inputCount) < inputOffset)
-        {
-            throw new ArgumentOutOfRangeException(nameof(inputCount));
-        }
+        ArgumentNullException.ThrowIfNull(inputBuffer);
+        ArgumentOutOfRangeException.ThrowIfNegative(inputOffset);
+        ArgumentOutOfRangeException.ThrowIfNegative(inputCount);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(inputCount, inputBuffer.Length);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(inputOffset, inputBuffer.Length - inputCount);
 
         int keyLength = this.key.Length;
         for (int index = 0; index < inputCount; index++)
@@ -68,25 +54,11 @@ public class XorTransform
     /// <returns>The computed transform.</returns>
     public byte[] TransformFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount)
     {
-        if (inputBuffer is null)
-        {
-            throw new ArgumentNullException(nameof(inputBuffer));
-        }
-
-        if (inputOffset < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(inputOffset));
-        }
-
-        if (inputCount < 0 || inputCount > inputBuffer.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(inputCount));
-        }
-
-        if ((inputBuffer.Length - inputCount) < inputOffset)
-        {
-            throw new ArgumentOutOfRangeException(nameof(inputCount));
-        }
+        ArgumentNullException.ThrowIfNull(inputBuffer);
+        ArgumentOutOfRangeException.ThrowIfNegative(inputOffset);
+        ArgumentOutOfRangeException.ThrowIfNegative(inputCount);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(inputCount, inputBuffer.Length);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(inputOffset, inputBuffer.Length - inputCount);
 
         int keyLength = this.key.Length;
         byte[] outputBuffer = new byte[inputCount];

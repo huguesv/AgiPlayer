@@ -12,10 +12,7 @@ public class ViewLoop
 {
     public ViewLoop(ViewCel[] cels, int mirrorOfIndex)
     {
-        if (mirrorOfIndex < -1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(mirrorOfIndex));
-        }
+        ArgumentOutOfRangeException.ThrowIfLessThan(mirrorOfIndex, -1);
 
         this.Cels = cels ?? throw new ArgumentNullException(nameof(cels));
         this.MirrorOfIndex = mirrorOfIndex;
@@ -24,7 +21,6 @@ public class ViewLoop
     /// <summary>
     /// Gets cels that make up this loop. Empty if this is loop is a mirror.
     /// </summary>
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public ViewCel[] Cels { get; }
 
     /// <summary>

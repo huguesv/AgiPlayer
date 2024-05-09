@@ -17,8 +17,8 @@ public class SaveRestoreGameBrowseControl
     {
         this.Interpreter = interpreter ?? throw new ArgumentNullException(nameof(interpreter));
         this.Title = string.Empty;
-        this.descriptions = new string[0];
-        this.slotNumbers = new int[0];
+        this.descriptions = [];
+        this.slotNumbers = [];
     }
 
     public string Title { get; set; }
@@ -33,15 +33,8 @@ public class SaveRestoreGameBrowseControl
 
     public void SetSlotInformation(int[] slotNumbers, string[] descriptions, int slotCount)
     {
-        if (slotNumbers is null)
-        {
-            throw new ArgumentNullException(nameof(slotNumbers));
-        }
-
-        if (descriptions is null)
-        {
-            throw new ArgumentNullException(nameof(descriptions));
-        }
+        ArgumentNullException.ThrowIfNull(slotNumbers);
+        ArgumentNullException.ThrowIfNull(descriptions);
 
         this.slotNumbers = (int[])slotNumbers.Clone();
         this.descriptions = (string[])descriptions.Clone();
@@ -133,7 +126,7 @@ public class SaveRestoreGameBrowseControl
                             }
                             else
                             {
-                                current = current - 1;
+                                current--;
                             }
 
                             break;

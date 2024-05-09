@@ -40,7 +40,6 @@ public static class SoundDecoder
 
         // [6][7] = Offset of noise voice data
         int noiseVoiceOffset = (data[soundOffset + 1] * 0x100) + data[soundOffset];
-        soundOffset += 2;
 
         int lastOffset = data.Length - 1;
 

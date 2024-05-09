@@ -40,7 +40,6 @@ public sealed partial class AgiInterpreter
 
     public ISoundDriver SoundDriver { get; }
 
-    [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Direct access to array items.")]
     public ParserResult[] ParserResults { get; private set; }
 
     public SavedGameManager SavedGameManager { get; private set; }
@@ -75,7 +74,7 @@ public sealed partial class AgiInterpreter
 
     public ViewObjectManager ObjectManager { get; set; } // public setter only for tests
 
-    private string SavedGameFolder => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    private static string SavedGameFolder => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
     public void Start(GameStartInfo startInfo, Preferences prefs)
     {
@@ -160,12 +159,11 @@ public sealed partial class AgiInterpreter
     public void Clock()
     {
         int timeCounter = 0;
-        int currentTick = 0;
         int tickScale = this.InputDriver.TickScale();
         int previousTick = this.InputDriver.Tick();
         while (this.clockState != ClockState.TurnOff)
         {
-            currentTick = this.InputDriver.Tick();
+            int currentTick = this.InputDriver.Tick();
             this.State.Ticks += (uint)((currentTick - previousTick) / tickScale);
 
             switch (this.clockState)
@@ -224,8 +222,11 @@ public sealed partial class AgiInterpreter
 
     public bool Prompt(string text)
     {
-        PromptControl control = new PromptControl(this);
-        control.Text = text;
+        var control = new PromptControl(this)
+        {
+            Text = text,
+        };
+
         return control.DoModal();
     }
 
@@ -275,10 +276,10 @@ public sealed partial class AgiInterpreter
         this.computerType = this.Preferences.Computer;
         this.displayType = this.Preferences.Display;
         this.controlState = new bool[ControlMax];
-        this.ParserResults = new ParserResult[0];
+        this.ParserResults = [];
         this.Menu = new Menu();
-        this.blitlistStatic = new List<Blit>();
-        this.blitlistUpdated = new List<Blit>();
+        this.blitlistStatic = [];
+        this.blitlistUpdated = [];
         this.SoundManager = new SoundManager(this);
         this.ScriptManager = new ScriptManager(this, new AgiError(this.ExecutionError));
         this.WindowManager = new WindowManager(this);
@@ -331,7 +332,7 @@ public sealed partial class AgiInterpreter
         {
             if ((displayScaleX % this.GraphicsRenderer.RenderScaleX) == 0)
             {
-                displayScaleX = displayScaleX / this.GraphicsRenderer.RenderScaleX;
+                displayScaleX /= this.GraphicsRenderer.RenderScaleX;
             }
         }
 
@@ -339,7 +340,7 @@ public sealed partial class AgiInterpreter
         {
             if ((displayScaleY % this.GraphicsRenderer.RenderScaleY) == 0)
             {
-                displayScaleY = displayScaleY / this.GraphicsRenderer.RenderScaleY;
+                displayScaleY /= this.GraphicsRenderer.RenderScaleY;
             }
         }
 
@@ -414,7 +415,7 @@ public sealed partial class AgiInterpreter
         this.LogicInterpreter = new LogicInterpreter(this, this.GameInfo.Interpreter, this.GameControl.MouseMode, new AgiError(this.ExecutionError), new TraceFunction(this.TraceFunctionCallback), new TraceProcedure(this.TraceProcedureCallback));
         this.SavedGameManager = new SavedGameManager(this, new SavedGameXmlSerializer());
         this.Randomizer = new Random();
-        this.SavedScanStarts = new Dictionary<int, int>();
+        this.SavedScanStarts = [];
 
         this.InitializeGame();
         this.LoadLogic(0, false);
@@ -507,9 +508,6 @@ public sealed partial class AgiInterpreter
 
     private void ExecuteAgi()
     {
-        int oldScore = 0;
-        bool soundEnabled = true;
-
         while (true)
         {
             this.ClearAllControllers();
@@ -532,8 +530,8 @@ public sealed partial class AgiInterpreter
 
             this.ObjectManager.MotionUpdateAll();
 
-            oldScore = this.State.Variables[Variables.Score];
-            soundEnabled = this.State.Flags[Flags.SoundOn];
+            int oldScore = this.State.Variables[Variables.Score];
+            bool soundEnabled = this.State.Flags[Flags.SoundOn];
 
             // Save the current state of interpreter, in case an execution
             // error occurs (AgiExecutionException)
@@ -1277,11 +1275,10 @@ public sealed partial class AgiInterpreter
         string filePath = string.Empty;
 
         string prompt = string.Format(CultureInfo.CurrentCulture, UserInterface.RestorePathPromptFormat, UserInterface.PathExample);
-        string folderPath = this.PromptSaveRestoreFolder(prompt, this.SavedGameFolder);
+        string folderPath = this.PromptSaveRestoreFolder(prompt, SavedGameFolder);
         if (folderPath.Length > 0)
         {
-            string description;
-            int index = this.PromptFileSlot(false, folderPath, out description);
+            int index = this.PromptFileSlot(false, folderPath, out _);
             if (index > 0)
             {
                 filePath = this.SavedGameManager.GetFilePath(index, folderPath);
@@ -1307,7 +1304,7 @@ public sealed partial class AgiInterpreter
         string filePath = string.Empty;
 
         string prompt = string.Format(CultureInfo.CurrentCulture, UserInterface.SavePathPromptFormat, UserInterface.PathExample);
-        string folderPath = this.PromptSaveRestoreFolder(prompt, this.SavedGameFolder);
+        string folderPath = this.PromptSaveRestoreFolder(prompt, SavedGameFolder);
         if (folderPath.Length > 0)
         {
             int index = this.PromptFileSlot(true, folderPath, out description);
@@ -1315,9 +1312,12 @@ public sealed partial class AgiInterpreter
             {
                 if (this.SavedGameManager.AutoSaveName.Length == 0)
                 {
-                    InputBoxControl inputBox = new InputBoxControl(this);
-                    inputBox.Title = UserInterface.SaveDescriptionPrompt;
-                    inputBox.Text = description;
+                    var inputBox = new InputBoxControl(this)
+                    {
+                        Title = UserInterface.SaveDescriptionPrompt,
+                        Text = description,
+                    };
+
                     if (inputBox.DoModal())
                     {
                         description = inputBox.Text;
@@ -1392,7 +1392,7 @@ public sealed partial class AgiInterpreter
             }
         }
 
-        string title = string.Empty;
+        string title;
         if (this.SavedGameManager.AutoSaveName.Length == 0)
         {
             // Select game
@@ -1455,8 +1455,7 @@ public sealed partial class AgiInterpreter
 
     private void SaveGame()
     {
-        string description;
-        string filePath = this.PromptSaveFilePath(out description);
+        string filePath = this.PromptSaveFilePath(out var description);
         if (filePath.Length > 0)
         {
             this.clockState = ClockState.Pause;
@@ -1645,7 +1644,7 @@ public sealed partial class AgiInterpreter
             view.PreviousY = PictureResource.Height - 1;
             view.Y = PictureResource.Height - 1;
             view.Priority = 0x0f;
-            view.Flags = view.Flags | ViewObjectFlags.PriorityFixed;
+            view.Flags |= ViewObjectFlags.PriorityFixed;
             view.Number = 0xff;
 
             var blit = AgiInterpreter.CreateBlit(view);

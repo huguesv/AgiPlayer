@@ -32,10 +32,7 @@ public sealed class DetectByFileNames : IGameDetectorAlgorithm
     /// <returns>Detection result.</returns>
     GameDetectorResult? IGameDetectorAlgorithm.Detect(IGameContainer container)
     {
-        if (container is null)
-        {
-            throw new ArgumentNullException(nameof(container));
-        }
+        ArgumentNullException.ThrowIfNull(container);
 
         var files = container.GetGameFiles();
         var id = container.GetGameId();

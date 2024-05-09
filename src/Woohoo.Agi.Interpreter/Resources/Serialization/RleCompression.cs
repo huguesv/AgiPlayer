@@ -21,30 +21,12 @@ public static class RleCompression
     /// <returns>Decompressed array of bytes (bitmap).</returns>
     public static byte[] Decompress(byte[] compressedData, int compressedIndex, int width, int height, byte transparentColor)
     {
-        if (compressedData is null)
-        {
-            throw new ArgumentNullException(nameof(compressedData));
-        }
-
-        if (compressedIndex < 0 || compressedIndex >= compressedData.Length)
-        {
-            throw new ArgumentOutOfRangeException(nameof(compressedIndex));
-        }
-
-        if (width < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(width));
-        }
-
-        if (height < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(height));
-        }
-
-        if (transparentColor < 0 || transparentColor > 0x0f)
-        {
-            throw new ArgumentOutOfRangeException(nameof(transparentColor));
-        }
+        ArgumentNullException.ThrowIfNull(compressedData);
+        ArgumentOutOfRangeException.ThrowIfNegative(compressedIndex);
+        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(compressedIndex, compressedData.Length);
+        ArgumentOutOfRangeException.ThrowIfNegative(width);
+        ArgumentOutOfRangeException.ThrowIfNegative(height);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(transparentColor, 0x0f);
 
         // This will decode the 4 bits per pixel rle encoded data into 8 bits per pixel data
         // Each resulting byte in the uncompressed data contains a 4 bits value (0x00-0x0F)

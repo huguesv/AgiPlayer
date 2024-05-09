@@ -4,7 +4,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors Condition="'$(TreatWarningsAsErrors)' == ''">true</TreatWarningsAsErrors>
-    <NoWarn>CS1591;SA1600;SA0001</NoWarn>
+    <NoWarn>CS1591;SA1600;SA0001;IDE0290</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>

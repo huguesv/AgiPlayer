@@ -56,10 +56,7 @@ public class GameControl
 
     public bool ProcessEvent(InputEvent e)
     {
-        if (e is null)
-        {
-            throw new ArgumentNullException(nameof(e));
-        }
+        ArgumentNullException.ThrowIfNull(e);
 
         if (!this.StatusLineControl.ProcessEvent(e))
         {
@@ -79,10 +76,12 @@ public class GameControl
 
     public void ShowMenu()
     {
-        MenuControl control = new MenuControl(this.Interpreter);
-        control.Menu = this.Interpreter.Menu;
-        control.CurrentMenuItemIndex = this.SavedMenuItemIndex;
-        control.CurrentParentMenuItemIndex = this.SavedParentMenuItemIndex;
+        var control = new MenuControl(this.Interpreter)
+        {
+            Menu = this.Interpreter.Menu,
+            CurrentMenuItemIndex = this.SavedMenuItemIndex,
+            CurrentParentMenuItemIndex = this.SavedParentMenuItemIndex,
+        };
 
         if (control.DoModal())
         {
@@ -125,11 +124,7 @@ public class GameControl
         MouseDown m = this.PopMouseStack();
         if (m is null)
         {
-            int button;
-            int screenScaledX;
-            int screenScaledY;
-
-            this.InputDriver.PollMouse(out button, out screenScaledX, out screenScaledY);
+            this.InputDriver.PollMouse(out int button, out int screenScaledX, out int screenScaledY);
 
             PicturePoint pt = this.GraphicsDriver.ScreenToPicturePoint(new ScreenPoint(screenScaledX, screenScaledY));
 
@@ -207,10 +202,12 @@ public class GameControl
     {
         MouseArea area = MouseArea.Unknown;
 
-        List<MouseAreaPosition> mouseAreaPositionList = new List<MouseAreaPosition>();
-        mouseAreaPositionList.Add(new MouseAreaPosition(MouseArea.Status, 0, this.State.StatusLineRow * WindowManager.CharacterHeight, 40 * WindowManager.CharacterWidth, 1 * WindowManager.CharacterHeight));
-        mouseAreaPositionList.Add(new MouseAreaPosition(MouseArea.Game, 0, this.State.WindowRowMin * WindowManager.CharacterHeight, 40 * WindowManager.CharacterWidth, 21 * WindowManager.CharacterHeight));
-        mouseAreaPositionList.Add(new MouseAreaPosition(MouseArea.CommandEntry, 0, (this.State.WindowRowMin + 21) * WindowManager.CharacterHeight, 40 * WindowManager.CharacterWidth, 10 * WindowManager.CharacterHeight));
+        var mouseAreaPositionList = new List<MouseAreaPosition>
+        {
+            new(MouseArea.Status, 0, this.State.StatusLineRow * WindowManager.CharacterHeight, 40 * WindowManager.CharacterWidth, 1 * WindowManager.CharacterHeight),
+            new(MouseArea.Game, 0, this.State.WindowRowMin * WindowManager.CharacterHeight, 40 * WindowManager.CharacterWidth, 21 * WindowManager.CharacterHeight),
+            new(MouseArea.CommandEntry, 0, (this.State.WindowRowMin + 21) * WindowManager.CharacterHeight, 40 * WindowManager.CharacterWidth, 10 * WindowManager.CharacterHeight),
+        };
 
         foreach (MouseAreaPosition current in mouseAreaPositionList)
         {

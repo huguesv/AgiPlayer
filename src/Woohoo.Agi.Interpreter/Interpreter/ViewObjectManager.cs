@@ -13,11 +13,11 @@ public class ViewObjectManager
     private const int LoopUp = 3;
     private const int LoopIgnore = 4;
 
-    private static readonly byte[] DirectionConversion = { 8, 1, 2, 7, 0, 3, 6, 5, 4 };
-    private static readonly int[] DirectionXMultiplier = { 0, 0, 1, 1, 1, 0, -1, -1, -1 };
-    private static readonly int[] DirectionYMultiplier = { 0, -1, -1, 0, 1, 1, 1, 0, -1 };
-    private static readonly byte[] LoopSmall = new byte[] { LoopIgnore, LoopIgnore, LoopRight, LoopRight, LoopRight, LoopIgnore, LoopLeft, LoopLeft, LoopLeft, LoopRight };
-    private static readonly byte[] LoopLarge = new byte[] { LoopIgnore, LoopUp, LoopRight, LoopRight, LoopRight, LoopDown, LoopLeft, LoopLeft, LoopLeft, LoopRight };
+    private static readonly byte[] DirectionConversion = [8, 1, 2, 7, 0, 3, 6, 5, 4];
+    private static readonly int[] DirectionXMultiplier = [0, 0, 1, 1, 1, 0, -1, -1, -1];
+    private static readonly int[] DirectionYMultiplier = [0, -1, -1, 0, 1, 1, 1, 0, -1];
+    private static readonly byte[] LoopSmall = [LoopIgnore, LoopIgnore, LoopRight, LoopRight, LoopRight, LoopIgnore, LoopLeft, LoopLeft, LoopLeft, LoopRight];
+    private static readonly byte[] LoopLarge = [LoopIgnore, LoopUp, LoopRight, LoopRight, LoopRight, LoopDown, LoopLeft, LoopLeft, LoopLeft, LoopRight];
 
     public ViewObjectManager(AgiInterpreter interpreter, AgiError error)
     {
@@ -43,30 +43,21 @@ public class ViewObjectManager
 
     public static bool IsUpdated(ViewObject view)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         return (view.Flags & (ViewObjectFlags.Drawn | ViewObjectFlags.Update | ViewObjectFlags.Animate)) == (ViewObjectFlags.Drawn | ViewObjectFlags.Update | ViewObjectFlags.Animate);
     }
 
     public static bool IsStatic(ViewObject view)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         return (view.Flags & (ViewObjectFlags.Drawn | ViewObjectFlags.Update | ViewObjectFlags.Animate)) == (ViewObjectFlags.Drawn | ViewObjectFlags.Animate);
     }
 
     public static void SetLoopData(ViewObject view, byte loopNum)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         view.LoopCur = loopNum;
         view.ViewLoop = view.ViewResource.Loops[loopNum];
@@ -80,10 +71,7 @@ public class ViewObjectManager
 
     public static void SetCelData(ViewObject view, byte celNum)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         view.CelCur = celNum;
         view.ViewCel = view.ViewLoop.Cels[celNum];
@@ -120,10 +108,7 @@ public class ViewObjectManager
 
     public void MoveUpdate(ViewObject view)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         view.Direction = ViewObjectManager.GetDirection(view.X, view.Y, view.MoveX, view.MoveY, view.StepSize);
         if (this.ObjectTable.GetAt(ViewObjectTable.EgoIndex) == view)
@@ -155,10 +140,7 @@ public class ViewObjectManager
 
     public void ShufflePosition(ViewObject view)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         if ((view.Y <= this.State.Horizon) && ((view.Flags & ViewObjectFlags.IgnoreHorizon) == 0))
         {
@@ -332,12 +314,10 @@ public class ViewObjectManager
 
     public void SetView(ViewObject view, ViewResource resource)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
+        ArgumentNullException.ThrowIfNull(resource);
 
-        view.ViewResource = resource ?? throw new ArgumentNullException(nameof(resource));
+        view.ViewResource = resource;
         view.ViewCur = resource.ResourceIndex;
         view.LoopTotal = (byte)resource.Loops.Length;
 
@@ -353,10 +333,7 @@ public class ViewObjectManager
 
     public void SetViewCel(ViewObject view, byte celNumber)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         if (view.ViewResource is null)
         {
@@ -389,10 +366,7 @@ public class ViewObjectManager
 
     public void SetViewLoop(ViewObject view, byte loopNumber)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         if (view.ViewResource is null)
         {
@@ -416,10 +390,7 @@ public class ViewObjectManager
 
     public void ViewLoopUpdate(ViewObject view)
     {
-        if (view is null)
-        {
-            throw new ArgumentNullException(nameof(view));
-        }
+        ArgumentNullException.ThrowIfNull(view);
 
         if ((view.Flags & ViewObjectFlags.SkipUpdate) != 0)
         {

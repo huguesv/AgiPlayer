@@ -113,12 +113,14 @@ public class KernelUnitTest
     {
         var items = new InventoryItem[]
         {
-            new InventoryItem("key", 255),
-            new InventoryItem("pen", 20),
+            new("key", 255),
+            new("pen", 20),
         };
         var resource = new InventoryResource(items, 1);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.InventoryResource = resource;
+        this.interpreter.ResourceManager = new ResourceManager
+        {
+            InventoryResource = resource,
+        };
 
         this.kernel.Has(0).Should().BeTrue();
         this.kernel.Has(1).Should().BeFalse();
@@ -165,33 +167,35 @@ public class KernelUnitTest
     {
         var families = new VocabularyWordFamily[]
         {
-            new VocabularyWordFamily(0, "a", "the"),
-            new VocabularyWordFamily(1, "get"),
-            new VocabularyWordFamily(2, "key"),
-            new VocabularyWordFamily(3, "box"),
+            new(0, "a", "the"),
+            new(1, "get"),
+            new(2, "key"),
+            new(3, "box"),
         };
         var vocabulary = new VocabularyResource(families);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.VocabularyResource = vocabulary;
+        this.interpreter.ResourceManager = new ResourceManager
+        {
+            VocabularyResource = vocabulary,
+        };
 
         this.interpreter.State.Flags[Flags.SaidAccepted] = false;
         this.interpreter.ParseText("get key");
-        this.kernel.Said(new int[] { 1, 2 });
+        this.kernel.Said([1, 2]);
         this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
 
         this.interpreter.State.Flags[Flags.SaidAccepted] = false;
         this.interpreter.ParseText("get the key");
-        this.kernel.Said(new int[] { 1, 2 });
+        this.kernel.Said([1, 2]);
         this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
 
         this.interpreter.State.Flags[Flags.SaidAccepted] = false;
         this.interpreter.ParseText("get");
-        this.kernel.Said(new int[] { 1, 2 });
+        this.kernel.Said([1, 2]);
         this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
 
         this.interpreter.State.Flags[Flags.SaidAccepted] = false;
         this.interpreter.ParseText("get key box");
-        this.kernel.Said(new int[] { 1, 2 });
+        this.kernel.Said([1, 2]);
         this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
     }
 
@@ -1458,14 +1462,14 @@ public class KernelUnitTest
     {
         var cels = new ViewCel[]
         {
-            new ViewCel(4, 8, 0, false, 0, new byte[] { 0 }),
+            new(4, 8, 0, false, 0, [0]),
         };
 
         var loops = new ViewLoop[]
         {
-            new ViewLoop(cels, -1),
-            new ViewLoop(cels, -1),
-            new ViewLoop(cels, -1),
+            new(cels, -1),
+            new(cels, -1),
+            new(cels, -1),
         };
 
         return new ViewResource(resourceIndex, loops, "key", 0, 0);

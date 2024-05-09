@@ -22,15 +22,8 @@ public class SavedGameManager
 
     public void SaveTo(string filePath, string description)
     {
-        if (filePath is null)
-        {
-            throw new ArgumentNullException(nameof(filePath));
-        }
-
-        if (description is null)
-        {
-            throw new ArgumentNullException(nameof(description));
-        }
+        ArgumentNullException.ThrowIfNull(filePath);
+        ArgumentNullException.ThrowIfNull(description);
 
         FileStream stream = new FileStream(filePath, FileMode.Create);
         using (stream)
@@ -41,20 +34,14 @@ public class SavedGameManager
 
     public string GetGameDescription(int index, string folderPath)
     {
-        if (folderPath is null)
-        {
-            throw new ArgumentNullException(nameof(folderPath));
-        }
+        ArgumentNullException.ThrowIfNull(folderPath);
 
         return this.GetGameDescription(this.GetFilePath(index, folderPath));
     }
 
     public string GetGameDescription(string filePath)
     {
-        if (filePath is null)
-        {
-            throw new ArgumentNullException(nameof(filePath));
-        }
+        ArgumentNullException.ThrowIfNull(filePath);
 
         string description = string.Empty;
 
@@ -72,10 +59,7 @@ public class SavedGameManager
 
     public DateTime GetFileDateTime(int index, string folderPath)
     {
-        if (folderPath is null)
-        {
-            throw new ArgumentNullException(nameof(folderPath));
-        }
+        ArgumentNullException.ThrowIfNull(folderPath);
 
         string filePath = this.GetFilePath(index, folderPath);
         FileInfo info = new FileInfo(filePath);
@@ -84,10 +68,7 @@ public class SavedGameManager
 
     public string GetFilePath(int index, string folderPath)
     {
-        if (folderPath is null)
-        {
-            throw new ArgumentNullException(nameof(folderPath));
-        }
+        ArgumentNullException.ThrowIfNull(folderPath);
 
         string name = string.Format(CultureInfo.CurrentCulture, "{0}sg.{1}", this.Interpreter.State.Id.ToLower(CultureInfo.InvariantCulture), index);
         return Path.Combine(folderPath, name);
@@ -95,14 +76,10 @@ public class SavedGameManager
 
     public void GetSaveSlotInformation(string folderPath, out int[] slotNumbers, out string[] descriptions, out int slotCount, out int current)
     {
-        if (folderPath is null)
-        {
-            throw new ArgumentNullException(nameof(folderPath));
-        }
+        ArgumentNullException.ThrowIfNull(folderPath);
 
         slotNumbers = new int[12];
         descriptions = new string[12];
-        slotCount = 0;
         current = 0;
 
         var mostRecentTime = new DateTime(1970, 1, 1);
@@ -127,10 +104,7 @@ public class SavedGameManager
 
     public void GetRestoreSlotInformation(string folderPath, out int[] slotNumbers, out string[] descriptions, out int slotCount, out int current)
     {
-        if (folderPath is null)
-        {
-            throw new ArgumentNullException(nameof(folderPath));
-        }
+        ArgumentNullException.ThrowIfNull(folderPath);
 
         slotNumbers = new int[12];
         descriptions = new string[12];

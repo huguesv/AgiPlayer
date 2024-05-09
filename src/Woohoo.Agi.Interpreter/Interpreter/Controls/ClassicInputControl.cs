@@ -62,12 +62,12 @@ public class ClassicInputControl : InputControl
         {
             this.EnableInput();
             this.Input += this.InputPrevious[this.Input.Length];
-            this.WindowManager.DisplayCharacter(this.Input[this.Input.Length - 1]);
+            this.WindowManager.DisplayCharacter(this.Input[^1]);
 
             while (this.Input.Length < this.InputPrevious.Length)
             {
                 this.Input += this.InputPrevious[this.Input.Length];
-                this.WindowManager.DisplayCharacter(this.Input[this.Input.Length - 1]);
+                this.WindowManager.DisplayCharacter(this.Input[^1]);
             }
 
             this.WindowManager.UpdateTextRegion();
@@ -101,9 +101,12 @@ public class ClassicInputControl : InputControl
         string wrapped = this.WindowManager.WrapText(message, 0x40);
         this.WindowManager.PrintFormatted(wrapped);
 
-        TextBoxControl textBox = new TextBoxControl(this.Interpreter);
-        textBox.Text = string.Empty;
-        textBox.MaxTextLength = maxLength;
+        var textBox = new TextBoxControl(this.Interpreter)
+        {
+            Text = string.Empty,
+            MaxTextLength = maxLength,
+        };
+
         if (textBox.DoModal())
         {
             result = textBox.Text;
@@ -130,9 +133,12 @@ public class ClassicInputControl : InputControl
 
         this.DisableInput();
 
-        TextBoxControl textBox = new TextBoxControl(this.Interpreter);
-        textBox.Text = string.Empty;
-        textBox.MaxTextLength = 4;
+        var textBox = new TextBoxControl(this.Interpreter)
+        {
+            Text = string.Empty,
+            MaxTextLength = 4,
+        };
+
         if (textBox.DoModal())
         {
             result = textBox.Text;

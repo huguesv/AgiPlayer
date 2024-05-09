@@ -7,7 +7,7 @@ namespace Woohoo.Agi.Interpreter;
 
 public sealed class GameFolder : IGameContainer
 {
-    private string folderPath;
+    private readonly string folderPath;
 
     public GameFolder(string folderPath)
     {
@@ -18,7 +18,7 @@ public sealed class GameFolder : IGameContainer
 
     public byte[] Read(string file)
     {
-        byte[] data = new byte[0];
+        byte[] data;
 
         using (FileStream stream = new FileStream(Path.Combine(this.folderPath, file), FileMode.Open, FileAccess.Read, FileShare.Read))
         {
@@ -44,7 +44,7 @@ public sealed class GameFolder : IGameContainer
             string name = Path.GetFileNameWithoutExtension(files[0]);
             if (name.Length >= 3 && name.EndsWith("vol", StringComparison.InvariantCultureIgnoreCase))
             {
-                id = name.Substring(0, name.Length - 3);
+                id = name[..^3];
             }
         }
 
@@ -54,16 +54,16 @@ public sealed class GameFolder : IGameContainer
     public string[] GetGameFiles()
     {
         // Hashtable that holds (upper filename, filename) of all game files
-        Dictionary<string, string> filesTable = new Dictionary<string, string>();
+        var filesTable = new Dictionary<string, string>();
 
-        string[] includePatterns = new string[]
-        {
+        string[] includePatterns =
+        [
             "OBJECT",
             "WORDS.TOK",
             "*VOL.*",
             "*DIR",
             "DIRS",
-        };
+        ];
 
         // Get the list of files to include
         foreach (string pattern in includePatterns)
@@ -79,13 +79,13 @@ public sealed class GameFolder : IGameContainer
             }
         }
 
-        List<string> gameFiles = new List<string>();
+        var gameFiles = new List<string>();
         foreach (string gameFile in filesTable.Values)
         {
             gameFiles.Add(gameFile);
         }
 
-        return gameFiles.ToArray();
+        return [.. gameFiles];
     }
 
     public string[] GetFilesByExtension(string ext)

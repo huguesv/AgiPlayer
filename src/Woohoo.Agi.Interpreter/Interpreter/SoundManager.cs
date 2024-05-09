@@ -9,8 +9,8 @@ using Woohoo.Agi.Resources;
 
 public class SoundManager
 {
-    private readonly short[] dissolveDataV2 = new short[]
-    {
+    private readonly short[] dissolveDataV2 =
+    [
         -2, -3, -2, -1, 0x00, 0x00, 0x01, 0x01, 0x01,
         0x01, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,
         0x02, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
@@ -20,10 +20,10 @@ public class SoundManager
         0x09, 0x0A, 0x0A, 0x0A, 0x0A, 0x0B, 0x0B, 0x0B,
         0x0B, 0x0B, 0x0B, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C,
         0x0C, 0x0D, -100,
-    };
+    ];
 
-    private readonly short[] dissolveDataV3 = new short[]
-    {
+    private readonly short[] dissolveDataV3 =
+    [
         -2, -3, -2, -1,
         0, 0, 0, 0, 0,
         1, 1, 1, 1, 1, 1,
@@ -40,7 +40,7 @@ public class SoundManager
         0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C,
         0x0D,
         -100,
-    };
+    ];
 
     private SoundChannel[] soundChannels;
     private bool soundPlaying;
@@ -48,7 +48,7 @@ public class SoundManager
     public SoundManager(AgiInterpreter interpreter)
     {
         this.Interpreter = interpreter ?? throw new ArgumentNullException(nameof(interpreter));
-        this.soundChannels = Array.Empty<SoundChannel>();
+        this.soundChannels = [];
     }
 
     public byte SoundFlag { get; set; }
@@ -95,10 +95,7 @@ public class SoundManager
 
     public void Play(SoundResource resource)
     {
-        if (resource is null)
-        {
-            throw new ArgumentNullException("resource");
-        }
+        ArgumentNullException.ThrowIfNull(resource);
 
         // Playing sounds on AppleIIgs is not supported
         if (this.Preferences.SoundHardwareEnabled && this.Interpreter.GameInfo.Platform != Platform.AppleIIgs)

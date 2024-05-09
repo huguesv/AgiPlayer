@@ -35,7 +35,7 @@ public class ParserUnitTest
         var parser = new Parser(resource);
 
         var actual = parser.Parse("get");
-        var expected = new ParserResult[] { new ParserResult("get", VocabularyResource.NoFamily) };
+        var expected = new ParserResult[] { new("get", VocabularyResource.NoFamily) };
         actual.Should().BeEquivalentTo(expected);
     }
 
@@ -46,7 +46,7 @@ public class ParserUnitTest
         var parser = new Parser(resource);
 
         var actual = parser.Parse("get key");
-        var expected = new ParserResult[] { new ParserResult("get", 50), new ParserResult("key", 51) };
+        var expected = new ParserResult[] { new("get", 50), new("key", 51) };
         actual.Should().BeEquivalentTo(expected);
     }
 
@@ -57,7 +57,7 @@ public class ParserUnitTest
         var parser = new Parser(resource);
 
         var actual = parser.Parse("get,key");
-        var expected = new ParserResult[] { new ParserResult("get", 50), new ParserResult("key", 51) };
+        var expected = new ParserResult[] { new("get", 50), new("key", 51) };
         actual.Should().BeEquivalentTo(expected);
     }
 
@@ -68,7 +68,7 @@ public class ParserUnitTest
         var parser = new Parser(resource);
 
         var actual = parser.Parse("ge-t key");
-        var expected = new ParserResult[] { new ParserResult("get", 50), new ParserResult("key", 51) };
+        var expected = new ParserResult[] { new("get", 50), new("key", 51) };
         actual.Should().BeEquivalentTo(expected);
     }
 
@@ -79,21 +79,21 @@ public class ParserUnitTest
         var parser = new Parser(resource);
 
         var actual = parser.Parse("get the blue key");
-        var expected = new ParserResult[] { new ParserResult("get", 50), new ParserResult("blue key", 53) };
+        var expected = new ParserResult[] { new("get", 50), new("blue key", 53) };
         actual.Should().BeEquivalentTo(expected);
     }
 
     private static VocabularyResource CreateEmptyVocabulary()
     {
-        return new VocabularyResource(new VocabularyWordFamily[0]);
+        return new VocabularyResource([]);
     }
 
     private static VocabularyResource CreateSimpleVocabulary()
     {
         var families = new VocabularyWordFamily[]
         {
-            new VocabularyWordFamily(50, "get"),
-            new VocabularyWordFamily(51, "key"),
+            new(50, "get"),
+            new(51, "key"),
         };
 
         return new VocabularyResource(families);
@@ -103,11 +103,11 @@ public class ParserUnitTest
     {
         var families = new VocabularyWordFamily[]
         {
-            new VocabularyWordFamily(50, "get"),
-            new VocabularyWordFamily(51, "blue"),
-            new VocabularyWordFamily(52, "key"),
-            new VocabularyWordFamily(53, "blue key"),
-            new VocabularyWordFamily(0, "a", "an", "the", "this"),
+            new(50, "get"),
+            new(51, "blue"),
+            new(52, "key"),
+            new(53, "blue key"),
+            new(0, "a", "an", "the", "this"),
         };
 
         return new VocabularyResource(families);

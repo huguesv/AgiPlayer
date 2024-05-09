@@ -11,7 +11,7 @@ namespace Woohoo.Agi.Interpreter;
 public record struct PicturePoint
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PicturePoint"/> class.
+    /// Initializes a new instance of the <see cref="PicturePoint"/> struct.
     /// </summary>
     /// <param name="x">X coordinate.</param>
     /// <param name="y">Y coordinate.</param>

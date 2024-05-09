@@ -37,10 +37,7 @@ public class Parser
     /// <returns>Results of the parsing as (word, family identifier) pairs.</returns>
     public ParserResult[] Parse(string text)
     {
-        if (text is null)
-        {
-            throw new ArgumentNullException(nameof(text));
-        }
+        ArgumentNullException.ThrowIfNull(text);
 
         var results = new List<ParserResult>();
 
@@ -55,7 +52,7 @@ public class Parser
             if (family == VocabularyResource.NoFamily)
             {
                 // We couldn't find a match, so we store it in the results and stop parsing
-                string word = text.Substring(startIndex, textIndex - startIndex).Trim();
+                string word = text[startIndex..textIndex].Trim();
                 results.Add(new ParserResult(word, family));
                 break;
             }
@@ -63,12 +60,12 @@ public class Parser
             if (family != VocabularyResource.Ignore)
             {
                 // We found a match, so we store it in the results
-                string word = text.Substring(startIndex, textIndex - startIndex).Trim();
+                string word = text[startIndex..textIndex].Trim();
                 results.Add(new ParserResult(word, family));
             }
         }
 
-        return results.ToArray();
+        return [.. results];
     }
 
     /// <summary>
@@ -83,8 +80,8 @@ public class Parser
         int index = 0;
         while (index < text.Length)
         {
-            if (IllegalChars.IndexOf(text[index]) >= 0 ||
-                SeparatorChars.IndexOf(text[index]) >= 0)
+            if (IllegalChars.Contains(text[index]) ||
+                SeparatorChars.Contains(text[index]))
             {
                 // skip excess separators at start and inbetween words
                 index++;
@@ -93,7 +90,7 @@ public class Parser
             {
                 do
                 {
-                    if (SeparatorChars.IndexOf(text[index]) >= 0)
+                    if (SeparatorChars.Contains(text[index]))
                     {
                         cleaned.Append(' ');
                         break;
@@ -124,7 +121,7 @@ public class Parser
         // Start with the longest sentence and remove
         // a word at the end one by one until we find a
         // match or until we are down to only one word
-        string longest = text.Substring(index);
+        string longest = text[index..];
         int family = this.Vocabulary.GetWordIdentifier(longest);
         while (family == VocabularyResource.NoFamily)
         {
@@ -134,7 +131,7 @@ public class Parser
                 break;
             }
 
-            longest = longest.Substring(0, lastSpace);
+            longest = longest[..lastSpace];
             family = this.Vocabulary.GetWordIdentifier(longest);
         }
 

@@ -91,10 +91,7 @@ public class InventoryControl
 
     private void Display(InventoryControlItem[] egoItems, int selected)
     {
-        if (egoItems is null)
-        {
-            throw new ArgumentNullException(nameof(egoItems));
-        }
+        ArgumentNullException.ThrowIfNull(egoItems);
 
         this.WindowManager.GotoPosition(new TextPosition(0, 11));
         this.WindowManager.PrintFormatted(UserInterface.InventoryCarrying);
@@ -235,15 +232,8 @@ public class InventoryControl
 
     private void ChangeSelection(InventoryControlItem oldItem, InventoryControlItem newItem)
     {
-        if (oldItem is null)
-        {
-            throw new ArgumentNullException(nameof(oldItem));
-        }
-
-        if (newItem is null)
-        {
-            throw new ArgumentNullException(nameof(newItem));
-        }
+        ArgumentNullException.ThrowIfNull(oldItem);
+        ArgumentNullException.ThrowIfNull(newItem);
 
         if (oldItem != newItem)
         {

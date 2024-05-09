@@ -7,27 +7,29 @@ using Woohoo.Agi.Resources;
 
 public class GraphicsRenderer
 {
-    private List<GraphicsRendererDriver> renderDrivers;
+    private readonly List<GraphicsRendererDriver> renderDrivers;
+    private readonly IGraphicsDriver graphicsDriver;
     private int renderDriverIndex;
-    private IGraphicsDriver graphicsDriver;
 
     public GraphicsRenderer(IGraphicsDriver graphicsDriver, State state, Preferences prefs)
     {
         this.graphicsDriver = graphicsDriver;
         this.State = state;
 
-        this.renderDrivers = new List<GraphicsRendererDriver>();
-        this.renderDrivers.Add(new GraphicsRendererDriverEga());
-        this.renderDrivers.Add(new GraphicsRendererDriverCga0());
-        this.renderDrivers.Add(new GraphicsRendererDriverCga1());
-        this.renderDrivers.Add(new GraphicsRendererDriverHercules(new GraphicsColor(0xff, 0xff, 0xff)));
-        this.renderDrivers.Add(new GraphicsRendererDriverHercules(new GraphicsColor(0x00, 0x80, 0x00))); // alternative: 0x00, 0x9a, 0x00
-        this.renderDrivers.Add(new GraphicsRendererDriverHercules(new GraphicsColor(0xb9, 0x80, 0x00))); // alternative: 0xdf, 0xa2, 0x00
-        this.renderDrivers.Add(new GraphicsRendererDriverAtariST());
-        this.renderDrivers.Add(new GraphicsRendererDriverAmiga1());
-        this.renderDrivers.Add(new GraphicsRendererDriverAmiga2());
-        this.renderDrivers.Add(new GraphicsRendererDriverAmiga3());
-        this.renderDrivers.Add(new GraphicsRendererDriverAppleIIgs());
+        this.renderDrivers =
+        [
+            new GraphicsRendererDriverEga(),
+            new GraphicsRendererDriverCga0(),
+            new GraphicsRendererDriverCga1(),
+            new GraphicsRendererDriverHercules(new GraphicsColor(0xff, 0xff, 0xff)),
+            new GraphicsRendererDriverHercules(new GraphicsColor(0x00, 0x80, 0x00)), // alternative: 0x00, 0x9a, 0x00
+            new GraphicsRendererDriverHercules(new GraphicsColor(0xb9, 0x80, 0x00)), // alternative: 0xdf, 0xa2, 0x00
+            new GraphicsRendererDriverAtariST(),
+            new GraphicsRendererDriverAmiga1(),
+            new GraphicsRendererDriverAmiga2(),
+            new GraphicsRendererDriverAmiga3(),
+            new GraphicsRendererDriverAppleIIgs(),
+        ];
 
         switch (prefs.Theme)
         {

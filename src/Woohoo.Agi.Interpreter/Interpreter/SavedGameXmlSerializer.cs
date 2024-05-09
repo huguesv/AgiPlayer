@@ -24,15 +24,8 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
 
     void ISavedGameSerializer.SaveTo(AgiInterpreter interpreter, string description, Stream stream)
     {
-        if (description is null)
-        {
-            throw new ArgumentNullException(nameof(description));
-        }
-
-        if (stream is null)
-        {
-            throw new ArgumentNullException(nameof(stream));
-        }
+        ArgumentNullException.ThrowIfNull(description);
+        ArgumentNullException.ThrowIfNull(stream);
 
         this.Interpreter = interpreter ?? throw new ArgumentNullException(nameof(interpreter));
 
@@ -48,10 +41,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
 
     void ISavedGameSerializer.LoadFrom(AgiInterpreter interpreter, Stream stream)
     {
-        if (stream is null)
-        {
-            throw new ArgumentNullException(nameof(stream));
-        }
+        ArgumentNullException.ThrowIfNull(stream);
 
         this.Interpreter = interpreter ?? throw new ArgumentNullException(nameof(interpreter));
 
@@ -69,10 +59,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
 
     string ISavedGameSerializer.LoadDescriptionFrom(Stream stream)
     {
-        if (stream is null)
-        {
-            throw new ArgumentNullException(nameof(stream));
-        }
+        ArgumentNullException.ThrowIfNull(stream);
 
         string description = string.Empty;
 
@@ -122,7 +109,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
         return (char)('a' + (b - 0x0a));
     }
 
-    private void SerializeGame(XmlWriter xmlWriter, string description)
+    private void SerializeGame(XmlTextWriter xmlWriter, string description)
     {
         xmlWriter.WriteStartDocument();
         xmlWriter.WriteStartElement("SavedGame");
@@ -138,7 +125,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
         xmlWriter.WriteEndDocument();
     }
 
-    private void SerializeState(XmlWriter xmlWriter)
+    private void SerializeState(XmlTextWriter xmlWriter)
     {
         xmlWriter.WriteStartElement("State");
 
@@ -222,7 +209,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
         xmlWriter.WriteEndElement();
     }
 
-    private void SerializeObjectTable(XmlWriter xmlWriter)
+    private void SerializeObjectTable(XmlTextWriter xmlWriter)
     {
         xmlWriter.WriteStartElement("ObjectTable");
 
@@ -274,7 +261,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
         xmlWriter.WriteEndElement();
     }
 
-    private void SerializeInventory(XmlWriter xmlWriter)
+    private void SerializeInventory(XmlTextWriter xmlWriter)
     {
         xmlWriter.WriteStartElement("Inventory");
 
@@ -291,7 +278,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
         xmlWriter.WriteEndElement();
     }
 
-    private void SerializeScript(XmlWriter xmlWriter)
+    private void SerializeScript(XmlTextWriter xmlWriter)
     {
         var scriptDataBuilder = new StringBuilder(this.Interpreter.ScriptManager.ScriptData.Length);
 
@@ -310,7 +297,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
         xmlWriter.WriteElementString("Script", scriptDataBuilder.ToString());
     }
 
-    private void SerializeLogicScanStart(XmlWriter xmlWriter)
+    private void SerializeLogicScanStart(XmlTextWriter xmlWriter)
     {
         xmlWriter.WriteStartElement("LogicScanStartList");
 

@@ -65,13 +65,9 @@ public class StatusLineControl
         this.WindowManager.UpdateTextRegion();
     }
 
-    [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
     public bool ProcessEvent(InputEvent e)
     {
-        if (e is null)
-        {
-            throw new ArgumentNullException(nameof(e));
-        }
+        ArgumentNullException.ThrowIfNull(e);
 
         // TODO: handle mouse event on the status line
         return false;

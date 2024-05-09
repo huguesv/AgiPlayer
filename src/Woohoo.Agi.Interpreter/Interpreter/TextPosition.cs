@@ -11,7 +11,7 @@ namespace Woohoo.Agi.Interpreter;
 public record struct TextPosition
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="TextPosition"/> class.
+    /// Initializes a new instance of the <see cref="TextPosition"/> struct.
     /// </summary>
     /// <param name="row">Row, in text coordinates.</param>
     /// <param name="column">Column, in text coordinates.</param>

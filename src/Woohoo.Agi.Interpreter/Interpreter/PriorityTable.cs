@@ -10,7 +10,8 @@ namespace Woohoo.Agi.Interpreter;
 /// </summary>
 public class PriorityTable
 {
-    private byte[] priorityTable;
+    private readonly byte[] priorityTable;
+
     private bool defaultPriority;
 
     /// <summary>

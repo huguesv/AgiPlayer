@@ -6,8 +6,8 @@ namespace Woohoo.Agi.Resources.Serialization.UnitTest;
 [TestClass]
 public class RleCompressionUnitTest
 {
-    private byte[] uncompressed00 = new byte[] { 0, 0, 5, 1, 2, 3, 1, 2, 3, 5, 0, 0 };
-    private byte[] compressed00 = new byte[] { 0x02, 0x51, 0x11, 0x21, 0x31, 0x00, 0x11, 0x21, 0x31, 0x51, 0x00 };
+    private readonly byte[] uncompressed00 = [0, 0, 5, 1, 2, 3, 1, 2, 3, 5, 0, 0];
+    private readonly byte[] compressed00 = [0x02, 0x51, 0x11, 0x21, 0x31, 0x00, 0x11, 0x21, 0x31, 0x51, 0x00];
 
     [TestMethod]
     public void DecompressNull()
@@ -20,10 +20,10 @@ public class RleCompressionUnitTest
     [TestMethod]
     public void Decompress00()
     {
-        this.Decompress(this.compressed00, this.uncompressed00, 6, 2, 0);
+        Decompress(this.compressed00, this.uncompressed00, 6, 2, 0);
     }
 
-    private void Decompress(byte[] compressed, byte[] expected, int width, int height, byte transparentColor)
+    private static void Decompress(byte[] compressed, byte[] expected, int width, int height, byte transparentColor)
     {
         var uncompressed = RleCompression.Decompress(compressed, 0, width, height, transparentColor);
         uncompressed.Should().BeEquivalentTo(expected);

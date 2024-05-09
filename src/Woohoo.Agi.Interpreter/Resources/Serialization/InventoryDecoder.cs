@@ -15,7 +15,7 @@ public static class InventoryDecoder
     /// <summary>
     /// Key used to encrypt the inventory (using XOR). The key is the string "Avis Durgan".
     /// </summary>
-    private static readonly byte[] XorKey = { 0x41, 0x76, 0x69, 0x73, 0x20, 0x44, 0x75, 0x72, 0x67, 0x61, 0x6e };
+    private static readonly byte[] XorKey = [0x41, 0x76, 0x69, 0x73, 0x20, 0x44, 0x75, 0x72, 0x67, 0x61, 0x6e];
 
     /// <summary>
     /// Decode the inventory resource from byte array.
@@ -83,7 +83,7 @@ public static class InventoryDecoder
             items.Add(new InventoryItem(name, room));
         }
 
-        return new InventoryResource(items.ToArray(), maxAnimatedObjects);
+        return new InventoryResource([.. items], maxAnimatedObjects);
     }
 
     /// <summary>

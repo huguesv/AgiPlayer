@@ -29,10 +29,7 @@ public class PictureInterpreter
     /// <param name="resource">Picture to execute.</param>
     public void Execute(PictureResource resource)
     {
-        if (resource is null)
-        {
-            throw new ArgumentNullException(nameof(resource));
-        }
+        ArgumentNullException.ThrowIfNull(resource);
 
         this.pattern = 0;
 
@@ -98,15 +95,17 @@ public class PictureInterpreter
         byte y1 = pictureData[offset];
         offset++;
 
-        var points = new List<PicturePoint>();
-        points.Add(new PicturePoint(x1, y1));
+        var points = new List<PicturePoint>
+        {
+            new(x1, y1),
+        };
 
         while (offset < pictureData.Length && pictureData[offset] < 0xf0)
         {
             byte y2 = pictureData[offset];
             offset++;
 
-            points.Add(new PicturePoint(x1, y2));
+            points.Add(new(x1, y2));
 
             y1 = y2;
 
@@ -119,12 +118,12 @@ public class PictureInterpreter
             byte x2 = pictureData[offset];
             offset++;
 
-            points.Add(new PicturePoint(x2, y1));
+            points.Add(new(x2, y1));
 
             x1 = x2;
         }
 
-        this.renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine([.. points]);
 
         return offset;
     }
@@ -137,15 +136,17 @@ public class PictureInterpreter
         byte y1 = pictureData[offset];
         offset++;
 
-        var points = new List<PicturePoint>();
-        points.Add(new PicturePoint(x1, y1));
+        var points = new List<PicturePoint>
+        {
+            new(x1, y1),
+        };
 
         while (offset < pictureData.Length && pictureData[offset] < 0xf0)
         {
             byte x2 = pictureData[offset];
             offset++;
 
-            points.Add(new PicturePoint(x2, y1));
+            points.Add(new(x2, y1));
 
             x1 = x2;
 
@@ -158,42 +159,41 @@ public class PictureInterpreter
             byte y2 = pictureData[offset];
             offset++;
 
-            points.Add(new PicturePoint(x1, y2));
+            points.Add(new(x1, y2));
 
             y1 = y2;
         }
 
-        this.renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine([.. points]);
 
         return offset;
     }
 
     private int ReadAbsoluteLine(byte[] pictureData, int offset)
     {
-        byte x1 = pictureData[offset];
+        byte x = pictureData[offset];
         offset++;
 
-        byte y1 = pictureData[offset];
+        byte y = pictureData[offset];
         offset++;
 
-        var points = new List<PicturePoint>();
-        points.Add(new PicturePoint(x1, y1));
+        var points = new List<PicturePoint>
+        {
+            new(x, y),
+        };
 
         while (offset < pictureData.Length && pictureData[offset] < 0xf0)
         {
-            byte x2 = pictureData[offset];
+            x = pictureData[offset];
             offset++;
 
-            byte y2 = pictureData[offset];
+            y = pictureData[offset];
             offset++;
 
-            points.Add(new PicturePoint(x2, y2));
-
-            x1 = x2;
-            y1 = y2;
+            points.Add(new(x, y));
         }
 
-        this.renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine([.. points]);
 
         return offset;
     }
@@ -206,8 +206,10 @@ public class PictureInterpreter
         byte y1 = pictureData[offset];
         offset++;
 
-        var points = new List<PicturePoint>();
-        points.Add(new PicturePoint(x1, y1));
+        var points = new List<PicturePoint>
+        {
+            new(x1, y1),
+        };
 
         while (offset < pictureData.Length && pictureData[offset] < 0xf0)
         {
@@ -239,7 +241,7 @@ public class PictureInterpreter
             y1 += (byte)dy;
         }
 
-        this.renderer.DrawLine(points.ToArray());
+        this.renderer.DrawLine([.. points]);
 
         return offset;
     }

@@ -9,55 +9,55 @@ using Woohoo.Agi.Resources;
 
 public sealed class GraphicsRendererDriverHercules : GraphicsRendererDriver
 {
-    private readonly byte[] line0Column0 = new byte[]
-    {
+    private readonly byte[] line0Column0 =
+    [
         0x00, 0x20, 0x40, 0xA0, 0x28, 0x80, 0x12, 0xA5,
         0x80, 0x7f, 0xAD, 0xFF, 0xFA, 0x7B, 0xDF, 0xFF,
-    };
+    ];
 
-    private readonly byte[] line0Column1 = new byte[]
-    {
+    private readonly byte[] line0Column1 =
+    [
         0x00, 0x20, 0x08, 0xA0, 0x28, 0x80, 0x12, 0xA5,
         0x80, 0xdf, 0xAD, 0x7E, 0xFA, 0x7B, 0xDF, 0xFF,
-    };
+    ];
 
-    private readonly byte[] line1Column0 = new byte[]
-    {
+    private readonly byte[] line1Column0 =
+    [
         0x00, 0x00, 0x80, 0xA0, 0x28, 0x80, 0x48, 0xA5,
         0x20, 0xdf, 0x57, 0xDF, 0xFA, 0xDE, 0xFF, 0xFF,
-    };
+    ];
 
-    private readonly byte[] line1Column1 = new byte[]
-    {
+    private readonly byte[] line1Column1 =
+    [
         0x00, 0x00, 0x04, 0xA0, 0x28, 0x80, 0x48, 0xA5,
         0x20, 0x7f, 0x57, 0xFD, 0xFA, 0xDE, 0xFF, 0xFF,
-    };
+    ];
 
-    private readonly byte[] line2Column0 = new byte[]
-    {
+    private readonly byte[] line2Column0 =
+    [
         0x00, 0x80, 0x20, 0xA0, 0x28, 0x80, 0x12, 0xA5,
         0x80, 0x7f, 0xAD, 0xE7, 0xFA, 0x7B, 0x7F, 0xFF,
-    };
+    ];
 
-    private readonly byte[] line2Column1 = new byte[]
-    {
+    private readonly byte[] line2Column1 =
+    [
         0x00, 0x80, 0x01, 0xA0, 0x28, 0x80, 0x12, 0xA5,
         0x80, 0xdf, 0xAD, 0xFF, 0xFA, 0x7B, 0x7F, 0xFF,
-    };
+    ];
 
-    private readonly byte[] line3Column0 = new byte[]
-    {
+    private readonly byte[] line3Column0 =
+    [
         0x00, 0x00, 0x10, 0xA0, 0x28, 0x80, 0x48, 0xA5,
         0x20, 0xdf, 0x57, 0xFB, 0xFA, 0xDE, 0xFF, 0xFF,
-    };
+    ];
 
-    private readonly byte[] line3Column1 = new byte[]
-    {
+    private readonly byte[] line3Column1 =
+    [
         0x00, 0x00, 0x02, 0xA0, 0x28, 0x80, 0x48, 0xA5,
         0x20, 0x7f, 0x57, 0xBF, 0xFA, 0xDE, 0xFF, 0xFF,
-    };
+    ];
 
-    private GraphicsColor whiteColor;
+    private readonly GraphicsColor whiteColor;
 
     public GraphicsRendererDriverHercules(GraphicsColor whiteColor)
     {
@@ -141,11 +141,11 @@ public sealed class GraphicsRendererDriverHercules : GraphicsRendererDriver
         }
         else
         {
-            colors = new GraphicsColor[]
-            {
-                new GraphicsColor(0x00, 0x00, 0x00),
+            colors =
+            [
+                new(0x00, 0x00, 0x00),
                 this.whiteColor,
-            };
+            ];
         }
 
         return colors;
@@ -211,9 +211,9 @@ public sealed class GraphicsRendererDriverHercules : GraphicsRendererDriver
 
     protected override GraphicsColor[] GetPaletteTextColors()
     {
-        return new GraphicsColor[]
-        {
-            new GraphicsColor(0x00, 0x00, 0x00),
+        return
+        [
+            new(0x00, 0x00, 0x00),
             this.whiteColor,
             this.whiteColor,
             this.whiteColor,
@@ -229,7 +229,7 @@ public sealed class GraphicsRendererDriverHercules : GraphicsRendererDriver
             this.whiteColor,
             this.whiteColor,
             this.whiteColor,
-        };
+        ];
     }
 
     private void RenderPixel(int i, int j, byte color)

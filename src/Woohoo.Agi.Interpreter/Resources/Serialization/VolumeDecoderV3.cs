@@ -28,15 +28,7 @@ public sealed class VolumeDecoderV3 : IVolumeDecoder
     {
         if (platform != Platform.Amiga)
         {
-            if (gameId is null)
-            {
-                throw new ArgumentNullException(nameof(gameId));
-            }
-
-            if (gameId.Length == 0)
-            {
-                throw new ArgumentException(Errors.GameIdEmpty, nameof(gameId));
-            }
+            ArgumentNullException.ThrowIfNullOrEmpty(gameId);
         }
 
         this.gameId = gameId;
@@ -63,25 +55,9 @@ public sealed class VolumeDecoderV3 : IVolumeDecoder
     /// <returns>Binary data for the resource.  This is always uncompressed.  If the data is compressed in the volume, the volume decoder must decompress it.</returns>
     byte[] IVolumeDecoder.ExtractResource(IGameContainer container, string fileName, VolumeResourceMapEntry dirEntry, out bool wasCompressed)
     {
-        if (container is null)
-        {
-            throw new ArgumentNullException(nameof(container));
-        }
-
-        if (fileName is null)
-        {
-            throw new ArgumentNullException(nameof(fileName));
-        }
-
-        if (fileName.Length == 0)
-        {
-            throw new ArgumentException(Errors.FilePathEmpty, nameof(fileName));
-        }
-
-        if (dirEntry is null)
-        {
-            throw new ArgumentNullException(nameof(dirEntry));
-        }
+        ArgumentNullException.ThrowIfNull(container);
+        ArgumentNullException.ThrowIfNullOrEmpty(fileName);
+        ArgumentNullException.ThrowIfNull(dirEntry);
 
         byte[] volumeData = container.Read(fileName);
 
@@ -100,10 +76,7 @@ public sealed class VolumeDecoderV3 : IVolumeDecoder
     /// <returns>Resource map.</returns>
     VolumeResourceMap IVolumeDecoder.LoadResourceMap(IGameContainer container)
     {
-        if (container is null)
-        {
-            throw new ArgumentNullException(nameof(container));
-        }
+        ArgumentNullException.ThrowIfNull(container);
 
         return VolumeDecoderV3.ReadResourceMap(container.Read(this.GetResourceMapFile()));
     }
@@ -128,7 +101,6 @@ public sealed class VolumeDecoderV3 : IVolumeDecoder
 
         // [6][7] = Offset of snddir
         int sndOffset = (data[offset + 1] * 0x100) + data[offset];
-        offset += 2;
 
         VolumeDecoder.ReadResourceMap(data, logOffset, picOffset - logOffset, map.LogicResources);
         VolumeDecoder.ReadResourceMap(data, picOffset, viewOffset - picOffset, map.PictureResources);
