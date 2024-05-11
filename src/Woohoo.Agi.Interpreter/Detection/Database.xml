@@ -161,6 +161,14 @@
       <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
       <file name="GRVOL.4" crc32="e2dd97d8" md5="9e3e470c693a1bfbf545e5fc1bde7982" sha1="00f2b5642f1919cf8baf2bf83526fdcf2fce41e1" />
     </game>
+    <game name="Gold Rush! Classic" platform="PC" date="XXXX-XX-XX" version="3.0" format="" interpreter="3.002.149" language="English" comments="Rerelease by the Software Farm">
+      <file name="GRDIR" crc32="bbd5a547" md5="6882b6090473209da4cd78bb59f78dbe" sha1="23bc11e10ebf38092bc3776218b9f9bdf0e4f98f" />
+      <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
+      <file name="OBJECT" crc32="6f8e1901" md5="9fa64d3f27c489933c6d9700e94f1791" sha1="a628a7bd6652e1c0bd67e15aec2928e027f55e58" />
+      <file name="GRVOL.0" crc32="c7ec040d" md5="0f76db16c1440554d55a8f02df5075b6" sha1="d1a70a8bb7a8d6a435e90a793ec62f19f6c9edff" />
+      <file name="GRVOL.1" crc32="72f9a421" md5="9aee80918a52e135cc7556eddf6c0d7a" sha1="38d6fc7efc0984c32a5f18e217df437fb9508b85" />
+      <file name="GRVOL.2" crc32="71c7cf7b" md5="7024e75c7290c03d49b6cbca9bd9da47" sha1="a1d91cc342043aebccd378504fde7b87460c1697" />
+    </game>
     <game name="Gold Rush!" platform="Amiga" date="XXXX-XX-XX" version="2.05" format="" interpreter="3.002.149" language="English" comments="">
       <file name="VOL.1" crc32="4668977c" md5="e9639b60d3b683063a32e9a0cb3fcfef" sha1="d57ce4bc84e21a1a5d82aefd082c9b923302dad4" />
       <file name="WORDS.TOK" crc32="6f42a9a1" md5="ce085fc2ef513d084c4396d29ab5086b" sha1="e4baee23a7cc73a98c6d9dc7a855d8f30e551031" />
@@ -565,6 +573,17 @@
       <file name="OBJECT" crc32="1cb5f786" md5="aa7bce1ca83f181c92c1feea2c119eec" sha1="cda4a0aae589ae40b098865b6e4b964a8663009f" />
       <file name="PICDIR" crc32="fddfaf76" md5="a22e109d14d5cff65be77dd1b12af6f3" sha1="8ed989dabbd53c922d144f1e9f1b7a650e28b904" />
     </game>
+    <game name="Leisure Suit Larry I (patched)" platform="PC" date="XXXX-XX-XX" version="1.00" format="FLOPPY" interpreter="2.440" language="English" comments="Slot machine logic 37 patched in 2005. Where did it come from? (not Steam)">
+      <file name="WORDS.TOK" crc32="295fe597" md5="988a1baaf3ee0d9cd678274dc2f219f2" sha1="9fd64e7d57a707afa4f834adc7ee6affd9b7d940" />
+      <file name="VIEWDIR" crc32="03629772" md5="8c4edeea3fa5518ab431ee9b0ba7c378" sha1="0194c587f7ef13e31f1011cc72306c1ab972b9ac" />
+      <file name="VOL.1" crc32="4917e107" md5="7ddb49cf212d5fab3c2edf86ee895886" sha1="e107999bc7ace17f2dfd53442c331945f3929706" />
+      <file name="LOGDIR" crc32="44c3abb0" md5="66e2d69c76db13b8ed0bf4ad3ce999c5" sha1="4cfb2add6f9bad33f6c0653da603f47c18074f80" />
+      <file name="SNDDIR" crc32="578de438" md5="8fbdd1377d7110c3a28979d4627fc3e5" sha1="2b4a438f22fbeeef8a6fd099a608a78766d6e75e" />
+      <file name="VOL.2" crc32="42c8cd81" md5="89103f5b48fa49c00eed42f4b19808e1" sha1="6d711d5a8e836d46e552e8acdc72f7d44c33bd42" />
+      <file name="VOL.0" crc32="ced48982" md5="bdd293320d9b7542307d7e77d3714231" sha1="e1befb5496ffad880c2f48e7d21dc8da4c2ac557" />
+      <file name="OBJECT" crc32="1cb5f786" md5="aa7bce1ca83f181c92c1feea2c119eec" sha1="cda4a0aae589ae40b098865b6e4b964a8663009f" />
+      <file name="PICDIR" crc32="fddfaf76" md5="a22e109d14d5cff65be77dd1b12af6f3" sha1="8ed989dabbd53c922d144f1e9f1b7a650e28b904" />
+    </game>
     <game name="Leisure Suit Larry I" platform="Macintosh" date="XXXX-XX-XX" version="1.05" format="" interpreter="" language="English" comments="">
       <file name="WORDS.TOK" crc32="e2a94bc1" md5="480b147cee712c47008c4071211eacd8" sha1="20aabdc463bd425edcfcd61802bf9bfc4e03af20" />
       <file name="VIEWDIR" crc32="d1a681ab" md5="133265371eaee0ec6272fef1c7209344" sha1="73f05c6294bc3d864abf2bde3f093e3161f2dd19" />
@@ -898,7 +917,7 @@
       <file name="OBJECT" crc32="8b985ad2" md5="c444971d4558f102a82b3130868010b4" sha1="dbf5579e5234c65fd00a4b3e59421b670ed9ce9c" />
       <file name="PICDIR" crc32="574cecf1" md5="f1f573577981a1beae8d9195caeb636e" sha1="ec68a09c1a425884ee1b58f3fac4a8cfcb92eb0e" />
     </game>
-    <game name="Police Quest I (?)" platform="PC" date="XXXX-XX-XX" version="2.0G" format="3.5DD" interpreter="2.917" language="English" comments="">
+    <game name="Police Quest I (Steam)" platform="PC" date="XXXX-XX-XX" version="2.0G" format="" interpreter="2.917" language="English" comments="From Police Quest Collection on Steam.">
       <file name="WORDS.TOK" crc32="666de107" md5="0db29ac32f2cbb1d26c0e29f812f5fd2" sha1="635fbf6fc3428fe759fa0ca5c97b9a78f5ebb15a" />
       <file name="SNDDIR" crc32="89a3a183" md5="ed489e4f8647af2b956d08ee78b4ff42" sha1="4f8dd3f65034927030289011c9f21afe4c19c793" />
       <file name="LOGDIR" crc32="0e851173" md5="d194e5d88363095f55d5096b8e32fbbb" sha1="bfc5df20b046d9e7d9f1f535e50cc49f788bf6ec" />
