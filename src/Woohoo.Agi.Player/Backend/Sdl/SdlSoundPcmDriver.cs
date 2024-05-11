@@ -13,12 +13,13 @@ internal sealed class SdlSoundPcmDriver : ISoundPcmDriver
 
     private static readonly short[] ZeroBuffer = new short[SAMPLESIZE];
 
+    private readonly List<SdlSoundChannel> channels = [];
+    private readonly short[] channelBuffer = new short[SAMPLESIZE];
+    private readonly short[] buffer = new short[SAMPLESIZE];
+
     private AgiInterpreter interpreter;
     private byte handlesUsed = 0;
-    private List<SdlSoundChannel> channels = new List<SdlSoundChannel>();
     private SDL_AudioCallback sdlCallback;
-    private short[] buffer = new short[SAMPLESIZE];
-    private short[] channelBuffer = new short[SAMPLESIZE];
 
     void ISoundPcmDriver.SetInterpreter(AgiInterpreter interpreter)
     {
@@ -41,7 +42,7 @@ internal sealed class SdlSoundPcmDriver : ISoundPcmDriver
             callback = Marshal.GetFunctionPointerForDelegate(this.sdlCallback),
         };
 
-        SDL_AudioSpec obtained = default(SDL_AudioSpec);
+        SDL_AudioSpec obtained = default;
 
         IntPtr desiredPtr = Marshal.AllocHGlobal(Marshal.SizeOf(desired));
         IntPtr obtainedPtr = Marshal.AllocHGlobal(Marshal.SizeOf(obtained));
@@ -85,8 +86,11 @@ internal sealed class SdlSoundPcmDriver : ISoundPcmDriver
     {
         (this as ISoundPcmDriver).Lock();
 
-        var channel = new SdlSoundChannel();
-        channel.Handle = this.CreateHandle();
+        var channel = new SdlSoundChannel
+        {
+            Handle = this.CreateHandle(),
+        };
+
         if (channel.Handle == 0)
         {
             return 0;

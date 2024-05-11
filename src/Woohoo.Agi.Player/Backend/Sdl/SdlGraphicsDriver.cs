@@ -45,15 +45,8 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
 
     void IGraphicsDriver.Display(int displayScaleX, int displayScaleY, int renderScaleX, int renderScaleY)
     {
-        if (displayScaleX < 1)
-        {
-            throw new ArgumentOutOfRangeException("displayScaleX");
-        }
-
-        if (displayScaleY < 1)
-        {
-            throw new ArgumentOutOfRangeException("displayScaleY");
-        }
+        ArgumentOutOfRangeException.ThrowIfLessThan(displayScaleX, 1);
+        ArgumentOutOfRangeException.ThrowIfLessThan(displayScaleY, 1);
 
         this.nativeWidth = 320 * renderScaleX;
         this.nativeHeight = 200 * renderScaleY;
@@ -131,13 +124,13 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
         else
         {
             const int Delay = 50;
-            byte[][] fadeBits = new byte[][]
-            {
-                new byte[] { 0, 11, 7, 15 },
-                new byte[] { 8, 4, 1, 12 },
-                new byte[] { 14, 2, 9, 5 },
-                new byte[] { 10, 6, 13, 3 },
-            };
+            byte[][] fadeBits =
+            [
+                [0, 11, 7, 15],
+                [8, 4, 1, 12],
+                [14, 2, 9, 5],
+                [10, 6, 13, 3],
+            ];
 
             for (int fadeCount = 0; fadeCount < 16; fadeCount++)
             {

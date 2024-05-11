@@ -30,7 +30,7 @@ internal abstract class AgiPlayer
 
     public int Run(string[] args)
     {
-        this.DisplayInfo();
+        DisplayInfo();
 
         string folder = Environment.CurrentDirectory;
         if (args.Length > 0)
@@ -68,7 +68,7 @@ internal abstract class AgiPlayer
 
     protected abstract void Quit();
 
-    private void DisplayInfo()
+    private static void DisplayInfo()
     {
         Console.WriteLine("{0} v{1}", UserInterface.PlayerName, UserInterface.PlayerVersion);
         Console.WriteLine("Copyright (C) 2006-2018 Hugues Valois");
@@ -82,7 +82,7 @@ internal abstract class AgiPlayer
         Console.WriteLine();
     }
 
-    private Preferences ReadPreferences()
+    private static Preferences ReadPreferences()
     {
         var preferences = new Preferences();
 
@@ -100,7 +100,7 @@ internal abstract class AgiPlayer
     {
         GameStartInfo[] startInfos = GameFinder.FindGames(folder, true);
 
-        this.Interpreter.Start(startInfos, this.ReadPreferences());
+        this.Interpreter.Start(startInfos, ReadPreferences());
 
         return 0;
     }
@@ -112,7 +112,7 @@ internal abstract class AgiPlayer
             GameStartInfo startInfo = GameFinder.FindGame(folder);
             if (startInfo is not null)
             {
-                this.Interpreter.Start(startInfo, this.ReadPreferences());
+                this.Interpreter.Start(startInfo, ReadPreferences());
 
                 return 0;
             }

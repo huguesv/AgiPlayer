@@ -3,6 +3,8 @@
 
 namespace Woohoo.Agi.Player.Backend.Sdl;
 
+using System.Diagnostics.CodeAnalysis;
+
 #if USE_SDL
 using Woohoo.Agi.Interpreter;
 using static Woohoo.Agi.Player.Backend.Sdl.NativeMethods;
@@ -12,49 +14,50 @@ internal class SdlInputDriver : IInputDriver
     private const int DelayMultiplier = 50;
     private const int SdlTickScale = 50;
 
-    private static readonly int[] SystemAltAtoZMap = new int[]
-    {
+    private static readonly int[] SystemAltAtoZMap =
+    [
         30, 48, 46, 32, 18, 33, 34, 35, 23, 36, 37, 38, 50,
         49, 24, 25, 16, 19, 31, 20, 22, 47, 17, 45, 21, 44,
-    };
+    ];
 
-    private static SdlKey[] dirMap = new SdlKey[]
-    {
-        new SdlKey(SDL_Keycode.SDLK_UP, InputEventDirection.Up),
-        new SdlKey(SDL_Keycode.SDLK_PAGEUP, InputEventDirection.PageUp),
-        new SdlKey(SDL_Keycode.SDLK_RIGHT, InputEventDirection.Right),
-        new SdlKey(SDL_Keycode.SDLK_PAGEDOWN, InputEventDirection.PageDown),
-        new SdlKey(SDL_Keycode.SDLK_DOWN, InputEventDirection.Down),
-        new SdlKey(SDL_Keycode.SDLK_END, InputEventDirection.End),
-        new SdlKey(SDL_Keycode.SDLK_LEFT, InputEventDirection.Left),
-        new SdlKey(SDL_Keycode.SDLK_HOME, InputEventDirection.Home),
-        new SdlKey(SDL_Keycode.SDLK_KP8, InputEventDirection.Up),
-        new SdlKey(SDL_Keycode.SDLK_KP9, InputEventDirection.PageUp),
-        new SdlKey(SDL_Keycode.SDLK_KP6, InputEventDirection.Right),
-        new SdlKey(SDL_Keycode.SDLK_KP3, InputEventDirection.PageDown),
-        new SdlKey(SDL_Keycode.SDLK_KP2, InputEventDirection.Down),
-        new SdlKey(SDL_Keycode.SDLK_KP1, InputEventDirection.End),
-        new SdlKey(SDL_Keycode.SDLK_KP4, InputEventDirection.Left),
-        new SdlKey(SDL_Keycode.SDLK_KP7, InputEventDirection.Home),
-    };
+    private static readonly SdlKey[] DirMap =
+    [
+        new(SDL_Keycode.SDLK_UP, InputEventDirection.Up),
+        new(SDL_Keycode.SDLK_PAGEUP, InputEventDirection.PageUp),
+        new(SDL_Keycode.SDLK_RIGHT, InputEventDirection.Right),
+        new(SDL_Keycode.SDLK_PAGEDOWN, InputEventDirection.PageDown),
+        new(SDL_Keycode.SDLK_DOWN, InputEventDirection.Down),
+        new(SDL_Keycode.SDLK_END, InputEventDirection.End),
+        new(SDL_Keycode.SDLK_LEFT, InputEventDirection.Left),
+        new(SDL_Keycode.SDLK_HOME, InputEventDirection.Home),
+        new(SDL_Keycode.SDLK_KP8, InputEventDirection.Up),
+        new(SDL_Keycode.SDLK_KP9, InputEventDirection.PageUp),
+        new(SDL_Keycode.SDLK_KP6, InputEventDirection.Right),
+        new(SDL_Keycode.SDLK_KP3, InputEventDirection.PageDown),
+        new(SDL_Keycode.SDLK_KP2, InputEventDirection.Down),
+        new(SDL_Keycode.SDLK_KP1, InputEventDirection.End),
+        new(SDL_Keycode.SDLK_KP4, InputEventDirection.Left),
+        new(SDL_Keycode.SDLK_KP7, InputEventDirection.Home),
+    ];
 
-    private static SdlKey[] keySpecial = new SdlKey[]
-    {
-        new SdlKey(SDL_Keycode.SDLK_HOME, 0),
-        new SdlKey(SDL_Keycode.SDLK_UP, 0),
-        new SdlKey(SDL_Keycode.SDLK_PAGEUP, 0),
-        new SdlKey(SDL_Keycode.SDLK_LEFT, 0),
-        new SdlKey(SDL_Keycode.SDLK_RIGHT, 0),
-        new SdlKey(SDL_Keycode.SDLK_END, 0),
-        new SdlKey(SDL_Keycode.SDLK_DOWN, 0),
-        new SdlKey(SDL_Keycode.SDLK_PAGEDOWN, 0),
-    };
+    private static readonly SdlKey[] KeySpecial =
+    [
+        new(SDL_Keycode.SDLK_HOME, 0),
+        new(SDL_Keycode.SDLK_UP, 0),
+        new(SDL_Keycode.SDLK_PAGEUP, 0),
+        new(SDL_Keycode.SDLK_LEFT, 0),
+        new(SDL_Keycode.SDLK_RIGHT, 0),
+        new(SDL_Keycode.SDLK_END, 0),
+        new(SDL_Keycode.SDLK_DOWN, 0),
+        new(SDL_Keycode.SDLK_PAGEDOWN, 0),
+    ];
 
     private readonly InputEvent stopEgoEvent;
 
     private AgiInterpreter interpreter;
     private int tick;
     private IntPtr clockThread;
+    [SuppressMessage("CodeQuality", "IDE0052:Remove unread private members", Justification = "For future joystick support.")]
     private IntPtr joystick;
     private int joystickX;
     private int joystickY;
@@ -166,7 +169,7 @@ internal class SdlInputDriver : IInputDriver
         if (timeout == 0)
         {
             // wait for user to press enter (true) or esc (false)
-            int reply = 0;
+            int reply;
             while ((reply = this.HasUserReply()) == 0xffff)
             {
                 (this as IInputDriver).Sleep(10);
@@ -200,7 +203,7 @@ internal class SdlInputDriver : IInputDriver
 
     int IInputDriver.WaitCharacter()
     {
-        int c = 0;
+        int c;
         do
         {
             c = this.PollCharacter();
@@ -307,11 +310,11 @@ internal class SdlInputDriver : IInputDriver
     private int DirKeyMap(SDL_keysym keysym)
     {
         // map directions to key symbols
-        for (int i = 0; i < dirMap.Length; i++)
+        for (int i = 0; i < DirMap.Length; i++)
         {
-            if (dirMap[i].Symbol == keysym.sym)
+            if (DirMap[i].Symbol == keysym.sym)
             {
-                return dirMap[i].Value;
+                return DirMap[i].Value;
             }
         }
 
@@ -394,11 +397,11 @@ internal class SdlInputDriver : IInputDriver
     {
         InputEvent e = null;
 
-        for (int i = 0; i < keySpecial.Length; i++)
+        for (int i = 0; i < KeySpecial.Length; i++)
         {
-            if (keySpecial[i].Symbol == keysym.sym && keySpecial[i].Value != 0)
+            if (KeySpecial[i].Symbol == keysym.sym && KeySpecial[i].Value != 0)
             {
-                keySpecial[i].Value = 0;
+                KeySpecial[i].Value = 0;
                 if (this.interpreter.State.WalkMode == WalkMode.HoldKey)
                 {
                     e = this.stopEgoEvent;
@@ -427,9 +430,9 @@ internal class SdlInputDriver : IInputDriver
 
             default:
                 int index = -1;
-                for (int i = 0; i < keySpecial.Length; i++)
+                for (int i = 0; i < KeySpecial.Length; i++)
                 {
-                    if (keySpecial[i].Symbol == keysym.sym)
+                    if (KeySpecial[i].Symbol == keysym.sym)
                     {
                         index = i;
                         break;
@@ -438,15 +441,15 @@ internal class SdlInputDriver : IInputDriver
 
                 if (index != -1)
                 {
-                    if (keySpecial[index].Value == 0)
+                    if (KeySpecial[index].Value == 0)
                     {
                         // first press (not repeat)
-                        for (int i = 0; i < keySpecial.Length; i++)
+                        for (int i = 0; i < KeySpecial.Length; i++)
                         {
-                            keySpecial[i].Value = 0;
+                            KeySpecial[i].Value = 0;
                         }
 
-                        keySpecial[index].Value++;
+                        KeySpecial[index].Value++;
                         e = this.KeyParse(keysym);
                     }
                 }
@@ -592,6 +595,7 @@ internal class SdlInputDriver : IInputDriver
         return e;
     }
 
+    [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "For future joystick support.")]
     private InputEvent PreviousEventJoyAxis()
     {
         InputEvent e = null;
@@ -735,15 +739,9 @@ internal class SdlInputDriver : IInputDriver
         return e;
     }
 
-    private InputEvent EventWait()
-    {
-        return this.EventWait(false);
-    }
-
     private InputEvent EventWait(bool includeJoystickAxis)
     {
-        InputEvent e = null;
-
+        InputEvent e;
         do
         {
             e = this.EventRead(includeJoystickAxis);

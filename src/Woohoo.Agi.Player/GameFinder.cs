@@ -55,7 +55,7 @@ internal class GameFinder
 #endif
         }
 
-        return games.ToArray();
+        return [.. games];
     }
 
     private static GameStartInfo FindGame(GameDetector detector, IGameContainer container)
@@ -75,13 +75,13 @@ internal class GameFinder
 
     private static GameDetector CreateDetector()
     {
-        var algorithms = new IGameDetectorAlgorithm[]
-        {
+        IGameDetectorAlgorithm[] algorithms =
+        [
             new DetectByInternalDatabase(),
             new DetectByAgiDesignerGameInfo(),
             new DetectByWinAgiGameInfo(),
             new DetectByFileNames(),
-        };
+        ];
 
         return new GameDetector(algorithms);
     }

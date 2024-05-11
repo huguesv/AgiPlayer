@@ -482,7 +482,7 @@ internal static class NativeMethods
             this.h = h;
         }
 
-        public override string ToString()
+        public override readonly string ToString()
         {
             return string.Concat(new object[]
             {

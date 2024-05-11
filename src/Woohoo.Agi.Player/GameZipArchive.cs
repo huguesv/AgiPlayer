@@ -9,8 +9,8 @@ using Woohoo.Agi.Interpreter;
 
 internal sealed class GameZipArchive : IGameContainer
 {
-    private string archivePath;
-    private ZipFile zipFile;
+    private readonly string archivePath;
+    private readonly ZipFile zipFile;
 
     public GameZipArchive(string archivePath)
     {
@@ -22,7 +22,7 @@ internal sealed class GameZipArchive : IGameContainer
 
     public byte[] Read(string file)
     {
-        byte[] data = new byte[0];
+        byte[] data = [];
 
         int entryIndex = this.zipFile.FindEntry(file, true);
         if (entryIndex != -1)
@@ -62,7 +62,7 @@ internal sealed class GameZipArchive : IGameContainer
                 {
                     if (lowerFileNameNoExt.Length > 3)
                     {
-                        id = lowerFileNameNoExt.Substring(0, lowerFileNameNoExt.Length - 3);
+                        id = lowerFileNameNoExt[..^3];
                     }
                 }
             }
@@ -73,7 +73,7 @@ internal sealed class GameZipArchive : IGameContainer
 
     public string[] GetGameFiles()
     {
-        List<string> files = new List<string>();
+        List<string> files = [];
         foreach (ZipEntry entry in this.zipFile)
         {
             if (entry.IsFile)
@@ -107,12 +107,12 @@ internal sealed class GameZipArchive : IGameContainer
             }
         }
 
-        return files.ToArray();
+        return [.. files];
     }
 
     public string[] GetFilesByExtension(string ext)
     {
-        List<string> files = new List<string>();
+        List<string> files = [];
         foreach (ZipEntry entry in this.zipFile)
         {
             if (entry.IsFile)
@@ -124,7 +124,7 @@ internal sealed class GameZipArchive : IGameContainer
             }
         }
 
-        return files.ToArray();
+        return [.. files];
     }
 }
 #endif
