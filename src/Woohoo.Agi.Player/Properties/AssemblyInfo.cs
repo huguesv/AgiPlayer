@@ -3,9 +3,3 @@
 
 [assembly: AssemblyTitle("Agi Player")]
 [assembly: AssemblyDescription("")]
-
-[assembly: ComVisible(false)]
-
-#if USE_SDL
-[assembly: CLSCompliant(true)]
-#endif

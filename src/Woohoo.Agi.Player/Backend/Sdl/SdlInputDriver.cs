@@ -76,7 +76,7 @@ internal class SdlInputDriver : IInputDriver
 
     void IInputDriver.ClockInitStartThread()
     {
-        this.clockThread = SDL_CreateThread(this.ClockThread, null);
+        this.clockThread = SDL_CreateThread(this.ClockThread, IntPtr.Zero);
     }
 
     void IInputDriver.ClockDenitStopThread()
@@ -86,21 +86,21 @@ internal class SdlInputDriver : IInputDriver
 
     void IInputDriver.InitializeEvents()
     {
-        // SDL_EventState(SDL_JOYAXISMOTION, SDL_IGNORE);
-        SDL_EventState(SDL_EventType.SDL_SYSWMEVENT, SDL_IGNORE);
-        SDL_EventState(SDL_EventType.SDL_VIDEORESIZE, SDL_IGNORE);
-        SDL_EventState(SDL_EventType.SDL_USEREVENT, SDL_IGNORE);
-        SDL_EventState(SDL_EventType.SDL_ACTIVEEVENT, SDL_IGNORE);
-        SDL_EventState(SDL_EventType.SDL_JOYBALLMOTION, SDL_IGNORE);
-        SDL_EventState(SDL_EventType.SDL_JOYHATMOTION, SDL_IGNORE);
+        // CheckResult(SDL_EventState(SDL_JOYAXISMOTION, SDL_IGNORE), nameof(SDL_EventState));
+        CheckResult(SDL_EventState(SDL_EventType.SDL_SYSWMEVENT, SDL_IGNORE), 1, nameof(SDL_EventState));
+        CheckResult(SDL_EventState(SDL_EventType.SDL_VIDEORESIZE, SDL_IGNORE), 1, nameof(SDL_EventState));
+        CheckResult(SDL_EventState(SDL_EventType.SDL_USEREVENT, SDL_IGNORE), 1, nameof(SDL_EventState));
+        CheckResult(SDL_EventState(SDL_EventType.SDL_ACTIVEEVENT, SDL_IGNORE), 1, nameof(SDL_EventState));
+        CheckResult(SDL_EventState(SDL_EventType.SDL_JOYBALLMOTION, SDL_IGNORE), 1, nameof(SDL_EventState));
+        CheckResult(SDL_EventState(SDL_EventType.SDL_JOYHATMOTION, SDL_IGNORE), 1, nameof(SDL_EventState));
 
-        SDL_EnableUNICODE(1);
+        CheckResult(SDL_EnableUNICODE(1), 0, nameof(SDL_EnableUNICODE));
 
-        SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
+        CheckResult(SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL), 0, nameof(SDL_EnableKeyRepeat));
 
         if (SDL_NumJoysticks() > 0)
         {
-            SDL_JoystickEventState(SDL_ENABLE);
+            CheckResult(SDL_JoystickEventState(SDL_ENABLE), 0, nameof(SDL_JoystickEventState));
             this.joystick = SDL_JoystickOpen(0);
         }
 
@@ -252,6 +252,14 @@ internal class SdlInputDriver : IInputDriver
     internal void SetInterpreter(AgiInterpreter interpreter)
     {
         this.interpreter = interpreter;
+    }
+
+    private static void CheckResult(int actual, int expected, string method)
+    {
+        if (actual != expected)
+        {
+            Trace.WriteLine($"{method} returned {actual} but expected {expected}.");
+        }
     }
 
     private int ClockThread()

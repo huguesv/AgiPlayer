@@ -8,6 +8,7 @@
     <Backend>SDL</Backend>
     <ZipSupport>true</ZipSupport>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
