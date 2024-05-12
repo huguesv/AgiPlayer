@@ -87,6 +87,7 @@ public class LzwDecompress
             {
                 nextCode = FirstCode;
                 bitsFull = this.SetBits(StartBits);
+                Debug.Assert(!bitsFull, "Bits should not be full right after reset of decompression.");
                 oldCode = this.GetInputCode(encryptedData, ref encryptedOffset);
                 Debug.Assert(encryptedOffset <= (encryptedEndOffset + 1), "Unexpected end of the encrypted buffer.");
                 character = oldCode;
@@ -120,7 +121,7 @@ public class LzwDecompress
 
                 if (nextCode > this.maxCode)
                 {
-                    bitsFull = this.SetBits(this.bits + 1);
+                    _ = this.SetBits(this.bits + 1);
                 }
 
                 this.prefixCode[nextCode] = oldCode;

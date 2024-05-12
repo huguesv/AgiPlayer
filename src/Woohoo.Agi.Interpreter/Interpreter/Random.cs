@@ -10,8 +10,7 @@ namespace Woohoo.Agi.Interpreter;
 /// </summary>
 public class Random
 {
-    private const double IbmClockPerSec = 18.2;
-    private const double TandyClockPerSec = 20.0;
+    private const double TandyClockPerSec = 20.0; // For reference, 18.2 for IBM
 
     private ushort agiRandomSeed;
 

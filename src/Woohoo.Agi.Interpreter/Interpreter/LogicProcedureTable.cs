@@ -23,170 +23,162 @@ public class LogicProcedureTable
 
     private static LogicCommand[] CreateProcedures(InterpreterVersion interpreter)
     {
-        var list = new List<LogicCommand>();
-
-        list.Add(new(LogicProcedureCode.ReturnFalse));
-        list.Add(new(LogicProcedureCode.Increment, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.Decrement, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.AssignN, LogicArgumentType.Variable, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.AssignV, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.AddN, LogicArgumentType.Variable, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.AddV, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.SubN, LogicArgumentType.Variable, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.SubV, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.LIndirectV, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.RIndirect, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.LIndirectN, LogicArgumentType.Variable, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.Set, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.Reset, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.Toggle, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.SetV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.ResetV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.ToggleV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.NewRoom, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.NewRoomV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.LoadLogics, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.LoadLogicsV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.Call, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.CallV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.LoadPicture, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.DrawPicture, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.ShowPicture));
-        list.Add(new(LogicProcedureCode.DiscardPicture, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.OverlayPicture, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.ShowPriScreen));
-        list.Add(new(LogicProcedureCode.LoadView, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.LoadViewV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.DiscardView, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.AnimateObj, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.UnanimateAll));
-        list.Add(new(LogicProcedureCode.Draw, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.Erase, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.Position, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.PositionV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.GetPosition, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.Reposition, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.SetView, LogicArgumentType.ScreenObject, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.SetViewV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.SetLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.SetLoopV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.FixLoop, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ReleaseLoop, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.SetCel, LogicArgumentType.ScreenObject, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.SetCelV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.LastCel, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.CurrentCel, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.CurrentLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.CurrentView, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.NumberOfLoops, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.SetPriority, LogicArgumentType.ScreenObject, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.SetPriorityV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.ReleasePriority, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.GetPriority, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.StopUpdate, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.StartUpdate, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ForceUpdate, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.IgnoreHorizon, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ObserveHorizon, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.SetHorizon, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.ObjectOnWater, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ObjectOnLand, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ObjectOnAnything, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.IgnoreObjects, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ObserveObjects, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.Distance, LogicArgumentType.ScreenObject, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.StopCycling, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.StartCycling, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.NormalCycle, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.EndOfLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.ReverseCycle, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ReverseLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.CycleTime, LogicArgumentType.ScreenObject, LogicArgumentType.Variable)); // argument 2 is Number
-        list.Add(new(LogicProcedureCode.StopMotion, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.StartMotion, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.StepSize, LogicArgumentType.ScreenObject, LogicArgumentType.Variable)); // argument 2 is Number
-        list.Add(new(LogicProcedureCode.StepTime, LogicArgumentType.ScreenObject, LogicArgumentType.Variable)); // argument 2 is Number
-        list.Add(new(LogicProcedureCode.MoveObj, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.MoveObjV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Number, LogicArgumentType.Flag)); // second to last argument is Variable?  yes, according to nic
-        list.Add(new(LogicProcedureCode.FollowEgo, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.Wander, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.NormalMotion, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.SetDir, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.GetDir, LogicArgumentType.ScreenObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.IgnoreBlocks, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.ObserveBlocks, LogicArgumentType.ScreenObject));
-        list.Add(new(LogicProcedureCode.Block, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.Unblock));
-        list.Add(new(LogicProcedureCode.Get, LogicArgumentType.InventoryObject));
-        list.Add(new(LogicProcedureCode.GetV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.Drop, LogicArgumentType.InventoryObject));
-        list.Add(new(LogicProcedureCode.Put, LogicArgumentType.InventoryObject, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.PutV, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.GetRoomV, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.LoadSound, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.Sound, LogicArgumentType.Number, LogicArgumentType.Flag));
-        list.Add(new(LogicProcedureCode.StopSound));
-        list.Add(new(LogicProcedureCode.Print, LogicArgumentType.Message));
-        list.Add(new(LogicProcedureCode.PrintV, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.Display, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Message));
-        list.Add(new(LogicProcedureCode.DisplayV, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.ClearLines, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.TextScreen));
-        list.Add(new(LogicProcedureCode.Graphics));
-        list.Add(new(LogicProcedureCode.SetCursorChar, LogicArgumentType.Message));
-        list.Add(new(LogicProcedureCode.SetTextAttribute, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.ShakeScreen, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.ConfigureScreen, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.StatusLineOn));
-        list.Add(new(LogicProcedureCode.StatusLineOff));
-        list.Add(new(LogicProcedureCode.SetString, LogicArgumentType.String, LogicArgumentType.Message));
-        list.Add(new(LogicProcedureCode.GetString, LogicArgumentType.String, LogicArgumentType.Message, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.WordToString, LogicArgumentType.Word, LogicArgumentType.String));
-        list.Add(new(LogicProcedureCode.Parse, LogicArgumentType.String));
-        list.Add(new(LogicProcedureCode.GetNumber, LogicArgumentType.Message, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.PreventInput));
-        list.Add(new(LogicProcedureCode.AcceptInput));
-        list.Add(new(LogicProcedureCode.SetKey, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Control));
-        list.Add(new(LogicProcedureCode.AddToPicture, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.AddToPictureV, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.Status));
-        list.Add(new(LogicProcedureCode.SaveGame));
-        list.Add(new(LogicProcedureCode.RestoreGame));
-        list.Add(new(LogicProcedureCode.InitDisk));
-        list.Add(new(LogicProcedureCode.RestartGame));
-        list.Add(new(LogicProcedureCode.ShowObj, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.Random, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.ProgramControl));
-        list.Add(new(LogicProcedureCode.PlayerControl));
-        list.Add(new(LogicProcedureCode.ObjectStatusV, LogicArgumentType.Variable));
-
-        if (interpreter == InterpreterVersion.V2089)
-        {
-            // 0 argument <= 2.08
-            list.Add(new(LogicProcedureCode.Quit));
-        }
-        else
-        {
-            // 1 argument > 2.08
-            list.Add(new(LogicProcedureCode.Quit, LogicArgumentType.Number));
-        }
-
-        list.Add(new(LogicProcedureCode.ShowMemory));
-        list.Add(new(LogicProcedureCode.Pause));
-        list.Add(new(LogicProcedureCode.EchoLine));
-        list.Add(new(LogicProcedureCode.CancelLine));
-        list.Add(new(LogicProcedureCode.InitJoy));
-        list.Add(new(LogicProcedureCode.ToggleMonitor));
-        list.Add(new(LogicProcedureCode.Version));
-        list.Add(new(LogicProcedureCode.ScriptSize, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.SetGameId, LogicArgumentType.Message));
-        list.Add(new(LogicProcedureCode.Log, LogicArgumentType.Message));
-        list.Add(new(LogicProcedureCode.SetScanStart));
-        list.Add(new(LogicProcedureCode.ResetScanStart));
-        list.Add(new(LogicProcedureCode.RepositionTo, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number));
-        list.Add(new(LogicProcedureCode.RepositionToV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        list.Add(new(LogicProcedureCode.TraceOn));
-        list.Add(new(LogicProcedureCode.TraceInfo, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
+        List<LogicCommand> list =
+        [
+            new(LogicProcedureCode.ReturnFalse),
+            new(LogicProcedureCode.Increment, LogicArgumentType.Variable),
+            new(LogicProcedureCode.Decrement, LogicArgumentType.Variable),
+            new(LogicProcedureCode.AssignN, LogicArgumentType.Variable, LogicArgumentType.Number),
+            new(LogicProcedureCode.AssignV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.AddN, LogicArgumentType.Variable, LogicArgumentType.Number),
+            new(LogicProcedureCode.AddV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.SubN, LogicArgumentType.Variable, LogicArgumentType.Number),
+            new(LogicProcedureCode.SubV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.LIndirectV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.RIndirect, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.LIndirectN, LogicArgumentType.Variable, LogicArgumentType.Number),
+            new(LogicProcedureCode.Set, LogicArgumentType.Flag),
+            new(LogicProcedureCode.Reset, LogicArgumentType.Flag),
+            new(LogicProcedureCode.Toggle, LogicArgumentType.Flag),
+            new(LogicProcedureCode.SetV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.ResetV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.ToggleV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.NewRoom, LogicArgumentType.Number),
+            new(LogicProcedureCode.NewRoomV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.LoadLogics, LogicArgumentType.Number),
+            new(LogicProcedureCode.LoadLogicsV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.Call, LogicArgumentType.Number),
+            new(LogicProcedureCode.CallV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.LoadPicture, LogicArgumentType.Variable),
+            new(LogicProcedureCode.DrawPicture, LogicArgumentType.Variable),
+            new(LogicProcedureCode.ShowPicture),
+            new(LogicProcedureCode.DiscardPicture, LogicArgumentType.Variable),
+            new(LogicProcedureCode.OverlayPicture, LogicArgumentType.Variable),
+            new(LogicProcedureCode.ShowPriScreen),
+            new(LogicProcedureCode.LoadView, LogicArgumentType.Number),
+            new(LogicProcedureCode.LoadViewV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.DiscardView, LogicArgumentType.Number),
+            new(LogicProcedureCode.AnimateObj, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.UnanimateAll),
+            new(LogicProcedureCode.Draw, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.Erase, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.Position, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.PositionV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.GetPosition, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.Reposition, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.SetView, LogicArgumentType.ScreenObject, LogicArgumentType.Number),
+            new(LogicProcedureCode.SetViewV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.SetLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Number),
+            new(LogicProcedureCode.SetLoopV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.FixLoop, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ReleaseLoop, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.SetCel, LogicArgumentType.ScreenObject, LogicArgumentType.Number),
+            new(LogicProcedureCode.SetCelV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.LastCel, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.CurrentCel, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.CurrentLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.CurrentView, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.NumberOfLoops, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.SetPriority, LogicArgumentType.ScreenObject, LogicArgumentType.Number),
+            new(LogicProcedureCode.SetPriorityV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.ReleasePriority, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.GetPriority, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.StopUpdate, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.StartUpdate, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ForceUpdate, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.IgnoreHorizon, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ObserveHorizon, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.SetHorizon, LogicArgumentType.Number),
+            new(LogicProcedureCode.ObjectOnWater, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ObjectOnLand, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ObjectOnAnything, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.IgnoreObjects, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ObserveObjects, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.Distance, LogicArgumentType.ScreenObject, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.StopCycling, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.StartCycling, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.NormalCycle, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.EndOfLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Flag),
+            new(LogicProcedureCode.ReverseCycle, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ReverseLoop, LogicArgumentType.ScreenObject, LogicArgumentType.Flag),
+            new(LogicProcedureCode.CycleTime, LogicArgumentType.ScreenObject, LogicArgumentType.Variable), // argument 2 is Number
+            new(LogicProcedureCode.StopMotion, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.StartMotion, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.StepSize, LogicArgumentType.ScreenObject, LogicArgumentType.Variable), // argument 2 is Number
+            new(LogicProcedureCode.StepTime, LogicArgumentType.ScreenObject, LogicArgumentType.Variable), // argument 2 is Number
+            new(LogicProcedureCode.MoveObj, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Flag),
+            new(LogicProcedureCode.MoveObjV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Number, LogicArgumentType.Flag), // second to last argument is Variable?  yes, according to nic
+            new(LogicProcedureCode.FollowEgo, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Flag),
+            new(LogicProcedureCode.Wander, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.NormalMotion, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.SetDir, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.GetDir, LogicArgumentType.ScreenObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.IgnoreBlocks, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.ObserveBlocks, LogicArgumentType.ScreenObject),
+            new(LogicProcedureCode.Block, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.Unblock),
+            new(LogicProcedureCode.Get, LogicArgumentType.InventoryObject),
+            new(LogicProcedureCode.GetV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.Drop, LogicArgumentType.InventoryObject),
+            new(LogicProcedureCode.Put, LogicArgumentType.InventoryObject, LogicArgumentType.Variable),
+            new(LogicProcedureCode.PutV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.GetRoomV, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.LoadSound, LogicArgumentType.Number),
+            new(LogicProcedureCode.Sound, LogicArgumentType.Number, LogicArgumentType.Flag),
+            new(LogicProcedureCode.StopSound),
+            new(LogicProcedureCode.Print, LogicArgumentType.Message),
+            new(LogicProcedureCode.PrintV, LogicArgumentType.Variable),
+            new(LogicProcedureCode.Display, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Message),
+            new(LogicProcedureCode.DisplayV, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.ClearLines, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.TextScreen),
+            new(LogicProcedureCode.Graphics),
+            new(LogicProcedureCode.SetCursorChar, LogicArgumentType.Message),
+            new(LogicProcedureCode.SetTextAttribute, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.ShakeScreen, LogicArgumentType.Number),
+            new(LogicProcedureCode.ConfigureScreen, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.StatusLineOn),
+            new(LogicProcedureCode.StatusLineOff),
+            new(LogicProcedureCode.SetString, LogicArgumentType.String, LogicArgumentType.Message),
+            new(LogicProcedureCode.GetString, LogicArgumentType.String, LogicArgumentType.Message, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.WordToString, LogicArgumentType.Word, LogicArgumentType.String),
+            new(LogicProcedureCode.Parse, LogicArgumentType.String),
+            new(LogicProcedureCode.GetNumber, LogicArgumentType.Message, LogicArgumentType.Variable),
+            new(LogicProcedureCode.PreventInput),
+            new(LogicProcedureCode.AcceptInput),
+            new(LogicProcedureCode.SetKey, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Control),
+            new(LogicProcedureCode.AddToPicture, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.AddToPictureV, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.Status),
+            new(LogicProcedureCode.SaveGame),
+            new(LogicProcedureCode.RestoreGame),
+            new(LogicProcedureCode.InitDisk),
+            new(LogicProcedureCode.RestartGame),
+            new(LogicProcedureCode.ShowObj, LogicArgumentType.Number),
+            new(LogicProcedureCode.Random, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Variable),
+            new(LogicProcedureCode.ProgramControl),
+            new(LogicProcedureCode.PlayerControl),
+            new(LogicProcedureCode.ObjectStatusV, LogicArgumentType.Variable),
+            interpreter == InterpreterVersion.V2089
+                ? new(LogicProcedureCode.Quit)
+                : new(LogicProcedureCode.Quit, LogicArgumentType.Number),
+            new(LogicProcedureCode.ShowMemory),
+            new(LogicProcedureCode.Pause),
+            new(LogicProcedureCode.EchoLine),
+            new(LogicProcedureCode.CancelLine),
+            new(LogicProcedureCode.InitJoy),
+            new(LogicProcedureCode.ToggleMonitor),
+            new(LogicProcedureCode.Version),
+            new(LogicProcedureCode.ScriptSize, LogicArgumentType.Number),
+            new(LogicProcedureCode.SetGameId, LogicArgumentType.Message),
+            new(LogicProcedureCode.Log, LogicArgumentType.Message),
+            new(LogicProcedureCode.SetScanStart),
+            new(LogicProcedureCode.ResetScanStart),
+            new(LogicProcedureCode.RepositionTo, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number),
+            new(LogicProcedureCode.RepositionToV, LogicArgumentType.ScreenObject, LogicArgumentType.Variable, LogicArgumentType.Variable),
+            new(LogicProcedureCode.TraceOn),
+            new(LogicProcedureCode.TraceInfo, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
+        ];
 
         if (interpreter < InterpreterVersion.V2411)
         {

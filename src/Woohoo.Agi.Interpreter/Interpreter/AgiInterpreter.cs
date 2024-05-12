@@ -1633,9 +1633,12 @@ public sealed partial class AgiInterpreter
         }
         else
         {
-            var view = new ViewObject();
-            view.CelCur = 0;
-            view.LoopCur = 0;
+            var view = new ViewObject
+            {
+                CelCur = 0,
+                LoopCur = 0,
+            };
+
             this.ObjViewSet(view, viewResourceIndex);
             view.CelPrevHeight = view.ViewCel.Height;
             view.CelPrevWidth = view.ViewCel.Width;

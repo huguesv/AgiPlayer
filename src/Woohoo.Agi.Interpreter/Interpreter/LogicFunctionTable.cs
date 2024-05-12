@@ -23,6 +23,7 @@ public class LogicFunctionTable
 
     private static LogicCommand[] CreateFunctions()
     {
+#pragma warning disable CA1825 // Avoid zero-length array allocations
         LogicCommand[] cmds =
         [
             new(0),
@@ -45,6 +46,7 @@ public class LogicFunctionTable
             new(LogicFunctionCode.CenterPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
             new(LogicFunctionCode.RightPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
         ];
+#pragma warning restore CA1825 // Avoid zero-length array allocations
 
         return cmds;
     }
