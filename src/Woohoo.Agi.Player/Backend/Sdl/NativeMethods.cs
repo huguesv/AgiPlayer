@@ -145,7 +145,7 @@ internal static partial class NativeMethods
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_PushEvent(out SDL_Event evt);
+    public static partial int SDL_PushEvent(ref SDL_Event evt);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

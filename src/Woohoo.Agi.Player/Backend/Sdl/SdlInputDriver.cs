@@ -115,7 +115,7 @@ internal class SdlInputDriver : IInputDriver
     {
         int x;
         int oneCount = 0;
-        while ((x = SDL_PollEvent(out SDL_Event ev)) != 0)
+        while ((x = SDL_PollEvent(out _)) != 0)
         {
             if (x == 1)
             {
@@ -218,12 +218,18 @@ internal class SdlInputDriver : IInputDriver
 
     bool IInputDriver.WriteEvent(int type, int data)
     {
-        SDL_Event ev;
-        ev.type = SDL_EventType.SDL_USEREVENT;
-        ev.user.data1 = new IntPtr(type);
-        ev.user.data2 = new IntPtr(data);
+        var ev = new SDL_Event
+        {
+            user = new SDL_UserEvent
+            {
+                type = SDL_EventType.SDL_USEREVENT,
+                code = 0,
+                data1 = new IntPtr(type),
+                data2 = new IntPtr(data),
+            },
+        };
 
-        if (SDL_PushEvent(out ev) == 0)
+        if (SDL_PushEvent(ref ev) == 0)
         {
             return true;
         }
