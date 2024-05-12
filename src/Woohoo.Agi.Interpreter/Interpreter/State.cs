@@ -57,7 +57,6 @@ public class State
 
     public bool[] Flags { get; set; }
 
-    [CLSCompliant(false)]
     public uint Ticks { get; set; }
 
     public int Horizon { get; set; }

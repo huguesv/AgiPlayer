@@ -23,10 +23,9 @@ public class LogicFunctionTable
 
     private static LogicCommand[] CreateFunctions()
     {
-#pragma warning disable CA1825 // Avoid zero-length array allocations
         LogicCommand[] cmds =
         [
-            new(0),
+            new(0, []),
             new(LogicFunctionCode.EqualN, LogicArgumentType.Variable, LogicArgumentType.Number),
             new(LogicFunctionCode.EqualV, LogicArgumentType.Variable, LogicArgumentType.Variable),
             new(LogicFunctionCode.LessN, LogicArgumentType.Variable, LogicArgumentType.Number),
@@ -39,14 +38,13 @@ public class LogicFunctionTable
             new(LogicFunctionCode.ObjInRoom, LogicArgumentType.InventoryObject, LogicArgumentType.Variable),
             new(LogicFunctionCode.PosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
             new(LogicFunctionCode.Controller, LogicArgumentType.Control),
-            new(LogicFunctionCode.HaveKey),
-            new(LogicFunctionCode.Said),
+            new(LogicFunctionCode.HaveKey, []),
+            new(LogicFunctionCode.Said, []),
             new(LogicFunctionCode.CompareStrings, LogicArgumentType.String, LogicArgumentType.String),
             new(LogicFunctionCode.ObjInBox, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
             new(LogicFunctionCode.CenterPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
             new(LogicFunctionCode.RightPosN, LogicArgumentType.ScreenObject, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
         ];
-#pragma warning restore CA1825 // Avoid zero-length array allocations
 
         return cmds;
     }

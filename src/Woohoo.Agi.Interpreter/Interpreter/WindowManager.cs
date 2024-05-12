@@ -731,7 +731,7 @@ public class WindowManager
             }
             else
             {
-                this.dispCharCur = this.dispCharCur - (message.Length - this.dispLastWordIndex);
+                this.dispCharCur -= message.Length - this.dispLastWordIndex;
                 this.NewLine();
                 message[this.dispLastWordIndex] = (char)0x0a;
 

@@ -65,13 +65,15 @@ public class StatusLineControl
         this.WindowManager.UpdateTextRegion();
     }
 
-#pragma warning disable CA1822 // Mark members as static
     public bool ProcessEvent(InputEvent e)
-#pragma warning restore CA1822 // Mark members as static
     {
         ArgumentNullException.ThrowIfNull(e);
 
-        // TODO: handle mouse event on the status line
+        if (this.State.StatusVisible)
+        {
+            // TODO: handle mouse event on the status line
+        }
+
         return false;
     }
 }

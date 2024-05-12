@@ -533,10 +533,8 @@ public sealed partial class AgiInterpreter
             int oldScore = this.State.Variables[Variables.Score];
             bool soundEnabled = this.State.Flags[Flags.SoundOn];
 
-            // Save the current state of interpreter, in case an execution
-            // error occurs (AgiExecutionException)
-            this.SaveInterpreterState();
-
+            // Save the current state of interpreter here, in case of AgiExecutionException
+            // (not currently supported)
             ErrorResume:
             try
             {
@@ -570,7 +568,7 @@ public sealed partial class AgiInterpreter
             }
             catch (ExecutionException)
             {
-                this.RestoreInterpreterState();
+                // Restore interpreter state here (not currently supported)
                 goto ErrorResume;
             }
         }
@@ -1428,7 +1426,7 @@ public sealed partial class AgiInterpreter
             Title = title,
         };
 
-        control.SetSlotInformation(slotNumbers, descriptions, slotCount);
+        control.SetSlotInformation(descriptions, slotCount);
         control.SelectedSlotIndex = current;
 
         if (control.DoModal())
@@ -2020,19 +2018,6 @@ public sealed partial class AgiInterpreter
                 this.GraphicsRenderer.PictureBuffer.Visual[(y * PictureResource.Width) + x] = blit.VisualBuffer[(j * blit.Width) + i];
             }
         }
-    }
-
-    [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
-    private void SaveInterpreterState()
-    {
-        // TODO
-    }
-
-    [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Not implemented.")]
-    private void RestoreInterpreterState()
-    {
-        // TODO
-        Debug.Assert(false, "not implemented");
     }
 
     private void ProcessEvent(InputEvent e)

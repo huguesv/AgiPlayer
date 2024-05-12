@@ -9,7 +9,6 @@ public class ToneChannelNoise
 {
     public int Feedback { get; set; }
 
-    [CLSCompliant(false)]
     public uint NoiseState { get; set; }
 
     // TODO: should this be a bool?

@@ -1,4 +1,5 @@
-﻿#pragma warning disable SA1636
+﻿// Copyright (c) Hugues Valois. All rights reserved.
+// Licensed under the X11 license. See LICENSE in the project root for license information.
 
 /* SDL2# - C# Wrapper for SDL2
  *
@@ -6836,5 +6837,3 @@ public static partial class NativeMethods
 
 }
 #endif
-
-#pragma warning restore SA1636

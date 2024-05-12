@@ -12,7 +12,7 @@ public class ParserUnitTest
     [TestMethod]
     public void CreateNullVocabulary()
     {
-        Action act = () => new Parser(null);
+        Action act = () => _ = new Parser(null);
 
         act.Should().Throw<ArgumentNullException>();
     }

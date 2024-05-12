@@ -10,7 +10,6 @@ public class SaveRestoreGameBrowseControl
     private const int DefaultWindowTop = 5;
     private const int DefaultWindowWidth = 34;
     private string[] descriptions;
-    private int[] slotNumbers;
     private int slotCount;
 
     public SaveRestoreGameBrowseControl(AgiInterpreter interpreter)
@@ -18,7 +17,6 @@ public class SaveRestoreGameBrowseControl
         this.Interpreter = interpreter ?? throw new ArgumentNullException(nameof(interpreter));
         this.Title = string.Empty;
         this.descriptions = [];
-        this.slotNumbers = [];
     }
 
     public string Title { get; set; }
@@ -31,12 +29,10 @@ public class SaveRestoreGameBrowseControl
 
     protected IInputDriver InputDriver => this.Interpreter.InputDriver;
 
-    public void SetSlotInformation(int[] slotNumbers, string[] descriptions, int slotCount)
+    public void SetSlotInformation(string[] descriptions, int slotCount)
     {
-        ArgumentNullException.ThrowIfNull(slotNumbers);
         ArgumentNullException.ThrowIfNull(descriptions);
 
-        this.slotNumbers = (int[])slotNumbers.Clone();
         this.descriptions = (string[])descriptions.Clone();
         this.slotCount = slotCount;
     }

@@ -392,7 +392,6 @@ public class LogicInterpreter
             {
                 if (orMode != 0)
                 {
-                    orMode = 0;
                     this.SkipFalseAnd();
                     break;
                 }
@@ -427,7 +426,6 @@ public class LogicInterpreter
                 }
                 else if (orMode == 0)
                 {
-                    orMode = 0;
                     this.SkipFalseAnd();
                     break;
                 }

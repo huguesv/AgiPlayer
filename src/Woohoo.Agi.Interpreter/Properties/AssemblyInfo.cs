@@ -3,6 +3,3 @@
 
 [assembly: AssemblyTitle("Agi Interpreter")]
 [assembly: AssemblyDescription("")]
-
-[assembly: ComVisible(false)]
-[assembly: CLSCompliant(true)]
