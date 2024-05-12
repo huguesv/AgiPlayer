@@ -57,7 +57,6 @@ internal class SdlInputDriver : IInputDriver
     private AgiInterpreter interpreter;
     private int tick;
     private IntPtr clockThread;
-    [SuppressMessage("CodeQuality", "IDE0052:Remove unread private members", Justification = "For future joystick support.")]
     private IntPtr joystick;
     private int joystickX;
     private int joystickY;
@@ -180,8 +179,8 @@ internal class SdlInputDriver : IInputDriver
         else
         {
             int reply = 0;
-            int tick = this.CalculateAgiTick() + (timeout * 10);
-            while ((this.CalculateAgiTick() < tick) && ((reply = this.HasUserReply()) == 0xffff))
+            int tick = CalculateAgiTick() + (timeout * 10);
+            while ((CalculateAgiTick() < tick) && ((reply = this.HasUserReply()) == 0xffff))
             {
                 (this as IInputDriver).Sleep(50);
             }
@@ -240,7 +239,7 @@ internal class SdlInputDriver : IInputDriver
     InputEvent IInputDriver.PollEvent()
     {
         InputEvent e = this.EventWait(true);
-        this.JoyButtonMap(e);
+        JoyButtonMap(e);
         return e;
     }
 
@@ -262,51 +261,48 @@ internal class SdlInputDriver : IInputDriver
         }
     }
 
-    private int ClockThread()
+    private static void JoyButtonMap(InputEvent e)
     {
-        this.interpreter.Clock();
-        return 0;
-    }
-
-    private int HasUserReply()
-    {
-        return this.PollCharacter() switch
+        if (e.Type == InputEventType.Ascii)
         {
-            0x0d => 1, // enter
-            0x1b => 0, // esc
-            _ => 0xffff,
-        };
-    }
-
-    private int PollCharacter()
-    {
-        var e = this.EventRead(false);
-        if (e is null)
-        {
-            return 0;
+            if (e.Data == 0x101 || e.Data == 0x301)
+            {
+                // enter
+                e.Data = InputEventAscii.Enter;
+            }
+            else if (e.Data == 0x201 || e.Data == 0x401)
+            {
+                // esc
+                e.Data = InputEventAscii.Esc;
+            }
         }
-
-        this.JoyButtonMap(e);
-        this.MouseButtonMap(e);
-
-        int di = e.Type;
-        int si = e.Data;
-
-        if (di == 4 || di == 5)
-        {
-            di = 1;
-            si = 0x0d; // CR
-        }
-
-        return di == 1 ? si : 0xffff;
     }
 
-    private int CalculateAgiTick()
+    private static void MouseButtonMap(InputEvent e)
+    {
+        if (e.Type == InputEventType.Mouse)
+        {
+            if (e.Data == 1)
+            {
+                // enter
+                e.Data = InputEventAscii.Enter;
+                e.Type = InputEventType.Ascii;
+            }
+            else if (e.Data == 2)
+            {
+                // esc
+                e.Data = InputEventAscii.Esc;
+                e.Type = InputEventType.Ascii;
+            }
+        }
+    }
+
+    private static int CalculateAgiTick()
     {
         return SDL_GetTicks() / DelayMultiplier;
     }
 
-    private InputEvent UserEventDecode(IntPtr data1, IntPtr data2)
+    private static InputEvent UserEventDecode(IntPtr data1, IntPtr data2)
     {
         return new InputEvent
         {
@@ -315,7 +311,7 @@ internal class SdlInputDriver : IInputDriver
         };
     }
 
-    private int DirKeyMap(SDL_keysym keysym)
+    private static int DirKeyMap(SDL_keysym keysym)
     {
         // map directions to key symbols
         for (int i = 0; i < DirMap.Length; i++)
@@ -329,7 +325,7 @@ internal class SdlInputDriver : IInputDriver
         return 0xffff;
     }
 
-    private int SystemKeyMap(SDL_keysym keysym)
+    private static int SystemKeyMap(SDL_keysym keysym)
     {
         if (keysym.sym >= SDL_Keycode.SDLK_F1 && keysym.sym <= SDL_Keycode.SDLK_F10)
         {
@@ -380,13 +376,13 @@ internal class SdlInputDriver : IInputDriver
         return 0;
     }
 
-    private InputEvent KeyParse(SDL_keysym keysym)
+    private static InputEvent KeyParse(SDL_keysym keysym)
     {
         // if the key is a direction, then map it to that
         // else, return the ascii thing back
         var e = new InputEvent();
 
-        int direction = this.DirKeyMap(keysym);
+        int direction = DirKeyMap(keysym);
         if (direction != 0xffff)
         {
             e.Type = InputEventType.Direction;
@@ -395,7 +391,72 @@ internal class SdlInputDriver : IInputDriver
         else
         {
             e.Type = InputEventType.Ascii;
-            e.Data = this.SystemKeyMap(keysym);
+            e.Data = SystemKeyMap(keysym);
+        }
+
+        return e;
+    }
+
+    private static InputEvent EventMouseButton(int button, int x, int y)
+    {
+        var e = new InputEvent
+        {
+            Type = InputEventType.Mouse,
+        };
+
+        switch (button)
+        {
+            case SDL_BUTTON_LEFT:
+                e.Data = MouseButton.Left;
+                break;
+
+            case SDL_BUTTON_MIDDLE:
+                e.Data = MouseButton.Middle;
+                break;
+
+            case SDL_BUTTON_RIGHT:
+                e.Data = MouseButton.Right;
+                break;
+
+            default:
+                e.Data = MouseButton.Unknown;
+                break;
+        }
+
+        e.X = x;
+        e.Y = y;
+
+        return e;
+    }
+
+    private static InputEvent EventJoyButton(int button)
+    {
+        var e = new InputEvent
+        {
+            Type = InputEventType.Ascii,
+        };
+
+        switch (button)
+        {
+            case 0:
+                e.Data = 0x101;
+                break;
+
+            case 1:
+                e.Data = 0x201;
+                break;
+
+            case 2:
+                e.Data = 0x301;
+                break;
+
+            case 3:
+                e.Data = 0x401;
+                break;
+
+            default:
+                e.Data = 0x101;
+                break;
         }
 
         return e;
@@ -458,13 +519,13 @@ internal class SdlInputDriver : IInputDriver
                         }
 
                         KeySpecial[index].Value++;
-                        e = this.KeyParse(keysym);
+                        e = KeyParse(keysym);
                     }
                 }
                 else
                 {
                     // normal key
-                    e = this.KeyParse(keysym);
+                    e = KeyParse(keysym);
                 }
 
                 break;
@@ -473,69 +534,43 @@ internal class SdlInputDriver : IInputDriver
         return e;
     }
 
-    private InputEvent EventMouseButton(int button, int x, int y)
+    private int ClockThread()
     {
-        var e = new InputEvent
-        {
-            Type = InputEventType.Mouse,
-        };
-
-        switch (button)
-        {
-            case SDL_BUTTON_LEFT:
-                e.Data = MouseButton.Left;
-                break;
-
-            case SDL_BUTTON_MIDDLE:
-                e.Data = MouseButton.Middle;
-                break;
-
-            case SDL_BUTTON_RIGHT:
-                e.Data = MouseButton.Right;
-                break;
-
-            default:
-                e.Data = MouseButton.Unknown;
-                break;
-        }
-
-        e.X = x;
-        e.Y = y;
-
-        return e;
+        this.interpreter.Clock();
+        return 0;
     }
 
-    private InputEvent EventJoyButton(int button)
+    private int HasUserReply()
     {
-        var e = new InputEvent
+        return this.PollCharacter() switch
         {
-            Type = InputEventType.Ascii,
+            0x0d => 1, // enter
+            0x1b => 0, // esc
+            _ => 0xffff,
         };
+    }
 
-        switch (button)
+    private int PollCharacter()
+    {
+        var e = this.EventRead(false);
+        if (e is null)
         {
-            case 0:
-                e.Data = 0x101;
-                break;
-
-            case 1:
-                e.Data = 0x201;
-                break;
-
-            case 2:
-                e.Data = 0x301;
-                break;
-
-            case 3:
-                e.Data = 0x401;
-                break;
-
-            default:
-                e.Data = 0x101;
-                break;
+            return 0;
         }
 
-        return e;
+        JoyButtonMap(e);
+        MouseButtonMap(e);
+
+        int di = e.Type;
+        int si = e.Data;
+
+        if (di == 4 || di == 5)
+        {
+            di = 1;
+            si = 0x0d; // CR
+        }
+
+        return di == 1 ? si : 0xffff;
     }
 
     private InputEvent EventJoyAxis(int axis, int val)
@@ -603,7 +638,6 @@ internal class SdlInputDriver : IInputDriver
         return e;
     }
 
-    [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "For future joystick support.")]
     private InputEvent PreviousEventJoyAxis()
     {
         InputEvent e = null;
@@ -723,13 +757,13 @@ internal class SdlInputDriver : IInputDriver
                         e = this.EventKeyUp(evt.key.keysym);
                         break;
                     case SDL_EventType.SDL_USEREVENT:
-                        e = this.UserEventDecode(evt.user.data1, evt.user.data2);
+                        e = UserEventDecode(evt.user.data1, evt.user.data2);
                         break;
                     case SDL_EventType.SDL_MOUSEBUTTONDOWN:
-                        e = this.EventMouseButton(evt.button.button, evt.button.x, evt.button.y);
+                        e = EventMouseButton(evt.button.button, evt.button.x, evt.button.y);
                         break;
                     case SDL_EventType.SDL_JOYBUTTONDOWN:
-                        e = this.EventJoyButton(evt.jbutton.button);
+                        e = EventJoyButton(evt.jbutton.button);
                         break;
                     case SDL_EventType.SDL_JOYAXISMOTION:
                         if (includeJoystickAxis)
@@ -761,42 +795,6 @@ internal class SdlInputDriver : IInputDriver
         while (e is null);
 
         return e;
-    }
-
-    private void JoyButtonMap(InputEvent e)
-    {
-        if (e.Type == InputEventType.Ascii)
-        {
-            if (e.Data == 0x101 || e.Data == 0x301)
-            {
-                // enter
-                e.Data = InputEventAscii.Enter;
-            }
-            else if (e.Data == 0x201 || e.Data == 0x401)
-            {
-                // esc
-                e.Data = InputEventAscii.Esc;
-            }
-        }
-    }
-
-    private void MouseButtonMap(InputEvent e)
-    {
-        if (e.Type == InputEventType.Mouse)
-        {
-            if (e.Data == 1)
-            {
-                // enter
-                e.Data = InputEventAscii.Enter;
-                e.Type = InputEventType.Ascii;
-            }
-            else if (e.Data == 2)
-            {
-                // esc
-                e.Data = InputEventAscii.Esc;
-                e.Type = InputEventType.Ascii;
-            }
-        }
     }
 }
 #endif
