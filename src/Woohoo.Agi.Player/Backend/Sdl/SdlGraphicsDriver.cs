@@ -26,7 +26,7 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
 
     void IGraphicsDriver.Initialize()
     {
-        SDL_Init(SDL_INIT_EVERYTHING);
+        CheckResult(SDL_Init(SDL_INIT_EVERYTHING), 0, nameof(SDL_Init));
 
         /*
         int joysticks = SDL_NumJoysticks();
@@ -273,6 +273,14 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
             Marshal.Copy(buffer, 0, targetPtr, scaledWidth);
 
             targetY += lineCountRenderPoints > 0 ? 1 : -1;
+        }
+    }
+
+    private static void CheckResult(int actual, int expected, string method)
+    {
+        if (actual != expected)
+        {
+            Trace.WriteLine($"{method} returned {actual} but expected {expected}.");
         }
     }
 }
