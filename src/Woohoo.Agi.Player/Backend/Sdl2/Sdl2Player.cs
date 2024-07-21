@@ -31,4 +31,3 @@ internal class Sdl2Player : AgiPlayer
     }
 }
 #endif
-

@@ -128,4 +128,3 @@ internal sealed class GameZipArchive : IGameContainer
     }
 }
 #endif
-

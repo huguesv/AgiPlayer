@@ -23,5 +23,7 @@ jobs:
       run: dotnet clean ${{env.solutionFile}} --configuration Release && dotnet nuget locals all --clear
     - name: Build
       run: dotnet build ${{env.solutionFile}} --configuration Release
+    - name: Format
+      run: dotnet format ${{env.solutionFile}} --verify-no-changes --verbosity diagnostic
     - name: Test
       run: dotnet test ${{env.solutionFile}} --no-restore --verbosity normal

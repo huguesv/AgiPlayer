@@ -39,4 +39,3 @@ public static partial class NativeMethods
     public static extern void SDL_WaitThread(IntPtr thread, out int status);
 }
 #endif
-

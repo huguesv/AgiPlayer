@@ -16,8 +16,32 @@ internal class SdlInputDriver : IInputDriver
 
     private static readonly int[] SystemAltAtoZMap =
     [
-        30, 48, 46, 32, 18, 33, 34, 35, 23, 36, 37, 38, 50,
-        49, 24, 25, 16, 19, 31, 20, 22, 47, 17, 45, 21, 44,
+        30,
+        48,
+        46,
+        32,
+        18,
+        33,
+        34,
+        35,
+        23,
+        36,
+        37,
+        38,
+        50,
+        49,
+        24,
+        25,
+        16,
+        19,
+        31,
+        20,
+        22,
+        47,
+        17,
+        45,
+        21,
+        44,
     ];
 
     private static readonly SdlKey[] DirMap =
@@ -804,4 +828,3 @@ internal class SdlInputDriver : IInputDriver
     }
 }
 #endif
-
