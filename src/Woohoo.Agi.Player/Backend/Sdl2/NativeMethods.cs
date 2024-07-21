@@ -29,6 +29,8 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2;
 
 #if USE_SDL2
+#pragma warning disable SA1027
+#pragma warning disable SA1009
 public static partial class NativeMethods
 {
     private const string nativeLibName = "SDL2";
@@ -6836,4 +6838,6 @@ public static partial class NativeMethods
     public static extern int SDL_GetSystemRAM();
 
 }
+#pragma warning restore SA1027
+#pragma warning restore SA1009
 #endif

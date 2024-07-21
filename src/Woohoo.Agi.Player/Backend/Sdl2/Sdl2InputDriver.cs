@@ -366,12 +366,13 @@ internal class Sdl2InputDriver : IInputDriver
                     return InputEventAscii.Enter;
 
                 default:
-                    if ((keysym.unicode & 0xff80) == 0 && keysym.unicode != 0)
-                    {
-                        return (int)(keysym.unicode & 0x7f);
-                    }
+                    return (int)((int)keysym.sym & 0xff);
+                    //if ((keysym.unicode & 0xff80) == 0 && keysym.unicode != 0)
+                    //{
+                    //    return (int)(keysym.unicode & 0x7f);
+                    //}
 
-                    return (int)(keysym.unicode & 0xff);
+                    //return (int)(keysym.unicode & 0xff);
             }
         }
 

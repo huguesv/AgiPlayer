@@ -5,7 +5,7 @@
   <!-- Use WordList for classic mode with optional word list selection box, invoked using CTRL, ALT, SHIFT or CAPSLOCK. -->
   <!-- Values: Classic, InputBox, WordList -->
   <!-- Default: Classic -->
-  <InputMode>InputBox</InputMode>
+  <InputMode>Classic</InputMode>
 
   <!-- Horizontal scaling factor. -->
   <!-- Values: 1+ -->
@@ -55,7 +55,7 @@
   <!-- Number of palette gradients to use when fading. -->
   <!-- Values: 0+ -->
   <!-- Default: 10 -->
-  <DisplayFadeCount>10</DisplayFadeCount>
+  <DisplayFadeCount>0</DisplayFadeCount>
 
   <!-- Computer to simulate. Used to initialize var 20, var 22 and flag 11. -->
   <!-- Values: 0=PC, 1=PCJunior, 2=Tandy, 4=AtariST, 5=Amiga, 7=AppleIIgs, 8=PS2 -->
