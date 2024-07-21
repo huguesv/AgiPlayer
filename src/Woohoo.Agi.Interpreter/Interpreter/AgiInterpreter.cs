@@ -533,9 +533,9 @@ public sealed partial class AgiInterpreter
             int oldScore = this.State.Variables[Variables.Score];
             bool soundEnabled = this.State.Flags[Flags.SoundOn];
 
-            // Save the current state of interpreter here, in case of AgiExecutionException
-            // (not currently supported)
-            ErrorResume:
+        // Save the current state of interpreter here, in case of AgiExecutionException
+        // (not currently supported)
+        ErrorResume:
             try
             {
                 while (this.CallLogic(0))
