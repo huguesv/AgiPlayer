@@ -18,15 +18,7 @@ public sealed class GameFolder : IGameContainer
 
     public byte[] Read(string file)
     {
-        byte[] data;
-
-        using (FileStream stream = new FileStream(Path.Combine(this.folderPath, file), FileMode.Open, FileAccess.Read, FileShare.Read))
-        {
-            data = new byte[stream.Length];
-            stream.Read(data, 0, data.Length);
-        }
-
-        return data;
+        return File.ReadAllBytes(Path.Combine(this.folderPath, file));
     }
 
     public bool Exists(string file)
@@ -68,7 +60,7 @@ public sealed class GameFolder : IGameContainer
         // Get the list of files to include
         foreach (string pattern in includePatterns)
         {
-            string[] files = Directory.GetFiles(this.folderPath, pattern);
+            string[] files = Directory.GetFiles(this.folderPath, pattern, SearchOption.TopDirectoryOnly);
             foreach (string file in files)
             {
                 // File name only, no path

@@ -33,7 +33,7 @@ internal sealed class GameZipArchive : IGameContainer
                 using (Stream stream = this.zipFile.GetInputStream(entry))
                 {
                     data = new byte[entry.Size];
-                    stream.Read(data, 0, data.Length);
+                    stream.ReadExactly(data, 0, data.Length);
                 }
             }
         }
