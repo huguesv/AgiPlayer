@@ -43,7 +43,6 @@ internal class GameFinder
                 }
             }
 
-#if USE_ZIP
             foreach (string zipFile in Directory.GetFiles(folder, "*.zip"))
             {
                 var game = FindGame(detector, new GameZipArchive(zipFile));
@@ -52,7 +51,6 @@ internal class GameFinder
                     games.Add(game);
                 }
             }
-#endif
         }
 
         return [.. games];

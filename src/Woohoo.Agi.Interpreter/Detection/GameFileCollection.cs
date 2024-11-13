@@ -20,7 +20,7 @@ internal class GameFileCollection : Collection<GameFile>
         {
             foreach (GameFile file in this)
             {
-                if (string.Compare(file.Name, filename, StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Equals(file.Name, filename, StringComparison.OrdinalIgnoreCase))
                 {
                     return file;
                 }

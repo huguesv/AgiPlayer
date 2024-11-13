@@ -3,19 +3,18 @@
 
 namespace Woohoo.Agi.Player;
 
-#if USE_ZIP
-using ICSharpCode.SharpZipLib.Zip;
+using System.IO.Compression;
 using Woohoo.Agi.Interpreter;
 
 internal sealed class GameZipArchive : IGameContainer
 {
     private readonly string archivePath;
-    private readonly ZipFile zipFile;
+    private readonly ZipArchive archive;
 
     public GameZipArchive(string archivePath)
     {
         this.archivePath = archivePath;
-        this.zipFile = new ZipFile(archivePath);
+        this.archive = new ZipArchive(new FileStream(archivePath, FileMode.Open, FileAccess.Read), ZipArchiveMode.Read);
     }
 
     public string Name => Path.GetFileNameWithoutExtension(this.archivePath);
@@ -24,17 +23,13 @@ internal sealed class GameZipArchive : IGameContainer
     {
         byte[] data = [];
 
-        int entryIndex = this.zipFile.FindEntry(file, true);
-        if (entryIndex != -1)
+        var entry = this.GetEntryOrdinalIgnoreCase(file);
+        if (entry is not null)
         {
-            ZipEntry entry = this.zipFile[entryIndex];
-            if (entry is not null)
+            using (Stream stream = entry.Open())
             {
-                using (Stream stream = this.zipFile.GetInputStream(entry))
-                {
-                    data = new byte[entry.Size];
-                    stream.ReadExactly(data, 0, data.Length);
-                }
+                data = new byte[entry.Length];
+                stream.ReadExactly(data, 0, data.Length);
             }
         }
 
@@ -43,27 +38,23 @@ internal sealed class GameZipArchive : IGameContainer
 
     public bool Exists(string file)
     {
-        int entryIndex = this.zipFile.FindEntry(file, true);
-        return entryIndex != -1;
+        return this.GetEntryOrdinalIgnoreCase(file) is not null;
     }
 
     public string GetGameId()
     {
         string id = string.Empty;
 
-        foreach (ZipEntry entry in this.zipFile)
+        foreach (var entry in this.archive.Entries)
         {
-            if (entry.IsFile)
+            if (entry.Length > 0)
             {
-                string lowerFileNameNoExt = Path.GetFileNameWithoutExtension(entry.Name).ToLower(CultureInfo.InvariantCulture);
+                string fileName = Path.GetFileNameWithoutExtension(entry.Name);
                 string ext = Path.GetExtension(entry.Name);
 
-                if (lowerFileNameNoExt.EndsWith("vol") && ext == ".0")
+                if (fileName.EndsWith("vol", StringComparison.OrdinalIgnoreCase) && ext == ".0" && fileName.Length > 3)
                 {
-                    if (lowerFileNameNoExt.Length > 3)
-                    {
-                        id = lowerFileNameNoExt[..^3];
-                    }
+                    id = fileName[..^3];
                 }
             }
         }
@@ -74,32 +65,32 @@ internal sealed class GameZipArchive : IGameContainer
     public string[] GetGameFiles()
     {
         List<string> files = [];
-        foreach (ZipEntry entry in this.zipFile)
+        foreach (var entry in this.archive.Entries)
         {
-            if (entry.IsFile)
+            if (entry.Length > 0)
             {
-                if (string.Compare(entry.Name, "object", true) == 0)
+                if (string.Equals(entry.Name, "object", StringComparison.OrdinalIgnoreCase))
                 {
                     files.Add(entry.Name);
                 }
-                else if (string.Compare(entry.Name, "words.tok", true) == 0)
+                else if (string.Equals(entry.Name, "words.tok", StringComparison.OrdinalIgnoreCase))
                 {
                     files.Add(entry.Name);
                 }
-                else if (string.Compare(entry.Name, "dirs", true) == 0)
+                else if (string.Equals(entry.Name, "dirs", StringComparison.OrdinalIgnoreCase))
                 {
                     files.Add(entry.Name);
                 }
                 else
                 {
-                    string lowerFileNameNoExt = Path.GetFileNameWithoutExtension(entry.Name).ToLower(CultureInfo.InvariantCulture);
+                    string fileName = Path.GetFileNameWithoutExtension(entry.Name);
                     string ext = Path.GetExtension(entry.Name);
 
-                    if (lowerFileNameNoExt.EndsWith("vol"))
+                    if (fileName.EndsWith("vol", StringComparison.OrdinalIgnoreCase) && int.TryParse(ext[1..], out _))
                     {
                         files.Add(entry.Name);
                     }
-                    else if (lowerFileNameNoExt.EndsWith("dir") && ext.Length == 0)
+                    else if (fileName.EndsWith("dir", StringComparison.OrdinalIgnoreCase) && ext.Length == 0)
                     {
                         files.Add(entry.Name);
                     }
@@ -113,11 +104,11 @@ internal sealed class GameZipArchive : IGameContainer
     public string[] GetFilesByExtension(string ext)
     {
         List<string> files = [];
-        foreach (ZipEntry entry in this.zipFile)
+        foreach (var entry in this.archive.Entries)
         {
-            if (entry.IsFile)
+            if (entry.Length > 0)
             {
-                if (string.Compare(Path.GetExtension(entry.Name), ext, true) == 0)
+                if (string.Equals(Path.GetExtension(entry.Name), ext, StringComparison.OrdinalIgnoreCase))
                 {
                     files.Add(entry.Name);
                 }
@@ -126,5 +117,17 @@ internal sealed class GameZipArchive : IGameContainer
 
         return [.. files];
     }
+
+    private ZipArchiveEntry GetEntryOrdinalIgnoreCase(string entryName)
+    {
+        foreach (var entry in this.archive.Entries)
+        {
+            if (string.Equals(entry.Name, entryName, StringComparison.OrdinalIgnoreCase))
+            {
+                return entry;
+            }
+        }
+
+        return null;
+    }
 }
-#endif

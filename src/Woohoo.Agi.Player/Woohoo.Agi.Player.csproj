@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -6,7 +6,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64</Platforms>
     <Backend>SDL</Backend>
-    <ZipSupport>true</ZipSupport>
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -52,10 +51,6 @@
     <DefineConstants>$(DefineConstants);USE_SDL2</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(ZipSupport)'=='true'">
-    <DefineConstants>$(DefineConstants);USE_ZIP</DefineConstants>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(PlatformTarget)'=='x86'">
     <DefineConstants>$(DefineConstants);X86</DefineConstants>
   </PropertyGroup>
@@ -65,7 +60,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SharpZipLib" Condition="'$(ZipSupport)'=='true'" />
     <PackageReference Include="StyleCop.Analyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

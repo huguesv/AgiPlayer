@@ -44,25 +44,25 @@ public sealed class DetectByFileNames : IGameDetectorAlgorithm
 
         foreach (string file in files)
         {
-            if (string.Compare("object", file, true, CultureInfo.InvariantCulture) == 0)
+            if (string.Equals("object", file, StringComparison.OrdinalIgnoreCase))
             {
                 inventoryFound = true;
                 continue;
             }
 
-            if (string.Compare("words.tok", file, true, CultureInfo.InvariantCulture) == 0)
+            if (string.Equals("words.tok", file, StringComparison.OrdinalIgnoreCase))
             {
                 vocabularyFound = true;
                 continue;
             }
 
-            if (file.ToLower(CultureInfo.InvariantCulture).EndsWith("vol.0"))
+            if (file.EndsWith("vol.0", StringComparison.OrdinalIgnoreCase))
             {
                 volumeFound = true;
                 continue;
             }
 
-            if (string.Compare("dirs", file, true, CultureInfo.InvariantCulture) == 0)
+            if (string.Equals("dirs", file, StringComparison.OrdinalIgnoreCase))
             {
                 amigaMapFound = true;
                 continue;

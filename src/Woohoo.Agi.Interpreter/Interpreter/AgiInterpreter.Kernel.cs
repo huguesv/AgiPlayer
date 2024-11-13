@@ -166,7 +166,7 @@ public partial class AgiInterpreter : IKernel
 
     bool IKernel.CompareStrings(byte stringA, byte stringB)
     {
-        bool equal = string.Compare(this.State.Strings[stringA], this.State.Strings[stringB], true, CultureInfo.InvariantCulture) == 0;
+        bool equal = string.Equals(this.State.Strings[stringA], this.State.Strings[stringB], StringComparison.OrdinalIgnoreCase);
         return equal;
     }
 
