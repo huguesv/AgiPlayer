@@ -914,6 +914,7 @@ public partial class AgiInterpreter : IKernel
 
     void IKernel.PutV(byte inventoryNumber, byte variableRoomNumber)
     {
+        // TODO: Confirm that inventoryNumber should be renamed to variableInventoryNumber
         if (this.State.Variables[inventoryNumber] >= this.ResourceManager.InventoryResource.Items.Length)
         {
             this.ExecutionError(ErrorCodes.InventoryItemOverRange, this.State.Variables[inventoryNumber] - this.ResourceManager.InventoryResource.Items.Length);
@@ -924,6 +925,7 @@ public partial class AgiInterpreter : IKernel
 
     void IKernel.GetRoomV(byte inventoryNumber, byte variableRoomNumber)
     {
+        // TODO: Confirm that inventoryNumber should be renamed to variableInventoryNumber
         if (this.State.Variables[inventoryNumber] >= this.ResourceManager.InventoryResource.Items.Length)
         {
             this.ExecutionError(ErrorCodes.InventoryItemOverRange, this.State.Variables[inventoryNumber] - this.ResourceManager.InventoryResource.Items.Length);

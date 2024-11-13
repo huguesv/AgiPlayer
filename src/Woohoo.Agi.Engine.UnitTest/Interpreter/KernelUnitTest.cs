@@ -5,6 +5,7 @@ namespace Woohoo.Agi.Engine.UnitTest.Interpreter;
 
 using Woohoo.Agi.Engine.Interpreter;
 using Woohoo.Agi.Engine.Resources;
+using Woohoo.Agi.Engine.UnitTest.Infrastructure;
 
 [TestClass]
 public class KernelUnitTest
@@ -887,40 +888,98 @@ public class KernelUnitTest
         this.interpreter.State.BlockIsSet.Should().BeFalse();
     }
 
-    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Get()
     {
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        this.interpreter.ResourceManager = new ResourceManager();
+        this.interpreter.ResourceManager.InventoryResource = resource;
+        this.interpreter.ObjectTable = new ViewObjectTable(1);
+        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+
+        this.kernel.Get(1);
+
+        resource.Items[0].Location.Should().Be(50);
+        resource.Items[1].Location.Should().Be(0xff);
     }
 
-    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetV()
     {
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        this.interpreter.ResourceManager = new ResourceManager();
+        this.interpreter.ResourceManager.InventoryResource = resource;
+        this.interpreter.ObjectTable = new ViewObjectTable(1);
+        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        this.interpreter.State.Variables[5] = 1;
+
+        this.kernel.GetV(5);
+
+        resource.Items[0].Location.Should().Be(50);
+        resource.Items[1].Location.Should().Be(0xff);
     }
 
-    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Drop()
     {
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        this.interpreter.ResourceManager = new ResourceManager();
+        this.interpreter.ResourceManager.InventoryResource = resource;
+        this.interpreter.ObjectTable = new ViewObjectTable(1);
+        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+
+        this.kernel.Drop(1);
+
+        resource.Items[0].Location.Should().Be(50);
+        resource.Items[1].Location.Should().Be(0x00);
     }
 
-    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Put()
     {
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        this.interpreter.ResourceManager = new ResourceManager();
+        this.interpreter.ResourceManager.InventoryResource = resource;
+        this.interpreter.ObjectTable = new ViewObjectTable(1);
+        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+
+        this.kernel.Put(1, 61);
+
+        resource.Items[0].Location.Should().Be(50);
+        resource.Items[1].Location.Should().Be(61);
     }
 
-    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void PutV()
     {
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        this.interpreter.ResourceManager = new ResourceManager();
+        this.interpreter.ResourceManager.InventoryResource = resource;
+        this.interpreter.ObjectTable = new ViewObjectTable(1);
+        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        this.interpreter.State.Variables[8] = 1;
+        this.interpreter.State.Variables[9] = 61;
+
+        this.kernel.PutV(8, 9);
+
+        resource.Items[0].Location.Should().Be(50);
+        resource.Items[1].Location.Should().Be(61);
     }
 
-    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void GetRoomV()
     {
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        this.interpreter.ResourceManager = new ResourceManager();
+        this.interpreter.ResourceManager.InventoryResource = resource;
+        this.interpreter.ObjectTable = new ViewObjectTable(1);
+        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        this.interpreter.State.Variables[8] = 1;
+        this.interpreter.State.Variables[9] = 61;
+
+        this.kernel.GetRoomV(8, 9);
+
+        this.interpreter.State.Variables[9].Should().Be(60);
     }
 
     [Ignore(TestNotImplemented)]
@@ -1037,10 +1096,23 @@ public class KernelUnitTest
     {
     }
 
-    [Ignore(TestNotImplemented)]
     [TestMethod]
     public void Parse()
     {
+        var vocabulary = new VocabularyResource([new(40, "get"), new(50, "key"), new(60, "flower")]);
+        this.interpreter.ResourceManager = new ResourceManager();
+        this.interpreter.ResourceManager.VocabularyResource = vocabulary;
+        this.interpreter.ObjectTable = new ViewObjectTable(1);
+        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        this.interpreter.State.Strings[0] = "get flower";
+
+        this.kernel.Parse(0);
+
+        this.interpreter.State.Flags[Flags.PlayerCommandLine].Should().Be(true);
+        this.interpreter.State.Flags[Flags.SaidAccepted].Should().Be(false);
+        this.interpreter.ParserResults.Should().HaveCount(2);
+        this.interpreter.ParserResults[0].Should().BeEquivalentTo(new ParserResult("get", 40));
+        this.interpreter.ParserResults[1].Should().BeEquivalentTo(new ParserResult("flower", 60));
     }
 
     [Ignore(TestNotImplemented)]
@@ -1461,18 +1533,12 @@ public class KernelUnitTest
 
     private static ViewResource CreateTestViewResource(byte resourceIndex)
     {
-        var cels = new ViewCel[]
-        {
-            new(4, 8, 0, false, 0, [0]),
-        };
-
-        var loops = new ViewLoop[]
-        {
-            new(cels, -1),
-            new(cels, -1),
-            new(cels, -1),
-        };
-
-        return new ViewResource(resourceIndex, loops, "key", 0, 0);
+        return new ViewResourceBuilder()
+            .WithIndex(resourceIndex)
+            .WithDescription("key")
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .Build();
     }
 }

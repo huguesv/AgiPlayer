@@ -5,6 +5,7 @@ namespace Woohoo.Agi.Engine.UnitTest.Interpreter;
 
 using Woohoo.Agi.Engine.Interpreter;
 using Woohoo.Agi.Engine.Resources;
+using Woohoo.Agi.Engine.UnitTest.Infrastructure;
 
 [TestClass]
 public class ParserUnitTest
@@ -85,31 +86,25 @@ public class ParserUnitTest
 
     private static VocabularyResource CreateEmptyVocabulary()
     {
-        return new VocabularyResource([]);
+        return new VocabularyBuilder().Build();
     }
 
     private static VocabularyResource CreateSimpleVocabulary()
     {
-        var families = new VocabularyWordFamily[]
-        {
-            new(50, "get"),
-            new(51, "key"),
-        };
-
-        return new VocabularyResource(families);
+        return new VocabularyBuilder()
+            .WithFamily(50, "get")
+            .WithFamily(51, "key")
+            .Build();
     }
 
     private static VocabularyResource CreateComplexVocabulary()
     {
-        var families = new VocabularyWordFamily[]
-        {
-            new(50, "get"),
-            new(51, "blue"),
-            new(52, "key"),
-            new(53, "blue key"),
-            new(0, "a", "an", "the", "this"),
-        };
-
-        return new VocabularyResource(families);
+        return new VocabularyBuilder()
+            .WithFamily(50, "get")
+            .WithFamily(51, "blue")
+            .WithFamily(52, "key")
+            .WithFamily(53, "blue key")
+            .WithFamily(0, "a", "an", "the", "this")
+            .Build();
     }
 }
