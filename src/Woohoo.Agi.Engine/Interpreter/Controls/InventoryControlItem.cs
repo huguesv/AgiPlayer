@@ -18,7 +18,7 @@ public class InventoryControlItem
     /// <summary>
     /// Gets or sets item name.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
     /// <summary>
     /// Gets or sets item index in the inventory resource.

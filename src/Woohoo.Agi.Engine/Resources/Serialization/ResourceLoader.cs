@@ -76,17 +76,7 @@ public class ResourceLoader
     {
         ArgumentNullException.ThrowIfNull(gameContainer);
 
-        bool result = false;
-
-        if (gameContainer.Exists(VocabularyFile))
-        {
-            if (gameContainer.Exists(InventoryFile))
-            {
-                result = true;
-            }
-        }
-
-        return result;
+        return gameContainer.Exists(VocabularyFile) && gameContainer.Exists(InventoryFile);
     }
 
     /// <summary>
@@ -136,6 +126,11 @@ public class ResourceLoader
         }
 
         var entry = this.resourceMap.LogicResources.GetEntry(resourceIndex);
+        if (entry is null)
+        {
+            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
+        }
+
         var fileName = this.volumeDecoder.GetVolumeFile(entry.Volume);
         var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out bool wasCompressed);
 
@@ -150,6 +145,11 @@ public class ResourceLoader
     public ViewResource LoadView(byte resourceIndex)
     {
         var entry = this.resourceMap.ViewResources.GetEntry(resourceIndex);
+        if (entry is null)
+        {
+            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
+        }
+
         var fileName = this.volumeDecoder.GetVolumeFile(entry.Volume);
         var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out _);
 
@@ -164,6 +164,11 @@ public class ResourceLoader
     public SoundResource LoadSound(byte resourceIndex)
     {
         var entry = this.resourceMap.SoundResources.GetEntry(resourceIndex);
+        if (entry is null)
+        {
+            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
+        }
+
         var fileName = this.volumeDecoder.GetVolumeFile(entry.Volume);
         var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out _);
 
@@ -185,6 +190,11 @@ public class ResourceLoader
     public PictureResource LoadPicture(byte resourceIndex)
     {
         var entry = this.resourceMap.PictureResources.GetEntry(resourceIndex);
+        if (entry is null)
+        {
+            throw new ArgumentOutOfRangeException(nameof(resourceIndex));
+        }
+
         var fileName = this.volumeDecoder.GetVolumeFile(entry.Volume);
         var data = this.volumeDecoder.ExtractResource(this.gameContainer, fileName, entry, out _);
 
