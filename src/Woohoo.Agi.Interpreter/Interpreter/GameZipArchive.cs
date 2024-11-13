@@ -1,10 +1,11 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Player;
+#nullable enable
+
+namespace Woohoo.Agi.Interpreter;
 
 using System.IO.Compression;
-using Woohoo.Agi.Interpreter;
 
 internal sealed class GameZipArchive : IGameContainer
 {
@@ -118,7 +119,7 @@ internal sealed class GameZipArchive : IGameContainer
         return [.. files];
     }
 
-    private ZipArchiveEntry GetEntryOrdinalIgnoreCase(string entryName)
+    private ZipArchiveEntry? GetEntryOrdinalIgnoreCase(string entryName)
     {
         foreach (var entry in this.archive.Entries)
         {

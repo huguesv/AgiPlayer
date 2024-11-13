@@ -3,8 +3,8 @@
 
 namespace Woohoo.Agi.Player;
 
+using Woohoo.Agi.Detection;
 using Woohoo.Agi.Interpreter;
-using Woohoo.Agi.Resources.Serialization;
 
 internal abstract class AgiPlayer
 {
@@ -71,7 +71,7 @@ internal abstract class AgiPlayer
     private static void DisplayInfo()
     {
         Console.WriteLine("{0} v{1}", UserInterface.PlayerName, UserInterface.PlayerVersion);
-        Console.WriteLine("Copyright (C) 2006-2018 Hugues Valois");
+        Console.WriteLine("Copyright (C) 2006-2024 Hugues Valois");
         Console.WriteLine();
 
         Console.WriteLine("Based upon the New Adventure Game Interpreter (NAGI)");
@@ -107,15 +107,12 @@ internal abstract class AgiPlayer
 
     private int RunGame(string folder)
     {
-        if (ResourceLoader.IsGameFolder(new GameFolder(folder)))
+        GameStartInfo startInfo = GameFinder.FindGame(folder);
+        if (startInfo is not null)
         {
-            GameStartInfo startInfo = GameFinder.FindGame(folder);
-            if (startInfo is not null)
-            {
-                this.Interpreter.Start(startInfo, ReadPreferences());
+            this.Interpreter.Start(startInfo, ReadPreferences());
 
-                return 0;
-            }
+            return 0;
         }
 
         return -1;

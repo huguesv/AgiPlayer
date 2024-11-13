@@ -1,15 +1,16 @@
 // Copyright (c) Hugues Valois. All rights reserved.
 // Licensed under the X11 license. See LICENSE in the project root for license information.
 
-namespace Woohoo.Agi.Player;
+#nullable enable
 
-using Woohoo.Agi.Detection;
+namespace Woohoo.Agi.Detection;
+
 using Woohoo.Agi.Interpreter;
 using Woohoo.Agi.Resources.Serialization;
 
-internal class GameFinder
+public class GameFinder
 {
-    public static GameStartInfo FindGame(string folder)
+    public static GameStartInfo? FindGame(string folder)
     {
         var detector = CreateDetector();
 
@@ -56,16 +57,16 @@ internal class GameFinder
         return [.. games];
     }
 
-    private static GameStartInfo FindGame(GameDetector detector, IGameContainer container)
+    private static GameStartInfo? FindGame(GameDetector detector, IGameContainer container)
     {
-        GameStartInfo startInfo = null;
+        GameStartInfo? startInfo = null;
 
         var result = detector.Detect(container);
         if (result is not null)
         {
             string id = ResourceLoader.GetGameId(container);
 
-            startInfo = new GameStartInfo(container, id, result.Platform, result.Interpreter, result.Name, result.Version);
+            startInfo = new GameStartInfo(container, id, result.Platform, result.Interpreter, result.Name ?? string.Empty, result.Version ?? string.Empty);
         }
 
         return startInfo;
