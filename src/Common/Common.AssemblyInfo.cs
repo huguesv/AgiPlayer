@@ -3,7 +3,7 @@
 
 [assembly: AssemblyCompany("Hugues Valois")]
 [assembly: AssemblyProduct("Agi Player")]
-[assembly: AssemblyCopyright("2003-2021")]
+[assembly: AssemblyCopyright("2003-2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.1.0.0")]

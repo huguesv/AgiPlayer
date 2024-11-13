@@ -67,7 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Woohoo.Agi.Interpreter\Woohoo.Agi.Interpreter.csproj" />
+    <ProjectReference Include="..\Woohoo.Agi.Engine\Woohoo.Agi.Engine.csproj" />
   </ItemGroup>
 
   <ItemGroup>

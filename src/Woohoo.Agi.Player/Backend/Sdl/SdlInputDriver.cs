@@ -6,7 +6,7 @@ namespace Woohoo.Agi.Player.Backend.Sdl;
 using System.Diagnostics.CodeAnalysis;
 
 #if USE_SDL
-using Woohoo.Agi.Interpreter;
+using Woohoo.Agi.Engine.Interpreter;
 using static Woohoo.Agi.Player.Backend.Sdl.NativeMethods;
 
 internal class SdlInputDriver : IInputDriver

@@ -3,8 +3,9 @@
 
 namespace Woohoo.Agi.Player;
 
-using Woohoo.Agi.Detection;
-using Woohoo.Agi.Interpreter;
+using Woohoo.Agi.Engine;
+using Woohoo.Agi.Engine.Detection;
+using Woohoo.Agi.Engine.Interpreter;
 
 internal abstract class AgiPlayer
 {

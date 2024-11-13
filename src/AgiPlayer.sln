@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woohoo.Agi.Interpreter", "Woohoo.Agi.Interpreter\Woohoo.Agi.Interpreter.csproj", "{BA23E0E2-17B6-40DE-83E7-FA0C3B0F6176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woohoo.Agi.Engine", "Woohoo.Agi.Engine\Woohoo.Agi.Engine.csproj", "{BA23E0E2-17B6-40DE-83E7-FA0C3B0F6176}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woohoo.Agi.Interpreter.UnitTest", "Woohoo.Agi.Interpreter.UnitTest\Woohoo.Agi.Interpreter.UnitTest.csproj", "{885A2FFF-D23E-46FA-B6DD-B172D60F275E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woohoo.Agi.Engine.UnitTest", "Woohoo.Agi.Engine.UnitTest\Woohoo.Agi.Engine.UnitTest.csproj", "{885A2FFF-D23E-46FA-B6DD-B172D60F275E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woohoo.Agi.Player", "Woohoo.Agi.Player\Woohoo.Agi.Player.csproj", "{BF1EFBAF-D0C5-48B6-83CF-6E7238D52029}"
 EndProject

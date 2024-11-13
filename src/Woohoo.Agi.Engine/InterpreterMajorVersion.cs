@@ -1,0 +1,27 @@
+// Copyright (c) Hugues Valois. All rights reserved.
+// Licensed under the X11 license. See LICENSE in the project root for license information.
+
+#nullable enable
+
+namespace Woohoo.Agi.Engine;
+
+/// <summary>
+/// Agi interpreter major version.
+/// </summary>
+public enum InterpreterMajorVersion
+{
+    /// <summary>
+    /// Version 1.
+    /// </summary>
+    Version1,
+
+    /// <summary>
+    /// Version 2.
+    /// </summary>
+    Version2,
+
+    /// <summary>
+    /// Version 3.
+    /// </summary>
+    Version3,
+}
