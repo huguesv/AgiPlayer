@@ -11,136 +11,171 @@ public class KernelUnitTest
 {
     private const string TestNotImplemented = "Test not implemented.";
 
-    [Fact]
-    public void EqualN()
+    [Theory]
+    [InlineData(23, 0, 0, true)]
+    [InlineData(23, 0, 1, false)]
+    [InlineData(23, 5, 5, true)]
+    [InlineData(23, 5, 0, false)]
+    [InlineData(23, 255, 255, true)]
+    [InlineData(23, 255, 0, false)]
+    public void EqualN(byte varA, byte valA, byte numB, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 0;
-        kernel.EqualN(23, 0).Should().BeTrue();
-        kernel.EqualN(23, 5).Should().BeFalse();
-        interpreter.State.Variables[23] = 5;
-        kernel.EqualN(23, 5).Should().BeTrue();
+        // Act
+        var result = ((IKernel)interpreter).EqualN(varA, numB);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void EqualV()
+    [Theory]
+    [InlineData(23, 0, 22, 0, true)]
+    [InlineData(23, 5, 22, 7, false)]
+    public void EqualV(byte varA, byte valA, byte varB, byte valB, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[22] = 0;
-        interpreter.State.Variables[23] = 0;
-        kernel.EqualV(23, 22).Should().BeTrue();
-        interpreter.State.Variables[23] = 5;
-        kernel.EqualV(23, 22).Should().BeFalse();
-        interpreter.State.Variables[22] = 5;
-        kernel.EqualV(23, 22).Should().BeTrue();
+        // Act
+        var result = ((IKernel)interpreter).EqualV(varA, varB);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void LessN()
+    [Theory]
+    [InlineData(23, 0, 0, false)]
+    [InlineData(23, 0, 1, true)]
+    [InlineData(23, 1, 0, false)]
+    [InlineData(23, 1, 255, true)]
+    [InlineData(23, 255, 255, false)]
+    public void LessN(byte varA, byte valA, byte numB, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 0;
-        kernel.LessN(23, 5).Should().BeTrue();
-        kernel.LessN(23, 0).Should().BeFalse();
-        interpreter.State.Variables[23] = 5;
-        kernel.LessN(23, 4).Should().BeFalse();
-        kernel.LessN(23, 6).Should().BeTrue();
+        // Act
+        var result = ((IKernel)interpreter).LessN(varA, numB);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void LessV()
+    [Theory]
+    [InlineData(23, 0, 22, 0, false)]
+    [InlineData(23, 0, 22, 1, true)]
+    [InlineData(23, 1, 22, 0, false)]
+    [InlineData(23, 1, 22, 255, true)]
+    [InlineData(23, 255, 22, 255, false)]
+    public void LessV(byte varA, byte valA, byte varB, byte valB, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[22] = 0;
-        interpreter.State.Variables[23] = 0;
-        kernel.LessV(23, 22).Should().BeFalse();
-        interpreter.State.Variables[23] = 5;
-        kernel.LessV(23, 22).Should().BeFalse();
-        interpreter.State.Variables[22] = 10;
-        kernel.LessV(23, 22).Should().BeTrue();
+        // Act
+        var result = ((IKernel)interpreter).LessV(varA, varB);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void GreaterN()
+    [Theory]
+    [InlineData(23, 0, 0, false)]
+    [InlineData(23, 0, 1, false)]
+    [InlineData(23, 1, 0, true)]
+    [InlineData(23, 1, 255, false)]
+    [InlineData(23, 255, 255, false)]
+    public void GreaterN(byte varA, byte valA, byte numB, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 0;
-        kernel.GreaterN(23, 5).Should().BeFalse();
-        kernel.GreaterN(23, 0).Should().BeFalse();
-        interpreter.State.Variables[23] = 5;
-        kernel.GreaterN(23, 4).Should().BeTrue();
-        kernel.GreaterN(23, 6).Should().BeFalse();
+        // Act
+        var result = ((IKernel)interpreter).GreaterN(varA, numB);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void GreaterV()
+    [Theory]
+    [InlineData(23, 0, 22, 0, false)]
+    [InlineData(23, 0, 22, 1, false)]
+    [InlineData(23, 1, 22, 0, true)]
+    [InlineData(23, 1, 22, 255, false)]
+    [InlineData(23, 255, 22, 255, false)]
+    public void GreaterV(byte varA, byte valA, byte varB, byte valB, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[22] = 0;
-        interpreter.State.Variables[23] = 0;
-        kernel.GreaterV(23, 22).Should().BeFalse();
-        interpreter.State.Variables[23] = 5;
-        kernel.GreaterV(23, 22).Should().BeTrue();
-        interpreter.State.Variables[22] = 10;
-        kernel.GreaterV(23, 22).Should().BeFalse();
+        // Act
+        var result = ((IKernel)interpreter).GreaterV(varA, varB);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void IsSet()
+    [Theory]
+    [InlineData(12, false, false)]
+    [InlineData(12, true, true)]
+    public void IsSet(byte flagNum, bool flagVal, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Flags[flagNum] = flagVal;
 
-        interpreter.State.Flags[23] = false;
-        kernel.IsSet(23).Should().BeFalse();
-        interpreter.State.Flags[23] = true;
-        kernel.IsSet(23).Should().BeTrue();
+        // Act
+        var result = ((IKernel)interpreter).IsSet(flagNum);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void IsSetV()
+    [Theory]
+    [InlineData(12, 5, false, false)]
+    [InlineData(12, 5, true, true)]
+    public void IsSetV(byte varA, byte valA, bool flagVal, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Flags[valA] = flagVal;
 
-        interpreter.State.Variables[23] = 5;
-        interpreter.State.Flags[5] = false;
-        kernel.IsSetV(23).Should().BeFalse();
-        interpreter.State.Flags[5] = true;
-        kernel.IsSetV(23).Should().BeTrue();
+        // Act
+        var result = ((IKernel)interpreter).IsSetV(varA);
+
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
-    public void Has()
+    [Theory]
+    [InlineData(0, true)]
+    [InlineData(1, false)]
+    public void Has(byte inv, bool expected)
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv
+                .WithItem("key", 255)
+                .WithItem("pen", 20))
+            .Build();
 
-        var items = new InventoryItem[]
-        {
-            new("key", 255),
-            new("pen", 20),
-        };
-        var resource = new InventoryResource(items, 1);
-        interpreter.ResourceManager = new ResourceManager
-        {
-            InventoryResource = resource,
-        };
+        // Act
+        var result = ((IKernel)interpreter).Has(inv);
 
-        kernel.Has(0).Should().BeTrue();
-        kernel.Has(1).Should().BeFalse();
+        // Assert
+        result.Should().Be(expected);
     }
 
     [Fact(Skip = TestNotImplemented)]
@@ -173,44 +208,30 @@ public class KernelUnitTest
     {
     }
 
-    [Fact]
-    public void Said()
+    [Theory]
+    [InlineData("get key", new int[] { 1, 2 }, true)]
+    [InlineData("get the key", new int[] { 1, 2 }, true)]
+    [InlineData("get", new int[] { 1, 2 }, false)]
+    [InlineData("get key box", new int[] { 1, 2 }, false)]
+    public void Said(string text, int[] words, bool expected)
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        var families = new VocabularyWordFamily[]
-        {
-            new(0, "a", "the"),
-            new(1, "get"),
-            new(2, "key"),
-            new(3, "box"),
-        };
-        var vocabulary = new VocabularyResource(families);
-        interpreter.ResourceManager = new ResourceManager
-        {
-            VocabularyResource = vocabulary,
-        };
-
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithVocabulary(vocab => vocab
+                .WithFamily(0, "a", "the")
+                .WithFamily(1, "get")
+                .WithFamily(2, "key")
+                .WithFamily(3, "box"))
+            .Build();
         interpreter.State.Flags[Flags.SaidAccepted] = false;
-        interpreter.ParseText("get key");
-        kernel.Said([1, 2]);
-        interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
+        interpreter.ParseText(text);
 
-        interpreter.State.Flags[Flags.SaidAccepted] = false;
-        interpreter.ParseText("get the key");
-        kernel.Said([1, 2]);
-        interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
+        // Act
+        var result = ((IKernel)interpreter).Said(words);
 
-        interpreter.State.Flags[Flags.SaidAccepted] = false;
-        interpreter.ParseText("get");
-        kernel.Said([1, 2]);
-        interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
-
-        interpreter.State.Flags[Flags.SaidAccepted] = false;
-        interpreter.ParseText("get key box");
-        kernel.Said([1, 2]);
-        interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
+        // Assert
+        result.Should().Be(expected);
+        interpreter.State.Flags[Flags.SaidAccepted].Should().Be(expected);
     }
 
     [Fact(Skip = TestNotImplemented)]
@@ -218,242 +239,308 @@ public class KernelUnitTest
     {
     }
 
-    [Fact]
-    public void CompareStrings()
+    [Theory]
+    [InlineData(0, "hello1", 1, "hello2", false)]
+    [InlineData(0, "hello", 1, "hello", true)]
+    [InlineData(0, "Hello", 1, "hello", true)]
+    public void CompareStrings(byte stringANum, string stringA, byte stringBNum, string stringB, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Strings[stringANum] = stringA;
+        interpreter.State.Strings[stringBNum] = stringB;
 
-        interpreter.State.Strings[0] = "hello1";
-        interpreter.State.Strings[1] = "hello2";
-        kernel.CompareStrings(0, 1).Should().BeFalse();
+        // Act
+        var result = ((IKernel)interpreter).CompareStrings(stringANum, stringBNum);
 
-        interpreter.State.Strings[0] = "hello";
-        interpreter.State.Strings[1] = "hello";
-        kernel.CompareStrings(0, 1).Should().BeTrue();
-
-        interpreter.State.Strings[0] = "Hello";
-        interpreter.State.Strings[1] = "hello";
-        kernel.CompareStrings(0, 1).Should().BeTrue();
+        // Assert
+        result.Should().Be(expected);
     }
 
-    [Fact]
+    [Fact(Skip = TestNotImplemented)]
     public void ReturnFalse()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        kernel.ReturnFalse();
     }
 
-    [Fact]
-    public void Increment()
+    [Theory]
+    [InlineData(23, 0, 1)]
+    [InlineData(23, 5, 6)]
+    [InlineData(23, 255, 255)]
+    public void Increment(byte varA, byte valA, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 5;
-        kernel.Increment(23);
-        interpreter.State.Variables[23].Should().Be(6);
+        // Act
+        ((IKernel)interpreter).Increment(varA);
 
-        interpreter.State.Variables[23] = 255;
-        kernel.Increment(23);
-        interpreter.State.Variables[23].Should().Be(255);
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void Decrement()
+    [Theory]
+    [InlineData(23, 0, 0)]
+    [InlineData(23, 5, 4)]
+    [InlineData(23, 255, 254)]
+    public void Decrement(byte varA, byte valA, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 5;
-        kernel.Decrement(23);
-        interpreter.State.Variables[23].Should().Be(4);
+        // Act
+        ((IKernel)interpreter).Decrement(varA);
 
-        interpreter.State.Variables[23] = 0;
-        kernel.Decrement(23);
-        interpreter.State.Variables[23].Should().Be(0);
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void AssignN()
+    [Theory]
+    [InlineData(23, 5, 5)]
+    [InlineData(24, 255, 255)]
+    public void AssignN(byte varA, byte valA, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
 
-        kernel.AssignN(23, 5);
-        interpreter.State.Variables[23].Should().Be(5);
+        // Act
+        ((IKernel)interpreter).AssignN(varA, valA);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void AssignV()
+    [Theory]
+    [InlineData(22, 23, 5, 5)]
+    [InlineData(32, 33, 255, 255)]
+    public void AssignV(byte varA, byte varB, byte valB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[23] = 5;
-        kernel.AssignV(22, 23);
-        interpreter.State.Variables[22].Should().Be(5);
+        // Act
+        ((IKernel)interpreter).AssignV(varA, varB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void AddN()
+    [Theory]
+    [InlineData(23, 5, 7, 12)]
+    [InlineData(24, 250, 7, 1)]
+    public void AddN(byte varA, byte valA, byte numB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 5;
-        kernel.AddN(23, 7);
-        interpreter.State.Variables[23].Should().Be(12);
+        // Act
+        ((IKernel)interpreter).AddN(varA, numB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void AddV()
+    [Theory]
+    [InlineData(23, 5, 22, 7, 12)]
+    [InlineData(23, 250, 22, 7, 1)]
+    public void AddV(byte varA, byte valA, byte varB, byte valB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[23] = 5;
-        interpreter.State.Variables[22] = 7;
-        kernel.AddV(23, 22);
-        interpreter.State.Variables[23].Should().Be(12);
-        interpreter.State.Variables[22].Should().Be(7);
+        // Act
+        ((IKernel)interpreter).AddV(varA, varB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
+        interpreter.State.Variables[varB].Should().Be(valB);
     }
 
-    [Fact]
-    public void SubN()
+    [Theory]
+    [InlineData(23, 5, 3, 2)]
+    [InlineData(23, 5, 7, 254)]
+    public void SubN(byte varA, byte valA, byte numB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 5;
-        kernel.SubN(23, 3);
-        interpreter.State.Variables[23].Should().Be(2);
+        // Act
+        ((IKernel)interpreter).SubN(varA, numB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void SubV()
+    [Theory]
+    [InlineData(23, 5, 22, 3, 2)]
+    public void SubV(byte varA, byte valA, byte varB, byte valB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[23] = 5;
-        interpreter.State.Variables[22] = 3;
-        kernel.SubV(23, 22);
-        interpreter.State.Variables[23].Should().Be(2);
-        interpreter.State.Variables[22].Should().Be(3);
+        // Act
+        ((IKernel)interpreter).SubV(varA, varB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
+        interpreter.State.Variables[varB].Should().Be(valB);
     }
 
-    [Fact]
-    public void LIndirectV()
+    [Theory]
+    [InlineData(10, 5, 6, 15, 70, 70)]
+    public void LIndirectV(byte varA, byte valA, byte valValA, byte varB, byte valB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[valA] = valValA;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[5] = 6;
-        interpreter.State.Variables[10] = 5;
-        interpreter.State.Variables[15] = 70;
-        kernel.LIndirectV(10, 15);
-        interpreter.State.Variables[5].Should().Be(70);
+        // Act
+        ((IKernel)interpreter).LIndirectV(varA, varB);
+
+        // Assert
+        interpreter.State.Variables[valA].Should().Be(expected);
     }
 
-    [Fact]
-    public void RIndirect()
+    [Theory]
+    [InlineData(15, 70, 10, 5, 6, 6)]
+    public void RIndirect(byte varA, byte valA, byte varB, byte valB, byte valValB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[valB] = valValB;
+        interpreter.State.Variables[varB] = valB;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[5] = 6;
-        interpreter.State.Variables[10] = 5;
-        interpreter.State.Variables[15] = 70;
-        kernel.RIndirect(15, 10);
-        interpreter.State.Variables[15].Should().Be(6);
+        // Act
+        ((IKernel)interpreter).RIndirect(varA, varB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void LIndirectN()
+    [Theory]
+    [InlineData(10, 5, 6, 80, 80)]
+    public void LIndirectN(byte varA, byte valA, byte valValA, byte numB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[valA] = valValA;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[5] = 6;
-        interpreter.State.Variables[10] = 5;
-        kernel.LIndirectN(10, 80);
-        interpreter.State.Variables[5].Should().Be(80);
+        // Act
+        ((IKernel)interpreter).LIndirectN(varA, numB);
+
+        // Assert
+        interpreter.State.Variables[valA].Should().Be(expected);
     }
 
-    [Fact]
-    public void Set()
+    [Theory]
+    [InlineData(23, false)]
+    [InlineData(23, true)]
+    public void Set(byte varA, bool valA)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Flags[varA] = valA;
 
-        interpreter.State.Flags[23] = false;
-        kernel.Set(23);
-        interpreter.State.Flags[23].Should().BeTrue();
+        // Act
+        ((IKernel)interpreter).Set(varA);
+
+        // Assert
+        interpreter.State.Flags[varA].Should().BeTrue();
     }
 
-    [Fact]
-    public void Reset()
+    [Theory]
+    [InlineData(23, false)]
+    [InlineData(23, true)]
+    public void Reset(byte varA, bool valA)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Flags[varA] = valA;
 
-        interpreter.State.Flags[23] = true;
-        kernel.Reset(23);
-        interpreter.State.Flags[23].Should().BeFalse();
+        // Act
+        ((IKernel)interpreter).Reset(varA);
+
+        // Assert
+        interpreter.State.Flags[varA].Should().BeFalse();
     }
 
-    [Fact]
-    public void Toggle()
+    [Theory]
+    [InlineData(23, false, true)]
+    [InlineData(23, true, false)]
+    public void Toggle(byte varA, bool valA, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Flags[varA] = valA;
 
-        interpreter.State.Flags[23] = true;
-        kernel.Toggle(23);
-        interpreter.State.Flags[23].Should().BeFalse();
-        kernel.Toggle(23);
-        interpreter.State.Flags[23].Should().BeTrue();
+        // Act
+        ((IKernel)interpreter).Toggle(varA);
+
+        // Assert
+        interpreter.State.Flags[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void SetV()
+    [Theory]
+    [InlineData(5, 23, false)]
+    [InlineData(5, 23, true)]
+    public void SetV(byte varA, byte valA, bool valValA)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Flags[valA] = valValA;
 
-        interpreter.State.Variables[5] = 23;
-        interpreter.State.Flags[23] = false;
-        kernel.SetV(5);
-        interpreter.State.Flags[23].Should().BeTrue();
+        // Act
+        ((IKernel)interpreter).SetV(varA);
+
+        // Assert
+        interpreter.State.Flags[valA].Should().BeTrue();
     }
 
-    [Fact]
-    public void ResetV()
+    [Theory]
+    [InlineData(5, 23, false)]
+    [InlineData(5, 23, true)]
+    public void ResetV(byte varA, byte valA, bool valValA)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Flags[valA] = valValA;
 
-        interpreter.State.Variables[5] = 23;
-        interpreter.State.Flags[23] = true;
-        kernel.ResetV(5);
-        interpreter.State.Flags[23].Should().BeFalse();
+        // Act
+        ((IKernel)interpreter).ResetV(varA);
+
+        // Assert
+        interpreter.State.Flags[valA].Should().BeFalse();
     }
 
-    [Fact]
-    public void ToggleV()
+    [Theory]
+    [InlineData(5, 23, false, true)]
+    [InlineData(5, 23, true, false)]
+    public void ToggleV(byte varA, byte valA, bool valValA, bool expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Flags[valA] = valValA;
 
-        interpreter.State.Variables[5] = 23;
-        interpreter.State.Flags[23] = true;
-        kernel.ToggleV(5);
-        interpreter.State.Flags[23].Should().BeFalse();
-        kernel.ToggleV(5);
-        interpreter.State.Flags[23].Should().BeTrue();
+        // Act
+        ((IKernel)interpreter).ToggleV(varA);
+
+        // Assert
+        interpreter.State.Flags[valA].Should().Be(expected);
     }
 
     [Fact(Skip = TestNotImplemented)]
@@ -574,55 +661,57 @@ public class KernelUnitTest
     [Fact]
     public void SetView()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        // Arrange
+        var viewResource = CreateTestViewResource(60);
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
+            .WithView(viewResource)
+            .Build();
 
-        var resource = CreateTestViewResource(60);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.ViewResources.Add(resource);
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Act
+        ((IKernel)interpreter).SetView(0, 60);
 
-        kernel.SetView(0, 60);
-
+        // Assert
         var view = interpreter.ObjectTable.GetAt(0);
-        view.ViewResource.Should().BeSameAs(resource);
+        view.ViewResource.Should().BeSameAs(viewResource);
     }
 
     [Fact]
     public void SetViewV()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
+        // Arrange
+        var viewResource = CreateTestViewResource(60);
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
+            .WithView(viewResource)
+            .Build();
         interpreter.State.Variables[25] = 60;
-        var resource = CreateTestViewResource(60);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.ViewResources.Add(resource);
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
 
-        kernel.SetViewV(0, 25);
+        // Act
+        ((IKernel)interpreter).SetViewV(0, 25);
 
+        // Assert
         var view = interpreter.ObjectTable.GetAt(0);
-        view.ViewResource.Should().BeSameAs(resource);
+        view.ViewResource.Should().BeSameAs(viewResource);
     }
 
     [Fact]
     public void SetLoop()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Arrange
+        var viewResource = CreateTestViewResource(60);
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
+            .WithView(viewResource)
+            .Build();
         var view = interpreter.ObjectTable.GetAt(0);
-        var resource = CreateTestViewResource(60);
-        view.LoopTotal = (byte)resource.Loops.Length;
-        view.ViewResource = resource;
+        view.LoopTotal = (byte)viewResource.Loops.Length;
+        view.ViewResource = viewResource;
 
-        kernel.SetLoop(0, 2);
+        // Act
+        ((IKernel)interpreter).SetLoop(0, 2);
 
+        // Assert
         view.LoopCur.Should().Be(2);
         view.CelTotal.Should().Be(1);
     }
@@ -630,19 +719,21 @@ public class KernelUnitTest
     [Fact]
     public void SetLoopV()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        interpreter.State.Variables[25] = 2;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Arrange
+        var viewResource = CreateTestViewResource(60);
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
+            .WithView(viewResource)
+            .Build();
         var view = interpreter.ObjectTable.GetAt(0);
-        var resource = CreateTestViewResource(60);
-        view.LoopTotal = (byte)resource.Loops.Length;
-        view.ViewResource = resource;
+        view.LoopTotal = (byte)viewResource.Loops.Length;
+        view.ViewResource = viewResource;
+        interpreter.State.Variables[25] = 2;
 
-        kernel.SetLoopV(0, 25);
+        // Act
+        ((IKernel)interpreter).SetLoopV(0, 25);
 
+        // Assert
         view.LoopCur.Should().Be(2);
         view.CelTotal.Should().Be(1);
     }
@@ -650,26 +741,34 @@ public class KernelUnitTest
     [Fact]
     public void FixLoop()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        interpreter.ObjectTable = new ViewObjectTable(1);
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
+            .Build();
         var view = interpreter.ObjectTable.GetAt(0);
         view.Flags = 0;
-        kernel.FixLoop(0);
+
+        // Act
+        ((IKernel)interpreter).FixLoop(0);
+
+        // Assert
         (view.Flags & ViewObjectFlags.LoopFixed).Should().NotBe(0);
     }
 
     [Fact]
     public void ReleaseLoop()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        interpreter.ObjectTable = new ViewObjectTable(1);
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
+            .Build();
         var view = interpreter.ObjectTable.GetAt(0);
         view.Flags = ViewObjectFlags.LoopFixed;
-        kernel.ReleaseLoop(0);
+
+        // Act
+        ((IKernel)interpreter).ReleaseLoop(0);
+
+        // Assert
         (view.Flags & ViewObjectFlags.LoopFixed).Should().Be(0);
     }
 
@@ -891,11 +990,14 @@ public class KernelUnitTest
     [Fact]
     public void Block()
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
         interpreter.State.BlockIsSet = false;
-        kernel.Block(1, 2, 20, 10);
+
+        // Act
+        ((IKernel)interpreter).Block(1, 2, 20, 10);
+
+        // Assert
         interpreter.State.BlockIsSet.Should().BeTrue();
         interpreter.State.BlockX1.Should().Be(1);
         interpreter.State.BlockY1.Should().Be(2);
@@ -906,123 +1008,132 @@ public class KernelUnitTest
     [Fact]
     public void Unblock()
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
         interpreter.State.BlockIsSet = true;
-        kernel.Unblock();
+
+        // Act
+        ((IKernel)interpreter).Unblock();
+
+        // Assert
         interpreter.State.BlockIsSet.Should().BeFalse();
     }
 
     [Fact]
     public void Get()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv
+                .WithItem("key", 50)
+                .WithItem("flower", 60)
+                .WithMaxAnimatedObjects(2))
+            .Build();
 
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.InventoryResource = resource;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Act
+        ((IKernel)interpreter).Get(1);
 
-        kernel.Get(1);
-
-        resource.Items[0].Location.Should().Be(50);
-        resource.Items[1].Location.Should().Be(0xff);
+        // Assert
+        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(0xff);
     }
 
     [Fact]
     public void GetV()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.InventoryResource = resource;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv
+                .WithItem("key", 50)
+                .WithItem("flower", 60)
+                .WithMaxAnimatedObjects(2))
+            .Build();
         interpreter.State.Variables[5] = 1;
 
-        kernel.GetV(5);
+        // Act
+        ((IKernel)interpreter).GetV(5);
 
-        resource.Items[0].Location.Should().Be(50);
-        resource.Items[1].Location.Should().Be(0xff);
+        // Assert
+        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(0xff);
     }
 
     [Fact]
     public void Drop()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv
+                .WithItem("key", 50)
+                .WithItem("flower", 60)
+                .WithMaxAnimatedObjects(2))
+            .Build();
 
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.InventoryResource = resource;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Act
+        ((IKernel)interpreter).Drop(1);
 
-        kernel.Drop(1);
-
-        resource.Items[0].Location.Should().Be(50);
-        resource.Items[1].Location.Should().Be(0x00);
+        // Assert
+        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(0x00);
     }
 
     [Fact]
     public void Put()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv
+                .WithItem("key", 50)
+                .WithItem("flower", 60)
+                .WithMaxAnimatedObjects(2))
+            .Build();
 
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.InventoryResource = resource;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Act
+        ((IKernel)interpreter).Put(1, 61);
 
-        kernel.Put(1, 61);
-
-        resource.Items[0].Location.Should().Be(50);
-        resource.Items[1].Location.Should().Be(61);
+        // Assert
+        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(61);
     }
 
     [Fact]
     public void PutV()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.InventoryResource = resource;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv
+                .WithItem("key", 50)
+                .WithItem("flower", 60)
+                .WithMaxAnimatedObjects(2))
+            .Build();
         interpreter.State.Variables[8] = 1;
         interpreter.State.Variables[9] = 61;
 
-        kernel.PutV(8, 9);
+        // Act
+        ((IKernel)interpreter).PutV(8, 9);
 
-        resource.Items[0].Location.Should().Be(50);
-        resource.Items[1].Location.Should().Be(61);
+        // Assert
+        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(61);
     }
 
     [Fact]
     public void GetRoomV()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.InventoryResource = resource;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInventory(inv => inv
+                .WithItem("key", 50)
+                .WithItem("flower", 60)
+                .WithMaxAnimatedObjects(2))
+            .Build();
         interpreter.State.Variables[8] = 1;
         interpreter.State.Variables[9] = 61;
 
-        kernel.GetRoomV(8, 9);
+        // Act
+        ((IKernel)interpreter).GetRoomV(8, 9);
 
+        // Assert
         interpreter.State.Variables[9].Should().Be(60);
     }
 
@@ -1124,18 +1235,19 @@ public class KernelUnitTest
     [Fact]
     public void Parse()
     {
-        var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
-        var vocabulary = new VocabularyResource([new(40, "get"), new(50, "key"), new(60, "flower")]);
-        interpreter.ResourceManager = new ResourceManager();
-        interpreter.ResourceManager.VocabularyResource = vocabulary;
-        interpreter.ObjectTable = new ViewObjectTable(1);
-        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithVocabulary(vocab => vocab
+                .WithFamily(40, "get")
+                .WithFamily(50, "key")
+                .WithFamily(60, "flower"))
+            .Build();
         interpreter.State.Strings[0] = "get flower";
 
-        kernel.Parse(0);
+        // Act
+        ((IKernel)interpreter).Parse(0);
 
+        // Assert
         interpreter.State.Flags[Flags.PlayerCommandLine].Should().Be(true);
         interpreter.State.Flags[Flags.SaidAccepted].Should().Be(false);
         interpreter.ParserResults.Should().HaveCount(2);
@@ -1378,52 +1490,68 @@ public class KernelUnitTest
     {
     }
 
-    [Fact]
-    public void MulN()
+    [Theory]
+    [InlineData(23, 5, 7, 35)]
+    public void MulN(byte varA, byte valA, byte numB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 5;
-        kernel.MulN(23, 7);
-        interpreter.State.Variables[23].Should().Be(35);
+        // Act
+        ((IKernel)interpreter).MulN(varA, numB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void MulV()
+    [Theory]
+    [InlineData(23, 5, 22, 7, 35)]
+    public void MulV(byte varA, byte valA, byte varB, byte valB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[23] = 5;
-        interpreter.State.Variables[22] = 7;
-        kernel.MulV(23, 22);
-        interpreter.State.Variables[23].Should().Be(35);
-        interpreter.State.Variables[22].Should().Be(7);
+        // Act
+        ((IKernel)interpreter).MulV(varA, varB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
+        interpreter.State.Variables[varB].Should().Be(valB);
     }
 
-    [Fact]
-    public void DivN()
+    [Theory]
+    [InlineData(23, 24, 6, 4)]
+    public void DivN(byte varA, byte valA, byte numB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
 
-        interpreter.State.Variables[23] = 24;
-        kernel.DivN(23, 6);
-        interpreter.State.Variables[23].Should().Be(4);
+        // Act
+        ((IKernel)interpreter).DivN(varA, numB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
     }
 
-    [Fact]
-    public void DivV()
+    [Theory]
+    [InlineData(23, 24, 22, 6, 4)]
+    public void DivV(byte varA, byte valA, byte varB, byte valB, byte expected)
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
+        interpreter.State.Variables[varA] = valA;
+        interpreter.State.Variables[varB] = valB;
 
-        interpreter.State.Variables[23] = 24;
-        interpreter.State.Variables[22] = 6;
-        kernel.DivV(23, 22);
-        interpreter.State.Variables[23].Should().Be(4);
-        interpreter.State.Variables[22].Should().Be(6);
+        // Act
+        ((IKernel)interpreter).DivV(varA, varB);
+
+        // Assert
+        interpreter.State.Variables[varA].Should().Be(expected);
+        interpreter.State.Variables[varB].Should().Be(valB);
     }
 
     [Fact(Skip = TestNotImplemented)]
@@ -1454,22 +1582,28 @@ public class KernelUnitTest
     [Fact]
     public void HoldKey()
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
         interpreter.State.WalkMode = WalkMode.ReleaseKey;
-        kernel.HoldKey();
+
+        // Act
+        ((IKernel)interpreter).HoldKey();
+
+        // Assert
         interpreter.State.WalkMode.Should().Be(WalkMode.HoldKey);
     }
 
     [Fact]
     public void SetPriBase()
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
         interpreter.PriorityTable = new PriorityTable();
-        kernel.SetPriBase(6);
+
+        // Act
+        ((IKernel)interpreter).SetPriBase(6);
+
+        // Assert
         interpreter.PriorityTable.GetPriorityAt(0).Should().Be(4);
         interpreter.PriorityTable.GetPriorityAt(5).Should().Be(4);
         interpreter.PriorityTable.GetPriorityAt(6).Should().Be(5);
@@ -1508,11 +1642,14 @@ public class KernelUnitTest
     [Fact]
     public void ReleaseKey()
     {
+        // Arrange
         var interpreter = new InterpreterBuilder().Build();
-        var kernel = (IKernel)interpreter;
-
         interpreter.State.WalkMode = WalkMode.HoldKey;
-        kernel.ReleaseKey();
+
+        // Act
+        ((IKernel)interpreter).ReleaseKey();
+
+        // Assert
         interpreter.State.WalkMode.Should().Be(WalkMode.ReleaseKey);
     }
 
