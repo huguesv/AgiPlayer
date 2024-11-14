@@ -10,36 +10,55 @@ public class StringUtilityUnitTest
     [Fact]
     public void Reverse()
     {
+        // Arrange
         var input = "Hello";
 
+        // Act
         var output = StringUtility.Reverse(input);
+
+        // Assert
         output.Should().Be("olleH");
     }
 
     [Fact]
     public void NumberToString()
     {
+        // Arrange
         var input = 45;
 
+        // Act
         var output = StringUtility.NumberToString(input);
+
+        // Assert
         output.Should().Be("45");
     }
 
     [Fact]
     public void NumberToHexString()
     {
+        // Arrange
         var input = 45;
 
+        // Act
         var output = StringUtility.NumberToHexString(input);
+
+        // Assert
         output.Should().Be("2D");
     }
 
-    [Fact]
-    public void PadWithZeros()
+    [Theory]
+    [InlineData("45", 0, "45")]
+    [InlineData("45", 1, "45")]
+    [InlineData("45", 2, "45")]
+    [InlineData("45", 3, "045")]
+    [InlineData("45", 4, "0045")]
+    [InlineData("45", 5, "00045")]
+    public void PadWithZeros(string input, int size, string expected)
     {
-        var input = "45";
+        // Act
+        var output = StringUtility.PadWithZeros(input, size);
 
-        var output = StringUtility.PadWithZeros(input, 5);
-        output.Should().Be("00045");
+        // Assert
+        output.Should().Be(expected);
     }
 }

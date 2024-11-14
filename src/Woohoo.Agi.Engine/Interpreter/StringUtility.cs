@@ -71,7 +71,7 @@ public static class StringUtility
         ArgumentNullException.ThrowIfNull(text);
 
         StringBuilder builder = new StringBuilder();
-        builder.Append('0', paddingSize - text.Length);
+        builder.Append('0', Math.Max(0, paddingSize - text.Length));
         builder.Append(text);
 
         return builder.ToString();

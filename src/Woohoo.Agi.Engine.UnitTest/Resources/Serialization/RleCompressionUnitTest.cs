@@ -7,26 +7,24 @@ using Woohoo.Agi.Engine.Resources.Serialization;
 
 public class RleCompressionUnitTest
 {
-    private readonly byte[] uncompressed00 = [0, 0, 5, 1, 2, 3, 1, 2, 3, 5, 0, 0];
-    private readonly byte[] compressed00 = [0x02, 0x51, 0x11, 0x21, 0x31, 0x00, 0x11, 0x21, 0x31, 0x51, 0x00];
-
     [Fact]
     public void DecompressNull()
     {
+        // Act
         Action act = () => RleCompression.Decompress(null, 0, 1, 1, 0);
 
+        // Assert
         act.Should().Throw<ArgumentNullException>();
     }
 
-    [Fact]
-    public void Decompress00()
+    [Theory]
+    [InlineData(6, 2, 0, new byte[] { 0x02, 0x51, 0x11, 0x21, 0x31, 0x00, 0x11, 0x21, 0x31, 0x51, 0x00 }, new byte[] { 0, 0, 5, 1, 2, 3, 1, 2, 3, 5, 0, 0 })]
+    public void Decompress(int width, int height, byte transparentColor, byte[] compressed, byte[] expected)
     {
-        Decompress(this.compressed00, this.uncompressed00, 6, 2, 0);
-    }
-
-    private static void Decompress(byte[] compressed, byte[] expected, int width, int height, byte transparentColor)
-    {
+        // Act
         var uncompressed = RleCompression.Decompress(compressed, 0, width, height, transparentColor);
+
+        // Assert
         uncompressed.Should().BeEquivalentTo(expected);
     }
 }

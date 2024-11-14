@@ -12,98 +12,86 @@ public class ParserUnitTest
     [Fact]
     public void CreateNullVocabulary()
     {
+        // Act
         Action act = () => _ = new Parser(null);
 
+        // Assert
         act.Should().Throw<ArgumentNullException>();
     }
 
     [Fact]
     public void ParseNullText()
     {
-        var resource = CreateEmptyVocabulary();
+        // Arrange
+        var resource = new VocabularyBuilder().Build();
         var parser = new Parser(resource);
 
+        // Act
         Action act = () => parser.Parse(null);
 
+        // Assert
         act.Should().Throw<ArgumentNullException>();
     }
 
-    [Fact]
-    public void ParseSimpleWordEmptyVocabulary()
+    [Theory]
+    [InlineData("get")]
+    [InlineData("key")]
+    public void ParseEmptyVocabulary(string text)
     {
-        var resource = CreateEmptyVocabulary();
+        // Arrange
+        var resource = new VocabularyBuilder().Build();
         var parser = new Parser(resource);
 
-        var actual = parser.Parse("get");
-        var expected = new ParserResult[] { new("get", VocabularyResource.NoFamily) };
+        // Act
+        var actual = parser.Parse(text);
+
+        // Assert
+        var expected = new ParserResult[] { new(text, VocabularyResource.NoFamily) };
         actual.Should().BeEquivalentTo(expected);
     }
 
-    [Fact]
-    public void ParseSimpleWordsSimpleVocabulary()
+    [Theory]
+    [InlineData("get key")]
+    [InlineData("get,key")]
+    [InlineData("ge-t key")]
+    public void ParseSimpleVocabulary(string text)
     {
-        var resource = CreateSimpleVocabulary();
-        var parser = new Parser(resource);
-
-        var actual = parser.Parse("get key");
-        var expected = new ParserResult[] { new("get", 50), new("key", 51) };
-        actual.Should().BeEquivalentTo(expected);
-    }
-
-    [Fact]
-    public void ParseSeparatorsSimpleVocabulary()
-    {
-        var resource = CreateSimpleVocabulary();
-        var parser = new Parser(resource);
-
-        var actual = parser.Parse("get,key");
-        var expected = new ParserResult[] { new("get", 50), new("key", 51) };
-        actual.Should().BeEquivalentTo(expected);
-    }
-
-    [Fact]
-    public void ParseIllegalSeparatorsSimpleVocabulary()
-    {
-        var resource = CreateSimpleVocabulary();
-        var parser = new Parser(resource);
-
-        var actual = parser.Parse("ge-t key");
-        var expected = new ParserResult[] { new("get", 50), new("key", 51) };
-        actual.Should().BeEquivalentTo(expected);
-    }
-
-    [Fact]
-    public void ParseComplexWordsComplexVocabulary()
-    {
-        var resource = CreateComplexVocabulary();
-        var parser = new Parser(resource);
-
-        var actual = parser.Parse("get the blue key");
-        var expected = new ParserResult[] { new("get", 50), new("blue key", 53) };
-        actual.Should().BeEquivalentTo(expected);
-    }
-
-    private static VocabularyResource CreateEmptyVocabulary()
-    {
-        return new VocabularyBuilder().Build();
-    }
-
-    private static VocabularyResource CreateSimpleVocabulary()
-    {
-        return new VocabularyBuilder()
+        // Arrange
+        var resource = new VocabularyBuilder()
             .WithFamily(50, "get")
             .WithFamily(51, "key")
             .Build();
+        var parser = new Parser(resource);
+
+        // Act
+        var actual = parser.Parse(text);
+
+        // Assert
+        var expected = new ParserResult[] { new("get", 50), new("key", 51) };
+        actual.Should().BeEquivalentTo(expected);
     }
 
-    private static VocabularyResource CreateComplexVocabulary()
+    [Theory]
+    [InlineData("get the blue key")]
+    [InlineData("get this blue key")]
+    [InlineData("get blue key")]
+    public void ParseComplexVocabulary(string text)
     {
-        return new VocabularyBuilder()
+        // Arrange
+        var resource = new VocabularyBuilder()
             .WithFamily(50, "get")
             .WithFamily(51, "blue")
             .WithFamily(52, "key")
             .WithFamily(53, "blue key")
             .WithFamily(0, "a", "an", "the", "this")
             .Build();
+        var parser = new Parser(resource);
+
+        // Act
+        var actual = parser.Parse(text);
+
+        // Assert
+        var expected = new ParserResult[] { new("get", 50), new("blue key", 53) };
+        actual.Should().BeEquivalentTo(expected);
     }
 }

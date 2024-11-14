@@ -7,44 +7,26 @@ using Woohoo.Agi.Engine.Resources.Serialization;
 
 public class PictureCompressionUnitTest
 {
-    private readonly byte[] uncompressed00 = [0xF0, 0x06];
-    private readonly byte[] compressed00 = [0xF0, 0x60];
-
-    private readonly byte[] uncompressed01 = [0xF0, 0x06, 0xF8, 0x12, 0x45, 0xF0, 0x07, 0xF2, 0x05, 0xF8, 0x14, 0x67];
-    private readonly byte[] compressed01 = [0xF0, 0x6F, 0x81, 0x24, 0x5F, 0x07, 0xF2, 0x5F, 0x81, 0x46, 0x70];
-
-    private readonly byte[] uncompressed02 = [0xF8, 0x12, 0x45];
-    private readonly byte[] compressed02 = [0xF8, 0x12, 0x45];
-
     [Fact]
     public void DecompressNull()
     {
+        // Act
         Action act = () => PictureCompression.Decompress(null, 0, 0, 0);
 
+        // Assert
         act.Should().Throw<ArgumentNullException>();
     }
 
-    [Fact]
-    public void Decompress00()
+    [Theory]
+    [InlineData(new byte[] { 0xF0, 0x60 }, new byte[] { 0xF0, 0x06 })]
+    [InlineData(new byte[] { 0xF0, 0x6F, 0x81, 0x24, 0x5F, 0x07, 0xF2, 0x5F, 0x81, 0x46, 0x70 }, new byte[] { 0xF0, 0x06, 0xF8, 0x12, 0x45, 0xF0, 0x07, 0xF2, 0x05, 0xF8, 0x14, 0x67 })]
+    [InlineData(new byte[] { 0xF8, 0x12, 0x45 }, new byte[] { 0xF8, 0x12, 0x45 })]
+    public void Decompress(byte[] compressed, byte[] expected)
     {
-        Decompress(this.compressed00, this.uncompressed00);
-    }
-
-    [Fact]
-    public void Decompress01()
-    {
-        Decompress(this.compressed01, this.uncompressed01);
-    }
-
-    [Fact]
-    public void Decompress02()
-    {
-        Decompress(this.compressed02, this.uncompressed02);
-    }
-
-    private static void Decompress(byte[] compressed, byte[] expected)
-    {
+        // Act
         var uncompressed = PictureCompression.Decompress(compressed, 0, compressed.Length, expected.Length);
+
+        // Assert
         uncompressed.Should().BeEquivalentTo(expected);
     }
 }
