@@ -4,7 +4,6 @@
 namespace Woohoo.Agi.Engine.UnitTest.Interpreter;
 
 using Woohoo.Agi.Engine.Interpreter;
-using Woohoo.Agi.Engine.Resources;
 using Woohoo.Agi.Engine.UnitTest.Infrastructure;
 
 public class KernelUnitTest
@@ -662,7 +661,10 @@ public class KernelUnitTest
     public void SetView()
     {
         // Arrange
-        var viewResource = CreateTestViewResource(60);
+        var viewResource = new ViewResourceBuilder()
+            .WithIndex(60)
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .Build();
         var interpreter = new InterpreterBuilder()
             .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
             .WithView(viewResource)
@@ -680,7 +682,10 @@ public class KernelUnitTest
     public void SetViewV()
     {
         // Arrange
-        var viewResource = CreateTestViewResource(60);
+        var viewResource = new ViewResourceBuilder()
+            .WithIndex(60)
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .Build();
         var interpreter = new InterpreterBuilder()
             .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
             .WithView(viewResource)
@@ -699,7 +704,13 @@ public class KernelUnitTest
     public void SetLoop()
     {
         // Arrange
-        var viewResource = CreateTestViewResource(60);
+        var viewResource = new ViewResourceBuilder()
+            .WithIndex(60)
+            .WithDescription("key")
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .Build();
         var interpreter = new InterpreterBuilder()
             .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
             .WithView(viewResource)
@@ -720,7 +731,13 @@ public class KernelUnitTest
     public void SetLoopV()
     {
         // Arrange
-        var viewResource = CreateTestViewResource(60);
+        var viewResource = new ViewResourceBuilder()
+            .WithIndex(60)
+            .WithDescription("key")
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
+            .Build();
         var interpreter = new InterpreterBuilder()
             .WithInventory(inv => inv.WithMaxAnimatedObjects(1))
             .WithView(viewResource)
@@ -1656,16 +1673,5 @@ public class KernelUnitTest
     [Fact(Skip = TestNotImplemented)]
     public void AdjEgoMoveToXY()
     {
-    }
-
-    private static ViewResource CreateTestViewResource(byte resourceIndex)
-    {
-        return new ViewResourceBuilder()
-            .WithIndex(resourceIndex)
-            .WithDescription("key")
-            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
-            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
-            .WithLoop(l => l.WithCel(c => c.WithSize(4, 8).WithRandomPixels()))
-            .Build();
     }
 }
