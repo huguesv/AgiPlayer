@@ -5,10 +5,9 @@ namespace Woohoo.Agi.Engine.UnitTest.Interpreter;
 
 using Woohoo.Agi.Engine.Interpreter;
 
-[TestClass]
 public class PriorityTableUnitTest
 {
-    [TestMethod]
+    [Fact]
     public void CreateDefault()
     {
         var table = new PriorityTable();
@@ -43,7 +42,7 @@ public class PriorityTableUnitTest
         table.GetPriorityAt(167).Should().Be(14);
     }
 
-    [TestMethod]
+    [Fact]
     public void SetBasePriority()
     {
         var table = new PriorityTable();

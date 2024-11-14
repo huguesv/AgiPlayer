@@ -6,10 +6,9 @@ namespace Woohoo.Agi.Engine.UnitTest.Interpreter;
 using Woohoo.Agi.Engine.Interpreter;
 using Woohoo.Agi.Engine.Resources;
 
-[TestClass]
 public class ResourceManagerUnitTest
 {
-    [TestMethod]
+    [Fact]
     public void FindExistingLogic()
     {
         var mgr = new ResourceManager();
@@ -19,7 +18,7 @@ public class ResourceManagerUnitTest
         resource.Should().NotBeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void FindNonExistingLogic()
     {
         var mgr = new ResourceManager();
@@ -29,7 +28,7 @@ public class ResourceManagerUnitTest
         resource.Should().BeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void FindExistingPicture()
     {
         var mgr = new ResourceManager();
@@ -39,7 +38,7 @@ public class ResourceManagerUnitTest
         resource.Should().NotBeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void FindNonExistingPicture()
     {
         var mgr = new ResourceManager();
@@ -49,7 +48,7 @@ public class ResourceManagerUnitTest
         resource.Should().BeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void FindExistingSound()
     {
         var mgr = new ResourceManager();
@@ -59,7 +58,7 @@ public class ResourceManagerUnitTest
         resource.Should().NotBeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void FindNonExistingSound()
     {
         var mgr = new ResourceManager();
@@ -69,7 +68,7 @@ public class ResourceManagerUnitTest
         resource.Should().BeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void FindExistingView()
     {
         var mgr = new ResourceManager();
@@ -79,7 +78,7 @@ public class ResourceManagerUnitTest
         resource.Should().NotBeNull();
     }
 
-    [TestMethod]
+    [Fact]
     public void FindNonExistingView()
     {
         var mgr = new ResourceManager();

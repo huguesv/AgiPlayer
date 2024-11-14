@@ -5,7 +5,6 @@ namespace Woohoo.Agi.Engine.UnitTest.Resources.Serialization;
 
 using Woohoo.Agi.Engine.Resources.Serialization;
 
-[TestClass]
 public class XorTransformUnitTest
 {
     // The key is the string "Avis Durgan"
@@ -14,7 +13,7 @@ public class XorTransformUnitTest
     private readonly byte[] unencrypted00 = [0, 0, 5, 1, 2, 3, 1, 2, 3, 5, 0, 0];
     private readonly byte[] encrypted00 = [0x41, 0x76, 0x6c, 0x72, 0x22, 0x47, 0x74, 0x70, 0x64, 0x64, 0x6e, 0x41];
 
-    [TestMethod]
+    [Fact]
     public void DecryptNull()
     {
         var transform = new XorTransform(this.key);
@@ -24,7 +23,7 @@ public class XorTransformUnitTest
         act.Should().Throw<ArgumentNullException>();
     }
 
-    [TestMethod]
+    [Fact]
     public void Decrypt00()
     {
         Decrypt(this.encrypted00, this.unencrypted00, this.key);

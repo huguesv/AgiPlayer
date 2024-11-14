@@ -7,166 +7,178 @@ using Woohoo.Agi.Engine.Interpreter;
 using Woohoo.Agi.Engine.Resources;
 using Woohoo.Agi.Engine.UnitTest.Infrastructure;
 
-[TestClass]
 public class KernelUnitTest
 {
     private const string TestNotImplemented = "Test not implemented.";
 
-    private AgiInterpreter interpreter;
-    private IKernel kernel;
-
-    [TestInitialize]
-    public void CreateKernel()
-    {
-        this.interpreter = new AgiInterpreter(null, null, null);
-        this.interpreter.CreateState();
-        this.kernel = this.interpreter;
-    }
-
-    [TestMethod]
+    [Fact]
     public void EqualN()
     {
-        this.interpreter.State.Variables[23] = 0;
-        this.kernel.EqualN(23, 0).Should().BeTrue();
-        this.kernel.EqualN(23, 5).Should().BeFalse();
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.EqualN(23, 5).Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 0;
+        kernel.EqualN(23, 0).Should().BeTrue();
+        kernel.EqualN(23, 5).Should().BeFalse();
+        interpreter.State.Variables[23] = 5;
+        kernel.EqualN(23, 5).Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void EqualV()
     {
-        this.interpreter.State.Variables[22] = 0;
-        this.interpreter.State.Variables[23] = 0;
-        this.kernel.EqualV(23, 22).Should().BeTrue();
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.EqualV(23, 22).Should().BeFalse();
-        this.interpreter.State.Variables[22] = 5;
-        this.kernel.EqualV(23, 22).Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[22] = 0;
+        interpreter.State.Variables[23] = 0;
+        kernel.EqualV(23, 22).Should().BeTrue();
+        interpreter.State.Variables[23] = 5;
+        kernel.EqualV(23, 22).Should().BeFalse();
+        interpreter.State.Variables[22] = 5;
+        kernel.EqualV(23, 22).Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void LessN()
     {
-        this.interpreter.State.Variables[23] = 0;
-        this.kernel.LessN(23, 5).Should().BeTrue();
-        this.kernel.LessN(23, 0).Should().BeFalse();
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.LessN(23, 4).Should().BeFalse();
-        this.kernel.LessN(23, 6).Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 0;
+        kernel.LessN(23, 5).Should().BeTrue();
+        kernel.LessN(23, 0).Should().BeFalse();
+        interpreter.State.Variables[23] = 5;
+        kernel.LessN(23, 4).Should().BeFalse();
+        kernel.LessN(23, 6).Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void LessV()
     {
-        this.interpreter.State.Variables[22] = 0;
-        this.interpreter.State.Variables[23] = 0;
-        this.kernel.LessV(23, 22).Should().BeFalse();
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.LessV(23, 22).Should().BeFalse();
-        this.interpreter.State.Variables[22] = 10;
-        this.kernel.LessV(23, 22).Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[22] = 0;
+        interpreter.State.Variables[23] = 0;
+        kernel.LessV(23, 22).Should().BeFalse();
+        interpreter.State.Variables[23] = 5;
+        kernel.LessV(23, 22).Should().BeFalse();
+        interpreter.State.Variables[22] = 10;
+        kernel.LessV(23, 22).Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void GreaterN()
     {
-        this.interpreter.State.Variables[23] = 0;
-        this.kernel.GreaterN(23, 5).Should().BeFalse();
-        this.kernel.GreaterN(23, 0).Should().BeFalse();
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.GreaterN(23, 4).Should().BeTrue();
-        this.kernel.GreaterN(23, 6).Should().BeFalse();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 0;
+        kernel.GreaterN(23, 5).Should().BeFalse();
+        kernel.GreaterN(23, 0).Should().BeFalse();
+        interpreter.State.Variables[23] = 5;
+        kernel.GreaterN(23, 4).Should().BeTrue();
+        kernel.GreaterN(23, 6).Should().BeFalse();
     }
 
-    [TestMethod]
+    [Fact]
     public void GreaterV()
     {
-        this.interpreter.State.Variables[22] = 0;
-        this.interpreter.State.Variables[23] = 0;
-        this.kernel.GreaterV(23, 22).Should().BeFalse();
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.GreaterV(23, 22).Should().BeTrue();
-        this.interpreter.State.Variables[22] = 10;
-        this.kernel.GreaterV(23, 22).Should().BeFalse();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[22] = 0;
+        interpreter.State.Variables[23] = 0;
+        kernel.GreaterV(23, 22).Should().BeFalse();
+        interpreter.State.Variables[23] = 5;
+        kernel.GreaterV(23, 22).Should().BeTrue();
+        interpreter.State.Variables[22] = 10;
+        kernel.GreaterV(23, 22).Should().BeFalse();
     }
 
-    [TestMethod]
+    [Fact]
     public void IsSet()
     {
-        this.interpreter.State.Flags[23] = false;
-        this.kernel.IsSet(23).Should().BeFalse();
-        this.interpreter.State.Flags[23] = true;
-        this.kernel.IsSet(23).Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Flags[23] = false;
+        kernel.IsSet(23).Should().BeFalse();
+        interpreter.State.Flags[23] = true;
+        kernel.IsSet(23).Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void IsSetV()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.interpreter.State.Flags[5] = false;
-        this.kernel.IsSetV(23).Should().BeFalse();
-        this.interpreter.State.Flags[5] = true;
-        this.kernel.IsSetV(23).Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        interpreter.State.Flags[5] = false;
+        kernel.IsSetV(23).Should().BeFalse();
+        interpreter.State.Flags[5] = true;
+        kernel.IsSetV(23).Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void Has()
     {
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
         var items = new InventoryItem[]
         {
             new("key", 255),
             new("pen", 20),
         };
         var resource = new InventoryResource(items, 1);
-        this.interpreter.ResourceManager = new ResourceManager
+        interpreter.ResourceManager = new ResourceManager
         {
             InventoryResource = resource,
         };
 
-        this.kernel.Has(0).Should().BeTrue();
-        this.kernel.Has(1).Should().BeFalse();
+        kernel.Has(0).Should().BeTrue();
+        kernel.Has(1).Should().BeFalse();
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PosN()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CenterPosN()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void RightPosN()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObjInBox()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Controller()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObjInRoom()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void Said()
     {
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
         var families = new VocabularyWordFamily[]
         {
             new(0, "a", "the"),
@@ -175,1358 +187,1336 @@ public class KernelUnitTest
             new(3, "box"),
         };
         var vocabulary = new VocabularyResource(families);
-        this.interpreter.ResourceManager = new ResourceManager
+        interpreter.ResourceManager = new ResourceManager
         {
             VocabularyResource = vocabulary,
         };
 
-        this.interpreter.State.Flags[Flags.SaidAccepted] = false;
-        this.interpreter.ParseText("get key");
-        this.kernel.Said([1, 2]);
-        this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
+        interpreter.State.Flags[Flags.SaidAccepted] = false;
+        interpreter.ParseText("get key");
+        kernel.Said([1, 2]);
+        interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
 
-        this.interpreter.State.Flags[Flags.SaidAccepted] = false;
-        this.interpreter.ParseText("get the key");
-        this.kernel.Said([1, 2]);
-        this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
+        interpreter.State.Flags[Flags.SaidAccepted] = false;
+        interpreter.ParseText("get the key");
+        kernel.Said([1, 2]);
+        interpreter.State.Flags[Flags.SaidAccepted].Should().BeTrue();
 
-        this.interpreter.State.Flags[Flags.SaidAccepted] = false;
-        this.interpreter.ParseText("get");
-        this.kernel.Said([1, 2]);
-        this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
+        interpreter.State.Flags[Flags.SaidAccepted] = false;
+        interpreter.ParseText("get");
+        kernel.Said([1, 2]);
+        interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
 
-        this.interpreter.State.Flags[Flags.SaidAccepted] = false;
-        this.interpreter.ParseText("get key box");
-        this.kernel.Said([1, 2]);
-        this.interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
+        interpreter.State.Flags[Flags.SaidAccepted] = false;
+        interpreter.ParseText("get key box");
+        kernel.Said([1, 2]);
+        interpreter.State.Flags[Flags.SaidAccepted].Should().BeFalse();
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void HaveKey()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void CompareStrings()
     {
-        this.interpreter.State.Strings[0] = "hello1";
-        this.interpreter.State.Strings[1] = "hello2";
-        this.kernel.CompareStrings(0, 1).Should().BeFalse();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.interpreter.State.Strings[0] = "hello";
-        this.interpreter.State.Strings[1] = "hello";
-        this.kernel.CompareStrings(0, 1).Should().BeTrue();
+        interpreter.State.Strings[0] = "hello1";
+        interpreter.State.Strings[1] = "hello2";
+        kernel.CompareStrings(0, 1).Should().BeFalse();
 
-        this.interpreter.State.Strings[0] = "Hello";
-        this.interpreter.State.Strings[1] = "hello";
-        this.kernel.CompareStrings(0, 1).Should().BeTrue();
+        interpreter.State.Strings[0] = "hello";
+        interpreter.State.Strings[1] = "hello";
+        kernel.CompareStrings(0, 1).Should().BeTrue();
+
+        interpreter.State.Strings[0] = "Hello";
+        interpreter.State.Strings[1] = "hello";
+        kernel.CompareStrings(0, 1).Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void ReturnFalse()
     {
-        this.kernel.ReturnFalse();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        kernel.ReturnFalse();
     }
 
-    [TestMethod]
+    [Fact]
     public void Increment()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.Increment(23);
-        this.interpreter.State.Variables[23].Should().Be(6);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.interpreter.State.Variables[23] = 255;
-        this.kernel.Increment(23);
-        this.interpreter.State.Variables[23].Should().Be(255);
+        interpreter.State.Variables[23] = 5;
+        kernel.Increment(23);
+        interpreter.State.Variables[23].Should().Be(6);
+
+        interpreter.State.Variables[23] = 255;
+        kernel.Increment(23);
+        interpreter.State.Variables[23].Should().Be(255);
     }
 
-    [TestMethod]
+    [Fact]
     public void Decrement()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.Decrement(23);
-        this.interpreter.State.Variables[23].Should().Be(4);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.interpreter.State.Variables[23] = 0;
-        this.kernel.Decrement(23);
-        this.interpreter.State.Variables[23].Should().Be(0);
+        interpreter.State.Variables[23] = 5;
+        kernel.Decrement(23);
+        interpreter.State.Variables[23].Should().Be(4);
+
+        interpreter.State.Variables[23] = 0;
+        kernel.Decrement(23);
+        interpreter.State.Variables[23].Should().Be(0);
     }
 
-    [TestMethod]
+    [Fact]
     public void AssignN()
     {
-        this.kernel.AssignN(23, 5);
-        this.interpreter.State.Variables[23].Should().Be(5);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        kernel.AssignN(23, 5);
+        interpreter.State.Variables[23].Should().Be(5);
     }
 
-    [TestMethod]
+    [Fact]
     public void AssignV()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.AssignV(22, 23);
-        this.interpreter.State.Variables[22].Should().Be(5);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        kernel.AssignV(22, 23);
+        interpreter.State.Variables[22].Should().Be(5);
     }
 
-    [TestMethod]
+    [Fact]
     public void AddN()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.AddN(23, 7);
-        this.interpreter.State.Variables[23].Should().Be(12);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        kernel.AddN(23, 7);
+        interpreter.State.Variables[23].Should().Be(12);
     }
 
-    [TestMethod]
+    [Fact]
     public void AddV()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.interpreter.State.Variables[22] = 7;
-        this.kernel.AddV(23, 22);
-        this.interpreter.State.Variables[23].Should().Be(12);
-        this.interpreter.State.Variables[22].Should().Be(7);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        interpreter.State.Variables[22] = 7;
+        kernel.AddV(23, 22);
+        interpreter.State.Variables[23].Should().Be(12);
+        interpreter.State.Variables[22].Should().Be(7);
     }
 
-    [TestMethod]
+    [Fact]
     public void SubN()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.SubN(23, 3);
-        this.interpreter.State.Variables[23].Should().Be(2);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        kernel.SubN(23, 3);
+        interpreter.State.Variables[23].Should().Be(2);
     }
 
-    [TestMethod]
+    [Fact]
     public void SubV()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.interpreter.State.Variables[22] = 3;
-        this.kernel.SubV(23, 22);
-        this.interpreter.State.Variables[23].Should().Be(2);
-        this.interpreter.State.Variables[22].Should().Be(3);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        interpreter.State.Variables[22] = 3;
+        kernel.SubV(23, 22);
+        interpreter.State.Variables[23].Should().Be(2);
+        interpreter.State.Variables[22].Should().Be(3);
     }
 
-    [TestMethod]
+    [Fact]
     public void LIndirectV()
     {
-        this.interpreter.State.Variables[5] = 6;
-        this.interpreter.State.Variables[10] = 5;
-        this.interpreter.State.Variables[15] = 70;
-        this.kernel.LIndirectV(10, 15);
-        this.interpreter.State.Variables[5].Should().Be(70);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[5] = 6;
+        interpreter.State.Variables[10] = 5;
+        interpreter.State.Variables[15] = 70;
+        kernel.LIndirectV(10, 15);
+        interpreter.State.Variables[5].Should().Be(70);
     }
 
-    [TestMethod]
+    [Fact]
     public void RIndirect()
     {
-        this.interpreter.State.Variables[5] = 6;
-        this.interpreter.State.Variables[10] = 5;
-        this.interpreter.State.Variables[15] = 70;
-        this.kernel.RIndirect(15, 10);
-        this.interpreter.State.Variables[15].Should().Be(6);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[5] = 6;
+        interpreter.State.Variables[10] = 5;
+        interpreter.State.Variables[15] = 70;
+        kernel.RIndirect(15, 10);
+        interpreter.State.Variables[15].Should().Be(6);
     }
 
-    [TestMethod]
+    [Fact]
     public void LIndirectN()
     {
-        this.interpreter.State.Variables[5] = 6;
-        this.interpreter.State.Variables[10] = 5;
-        this.kernel.LIndirectN(10, 80);
-        this.interpreter.State.Variables[5].Should().Be(80);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[5] = 6;
+        interpreter.State.Variables[10] = 5;
+        kernel.LIndirectN(10, 80);
+        interpreter.State.Variables[5].Should().Be(80);
     }
 
-    [TestMethod]
+    [Fact]
     public void Set()
     {
-        this.interpreter.State.Flags[23] = false;
-        this.kernel.Set(23);
-        this.interpreter.State.Flags[23].Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Flags[23] = false;
+        kernel.Set(23);
+        interpreter.State.Flags[23].Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void Reset()
     {
-        this.interpreter.State.Flags[23] = true;
-        this.kernel.Reset(23);
-        this.interpreter.State.Flags[23].Should().BeFalse();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Flags[23] = true;
+        kernel.Reset(23);
+        interpreter.State.Flags[23].Should().BeFalse();
     }
 
-    [TestMethod]
+    [Fact]
     public void Toggle()
     {
-        this.interpreter.State.Flags[23] = true;
-        this.kernel.Toggle(23);
-        this.interpreter.State.Flags[23].Should().BeFalse();
-        this.kernel.Toggle(23);
-        this.interpreter.State.Flags[23].Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Flags[23] = true;
+        kernel.Toggle(23);
+        interpreter.State.Flags[23].Should().BeFalse();
+        kernel.Toggle(23);
+        interpreter.State.Flags[23].Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void SetV()
     {
-        this.interpreter.State.Variables[5] = 23;
-        this.interpreter.State.Flags[23] = false;
-        this.kernel.SetV(5);
-        this.interpreter.State.Flags[23].Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[5] = 23;
+        interpreter.State.Flags[23] = false;
+        kernel.SetV(5);
+        interpreter.State.Flags[23].Should().BeTrue();
     }
 
-    [TestMethod]
+    [Fact]
     public void ResetV()
     {
-        this.interpreter.State.Variables[5] = 23;
-        this.interpreter.State.Flags[23] = true;
-        this.kernel.ResetV(5);
-        this.interpreter.State.Flags[23].Should().BeFalse();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[5] = 23;
+        interpreter.State.Flags[23] = true;
+        kernel.ResetV(5);
+        interpreter.State.Flags[23].Should().BeFalse();
     }
 
-    [TestMethod]
+    [Fact]
     public void ToggleV()
     {
-        this.interpreter.State.Variables[5] = 23;
-        this.interpreter.State.Flags[23] = true;
-        this.kernel.ToggleV(5);
-        this.interpreter.State.Flags[23].Should().BeFalse();
-        this.kernel.ToggleV(5);
-        this.interpreter.State.Flags[23].Should().BeTrue();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[5] = 23;
+        interpreter.State.Flags[23] = true;
+        kernel.ToggleV(5);
+        interpreter.State.Flags[23].Should().BeFalse();
+        kernel.ToggleV(5);
+        interpreter.State.Flags[23].Should().BeTrue();
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void NewRoom()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void NewRoomV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void LoadLogics()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void LoadLogicsV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Call()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CallV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void LoadPicture()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void DrawPicture()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ShowPicture()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void DiscardPicture()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void OverlayPicture()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ShowPriScreen()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void LoadView()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void LoadViewV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void DiscardView()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void AnimateObj()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void UnanimateAll()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Draw()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Erase()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Position()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PositionV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void GetPosition()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Reposition()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void SetView()
     {
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
         var resource = CreateTestViewResource(60);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.ViewResources.Add(resource);
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.ViewResources.Add(resource);
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
 
-        this.kernel.SetView(0, 60);
+        kernel.SetView(0, 60);
 
-        var view = this.interpreter.ObjectTable.GetAt(0);
+        var view = interpreter.ObjectTable.GetAt(0);
         view.ViewResource.Should().BeSameAs(resource);
     }
 
-    [TestMethod]
+    [Fact]
     public void SetViewV()
     {
-        this.interpreter.State.Variables[25] = 60;
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[25] = 60;
         var resource = CreateTestViewResource(60);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.ViewResources.Add(resource);
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.ViewResources.Add(resource);
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
 
-        this.kernel.SetViewV(0, 25);
+        kernel.SetViewV(0, 25);
 
-        var view = this.interpreter.ObjectTable.GetAt(0);
+        var view = interpreter.ObjectTable.GetAt(0);
         view.ViewResource.Should().BeSameAs(resource);
     }
 
-    [TestMethod]
+    [Fact]
     public void SetLoop()
     {
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
-        var view = this.interpreter.ObjectTable.GetAt(0);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        var view = interpreter.ObjectTable.GetAt(0);
         var resource = CreateTestViewResource(60);
         view.LoopTotal = (byte)resource.Loops.Length;
         view.ViewResource = resource;
 
-        this.kernel.SetLoop(0, 2);
+        kernel.SetLoop(0, 2);
 
         view.LoopCur.Should().Be(2);
         view.CelTotal.Should().Be(1);
     }
 
-    [TestMethod]
+    [Fact]
     public void SetLoopV()
     {
-        this.interpreter.State.Variables[25] = 2;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
-        var view = this.interpreter.ObjectTable.GetAt(0);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[25] = 2;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        var view = interpreter.ObjectTable.GetAt(0);
         var resource = CreateTestViewResource(60);
         view.LoopTotal = (byte)resource.Loops.Length;
         view.ViewResource = resource;
 
-        this.kernel.SetLoopV(0, 25);
+        kernel.SetLoopV(0, 25);
 
         view.LoopCur.Should().Be(2);
         view.CelTotal.Should().Be(1);
     }
 
-    [TestMethod]
+    [Fact]
     public void FixLoop()
     {
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        var view = this.interpreter.ObjectTable.GetAt(0);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        var view = interpreter.ObjectTable.GetAt(0);
         view.Flags = 0;
-        this.kernel.FixLoop(0);
+        kernel.FixLoop(0);
         (view.Flags & ViewObjectFlags.LoopFixed).Should().NotBe(0);
     }
 
-    [TestMethod]
+    [Fact]
     public void ReleaseLoop()
     {
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        var view = this.interpreter.ObjectTable.GetAt(0);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        var view = interpreter.ObjectTable.GetAt(0);
         view.Flags = ViewObjectFlags.LoopFixed;
-        this.kernel.ReleaseLoop(0);
+        kernel.ReleaseLoop(0);
         (view.Flags & ViewObjectFlags.LoopFixed).Should().Be(0);
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetCel()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetCelV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void LastCel()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CurrentCel()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CurrentLoop()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CurrentView()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void NumberOfLoops()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetPriority()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetPriorityV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ReleasePriority()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void GetPriority()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StopUpdate()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StartUpdate()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ForceUpdate()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void IgnoreHorizon()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObserveHorizon()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetHorizon()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObjectOnWater()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObjectOnLand()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObjectOnAnything()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void IgnoreObjects()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObserveObjects()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Distance()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StopCycling()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StartCycling()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void NormalCycle()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void EndOfLoop()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ReverseCycle()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ReverseLoop()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CycleTime()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StopMotion()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StartMotion()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StepSize()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StepTime()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void MoveObj()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void MoveObjV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void FollowEgo()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Wander()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void NormalMotion()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetDir()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void GetDir()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void IgnoreBlocks()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObserveBlocks()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void Block()
     {
-        this.interpreter.State.BlockIsSet = false;
-        this.kernel.Block(1, 2, 20, 10);
-        this.interpreter.State.BlockIsSet.Should().BeTrue();
-        this.interpreter.State.BlockX1.Should().Be(1);
-        this.interpreter.State.BlockY1.Should().Be(2);
-        this.interpreter.State.BlockX2.Should().Be(20);
-        this.interpreter.State.BlockY2.Should().Be(10);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.BlockIsSet = false;
+        kernel.Block(1, 2, 20, 10);
+        interpreter.State.BlockIsSet.Should().BeTrue();
+        interpreter.State.BlockX1.Should().Be(1);
+        interpreter.State.BlockY1.Should().Be(2);
+        interpreter.State.BlockX2.Should().Be(20);
+        interpreter.State.BlockY2.Should().Be(10);
     }
 
-    [TestMethod]
+    [Fact]
     public void Unblock()
     {
-        this.interpreter.State.BlockIsSet = true;
-        this.kernel.Unblock();
-        this.interpreter.State.BlockIsSet.Should().BeFalse();
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.BlockIsSet = true;
+        kernel.Unblock();
+        interpreter.State.BlockIsSet.Should().BeFalse();
     }
 
-    [TestMethod]
+    [Fact]
     public void Get()
     {
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.InventoryResource = resource;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.kernel.Get(1);
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.InventoryResource = resource;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+
+        kernel.Get(1);
 
         resource.Items[0].Location.Should().Be(50);
         resource.Items[1].Location.Should().Be(0xff);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetV()
     {
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.InventoryResource = resource;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
-        this.interpreter.State.Variables[5] = 1;
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.kernel.GetV(5);
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.InventoryResource = resource;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        interpreter.State.Variables[5] = 1;
+
+        kernel.GetV(5);
 
         resource.Items[0].Location.Should().Be(50);
         resource.Items[1].Location.Should().Be(0xff);
     }
 
-    [TestMethod]
+    [Fact]
     public void Drop()
     {
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.InventoryResource = resource;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.kernel.Drop(1);
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.InventoryResource = resource;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+
+        kernel.Drop(1);
 
         resource.Items[0].Location.Should().Be(50);
         resource.Items[1].Location.Should().Be(0x00);
     }
 
-    [TestMethod]
+    [Fact]
     public void Put()
     {
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.InventoryResource = resource;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.kernel.Put(1, 61);
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.InventoryResource = resource;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+
+        kernel.Put(1, 61);
 
         resource.Items[0].Location.Should().Be(50);
         resource.Items[1].Location.Should().Be(61);
     }
 
-    [TestMethod]
+    [Fact]
     public void PutV()
     {
-        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.InventoryResource = resource;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
-        this.interpreter.State.Variables[8] = 1;
-        this.interpreter.State.Variables[9] = 61;
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
 
-        this.kernel.PutV(8, 9);
+        var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.InventoryResource = resource;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        interpreter.State.Variables[8] = 1;
+        interpreter.State.Variables[9] = 61;
+
+        kernel.PutV(8, 9);
 
         resource.Items[0].Location.Should().Be(50);
         resource.Items[1].Location.Should().Be(61);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetRoomV()
     {
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
         var resource = new InventoryResource([new("key", 50), new("flower", 60)], 2);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.InventoryResource = resource;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
-        this.interpreter.State.Variables[8] = 1;
-        this.interpreter.State.Variables[9] = 61;
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.InventoryResource = resource;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        interpreter.State.Variables[8] = 1;
+        interpreter.State.Variables[9] = 61;
 
-        this.kernel.GetRoomV(8, 9);
+        kernel.GetRoomV(8, 9);
 
-        this.interpreter.State.Variables[9].Should().Be(60);
+        interpreter.State.Variables[9].Should().Be(60);
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void LoadSound()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Sound()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StopSound()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Print()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PrintV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Display()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void DisplayV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ClearLines()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void TextScreen()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Graphics()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetCursorChar()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetTextAttribute()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ShakeScreen()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ConfigureScreen()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StatusLineOn()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void StatusLineOff()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetString()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void GetString()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void WordToString()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void Parse()
     {
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
         var vocabulary = new VocabularyResource([new(40, "get"), new(50, "key"), new(60, "flower")]);
-        this.interpreter.ResourceManager = new ResourceManager();
-        this.interpreter.ResourceManager.VocabularyResource = vocabulary;
-        this.interpreter.ObjectTable = new ViewObjectTable(1);
-        this.interpreter.ObjectManager = new ViewObjectManager(this.interpreter, null);
-        this.interpreter.State.Strings[0] = "get flower";
+        interpreter.ResourceManager = new ResourceManager();
+        interpreter.ResourceManager.VocabularyResource = vocabulary;
+        interpreter.ObjectTable = new ViewObjectTable(1);
+        interpreter.ObjectManager = new ViewObjectManager(interpreter, null);
+        interpreter.State.Strings[0] = "get flower";
 
-        this.kernel.Parse(0);
+        kernel.Parse(0);
 
-        this.interpreter.State.Flags[Flags.PlayerCommandLine].Should().Be(true);
-        this.interpreter.State.Flags[Flags.SaidAccepted].Should().Be(false);
-        this.interpreter.ParserResults.Should().HaveCount(2);
-        this.interpreter.ParserResults[0].Should().BeEquivalentTo(new ParserResult("get", 40));
-        this.interpreter.ParserResults[1].Should().BeEquivalentTo(new ParserResult("flower", 60));
+        interpreter.State.Flags[Flags.PlayerCommandLine].Should().Be(true);
+        interpreter.State.Flags[Flags.SaidAccepted].Should().Be(false);
+        interpreter.ParserResults.Should().HaveCount(2);
+        interpreter.ParserResults[0].Should().BeEquivalentTo(new ParserResult("get", 40));
+        interpreter.ParserResults[1].Should().BeEquivalentTo(new ParserResult("flower", 60));
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void GetNumber()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PreventInput()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void AcceptInput()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetKey()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void AddToPicture()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void AddToPictureV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Status()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SaveGame()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void RestoreGame()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void InitDisk()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void RestartGame()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ShowObj()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Random()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ProgramControl()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PlayerControl()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ObjectStatusV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Quit()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ShowMemory()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Pause()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void EchoLine()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CancelLine()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void InitJoy()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ToggleMonitor()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Version()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ScriptSize()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetGameId()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void Log()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetScanStart()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ResetScanStart()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void RepositionTo()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void RepositionToV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void TraceOn()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void TraceInfo()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PrintAt()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PrintAtV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void DiscardViewV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ClearTextRectangle()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetUpperLeft()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetMenu()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetMenuItem()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SubmitMenu()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void EnableItem()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void DisableItem()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void MenuInput()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ShowObjV()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void OpenDialogue()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CloseDialogue()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void MulN()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.kernel.MulN(23, 7);
-        this.interpreter.State.Variables[23].Should().Be(35);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        kernel.MulN(23, 7);
+        interpreter.State.Variables[23].Should().Be(35);
     }
 
-    [TestMethod]
+    [Fact]
     public void MulV()
     {
-        this.interpreter.State.Variables[23] = 5;
-        this.interpreter.State.Variables[22] = 7;
-        this.kernel.MulV(23, 22);
-        this.interpreter.State.Variables[23].Should().Be(35);
-        this.interpreter.State.Variables[22].Should().Be(7);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 5;
+        interpreter.State.Variables[22] = 7;
+        kernel.MulV(23, 22);
+        interpreter.State.Variables[23].Should().Be(35);
+        interpreter.State.Variables[22].Should().Be(7);
     }
 
-    [TestMethod]
+    [Fact]
     public void DivN()
     {
-        this.interpreter.State.Variables[23] = 24;
-        this.kernel.DivN(23, 6);
-        this.interpreter.State.Variables[23].Should().Be(4);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 24;
+        kernel.DivN(23, 6);
+        interpreter.State.Variables[23].Should().Be(4);
     }
 
-    [TestMethod]
+    [Fact]
     public void DivV()
     {
-        this.interpreter.State.Variables[23] = 24;
-        this.interpreter.State.Variables[22] = 6;
-        this.kernel.DivV(23, 22);
-        this.interpreter.State.Variables[23].Should().Be(4);
-        this.interpreter.State.Variables[22].Should().Be(6);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.Variables[23] = 24;
+        interpreter.State.Variables[22] = 6;
+        kernel.DivV(23, 22);
+        interpreter.State.Variables[23].Should().Be(4);
+        interpreter.State.Variables[22].Should().Be(6);
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void CloseWindow()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void SetSimple()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PollMouse()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PushScript()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void PopScript()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void HoldKey()
     {
-        this.interpreter.State.WalkMode = WalkMode.ReleaseKey;
-        this.kernel.HoldKey();
-        this.interpreter.State.WalkMode.Should().Be(WalkMode.HoldKey);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.WalkMode = WalkMode.ReleaseKey;
+        kernel.HoldKey();
+        interpreter.State.WalkMode.Should().Be(WalkMode.HoldKey);
     }
 
-    [TestMethod]
+    [Fact]
     public void SetPriBase()
     {
-        this.interpreter.PriorityTable = new PriorityTable();
-        this.kernel.SetPriBase(6);
-        this.interpreter.PriorityTable.GetPriorityAt(0).Should().Be(4);
-        this.interpreter.PriorityTable.GetPriorityAt(5).Should().Be(4);
-        this.interpreter.PriorityTable.GetPriorityAt(6).Should().Be(5);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.PriorityTable = new PriorityTable();
+        kernel.SetPriBase(6);
+        interpreter.PriorityTable.GetPriorityAt(0).Should().Be(4);
+        interpreter.PriorityTable.GetPriorityAt(5).Should().Be(4);
+        interpreter.PriorityTable.GetPriorityAt(6).Should().Be(5);
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void DiscardSound()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void HideMouse()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void AllowMenu()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void ShowMouse()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void FenceMouse()
     {
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void MousePosN()
     {
     }
 
-    [TestMethod]
+    [Fact]
     public void ReleaseKey()
     {
-        this.interpreter.State.WalkMode = WalkMode.HoldKey;
-        this.kernel.ReleaseKey();
-        this.interpreter.State.WalkMode.Should().Be(WalkMode.ReleaseKey);
+        var interpreter = new InterpreterBuilder().Build();
+        var kernel = (IKernel)interpreter;
+
+        interpreter.State.WalkMode = WalkMode.HoldKey;
+        kernel.ReleaseKey();
+        interpreter.State.WalkMode.Should().Be(WalkMode.ReleaseKey);
     }
 
-    [Ignore(TestNotImplemented)]
-    [TestMethod]
+    [Fact(Skip = TestNotImplemented)]
     public void AdjEgoMoveToXY()
     {
     }

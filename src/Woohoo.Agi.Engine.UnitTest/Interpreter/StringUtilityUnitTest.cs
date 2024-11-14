@@ -5,10 +5,9 @@ namespace Woohoo.Agi.Engine.UnitTest.Interpreter;
 
 using Woohoo.Agi.Engine.Interpreter;
 
-[TestClass]
 public class StringUtilityUnitTest
 {
-    [TestMethod]
+    [Fact]
     public void Reverse()
     {
         var input = "Hello";
@@ -17,7 +16,7 @@ public class StringUtilityUnitTest
         output.Should().Be("olleH");
     }
 
-    [TestMethod]
+    [Fact]
     public void NumberToString()
     {
         var input = 45;
@@ -26,7 +25,7 @@ public class StringUtilityUnitTest
         output.Should().Be("45");
     }
 
-    [TestMethod]
+    [Fact]
     public void NumberToHexString()
     {
         var input = 45;
@@ -35,7 +34,7 @@ public class StringUtilityUnitTest
         output.Should().Be("2D");
     }
 
-    [TestMethod]
+    [Fact]
     public void PadWithZeros()
     {
         var input = "45";

@@ -7,10 +7,9 @@ using Woohoo.Agi.Engine.Interpreter;
 using Woohoo.Agi.Engine.Resources;
 using Woohoo.Agi.Engine.UnitTest.Infrastructure;
 
-[TestClass]
 public class ParserUnitTest
 {
-    [TestMethod]
+    [Fact]
     public void CreateNullVocabulary()
     {
         Action act = () => _ = new Parser(null);
@@ -18,7 +17,7 @@ public class ParserUnitTest
         act.Should().Throw<ArgumentNullException>();
     }
 
-    [TestMethod]
+    [Fact]
     public void ParseNullText()
     {
         var resource = CreateEmptyVocabulary();
@@ -29,7 +28,7 @@ public class ParserUnitTest
         act.Should().Throw<ArgumentNullException>();
     }
 
-    [TestMethod]
+    [Fact]
     public void ParseSimpleWordEmptyVocabulary()
     {
         var resource = CreateEmptyVocabulary();
@@ -40,7 +39,7 @@ public class ParserUnitTest
         actual.Should().BeEquivalentTo(expected);
     }
 
-    [TestMethod]
+    [Fact]
     public void ParseSimpleWordsSimpleVocabulary()
     {
         var resource = CreateSimpleVocabulary();
@@ -51,7 +50,7 @@ public class ParserUnitTest
         actual.Should().BeEquivalentTo(expected);
     }
 
-    [TestMethod]
+    [Fact]
     public void ParseSeparatorsSimpleVocabulary()
     {
         var resource = CreateSimpleVocabulary();
@@ -62,7 +61,7 @@ public class ParserUnitTest
         actual.Should().BeEquivalentTo(expected);
     }
 
-    [TestMethod]
+    [Fact]
     public void ParseIllegalSeparatorsSimpleVocabulary()
     {
         var resource = CreateSimpleVocabulary();
@@ -73,7 +72,7 @@ public class ParserUnitTest
         actual.Should().BeEquivalentTo(expected);
     }
 
-    [TestMethod]
+    [Fact]
     public void ParseComplexWordsComplexVocabulary()
     {
         var resource = CreateComplexVocabulary();

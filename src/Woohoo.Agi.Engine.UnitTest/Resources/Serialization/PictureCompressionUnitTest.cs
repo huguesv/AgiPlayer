@@ -5,7 +5,6 @@ namespace Woohoo.Agi.Engine.UnitTest.Resources.Serialization;
 
 using Woohoo.Agi.Engine.Resources.Serialization;
 
-[TestClass]
 public class PictureCompressionUnitTest
 {
     private readonly byte[] uncompressed00 = [0xF0, 0x06];
@@ -17,7 +16,7 @@ public class PictureCompressionUnitTest
     private readonly byte[] uncompressed02 = [0xF8, 0x12, 0x45];
     private readonly byte[] compressed02 = [0xF8, 0x12, 0x45];
 
-    [TestMethod]
+    [Fact]
     public void DecompressNull()
     {
         Action act = () => PictureCompression.Decompress(null, 0, 0, 0);
@@ -25,19 +24,19 @@ public class PictureCompressionUnitTest
         act.Should().Throw<ArgumentNullException>();
     }
 
-    [TestMethod]
+    [Fact]
     public void Decompress00()
     {
         Decompress(this.compressed00, this.uncompressed00);
     }
 
-    [TestMethod]
+    [Fact]
     public void Decompress01()
     {
         Decompress(this.compressed01, this.uncompressed01);
     }
 
-    [TestMethod]
+    [Fact]
     public void Decompress02()
     {
         Decompress(this.compressed02, this.uncompressed02);
