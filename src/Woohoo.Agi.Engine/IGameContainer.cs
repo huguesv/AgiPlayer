@@ -18,5 +18,7 @@ public interface IGameContainer
 
     string[] GetGameFiles();
 
+    string[] GetInterpreterFiles();
+
     string[] GetFilesByExtension(string ext);
 }

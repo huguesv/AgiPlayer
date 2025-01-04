@@ -3,7 +3,7 @@
 
 namespace Woohoo.Agi.Engine;
 
-internal sealed class GameFolder : IGameContainer
+public sealed class GameFolder : IGameContainer
 {
     private readonly string folderPath;
 
@@ -11,6 +11,8 @@ internal sealed class GameFolder : IGameContainer
     {
         this.folderPath = folderPath;
     }
+
+    public string FolderPath => this.folderPath;
 
     public string Name => Path.GetFileName(this.folderPath);
 
@@ -28,11 +30,11 @@ internal sealed class GameFolder : IGameContainer
     {
         var id = string.Empty;
 
-        var files = Directory.GetFiles(this.folderPath, "*vol.0");
+        var files = Directory.GetFiles(this.folderPath, "*VOL.0");
         if (files.Length > 0)
         {
             var name = Path.GetFileNameWithoutExtension(files[0]);
-            if (name.Length >= 3 && name.EndsWith("vol", StringComparison.InvariantCultureIgnoreCase))
+            if (name.Length >= 3 && name.EndsWith("VOL", StringComparison.InvariantCultureIgnoreCase))
             {
                 id = name[..^3];
             }
@@ -43,9 +45,6 @@ internal sealed class GameFolder : IGameContainer
 
     public string[] GetGameFiles()
     {
-        // Hashtable that holds (upper filename, filename) of all game files
-        var filesTable = new Dictionary<string, string>();
-
         string[] includePatterns =
         [
             "OBJECT",
@@ -54,6 +53,34 @@ internal sealed class GameFolder : IGameContainer
             "*DIR",
             "DIRS",
         ];
+
+        return this.GetFiles(includePatterns);
+    }
+
+    public string[] GetInterpreterFiles()
+    {
+        string[] includePatterns =
+        [
+            "AGI",
+            "AGIFONT",
+            "BUSY",
+            "POINTER",
+            "SIERRASTANDARD",
+            "*.PRG",
+        ];
+
+        return this.GetFiles(includePatterns);
+    }
+
+    public string[] GetFilesByExtension(string ext)
+    {
+        return Directory.GetFiles(this.folderPath, "*" + ext);
+    }
+
+    private string[] GetFiles(string[] includePatterns)
+    {
+        // Hashtable that holds (upper filename, filename) of all game files
+        var filesTable = new Dictionary<string, string>();
 
         // Get the list of files to include
         foreach (var pattern in includePatterns)
@@ -76,10 +103,5 @@ internal sealed class GameFolder : IGameContainer
         }
 
         return [.. gameFiles];
-    }
-
-    public string[] GetFilesByExtension(string ext)
-    {
-        return Directory.GetFiles(this.folderPath, "*" + ext);
     }
 }

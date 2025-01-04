@@ -5,7 +5,7 @@ namespace Woohoo.Agi.Engine;
 
 using System.IO.Compression;
 
-internal sealed class GameZipArchive : IGameContainer
+public sealed class GameZipArchive : IGameContainer
 {
     private readonly string archivePath;
     private readonly ZipArchive archive;
@@ -51,7 +51,7 @@ internal sealed class GameZipArchive : IGameContainer
                 var fileName = Path.GetFileNameWithoutExtension(entry.Name);
                 var ext = Path.GetExtension(entry.Name);
 
-                if (fileName.EndsWith("vol", StringComparison.OrdinalIgnoreCase) && ext == ".0" && fileName.Length > 3)
+                if (fileName.EndsWith("VOL", StringComparison.OrdinalIgnoreCase) && ext == ".0" && fileName.Length > 3)
                 {
                     id = fileName[..^3];
                 }
@@ -68,15 +68,9 @@ internal sealed class GameZipArchive : IGameContainer
         {
             if (entry.Length > 0)
             {
-                if (string.Equals(entry.Name, "object", StringComparison.OrdinalIgnoreCase))
-                {
-                    files.Add(entry.Name);
-                }
-                else if (string.Equals(entry.Name, "words.tok", StringComparison.OrdinalIgnoreCase))
-                {
-                    files.Add(entry.Name);
-                }
-                else if (string.Equals(entry.Name, "dirs", StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(entry.Name, "OBJECT", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(entry.Name, "WORDS.TOK", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(entry.Name, "DIRS", StringComparison.OrdinalIgnoreCase))
                 {
                     files.Add(entry.Name);
                 }
@@ -85,11 +79,42 @@ internal sealed class GameZipArchive : IGameContainer
                     var fileName = Path.GetFileNameWithoutExtension(entry.Name);
                     var ext = Path.GetExtension(entry.Name);
 
-                    if (fileName.EndsWith("vol", StringComparison.OrdinalIgnoreCase) && int.TryParse(ext[1..], out _))
+                    if (fileName.EndsWith("VOL", StringComparison.OrdinalIgnoreCase) && int.TryParse(ext[1..], out _))
                     {
                         files.Add(entry.Name);
                     }
-                    else if (fileName.EndsWith("dir", StringComparison.OrdinalIgnoreCase) && ext.Length == 0)
+                    else if (fileName.EndsWith("DIR", StringComparison.OrdinalIgnoreCase) && ext.Length == 0)
+                    {
+                        files.Add(entry.Name);
+                    }
+                }
+            }
+        }
+
+        return [.. files];
+    }
+
+    public string[] GetInterpreterFiles()
+    {
+        List<string> files = [];
+        foreach (var entry in this.archive.Entries)
+        {
+            if (entry.Length > 0)
+            {
+                if (string.Equals(entry.Name, "AGI", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(entry.Name, "AGIFONT", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(entry.Name, "BUSY", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(entry.Name, "POINTER", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(entry.Name, "SIERRASTANDARD", StringComparison.OrdinalIgnoreCase))
+                {
+                    files.Add(entry.Name);
+                }
+                else
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(entry.Name);
+                    var ext = Path.GetExtension(entry.Name);
+
+                    if (string.Equals(ext, ".PRG", StringComparison.OrdinalIgnoreCase))
                     {
                         files.Add(entry.Name);
                     }
