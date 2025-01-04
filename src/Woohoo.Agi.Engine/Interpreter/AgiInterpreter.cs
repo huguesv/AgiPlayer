@@ -904,7 +904,10 @@ public sealed partial class AgiInterpreter
     private void ClearAllControllers()
     {
         // Reset all booleans to false
-        this.controlState = new bool[ControlMax];
+        for (int i = 0; i < this.controlState.Length; i++)
+        {
+            this.controlState[i] = false;
+        }
     }
 
     private void ActivateController(int controller)
