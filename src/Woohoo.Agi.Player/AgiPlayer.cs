@@ -72,7 +72,7 @@ internal abstract class AgiPlayer
     private static void DisplayInfo()
     {
         Console.WriteLine("{0} v{1}", UserInterface.PlayerName, UserInterface.PlayerVersion);
-        Console.WriteLine("Copyright (C) 2006-2024 Hugues Valois");
+        Console.WriteLine("Copyright (C) 2006-2025 Hugues Valois");
         Console.WriteLine();
 
         Console.WriteLine("Based upon the New Adventure Game Interpreter (NAGI)");

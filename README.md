@@ -194,7 +194,7 @@ Custom Horizontal/Vertical Scaling
 
 COPYRIGHT AND PERMISSION NOTICE
 
-Copyright (c) 2006-2024 Hugues Valois
+Copyright (c) 2006-2025 Hugues Valois
 
 Copyright (c) 2000-2002 Nick Sonneveld
 
