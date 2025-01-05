@@ -668,9 +668,17 @@ public sealed partial class AgiInterpreter
 
         bool IsTopicApplicable(Topic topic)
         {
-            return topic.Rooms.Count == 0 ||
+            bool roomApplicable = topic.Rooms.Count == 0 ||
                 topic.Rooms.Contains(0) ||
                 topic.Rooms.Contains(this.State.Variables[Variables.CurrentRoom]);
+
+            bool flagApplicable = topic.Flags.Count == 0 ||
+                topic.Flags.All(flag => ((IKernel)this).IsSet(flag.Number) == flag.Value);
+
+            bool itemApplicable = topic.Items.Count == 0 ||
+                topic.Items.All(item => ((IKernel)this).Has(item.Number) == item.Value);
+
+            return roomApplicable && flagApplicable && itemApplicable;
         }
 
         string FormatTitle(Topic topic)

@@ -13,9 +13,16 @@ public static class HintBookSerializer
     public static HintBook Deserialize(TextReader reader)
     {
         // Text file format, where line starting with:
-        // @ specifies optional comma-separated room numbers (defaults to all rooms)
-        // + specifies topic title (if 32 chars or more, it will be ellided in the UI)
-        // - specifies topic hint message
+        // @ specifies optional comma-separated room numbers
+        //   (defaults to all rooms)
+        // $ specifies optional comma-separated flag numbers that must be set,
+        //   or unset if number is prefixed with !
+        //   (defaults to none)
+        // % specifies optional comma-separated item numbers that must be set,
+        //   or unset if number is prefixed with !
+        //   (defaults to none)
+        // + specifies topic title (ellided if 32 chars or more)
+        // - specifies decrypted topic hint message
         // ~ specifies encrypted topic hint message
         //
         // Example:
@@ -25,40 +32,56 @@ public static class HintBookSerializer
         // - topic hint
         // - topic hint
         // + another topic title
+        // $ 75,!76
+        // % 1,!2
         // ~ encrypted topic hint
         var topics = new List<Topic>();
 
         var title = string.Empty;
         var messages = new List<string>();
         var rooms = new List<byte>();
+        var flags = new List<FlagContext>();
+        var items = new List<ItemContext>();
 
         while (reader.ReadLine() is string line)
         {
-            if (line.StartsWith("+"))
+            if (line.StartsWith('+'))
             {
                 if (title.Length > 0)
                 {
                     // Add previous topic
-                    topics.Add(new Topic { Title = title, Messages = messages, Rooms = rooms });
+                    topics.Add(new Topic { Title = title, Messages = messages, Rooms = rooms, Flags = flags, Items = items });
 
                     title = string.Empty;
                     messages = [];
                     rooms = [];
+                    flags = [];
+                    items = [];
                 }
 
                 title = line.Substring(1).Trim();
             }
-            else if (line.StartsWith("@"))
+            else if (line.StartsWith('@'))
             {
                 // Add rooms
                 rooms.AddRange(line.Substring(1).Split(',').Select(byte.Parse));
             }
-            else if (line.StartsWith("-"))
+            else if (line.StartsWith('$'))
+            {
+                // Add flags
+                flags.AddRange(line.Substring(1).Split(',').Select(ParseFlag));
+            }
+            else if (line.StartsWith('%'))
+            {
+                // Add items
+                items.AddRange(line.Substring(1).Split(',').Select(ParseItem));
+            }
+            else if (line.StartsWith('-'))
             {
                 // Add message
                 messages.Add(line.Substring(1).Trim());
             }
-            else if (line.StartsWith("~"))
+            else if (line.StartsWith('~'))
             {
                 // Add encrypted message
                 messages.Add(Decrypt(line.Substring(1).Trim()));
@@ -68,10 +91,34 @@ public static class HintBookSerializer
         if (title.Length > 0)
         {
             // Add last topic
-            topics.Add(new Topic { Title = title, Messages = messages, Rooms = rooms });
+            topics.Add(new Topic { Title = title, Messages = messages, Rooms = rooms, Flags = flags, Items = items });
         }
 
         return new HintBook { Topics = topics };
+    }
+
+    private static FlagContext ParseFlag(string text)
+    {
+        if (text.StartsWith('!'))
+        {
+            return new FlagContext { Number = byte.Parse(text[1..]), Value = false };
+        }
+        else
+        {
+            return new FlagContext { Number = byte.Parse(text), Value = true };
+        }
+    }
+
+    private static ItemContext ParseItem(string text)
+    {
+        if (text.StartsWith('!'))
+        {
+            return new ItemContext { Number = byte.Parse(text[1..]), Value = false };
+        }
+        else
+        {
+            return new ItemContext { Number = byte.Parse(text), Value = true };
+        }
     }
 
     private static string Decrypt(string text)

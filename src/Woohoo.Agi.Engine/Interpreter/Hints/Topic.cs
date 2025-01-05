@@ -11,5 +11,9 @@ public record class Topic
 
     public List<byte> Rooms { get; init; } = [];
 
+    public List<FlagContext> Flags { get; init; } = [];
+
+    public List<ItemContext> Items { get; init; } = [];
+
     public List<string> Messages { get; init; } = [];
 }

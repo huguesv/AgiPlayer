@@ -23,6 +23,11 @@ public class HintBookSerializerUnitTest
 @ 10,11
 - message 5
 ~ gHrGtGs iqrGr
+
++ topic 4
+$ 75,!76,77
+% 1,!2
+- message 6
 ";
 
         // Act
@@ -67,6 +72,25 @@ public class HintBookSerializerUnitTest
                     [
                         10,
                         11,
+                    ],
+                },
+                new Topic
+                {
+                    Title = "topic 4",
+                    Messages =
+                    [
+                        "message 6",
+                    ],
+                    Flags =
+                    [
+                        new FlagContext { Number = 75, Value = true },
+                        new FlagContext { Number = 76, Value = false },
+                        new FlagContext { Number = 77, Value = true },
+                    ],
+                    Items =
+                    [
+                        new ItemContext { Number = 1, Value = true },
+                        new ItemContext { Number = 2, Value = false },
                     ],
                 },
             ],
