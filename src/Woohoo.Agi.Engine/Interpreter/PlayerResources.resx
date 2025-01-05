@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CancelButton" xml:space="preserve">
     <value>Cancel</value>
@@ -123,7 +123,7 @@
   <data name="ContinueButton" xml:space="preserve">
     <value>Continue</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="FontAmiga8x8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>FontAmiga8x8.nbf;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -147,6 +147,18 @@
   </data>
   <data name="GameSelectionNoGameFound" xml:space="preserve">
     <value>No game found.</value>
+  </data>
+  <data name="HintMessageFormat" xml:space="preserve">
+    <value>{0}\n\n({1} of {2}) ESC to cancel</value>
+  </data>
+  <data name="HintsNotAvailable" xml:space="preserve">
+    <value>Hints are currently unavailable.</value>
+  </data>
+  <data name="HintsNotFound" xml:space="preserve">
+    <value>Hints not found for this game. Please add the .hnt file to the game folder.</value>
+  </data>
+  <data name="HintsTitle" xml:space="preserve">
+    <value>Hints</value>
   </data>
   <data name="InputBox" xml:space="preserve">
     <value>           ENTER COMMAND\n\n</value>

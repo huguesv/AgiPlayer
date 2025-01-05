@@ -28,6 +28,8 @@ public abstract class GraphicsRendererDriverFull : GraphicsRendererDriver
 
     public override byte MessageBoxBorder => 0x04;
 
+    public override byte HintBoxBorder => 0x02;
+
     public override byte CombineTextColors(byte fg, byte bg, bool textMode)
     {
         byte combine;

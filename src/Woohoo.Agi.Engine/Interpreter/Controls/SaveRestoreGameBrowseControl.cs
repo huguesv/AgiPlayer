@@ -50,7 +50,7 @@ public class SaveRestoreGameBrowseControl
         this.WindowManager.PushTextPosition();
         this.WindowManager.SetTextColor(ListBoxForegroundColor, ListBoxBackgroundColor);
 
-        this.WindowManager.DisplayMessageBox(this.Title, textHeight, textWidth, true);
+        this.WindowManager.DisplayMessageBox(this.Title, textHeight, textWidth, toggle: true, isHint: false);
 
         textRow += (byte)this.WindowManager.MessageState.TextTopRow;
 

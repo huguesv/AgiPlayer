@@ -89,6 +89,8 @@ public class GraphicsRenderer
 
     public byte MessageBoxBorder => this.renderDrivers[this.renderDriverIndex].MessageBoxBorder;
 
+    public byte HintBoxBorder => this.renderDrivers[this.renderDriverIndex].HintBoxBorder;
+
     protected State State { get; }
 
     public bool GraphicsUpdateNeeded()
