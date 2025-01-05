@@ -166,15 +166,6 @@ namespace Woohoo.Agi.Engine.Interpreter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press ENTER for more.\nPress ESC to cancel..
-        /// </summary>
-        internal static string HintNextFooter {
-            get {
-                return ResourceManager.GetString("HintNextFooter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Hints are currently unavailable..
         /// </summary>
         internal static string HintsNotAvailable {

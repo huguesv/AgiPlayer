@@ -151,9 +151,6 @@
   <data name="HintMessageFormat" xml:space="preserve">
     <value>{0}\n\n({1} of {2}) ESC to cancel</value>
   </data>
-  <data name="HintNextFooter" xml:space="preserve">
-    <value>Press ENTER for more.\nPress ESC to cancel.</value>
-  </data>
   <data name="HintsNotAvailable" xml:space="preserve">
     <value>Hints are currently unavailable.</value>
   </data>
