@@ -46,6 +46,8 @@ public abstract class GraphicsRendererDriverCga : GraphicsRendererDriver
 
     public override byte MessageBoxBorder => 0x04;
 
+    public override byte HintBoxBorder => 0x04;
+
     public override Font GetFont()
     {
         return new Font(PlayerResources.FontEga8x8);

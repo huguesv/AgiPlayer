@@ -191,6 +191,8 @@ public sealed class GraphicsRendererDriverHercules : GraphicsRendererDriver
 
     public override byte MessageBoxBorder => 0x00;
 
+    public override byte HintBoxBorder => 0x00;
+
     public override Font GetFont()
     {
         return new Font(PlayerResources.FontHercules16x16);

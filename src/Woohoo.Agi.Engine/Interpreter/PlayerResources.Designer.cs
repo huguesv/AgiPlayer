@@ -157,6 +157,51 @@ namespace Woohoo.Agi.Engine.Interpreter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}\n\n({1} of {2}) ESC to cancel.
+        /// </summary>
+        internal static string HintMessageFormat {
+            get {
+                return ResourceManager.GetString("HintMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press ENTER for more.\nPress ESC to cancel..
+        /// </summary>
+        internal static string HintNextFooter {
+            get {
+                return ResourceManager.GetString("HintNextFooter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hints are currently unavailable..
+        /// </summary>
+        internal static string HintsNotAvailable {
+            get {
+                return ResourceManager.GetString("HintsNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hints not found for this game. Please add the .hnt file to the game folder..
+        /// </summary>
+        internal static string HintsNotFound {
+            get {
+                return ResourceManager.GetString("HintsNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hints.
+        /// </summary>
+        internal static string HintsTitle {
+            get {
+                return ResourceManager.GetString("HintsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to            ENTER COMMAND\n\n.
         /// </summary>
         internal static string InputBox {

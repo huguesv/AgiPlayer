@@ -152,7 +152,7 @@ public class WindowManager
     {
         bool accepted = true;
 
-        this.DisplayMessageBox(text, 0, 0, false);
+        this.DisplayMessageBox(text, 0, 0, toggle: false, isHint: false);
 
         if (this.Interpreter.State.Flags[Flags.PrintMode])
         {
@@ -168,7 +168,7 @@ public class WindowManager
         return accepted;
     }
 
-    public void DisplayMessageBox(string text, int row, int width, bool toggle)
+    public void DisplayMessageBox(string text, int row, int width, bool toggle, bool isHint)
     {
         ArgumentNullException.ThrowIfNull(text);
 
@@ -247,7 +247,10 @@ public class WindowManager
         this.MessageState.BackgroundLowRow = ((this.MessageState.TextLowRow - this.Interpreter.State.WindowRowMin + 1) * CharacterHeight) + 4;
         this.MessageState.BackgroundLeftColumn = (this.MessageState.TextLeftColumn * CharacterWidth) - 5;
 
-        this.DisplayMessageBoxWindow(new PictureRectangle(this.MessageState.BackgroundLeftColumn, this.MessageState.BackgroundLowRow, this.MessageState.BackgroundWidth, this.MessageState.BackgroundHeight), this.Interpreter.GraphicsRenderer.MessageBoxBackground, this.Interpreter.GraphicsRenderer.MessageBoxBorder);
+        var boxRect = new PictureRectangle(this.MessageState.BackgroundLeftColumn, this.MessageState.BackgroundLowRow, this.MessageState.BackgroundWidth, this.MessageState.BackgroundHeight);
+        var boxBackgroundColor = this.Interpreter.GraphicsRenderer.MessageBoxBackground;
+        var boxLineColor = isHint ? this.Interpreter.GraphicsRenderer.HintBoxBorder : this.Interpreter.GraphicsRenderer.MessageBoxBorder;
+        this.DisplayMessageBoxWindow(boxRect, boxBackgroundColor, boxLineColor);
 
         this.MessageState.Active = true;
         this.PrintFormatted(message);

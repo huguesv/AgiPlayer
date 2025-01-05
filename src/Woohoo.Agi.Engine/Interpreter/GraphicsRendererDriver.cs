@@ -59,6 +59,11 @@ public abstract class GraphicsRendererDriver
         get;
     }
 
+    public abstract byte HintBoxBorder
+    {
+        get;
+    }
+
     public abstract byte CombineTextColors(byte fg, byte bg, bool textMode);
 
     public abstract byte CalculateTextBackground(byte bg, bool textMode);

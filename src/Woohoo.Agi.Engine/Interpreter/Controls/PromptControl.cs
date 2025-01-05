@@ -15,6 +15,8 @@ public class PromptControl
 
     public string Text { get; set; }
 
+    public bool IsHint { get; set; }
+
     protected AgiInterpreter Interpreter { get; }
 
     protected WindowManager WindowManager => this.Interpreter.WindowManager;
@@ -23,7 +25,7 @@ public class PromptControl
 
     public bool DoModal()
     {
-        this.WindowManager.DisplayMessageBox(this.Text, 0, 0, false);
+        this.WindowManager.DisplayMessageBox(this.Text, 0, 0, toggle: false, isHint: this.IsHint);
 
         bool accepted = this.Interpreter.InputDriver.PollAcceptOrCancel(0);
         this.WindowManager.CloseWindow();

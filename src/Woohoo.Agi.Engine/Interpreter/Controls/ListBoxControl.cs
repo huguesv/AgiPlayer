@@ -23,6 +23,8 @@ public class ListBoxControl
 
     public string Title { get; set; }
 
+    public bool IsHint { get; set; }
+
     public int Width { get; set; }
 
     public int Height { get; set; }
@@ -74,7 +76,7 @@ public class ListBoxControl
             currentItemIndex = 0;
         }
 
-        this.WindowManager.DisplayMessageBox(this.Title, this.Height, this.Width, true);
+        this.WindowManager.DisplayMessageBox(this.Title, this.Height, this.Width, toggle: true, isHint: this.IsHint);
 
         int height = this.WindowManager.MessageState.TextLowRow - this.WindowManager.MessageState.TextTopRow - this.WindowManager.MessageState.PrintedHeight;
         int width = this.WindowManager.MessageState.TextWidth;

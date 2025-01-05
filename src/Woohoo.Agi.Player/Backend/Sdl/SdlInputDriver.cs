@@ -523,6 +523,10 @@ internal class SdlInputDriver : IInputDriver
                 e = this.stopEgoEvent;
                 break;
 
+            case SDL_Keycode.SDLK_F12:
+                this.interpreter.RequestHints();
+                break;
+
             case SDL_Keycode.SDLK_SCROLLOCK:
                 this.interpreter.ToggleTrace();
                 break;

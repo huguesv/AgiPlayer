@@ -6,6 +6,7 @@
 namespace Woohoo.Agi.Engine.Interpreter;
 
 using Woohoo.Agi.Engine.Interpreter.Controls;
+using Woohoo.Agi.Engine.Interpreter.Hints;
 using Woohoo.Agi.Engine.Resources;
 using Woohoo.Agi.Engine.Resources.Serialization;
 
@@ -22,6 +23,7 @@ public sealed partial class AgiInterpreter
     private bool pictureVisible;
     private List<Blit> blitlistUpdated; // blit objects that are updated on each cycle
     private List<Blit> blitlistStatic; // blit objects that are not updated on each cycle
+    private bool hintsRequested;
 
     public AgiInterpreter(IInputDriver inputDriver, IGraphicsDriver graphicsDriver, ISoundDriver soundDriver)
     {
@@ -45,6 +47,8 @@ public sealed partial class AgiInterpreter
     public ParserResult[] ParserResults { get; private set; }
 
     public SavedGameManager SavedGameManager { get; private set; }
+
+    public HintBook HintBook { get; private set; }
 
     public WindowManager WindowManager { get; set; }
 
@@ -210,6 +214,11 @@ public sealed partial class AgiInterpreter
         }
     }
 
+    public void RequestHints()
+    {
+        this.hintsRequested = !this.hintsRequested;
+    }
+
     public void ToggleTrace()
     {
         if (this.GameControl.TraceControl.TraceState == TraceState.Uninitialized)
@@ -227,6 +236,17 @@ public sealed partial class AgiInterpreter
         var control = new PromptControl(this)
         {
             Text = text,
+        };
+
+        return control.DoModal();
+    }
+
+    public bool Hint(string text)
+    {
+        var control = new PromptControl(this)
+        {
+            Text = text,
+            IsHint = true,
         };
 
         return control.DoModal();
@@ -418,10 +438,33 @@ public sealed partial class AgiInterpreter
         this.SavedGameManager = new SavedGameManager(this, new SavedGameXmlSerializer());
         this.Randomizer = new Random();
         this.SavedScanStarts = [];
+        this.HintBook = this.TryLoadHintBook();
 
         this.InitializeGame();
         this.LoadLogic(0, false);
         this.State.Flags[Flags.SoundOn] = true;
+    }
+
+    private HintBook TryLoadHintBook()
+    {
+        // TODO:
+        // If hint book not found in game folder, look in a common hint book
+        // folder and use this.State.Id as filename.
+        var files = this.GameInfo.GameContainer.GetFilesByExtension(".hnt");
+        if (files.Length > 0)
+        {
+            try
+            {
+                using var stream = new FileStream(files[0], FileMode.Open, FileAccess.Read);
+                return HintBookSerializer.Deserialize(stream);
+            }
+            catch (IOException ex)
+            {
+                Debug.WriteLine($"Error loading hint book.\n{ex.Message}");
+            }
+        }
+
+        return null;
     }
 
     /// <summary>
@@ -540,6 +583,12 @@ public sealed partial class AgiInterpreter
         ErrorResume:
             try
             {
+                if (this.hintsRequested)
+                {
+                    this.ShowHints();
+                    this.hintsRequested = false;
+                }
+
                 while (this.CallLogic(0))
                 {
                     this.State.Variables[Variables.BadWord] = 0;
@@ -572,6 +621,67 @@ public sealed partial class AgiInterpreter
             {
                 // Restore interpreter state here (not currently supported)
                 goto ErrorResume;
+            }
+        }
+    }
+
+    private void ShowHints()
+    {
+        if (this.HintBook is null)
+        {
+            this.Hint(StringUtility.ConvertSystemResourceText(PlayerResources.HintsNotFound));
+            return;
+        }
+
+        var topics = this.HintBook.Topics.Where(IsTopicApplicable).ToArray();
+
+        if (topics.Length == 0)
+        {
+            this.Hint(StringUtility.ConvertSystemResourceText(PlayerResources.HintsNotAvailable));
+            return;
+        }
+
+        var listBox = new ListBoxControl(this)
+        {
+            IsHint = true,
+            Title = PlayerResources.HintsTitle,
+            Width = 36,
+            Height = Math.Min(13, topics.Length) + 2,
+        };
+
+        listBox.SetItems(topics.Select(FormatTitle).ToArray());
+
+        if (listBox.DoModal())
+        {
+            var topic = topics[listBox.SelectedItemIndex];
+            for (int i = 0; i < topic.Messages.Count; i++)
+            {
+                var messageFormat = StringUtility.ConvertSystemResourceText(PlayerResources.HintMessageFormat);
+                var message = string.Format(messageFormat, topic.Messages[i], i + 1, topic.Messages.Count);
+
+                if (!this.Hint(message))
+                {
+                    break;
+                }
+            }
+        }
+
+        bool IsTopicApplicable(Topic topic)
+        {
+            return topic.Rooms.Count == 0 ||
+                topic.Rooms.Contains(0) ||
+                topic.Rooms.Contains(this.State.Variables[Variables.CurrentRoom]);
+        }
+
+        string FormatTitle(Topic topic)
+        {
+            if (topic.Title.Length < 32)
+            {
+                return topic.Title;
+            }
+            else
+            {
+                return topic.Title[..28] + "...";
             }
         }
     }
@@ -899,6 +1009,8 @@ public sealed partial class AgiInterpreter
         this.ClearAllControllers();
         this.GameControl.DisplayStatusLine();
         this.GameControl.InputControl.RedrawInput();
+
+        Trace.WriteLine(string.Format("Room {0}", this.State.Variables[Variables.CurrentRoom]));
     }
 
     private void ClearAllControllers()

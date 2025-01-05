@@ -45,7 +45,7 @@ public class InputBoxControl
         this.WindowManager.PushTextPosition();
 
         this.WindowManager.SetTextColor(WindowForegroundColor, WindowBackgroundColor);
-        this.WindowManager.DisplayMessageBox(this.Title, 0, this.Width, true);
+        this.WindowManager.DisplayMessageBox(this.Title, 0, this.Width, toggle: true, isHint: false);
         this.WindowManager.GotoPosition(new TextPosition((byte)this.WindowManager.MessageState.TextLowRow, (byte)this.WindowManager.MessageState.TextLeftColumn));
         this.WindowManager.ClearWindow(new TextPosition((byte)this.WindowManager.MessageState.TextLowRow, (byte)this.WindowManager.MessageState.TextLeftColumn), new TextPosition((byte)this.WindowManager.MessageState.TextLowRow, (byte)(this.WindowManager.MessageState.TextRightColumn - 1)), 0);
         this.WindowManager.SetTextColor(TextBoxForegroundColor, TextBoxBackgroundColor);
