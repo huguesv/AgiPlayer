@@ -22,9 +22,14 @@ public class VocabularyResource
     public const int Ignore = 0;
 
     /// <summary>
-    /// Used to indicate that any word is a match.
+    /// Family identifier used to indicate that any word is a match (for a single said parameter).
     /// </summary>
-    public const int Any = 9999;
+    public const int AnyWord = 1;
+
+    /// <summary>
+    /// Family identifier used to indicate that any input is a match (for the whole input).
+    /// </summary>
+    public const int AnyInput = 9999;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="VocabularyResource"/> class.
@@ -69,7 +74,29 @@ public class VocabularyResource
         var items = new List<string>();
         foreach (var family in this.Families)
         {
-            if (family.Identifier != VocabularyResource.Ignore)
+            if (family.Identifier != VocabularyResource.Ignore &&
+                family.Identifier != VocabularyResource.AnyWord)
+            {
+                foreach (string word in family.Words)
+                {
+                    items.Add(word);
+                }
+            }
+        }
+
+        items.Sort();
+
+        return [.. items];
+    }
+
+    public string[] GetWords(int[] wordIds)
+    {
+        var items = new List<string>();
+        foreach (var family in this.Families)
+        {
+            if (family.Identifier != VocabularyResource.Ignore &&
+                family.Identifier != VocabularyResource.AnyWord &&
+                Array.IndexOf(wordIds, family.Identifier) >= 0)
             {
                 foreach (string word in family.Words)
                 {

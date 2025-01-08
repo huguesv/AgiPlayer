@@ -112,7 +112,7 @@ public partial class AgiInterpreter : IKernel
 
                         remainingWords--;
 
-                        if (id == VocabularyResource.Any)
+                        if (id == VocabularyResource.AnyInput)
                         {
                             badWords = 0;
                             break;
@@ -125,7 +125,7 @@ public partial class AgiInterpreter : IKernel
                         }
 
                         // Any word
-                        if (id != this.ParserResults[current].FamilyIdentifier && id != 1)
+                        if (id != this.ParserResults[current].FamilyIdentifier && id != VocabularyResource.AnyWord)
                         {
                             break;
                         }
