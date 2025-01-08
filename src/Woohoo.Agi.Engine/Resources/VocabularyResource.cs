@@ -69,18 +69,16 @@ public class VocabularyResource
         return identifier;
     }
 
-    public string[] GetAllWords()
+    public string[] GetWords(bool includeSynonyms, string[] preferredSynonyms, int[] applicableIds)
     {
         var items = new List<string>();
         foreach (var family in this.Families)
         {
             if (family.Identifier != VocabularyResource.Ignore &&
-                family.Identifier != VocabularyResource.AnyWord)
+                family.Identifier != VocabularyResource.AnyWord &&
+                (applicableIds.Length == 0 || Array.IndexOf(applicableIds, family.Identifier) >= 0))
             {
-                foreach (string word in family.Words)
-                {
-                    items.Add(word);
-                }
+                AddFamilyWords(includeSynonyms, preferredSynonyms, items, family);
             }
         }
 
@@ -89,24 +87,45 @@ public class VocabularyResource
         return [.. items];
     }
 
-    public string[] GetWords(int[] wordIds)
+    private static void AddFamilyWords(bool includeSynonyms, string[] preferredWords, List<string> items, VocabularyWordFamily family)
     {
-        var items = new List<string>();
-        foreach (var family in this.Families)
+        if (includeSynonyms)
         {
-            if (family.Identifier != VocabularyResource.Ignore &&
-                family.Identifier != VocabularyResource.AnyWord &&
-                Array.IndexOf(wordIds, family.Identifier) >= 0)
+            foreach (string word in family.Words)
             {
-                foreach (string word in family.Words)
+                items.Add(word);
+            }
+        }
+        else
+        {
+            var bestWord = GetBestWord(preferredWords, family);
+            if (bestWord is not null)
+            {
+                items.Add(bestWord);
+            }
+        }
+    }
+
+    private static string? GetBestWord(string[] preferredWords, VocabularyWordFamily family)
+    {
+        string? bestWord = null;
+        if (preferredWords.Length > 0)
+        {
+            foreach (string word in family.Words)
+            {
+                if (Array.IndexOf(preferredWords, word) >= 0)
                 {
-                    items.Add(word);
+                    bestWord = word;
+                    break;
                 }
             }
         }
 
-        items.Sort();
+        if (bestWord is null && family.Words.Count > 0)
+        {
+            bestWord = family.Words.First();
+        }
 
-        return [.. items];
+        return bestWord;
     }
 }

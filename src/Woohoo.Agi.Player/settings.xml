@@ -7,6 +7,18 @@
   <!-- Default: Classic -->
   <InputMode>InputBox</InputMode>
 
+  <!-- When InputMode is set to WordList, this determines whether the list of words should include all the symonyms by default. The list content can be toggled between all (synonyms) and less (no synonyms) during gameplay. -->
+  <!-- This setting is experimental -->
+  <!-- Values: true, false -->
+  <!-- Default: true -->
+  <WordListIncludeSynonyms>true</WordListIncludeSynonyms>
+
+  <!-- When InputMode is set to WordList, this determines whether the list of words is computed based on what is referenced in current room. -->
+  <!-- This setting is experimental -->
+  <!-- Values: true, false -->
+  <!-- Default: false -->
+  <WordListContextSensitive>false</WordListContextSensitive>
+
   <!-- Horizontal scaling factor. -->
   <!-- Values: 1+ -->
   <!-- Default: 2 -->

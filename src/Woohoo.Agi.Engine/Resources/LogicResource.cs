@@ -39,6 +39,11 @@ public class LogicResource
     public int ScanStart { get; set; }
 
     /// <summary>
+    /// Gets the length of the byte code.
+    /// </summary>
+    public int CodeLength => this.code.Length;
+
+    /// <summary>
     /// Gets number of messages in the resource.
     /// </summary>
     public int MessageCount => this.messages.Length;

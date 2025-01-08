@@ -32,27 +32,56 @@ public class WordListInputControl : ClassicInputControl
         this.State.Variables[Variables.KeyPressed] = (byte)key;
         if (this.State.InputEnabled)
         {
-            string[] words = this.ResourceManager.VocabularyResource.GetAllWords();
+            bool includeSynonyms = this.Interpreter.Preferences.WordListIncludeSynonyms;
+            int[] applicableIds = this.Interpreter.Preferences.WordListContextSensitive
+                ? this.Interpreter.GetApplicableWordFamilies()
+                : [];
 
-            var listBox = new ListBoxControl(this.Interpreter)
+            while (true)
             {
-                Title = UserInterface.TypelessBox,
-                Width = WordSelectionListBoxWidth,
-                Height = WordSelectionListBoxHeight,
-            };
+                string[] words = this.ResourceManager.VocabularyResource.GetWords(includeSynonyms, PreferredSynonyms.GetWords(), applicableIds);
 
-            listBox.SetItems(words);
-
-            if (listBox.DoModal())
-            {
-                string word = words[listBox.SelectedItemIndex];
-
-                foreach (char c in word)
+                var listBox = new ListBoxControl(this.Interpreter)
                 {
-                    this.AddInputCharacter(c);
-                }
+                    Title = UserInterface.TypelessBox,
+                    Width = WordSelectionListBoxWidth,
+                    Height = WordSelectionListBoxHeight,
+                };
 
-                this.AddInputCharacter(' ');
+                // Add a special first item used to toggle between "all" and "less" words
+                string[] items = new string[words.Length + 1];
+                items[0] = includeSynonyms ? UserInterface.WordListViewLess : UserInterface.WordListViewAll;
+                Array.Copy(words, 0, items, 1, words.Length);
+
+                listBox.SetItems(items);
+
+                if (listBox.DoModal())
+                {
+                    if (listBox.SelectedItemIndex == 0)
+                    {
+                        includeSynonyms = !includeSynonyms;
+
+                        // Update the preferences for the next invocation (only applicable for this game session)
+                        this.Interpreter.Preferences.WordListIncludeSynonyms = includeSynonyms;
+                    }
+                    else
+                    {
+                        string word = words[listBox.SelectedItemIndex - 1];
+
+                        foreach (char c in word)
+                        {
+                            this.AddInputCharacter(c);
+                        }
+
+                        this.AddInputCharacter(' ');
+
+                        return;
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
         }
     }

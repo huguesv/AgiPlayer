@@ -252,6 +252,26 @@ public sealed partial class AgiInterpreter
         return control.DoModal();
     }
 
+    public int[] GetApplicableWordFamilies()
+    {
+        try
+        {
+            var result = new HashSet<int>();
+            var scraper = new LogicVocabularyScraper(this.GameInfo.Interpreter);
+            foreach (var resource in this.ResourceManager.LogicResources)
+            {
+                scraper.FindWordReferences(resource, result);
+            }
+
+            return result.ToArray();
+        }
+        catch (Exception ex)
+        {
+            Trace.WriteLine($"Error getting applicable word families:\n{ex}");
+            return [];
+        }
+    }
+
     private static void BlitlistFree(List<Blit> blits)
     {
         blits.Clear();
@@ -757,6 +777,9 @@ public sealed partial class AgiInterpreter
         {
             this.GameControl.TraceControl.Logic0Called = true;
         }
+
+        LogicVocabularyScraper scraper = new LogicVocabularyScraper(this.GameInfo.Interpreter);
+        var words = scraper.FindWordReferences(resource);
 
         bool restart = this.LogicInterpreter.Execute(resource);
 

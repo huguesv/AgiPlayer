@@ -45,6 +45,12 @@ public static class PreferencesSerializer
                 case "InputMode":
                     prefs.InputMode = (UserInputMode)Enum.Parse(typeof(UserInputMode), reader.ReadElementContentAsString(), true);
                     break;
+                case "WordListIncludeSynonyms":
+                    prefs.WordListIncludeSynonyms = reader.ReadElementContentAsBoolean();
+                    break;
+                case "WordListContextSensitive":
+                    prefs.WordListContextSensitive = reader.ReadElementContentAsBoolean();
+                    break;
                 case "DisplayScaleX":
                     prefs.DisplayScaleX = reader.ReadElementContentAsInt();
                     break;

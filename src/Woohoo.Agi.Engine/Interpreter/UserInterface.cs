@@ -69,6 +69,10 @@ public static class UserInterface
 
     public static string TypelessBox => StringUtility.ConvertSystemResourceText(PlayerResources.TypelessBox);
 
+    public static string WordListViewAll => StringUtility.ConvertSystemResourceText(PlayerResources.WordListViewAll);
+
+    public static string WordListViewLess => StringUtility.ConvertSystemResourceText(PlayerResources.WordListViewLess);
+
     public static string TraceSeparatorLine => StringUtility.ConvertSystemResourceText(PlayerResources.TraceSeparatorLine);
 
     public static string SavePathDoesNotExistFormat => StringUtility.ConvertSystemResourceText(PlayerResources.SavePathDoesNotExistFormat);

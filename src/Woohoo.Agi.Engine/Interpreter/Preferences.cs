@@ -14,6 +14,8 @@ public class Preferences
     public Preferences()
     {
         this.InputMode = UserInputMode.Classic;
+        this.WordListIncludeSynonyms = true;
+        this.WordListContextSensitive = false;
         this.DisplayScaleX = 2;
         this.DisplayScaleY = 2;
         this.DisplayFadeDelay = 25;
@@ -28,6 +30,16 @@ public class Preferences
     /// Gets or sets user input mode.
     /// </summary>
     public UserInputMode InputMode { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the list of words should include all the symonyms.
+    /// </summary>
+    public bool WordListIncludeSynonyms { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the list of words is computed based on what is referenced in current room.
+    /// </summary>
+    public bool WordListContextSensitive { get; set; }
 
     /// <summary>
     /// Gets or sets horizontal display scale.

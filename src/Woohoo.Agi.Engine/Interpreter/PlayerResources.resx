@@ -367,4 +367,10 @@
   <data name="TypelessBox" xml:space="preserve">
     <value>Choose word</value>
   </data>
+  <data name="WordListViewAll" xml:space="preserve">
+    <value>&lt;view all&gt;</value>
+  </data>
+  <data name="WordListViewLess" xml:space="preserve">
+    <value>&lt;view less&gt;</value>
+  </data>
 </root>

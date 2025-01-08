@@ -812,5 +812,23 @@ namespace Woohoo.Agi.Engine.Interpreter {
                 return ResourceManager.GetString("TypelessBox", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;view all&gt;.
+        /// </summary>
+        internal static string WordListViewAll {
+            get {
+                return ResourceManager.GetString("WordListViewAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;view less&gt;.
+        /// </summary>
+        internal static string WordListViewLess {
+            get {
+                return ResourceManager.GetString("WordListViewLess", resourceCulture);
+            }
+        }
     }
 }
