@@ -19,8 +19,29 @@ public static class VocabularyDecoder
     {
         var families = new List<VocabularyWordFamily>();
 
-        int offset = 52;
+        // First 52 bytes are 26 2-byte absolute offsets to data for each letter a-z.
+        // Most Sierra games will have the data for 'a' starting at offset 52,
+        // but some fan games may have some garbage data, with 'a' starting after that garbage.
+        // One such example is kq1redux.
+        int offset = 0;
+        for (int letter = 0; letter < 26; letter++)
+        {
+            int letterStartOffset = (data[offset] * 0x100) + data[offset + 1];
+            offset += 2;
 
+            if (letterStartOffset == 0)
+            {
+                continue;
+            }
+
+            ReadLetter(data, letterStartOffset, families);
+        }
+
+        return new VocabularyResource([.. families]);
+    }
+
+    private static void ReadLetter(byte[] data, int offset, List<VocabularyWordFamily> families)
+    {
         var currentWord = new StringBuilder();
         while (offset < data.Length - 1)
         {
@@ -61,6 +82,12 @@ public static class VocabularyDecoder
             currentWord.Append((char)((data[offset] - 0x80) ^ 0x7f));
             offset += 1;
 
+            if (previousWord.Length > 0 && currentWord[0] > previousWord[0])
+            {
+                // We've reached the data for the next letter, so stop now
+                break;
+            }
+
             // Read the group number
             int group = (data[offset] * 0x100) + data[offset + 1];
             offset += 2;
@@ -84,7 +111,5 @@ public static class VocabularyDecoder
 
             wordGroup.Words.Add(currentWord.ToString());
         }
-
-        return new VocabularyResource([.. families]);
     }
 }
