@@ -605,11 +605,7 @@ public sealed partial class AgiInterpreter
             {
                 if (this.hintsRequested)
                 {
-                    if (this.State.InputEnabled)
-                    {
-                        this.ShowHints();
-                    }
-
+                    this.ShowHints();
                     this.hintsRequested = false;
                 }
 
