@@ -82,6 +82,10 @@ public sealed partial class AgiInterpreter
 
     private static string SavedGameFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AgiPlayer");
 
+    private static string UserHintsFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AgiPlayer-Extras", "Hints");
+
+    private static string ProgramHintsFolder => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Hints");
+
     public void Start(GameStartInfo startInfo, Preferences prefs)
     {
         this.Preferences = prefs;
@@ -458,7 +462,6 @@ public sealed partial class AgiInterpreter
         this.SavedGameManager = new SavedGameManager(this, new SavedGameXmlSerializer());
         this.Randomizer = new Random();
         this.SavedScanStarts = [];
-        this.HintBook = this.TryLoadHintBook();
 
         this.InitializeGame();
         this.LoadLogic(0, false);
@@ -467,24 +470,49 @@ public sealed partial class AgiInterpreter
 
     private HintBook TryLoadHintBook()
     {
-        // TODO:
-        // If hint book not found in game folder, look in a common hint book
-        // folder and use this.State.Id as filename.
-        var files = this.GameInfo.GameContainer.GetFilesByExtension(".hnt");
-        if (files.Length > 0)
+        // First priority is any hint file in game folder
+        HintBook hintBook = TryLoad(this.GameInfo.GameContainer.GetFilesByExtension(".hnt"));
+        if (hintBook is not null)
         {
-            try
-            {
-                using var stream = new FileStream(files[0], FileMode.Open, FileAccess.Read);
-                return HintBookSerializer.Deserialize(stream);
-            }
-            catch (IOException ex)
-            {
-                Debug.WriteLine($"Error loading hint book.\n{ex.Message}");
-            }
+            return hintBook;
         }
 
-        return null;
+        // In common hints folders, the file name has to match the game id
+        var id = this.State.Id.Length > 0 ? this.State.Id : this.GameInfo.Id;
+        if (id.Length == 0)
+        {
+            return null;
+        }
+
+        // Second priority is id hint file in user appdata subfolder
+        // Third priority is id hint file in program subfolder
+        hintBook = TryLoad(Directory.GetFiles(UserHintsFolder, $"{id}.hnt"))
+            ?? TryLoad(Directory.GetFiles(ProgramHintsFolder, $"{id}.hnt"));
+
+        return hintBook;
+
+        static HintBook TryLoad(string[] filePaths)
+        {
+            if (filePaths.Length > 0)
+            {
+                try
+                {
+                    using var stream = new FileStream(filePaths[0], FileMode.Open, FileAccess.Read);
+                    HintBook hintBook = HintBookSerializer.Deserialize(stream);
+                    if (hintBook is not null)
+                    {
+                        return hintBook;
+                    }
+                }
+                catch (IOException ex)
+                {
+                    Debug.WriteLine($"Error loading hint book.\n{ex.Message}");
+                    return null;
+                }
+            }
+
+            return null;
+        }
     }
 
     /// <summary>
@@ -647,6 +675,11 @@ public sealed partial class AgiInterpreter
 
     private void ShowHints()
     {
+        if (this.HintBook is null)
+        {
+            this.HintBook = this.TryLoadHintBook();
+        }
+
         if (this.HintBook is null)
         {
             this.Hint(StringUtility.ConvertSystemResourceText(PlayerResources.HintsNotFound));
