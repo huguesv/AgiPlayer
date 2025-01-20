@@ -80,7 +80,7 @@ public sealed partial class AgiInterpreter
 
     public ViewObjectManager ObjectManager { get; set; } // public setter only for tests
 
-    private static string SavedGameFolder => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    private static string SavedGameFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AgiPlayer");
 
     public void Start(GameStartInfo startInfo, Preferences prefs)
     {
