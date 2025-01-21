@@ -28,6 +28,11 @@ public class HintBookSerializerUnitTest
 $ 75,!76,77
 % 1,!2
 - message 6
+
++ topic 5
+$ !76
+% !2
+- message 7
 ";
 
         // Act
@@ -90,6 +95,22 @@ $ 75,!76,77
                     Items =
                     [
                         new ItemContext { Number = 1, Value = true },
+                        new ItemContext { Number = 2, Value = false },
+                    ],
+                },
+                new Topic
+                {
+                    Title = "topic 5",
+                    Messages =
+                    [
+                        "message 7",
+                    ],
+                    Flags =
+                    [
+                        new FlagContext { Number = 76, Value = false },
+                    ],
+                    Items =
+                    [
                         new ItemContext { Number = 2, Value = false },
                     ],
                 },

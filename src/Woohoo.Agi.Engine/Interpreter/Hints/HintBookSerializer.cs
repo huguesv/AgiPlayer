@@ -99,6 +99,7 @@ public static class HintBookSerializer
 
     private static FlagContext ParseFlag(string text)
     {
+        text = text.Trim();
         if (text.StartsWith('!'))
         {
             return new FlagContext { Number = byte.Parse(text[1..]), Value = false };
@@ -111,6 +112,7 @@ public static class HintBookSerializer
 
     private static ItemContext ParseItem(string text)
     {
+        text = text.Trim();
         if (text.StartsWith('!'))
         {
             return new ItemContext { Number = byte.Parse(text[1..]), Value = false };
