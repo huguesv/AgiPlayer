@@ -1104,9 +1104,11 @@ public class KernelUnitTest
                 .WithItem("flower", 60)
                 .WithMaxAnimatedObjects(2))
             .Build();
+        interpreter.State.Variables[8] = 1;
+        interpreter.State.Variables[9] = 61;
 
         // Act
-        ((IKernel)interpreter).Put(1, 61);
+        ((IKernel)interpreter).Put(1, 9);
 
         // Assert
         interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);

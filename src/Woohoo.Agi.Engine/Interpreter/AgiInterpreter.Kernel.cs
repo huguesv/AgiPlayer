@@ -902,36 +902,34 @@ public partial class AgiInterpreter : IKernel
         this.ResourceManager.InventoryResource.Items[inventoryNumber].Location = 0x00;
     }
 
-    void IKernel.Put(byte inventoryNumber, byte numericRoomNumber)
+    void IKernel.Put(byte inventoryNumber, byte variableRoomNumber)
     {
         if (inventoryNumber >= this.ResourceManager.InventoryResource.Items.Length)
         {
             this.ExecutionError(ErrorCodes.InventoryItemOverRange, inventoryNumber - this.ResourceManager.InventoryResource.Items.Length);
         }
 
-        this.ResourceManager.InventoryResource.Items[inventoryNumber].Location = numericRoomNumber;
+        this.ResourceManager.InventoryResource.Items[inventoryNumber].Location = this.State.Variables[variableRoomNumber];
     }
 
-    void IKernel.PutV(byte inventoryNumber, byte variableRoomNumber)
+    void IKernel.PutV(byte variableInventoryNumber, byte variableRoomNumber)
     {
-        // TODO: Confirm that inventoryNumber should be renamed to variableInventoryNumber
-        if (this.State.Variables[inventoryNumber] >= this.ResourceManager.InventoryResource.Items.Length)
+        if (this.State.Variables[variableInventoryNumber] >= this.ResourceManager.InventoryResource.Items.Length)
         {
-            this.ExecutionError(ErrorCodes.InventoryItemOverRange, this.State.Variables[inventoryNumber] - this.ResourceManager.InventoryResource.Items.Length);
+            this.ExecutionError(ErrorCodes.InventoryItemOverRange, this.State.Variables[variableInventoryNumber] - this.ResourceManager.InventoryResource.Items.Length);
         }
 
-        this.ResourceManager.InventoryResource.Items[this.State.Variables[inventoryNumber]].Location = this.State.Variables[variableRoomNumber];
+        this.ResourceManager.InventoryResource.Items[this.State.Variables[variableInventoryNumber]].Location = this.State.Variables[variableRoomNumber];
     }
 
-    void IKernel.GetRoomV(byte inventoryNumber, byte variableRoomNumber)
+    void IKernel.GetRoomV(byte variableInventoryNumber, byte variableRoomNumber)
     {
-        // TODO: Confirm that inventoryNumber should be renamed to variableInventoryNumber
-        if (this.State.Variables[inventoryNumber] >= this.ResourceManager.InventoryResource.Items.Length)
+        if (this.State.Variables[variableInventoryNumber] >= this.ResourceManager.InventoryResource.Items.Length)
         {
-            this.ExecutionError(ErrorCodes.InventoryItemOverRange, this.State.Variables[inventoryNumber] - this.ResourceManager.InventoryResource.Items.Length);
+            this.ExecutionError(ErrorCodes.InventoryItemOverRange, this.State.Variables[variableInventoryNumber] - this.ResourceManager.InventoryResource.Items.Length);
         }
 
-        this.State.Variables[variableRoomNumber] = this.ResourceManager.InventoryResource.Items[this.State.Variables[inventoryNumber]].Location;
+        this.State.Variables[variableRoomNumber] = this.ResourceManager.InventoryResource.Items[this.State.Variables[variableInventoryNumber]].Location;
     }
 
     void IKernel.LoadSound(byte numericSoundResourceIndex)

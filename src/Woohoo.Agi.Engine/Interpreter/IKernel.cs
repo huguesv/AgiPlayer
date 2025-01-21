@@ -632,9 +632,9 @@ public interface IKernel
     /// <summary>
     /// Stores the inventory item's room number in the specified variable.
     /// </summary>
-    /// <param name="inventoryNumber">Inventory object index.</param>
+    /// <param name="variableInventoryNumber">Inventory object variable index.</param>
     /// <param name="variableRoomNumber">Destination variable index.</param>
-    void GetRoomV(byte inventoryNumber, byte variableRoomNumber);
+    void GetRoomV(byte variableInventoryNumber, byte variableRoomNumber);
 
     /// <summary>
     /// Retrieves a string of input from the player.
@@ -1139,16 +1139,16 @@ public interface IKernel
     /// inventory before, it no longer will be.
     /// </summary>
     /// <param name="inventoryNumber">Inventory object index.</param>
-    /// <param name="numericRoomNumber">Room number.</param>
-    void Put(byte inventoryNumber, byte numericRoomNumber);
+    /// <param name="variableRoomNumber">Room number variable index.</param>
+    void Put(byte inventoryNumber, byte variableRoomNumber);
 
     /// <summary>
     /// Sets the inventory item current room. If it was in the player's
     /// inventory before, it no longer will be.
     /// </summary>
-    /// <param name="inventoryNumber">Inventory object index.</param>
+    /// <param name="variableInventoryNumber">Inventory object variable index.</param>
     /// <param name="variableRoomNumber">Room number variable index.</param>
-    void PutV(byte inventoryNumber, byte variableRoomNumber);
+    void PutV(byte variableInventoryNumber, byte variableRoomNumber);
 
     /// <summary>
     /// Exits the game.
