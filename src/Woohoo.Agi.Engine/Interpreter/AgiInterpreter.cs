@@ -504,9 +504,9 @@ public sealed partial class AgiInterpreter
                         return hintBook;
                     }
                 }
-                catch (IOException ex)
+                catch (Exception ex)
                 {
-                    Debug.WriteLine($"Error loading hint book.\n{ex.Message}");
+                    Debug.WriteLine($"Error loading hint book from: {filePaths[0]}\n{ex.Message}");
                     return null;
                 }
             }
