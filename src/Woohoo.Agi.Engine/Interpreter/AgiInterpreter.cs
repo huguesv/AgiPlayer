@@ -24,6 +24,7 @@ public sealed partial class AgiInterpreter
     private List<Blit> blitlistUpdated; // blit objects that are updated on each cycle
     private List<Blit> blitlistStatic; // blit objects that are not updated on each cycle
     private bool hintsRequested;
+    private string lastSavedGameFolder;
 
     public AgiInterpreter(IInputDriver inputDriver, IGraphicsDriver graphicsDriver, ISoundDriver soundDriver)
     {
@@ -80,11 +81,13 @@ public sealed partial class AgiInterpreter
 
     public ViewObjectManager ObjectManager { get; set; } // public setter only for tests
 
-    private static string SavedGameFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AgiPlayer");
+    private static string DefaultSavedGameFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AgiPlayer");
 
     private static string UserHintsFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AgiPlayer-Extras", "Hints");
 
     private static string ProgramHintsFolder => Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Hints");
+
+    private string SavedGameFolder => Directory.Exists(this.lastSavedGameFolder) ? this.lastSavedGameFolder : DefaultSavedGameFolder;
 
     public void Start(GameStartInfo startInfo, Preferences prefs)
     {
@@ -1454,7 +1457,7 @@ public sealed partial class AgiInterpreter
         string filePath = string.Empty;
 
         string prompt = string.Format(CultureInfo.CurrentCulture, UserInterface.RestorePathPromptFormat, UserInterface.PathExample);
-        string folderPath = this.PromptSaveRestoreFolder(prompt, SavedGameFolder);
+        string folderPath = this.PromptSaveRestoreFolder(prompt, this.SavedGameFolder);
         if (folderPath.Length > 0)
         {
             int index = this.PromptFileSlot(false, folderPath, out _);
@@ -1462,6 +1465,8 @@ public sealed partial class AgiInterpreter
             {
                 filePath = this.SavedGameManager.GetFilePath(index, folderPath);
             }
+
+            this.lastSavedGameFolder = folderPath;
         }
 
         if (inputDisabled)
@@ -1483,7 +1488,7 @@ public sealed partial class AgiInterpreter
         string filePath = string.Empty;
 
         string prompt = string.Format(CultureInfo.CurrentCulture, UserInterface.SavePathPromptFormat, UserInterface.PathExample);
-        string folderPath = this.PromptSaveRestoreFolder(prompt, SavedGameFolder);
+        string folderPath = this.PromptSaveRestoreFolder(prompt, this.SavedGameFolder);
         if (folderPath.Length > 0)
         {
             int index = this.PromptFileSlot(true, folderPath, out description);
@@ -1508,6 +1513,8 @@ public sealed partial class AgiInterpreter
                     filePath = this.SavedGameManager.GetFilePath(index, folderPath);
                 }
             }
+
+            this.lastSavedGameFolder = folderPath;
         }
 
         if (inputDisabled)
