@@ -351,7 +351,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
         reader.ReadEndElement();
 
         this.Interpreter.State.Cursor = reader.ReadElementString("Cursor");
-        this.Interpreter.State.EgoControl = (EgoControl)Enum.Parse(typeof(EgoControl), reader.ReadElementString("EgoControl"), true);
+        this.Interpreter.State.EgoControl = Enum.Parse<EgoControl>(reader.ReadElementString("EgoControl"), true);
 
         reader.ReadStartElement("Flags");
 
@@ -402,7 +402,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
 
         reader.ReadEndElement();
 
-        this.Interpreter.State.WalkMode = (WalkMode)Enum.Parse(typeof(WalkMode), reader.ReadElementString("WalkMode"), true);
+        this.Interpreter.State.WalkMode = Enum.Parse<WalkMode>(reader.ReadElementString("WalkMode"), true);
         this.Interpreter.State.WindowRowMax = int.Parse(reader.ReadElementString("WindowRowMax"), CultureInfo.InvariantCulture);
         this.Interpreter.State.WindowRowMin = int.Parse(reader.ReadElementString("WindowRowMin"), CultureInfo.InvariantCulture);
 
@@ -425,7 +425,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
             view.CelPrevHeight = byte.Parse(reader.ReadElementString("CelPrevHeight"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.CelPrevWidth = byte.Parse(reader.ReadElementString("CelPrevWidth"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.CelTotal = byte.Parse(reader.ReadElementString("CelTotal"), NumberStyles.Integer, CultureInfo.InvariantCulture);
-            view.Cycle = (CycleMode)Enum.Parse(typeof(CycleMode), reader.ReadElementString("Cycle"), true);
+            view.Cycle = Enum.Parse<CycleMode>(reader.ReadElementString("Cycle"), true);
             view.CycleCount = byte.Parse(reader.ReadElementString("CycleCount"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.CycleTime = byte.Parse(reader.ReadElementString("CycleTime"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.Direction = byte.Parse(reader.ReadElementString("Direction"), NumberStyles.Integer, CultureInfo.InvariantCulture);
@@ -437,7 +437,7 @@ public sealed class SavedGameXmlSerializer : ISavedGameSerializer
             view.LoopCur = byte.Parse(reader.ReadElementString("LoopCur"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.LoopFlag = byte.Parse(reader.ReadElementString("LoopFlag"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.LoopTotal = byte.Parse(reader.ReadElementString("LoopTotal"), NumberStyles.Integer, CultureInfo.InvariantCulture);
-            view.Motion = (Motion)Enum.Parse(typeof(Motion), reader.ReadElementString("Motion"), true);
+            view.Motion = Enum.Parse<Motion>(reader.ReadElementString("Motion"), true);
             view.MoveFlag = byte.Parse(reader.ReadElementString("MoveFlag"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.MoveStepSize = byte.Parse(reader.ReadElementString("MoveStepSize"), NumberStyles.Integer, CultureInfo.InvariantCulture);
             view.MoveX = int.Parse(reader.ReadElementString("MoveX"), CultureInfo.InvariantCulture);

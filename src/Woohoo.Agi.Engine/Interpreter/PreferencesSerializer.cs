@@ -43,7 +43,7 @@ public static class PreferencesSerializer
             switch (reader.Name)
             {
                 case "InputMode":
-                    prefs.InputMode = (UserInputMode)Enum.Parse(typeof(UserInputMode), reader.ReadElementContentAsString(), true);
+                    prefs.InputMode = Enum.Parse<UserInputMode>(reader.ReadElementContentAsString(), true);
                     break;
                 case "WordListIncludeSynonyms":
                     prefs.WordListIncludeSynonyms = reader.ReadElementContentAsBoolean();
@@ -64,7 +64,7 @@ public static class PreferencesSerializer
                     prefs.DisplayFadeCount = reader.ReadElementContentAsInt();
                     break;
                 case "Theme":
-                    prefs.Theme = (UserInterfaceTheme)Enum.Parse(typeof(UserInterfaceTheme), reader.ReadElementContentAsString());
+                    prefs.Theme = Enum.Parse<UserInterfaceTheme>(reader.ReadElementContentAsString());
                     break;
                 case "SkipStartupQuestion":
                     prefs.SkipStartupQuestion = reader.ReadElementContentAsBoolean();
