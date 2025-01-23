@@ -61,9 +61,69 @@ public abstract class InputControl
 
     public abstract void CancelInput();
 
-    public abstract string GetString(string message, int maxLength, byte row, byte column);
+    public virtual string GetString(string message, int maxLength, byte row, byte column)
+    {
+        string result = string.Empty;
 
-    public abstract string GetNumber(string message);
+        bool inputEditDisabled = !this.InputEditEnabled;
+        this.WindowManager.PushTextPosition();
+        this.EnableInput();
+
+        if (row < 0x19)
+        {
+            this.WindowManager.GotoPosition(new TextPosition(row, column));
+        }
+
+        string wrapped = this.WindowManager.WrapText(message, 0x40);
+        this.WindowManager.PrintFormatted(wrapped);
+
+        var textBox = new TextBoxControl(this.Interpreter)
+        {
+            Text = string.Empty,
+            MaxTextLength = maxLength,
+        };
+
+        if (textBox.DoModal())
+        {
+            result = textBox.Text;
+        }
+
+        this.WindowManager.PopTextPosition();
+        if (inputEditDisabled)
+        {
+            this.DisableInput();
+        }
+
+        return result;
+    }
+
+    public virtual string GetNumber(string message)
+    {
+        string result = string.Empty;
+
+        this.EnableInput();
+        this.WindowManager.GotoPosition(new TextPosition(this.State.InputPosition, 0));
+
+        string wrapped = this.WindowManager.WrapText(message, 0x28);
+        this.WindowManager.PrintFormatted(wrapped);
+
+        this.DisableInput();
+
+        var textBox = new TextBoxControl(this.Interpreter)
+        {
+            Text = string.Empty,
+            MaxTextLength = 4,
+        };
+
+        if (textBox.DoModal())
+        {
+            result = textBox.Text;
+        }
+
+        this.RedrawInput();
+
+        return result;
+    }
 
     protected abstract void ProcessKey(InputEvent e);
 
