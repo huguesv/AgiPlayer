@@ -489,10 +489,20 @@ public sealed partial class AgiInterpreter
 
         // Second priority is id hint file in user appdata subfolder
         // Third priority is id hint file in program subfolder
-        hintBook = TryLoad(Directory.GetFiles(UserHintsFolder, $"{id}.hnt"))
-            ?? TryLoad(Directory.GetFiles(ProgramHintsFolder, $"{id}.hnt"));
+        hintBook = TryLoad(GetHintFiles(UserHintsFolder, id))
+            ?? TryLoad(GetHintFiles(ProgramHintsFolder, id));
 
         return hintBook;
+
+        static string[] GetHintFiles(string folder, string id)
+        {
+            if (Directory.Exists(folder))
+            {
+                return Directory.GetFiles(folder, $"{id}.hnt");
+            }
+
+            return Array.Empty<string>();
+        }
 
         static HintBook TryLoad(string[] filePaths)
         {
@@ -685,7 +695,7 @@ public sealed partial class AgiInterpreter
 
         if (this.HintBook is null)
         {
-            this.Hint(StringUtility.ConvertSystemResourceText(PlayerResources.HintsNotFound));
+            this.Hint(UserInterface.HintsNotFound);
             return;
         }
 
@@ -693,7 +703,7 @@ public sealed partial class AgiInterpreter
 
         if (topics.Length == 0)
         {
-            this.Hint(StringUtility.ConvertSystemResourceText(PlayerResources.HintsNotAvailable));
+            this.Hint(UserInterface.HintsNotAvailable);
             return;
         }
 
@@ -712,8 +722,7 @@ public sealed partial class AgiInterpreter
             var topic = topics[listBox.SelectedItemIndex];
             for (int i = 0; i < topic.Messages.Count; i++)
             {
-                var messageFormat = StringUtility.ConvertSystemResourceText(PlayerResources.HintMessageFormat);
-                var message = string.Format(messageFormat, topic.Messages[i], i + 1, topic.Messages.Count);
+                var message = string.Format(UserInterface.HintMessageFormat, topic.Messages[i], i + 1, topic.Messages.Count);
 
                 if (!this.Hint(message))
                 {

@@ -155,7 +155,7 @@
     <value>Hints are currently unavailable.</value>
   </data>
   <data name="HintsNotFound" xml:space="preserve">
-    <value>Hints not found for this game. Please add the .hnt file to the game folder.</value>
+    <value>Hints not found for this game.\n\nPlease place a .hnt file in the game folder.</value>
   </data>
   <data name="HintsTitle" xml:space="preserve">
     <value>Hints</value>

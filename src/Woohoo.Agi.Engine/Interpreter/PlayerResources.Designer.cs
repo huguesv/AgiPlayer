@@ -175,7 +175,7 @@ namespace Woohoo.Agi.Engine.Interpreter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hints not found for this game. Please add the .hnt file to the game folder..
+        ///   Looks up a localized string similar to Hints not found for this game.\n\nPlease place a .hnt file in the game folder..
         /// </summary>
         internal static string HintsNotFound {
             get {

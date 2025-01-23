@@ -21,6 +21,12 @@ public static class UserInterface
 
     public static string RestoreNoGameAvailable => StringUtility.ConvertSystemResourceText(PlayerResources.RestoreNoGameAvailable);
 
+    public static string HintMessageFormat => StringUtility.ConvertSystemResourceText(PlayerResources.HintMessageFormat);
+
+    public static string HintsNotFound => StringUtility.ConvertSystemResourceText(PlayerResources.HintsNotFound);
+
+    public static string HintsNotAvailable => StringUtility.ConvertSystemResourceText(PlayerResources.HintsNotAvailable);
+
     public static string ListBoxItemTooLong => StringUtility.ConvertSystemResourceText(PlayerResources.ListBoxItemTooLong);
 
     public static string ListBoxItemFormat => StringUtility.ConvertSystemResourceText(PlayerResources.ListBoxItemFormat);
