@@ -57,7 +57,9 @@ public class SaveRestoreGameBrowseControl
         for (int i = 0; i < this.slotCount; i++)
         {
             this.WindowManager.GotoPosition(new TextPosition((byte)(textRow + i), (byte)this.WindowManager.MessageState.TextLeftColumn));
-            this.WindowManager.PrintFormatted(string.Format(CultureInfo.CurrentCulture, UserInterface.ListBoxItemFormat, this.descriptions[i]));
+
+            string description = this.descriptions[i].Length < 32 ? this.descriptions[i] : this.descriptions[i].Substring(0, 31);
+            this.WindowManager.PrintFormatted(string.Format(CultureInfo.CurrentCulture, UserInterface.ListBoxItemFormat, description));
         }
 
         this.DrawSelector((byte)(current + textRow));
