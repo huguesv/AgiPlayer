@@ -178,19 +178,8 @@ public class LogicProcedureTable
             new(LogicProcedureCode.TraceInfo, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number),
         ];
 
-        if (interpreter < InterpreterVersion.V2411)
-        {
-            // 3 arguments <= 2.4
-            list.Add(new(LogicProcedureCode.PrintAt, LogicArgumentType.Message, LogicArgumentType.Number, LogicArgumentType.Number));
-            list.Add(new(LogicProcedureCode.PrintAtV, LogicArgumentType.Message, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        }
-        else
-        {
-            // 4 arguments > 2.4
-            list.Add(new(LogicProcedureCode.PrintAt, LogicArgumentType.Message, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
-            list.Add(new(LogicProcedureCode.PrintAtV, LogicArgumentType.Message, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable));
-        }
-
+        list.Add(new(LogicProcedureCode.PrintAt, LogicArgumentType.Message, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
+        list.Add(new(LogicProcedureCode.PrintAtV, LogicArgumentType.Message, LogicArgumentType.Variable, LogicArgumentType.Variable, LogicArgumentType.Variable));
         list.Add(new(LogicProcedureCode.DiscardViewV, LogicArgumentType.Variable));
         list.Add(new(LogicProcedureCode.ClearTextRectangle, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number, LogicArgumentType.Number));
 

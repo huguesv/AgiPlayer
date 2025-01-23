@@ -1746,8 +1746,6 @@ public class LogicInterpreter
 
     private void LogicPrintAt()
     {
-        Debug.Assert(this.interpreter >= InterpreterVersion.V2411, "print.at does not take 4 params on this interpreter.");
-
         byte msg = this.CurrentLogic.GetCode(this.CurrentLogicDataIndex++);
         byte row = this.CurrentLogic.GetCode(this.CurrentLogicDataIndex++);
         byte column = this.CurrentLogic.GetCode(this.CurrentLogicDataIndex++);
@@ -1758,8 +1756,6 @@ public class LogicInterpreter
 
     private void LogicPrintAtV()
     {
-        Debug.Assert(this.interpreter >= InterpreterVersion.V2411, "print.at.v does not take 4 params on this interpreter.");
-
         byte msg = this.CurrentLogic.GetCode(this.CurrentLogicDataIndex++);
         byte row = this.CurrentLogic.GetCode(this.CurrentLogicDataIndex++);
         byte column = this.CurrentLogic.GetCode(this.CurrentLogicDataIndex++);
