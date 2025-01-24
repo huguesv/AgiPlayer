@@ -489,20 +489,12 @@ public sealed partial class AgiInterpreter
 
         // Second priority is id hint file in user appdata subfolder
         // Third priority is id hint file in program subfolder
-        hintBook = TryLoad(GetHintFiles(UserHintsFolder, id))
-            ?? TryLoad(GetHintFiles(ProgramHintsFolder, id));
+        hintBook = TryLoad(GetHintFiles(UserHintsFolder, id)) ?? TryLoad(GetHintFiles(ProgramHintsFolder, id));
 
         return hintBook;
 
-        static string[] GetHintFiles(string folder, string id)
-        {
-            if (Directory.Exists(folder))
-            {
-                return Directory.GetFiles(folder, $"{id}.hnt");
-            }
-
-            return Array.Empty<string>();
-        }
+        static string[] GetHintFiles(string folder, string id) =>
+            Directory.Exists(folder) ? Directory.GetFiles(folder, $"{id}.hnt") : [];
 
         static HintBook TryLoad(string[] filePaths)
         {
