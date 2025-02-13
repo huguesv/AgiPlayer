@@ -23,6 +23,8 @@ internal abstract class AgiPlayer
         return new Backend.Sdl.SdlPlayer().Run(args);
 #elif USE_SDL2
         return new Backend.Sdl2.Sdl2Player().Run(args);
+#elif USE_SDL3
+        return new Backend.Sdl3.Sdl3Player().Run(args);
 #else
 #error No backend defined
         return 0;
