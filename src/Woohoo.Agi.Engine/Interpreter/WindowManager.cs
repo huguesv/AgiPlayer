@@ -446,8 +446,11 @@ public class WindowManager
 
     public void UpdateTextRegion()
     {
-        this.Interpreter.GraphicsDriver.Update(this.invalidated);
-        this.invalidated = default;
+        if (this.invalidated != default)
+        {
+            this.Interpreter.GraphicsDriver.Update(this.invalidated);
+            this.invalidated = default;
+        }
     }
 
     public string WrapText(string text, int count)
@@ -596,7 +599,7 @@ public class WindowManager
 
             this.invalidated.X = x1;
             this.invalidated.Y = y1;
-            this.invalidated.Width = x2 - x2;
+            this.invalidated.Width = x2 - x1;
             this.invalidated.Height = y2 - y1;
         }
         else
