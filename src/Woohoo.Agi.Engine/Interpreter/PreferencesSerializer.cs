@@ -42,6 +42,9 @@ public static class PreferencesSerializer
         {
             switch (reader.Name)
             {
+                case "Backend":
+                    prefs.Backend = reader.ReadElementContentAsString();
+                    break;
                 case "InputMode":
                     prefs.InputMode = Enum.Parse<UserInputMode>(reader.ReadElementContentAsString(), true);
                     break;

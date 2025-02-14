@@ -13,6 +13,7 @@ public class Preferences
     /// </summary>
     public Preferences()
     {
+        this.Backend = "SDL";
         this.InputMode = UserInputMode.Classic;
         this.WordListIncludeSynonyms = true;
         this.WordListContextSensitive = false;
@@ -25,6 +26,11 @@ public class Preferences
         this.SoundReadVariable = true;
         this.SoundHardwareEnabled = true;
     }
+
+    /// <summary>
+    /// Gets or sets the backend to use for input, audio and video.
+    /// </summary>
+    public string Backend { get; set; }
 
     /// <summary>
     /// Gets or sets user input mode.

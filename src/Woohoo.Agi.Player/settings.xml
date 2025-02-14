@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Settings>
+  <!-- Backend to use for input, audio and video. -->
+  <!-- Values: SDL, SDL2 (experimental), SDL3 (experimental) -->
+  <!-- Default: SDL -->
+  <Backend>SDL</Backend>
+
   <!-- Use Classic to type text at the bottom of the screen while the game runs. -->
   <!-- Use InputBox to type text in a box while the game is paused. -->
   <!-- Use WordList for classic mode with optional word list selection box, invoked using CTRL, ALT, SHIFT or CAPSLOCK. -->

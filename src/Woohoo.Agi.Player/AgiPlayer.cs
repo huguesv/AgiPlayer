@@ -19,57 +19,39 @@ internal abstract class AgiPlayer
     [STAThread]
     public static int Main(string[] args)
     {
-#if USE_SDL
-        return new Backend.Sdl.SdlPlayer().Run(args);
-#elif USE_SDL2
-        return new Backend.Sdl2.Sdl2Player().Run(args);
-#elif USE_SDL3
-        return new Backend.Sdl3.Sdl3Player().Run(args);
-#else
-#error No backend defined
-        return 0;
-#endif
-    }
-
-    public int Run(string[] args)
-    {
-        DisplayInfo();
-
-        string folder = Environment.CurrentDirectory;
-        if (args.Length > 0)
-        {
-            folder = args[0];
-        }
-
-        try
-        {
-            // First try the specified directory and run the game if there is one
-            if (this.RunGame(folder) == -1)
-            {
-                // Recursively try to find games and list them in game selection screen
-                return this.RunGames(folder);
-            }
-        }
-        catch (ExitException)
-        {
-            this.Quit();
-        }
-        catch (AbortException)
-        {
-            try
-            {
-                this.Interpreter.ExitAgi();
-            }
-            catch (ExitException)
-            {
-                this.Quit();
-            }
-        }
-
-        return 0;
+        var prefs = ReadPreferences();
+        var player = CreatePlayer(prefs);
+        return player.Run(args, prefs);
     }
 
     protected abstract void Quit();
+
+    private static AgiPlayer CreatePlayer(Preferences prefs)
+    {
+        AgiPlayer player = prefs.Backend.ToUpperInvariant() switch
+        {
+#if USE_SDL
+            "SDL" => new Backend.Sdl.SdlPlayer(),
+#endif
+#if USE_SDL2
+            "SDL2" => new Backend.Sdl2.Sdl2Player(),
+#endif
+#if USE_SDL3
+            "SDL3" => new Backend.Sdl3.Sdl3Player(),
+#endif
+#if USE_SDL
+            _ => new Backend.Sdl.SdlPlayer(),
+#elif USE_SDL2
+            _ => new Backend.Sdl2.Sdl2Player(),
+#elif USE_SDL3
+            _ => new Backend.Sdl3.Sdl3Player(),
+#else
+#error No backend defined
+#endif
+        };
+
+        return player;
+    }
 
     private static void DisplayInfo()
     {
@@ -99,21 +81,59 @@ internal abstract class AgiPlayer
         return preferences;
     }
 
-    private int RunGames(string folder)
+    private int Run(string[] args, Preferences prefs)
     {
-        GameStartInfo[] startInfos = GameFinder.FindGames(folder, true);
+        DisplayInfo();
 
-        this.Interpreter.Start(startInfos, ReadPreferences());
+        string folder = Environment.CurrentDirectory;
+        if (args.Length > 0)
+        {
+            folder = args[0];
+        }
+
+        try
+        {
+            // First try the specified directory and run the game if there is one
+            if (this.RunGame(folder, prefs) == -1)
+            {
+                // Recursively try to find games and list them in game selection screen
+                return this.RunGames(folder, prefs);
+            }
+        }
+        catch (ExitException)
+        {
+            this.Quit();
+        }
+        catch (AbortException)
+        {
+            try
+            {
+                this.Interpreter.ExitAgi();
+            }
+            catch (ExitException)
+            {
+                this.Quit();
+            }
+        }
 
         return 0;
     }
 
-    private int RunGame(string folder)
+    private int RunGames(string folder, Preferences prefs)
+    {
+        GameStartInfo[] startInfos = GameFinder.FindGames(folder, true);
+
+        this.Interpreter.Start(startInfos, prefs);
+
+        return 0;
+    }
+
+    private int RunGame(string folder, Preferences prefs)
     {
         GameStartInfo startInfo = GameFinder.FindGame(folder);
         if (startInfo is not null)
         {
-            this.Interpreter.Start(startInfo, ReadPreferences());
+            this.Interpreter.Start(startInfo, prefs);
 
             return 0;
         }

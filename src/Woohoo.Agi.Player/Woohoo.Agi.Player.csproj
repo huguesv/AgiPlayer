@@ -4,7 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Backend>SDL</Backend>
+    <BackendSdl>true</BackendSdl>
+    <BackendSdl2>true</BackendSdl2>
+    <BackendSdl3>true</BackendSdl3>
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -22,21 +24,21 @@
     <Using Include="System.Xml" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(Backend)'=='SDL'">
+  <PropertyGroup Condition="'$(BackendSdl)'=='true'">
     <DefineConstants>$(DefineConstants);USE_SDL</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Backend)'=='SDL2'">
+  <PropertyGroup Condition="'$(BackendSdl2)'=='true'">
     <DefineConstants>$(DefineConstants);USE_SDL2</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Backend)'=='SDL3'">
+  <PropertyGroup Condition="'$(BackendSdl3)'=='true'">
     <DefineConstants>$(DefineConstants);USE_SDL3</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ppy.SDL2-CS" Condition="'$(Backend)'=='SDL2'" />
-    <PackageReference Include="ppy.SDL3-CS" Condition="'$(Backend)'=='SDL3'" />
+    <PackageReference Include="ppy.SDL2-CS" Condition="'$(BackendSdl2)'=='true'" />
+    <PackageReference Include="ppy.SDL3-CS" Condition="'$(BackendSdl3)'=='true'" />
     <PackageReference Include="StyleCop.Analyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -47,7 +49,7 @@
     <ProjectReference Include="..\Woohoo.Agi.Engine\Woohoo.Agi.Engine.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(BackendSdl)'=='true'">
     <Content Include="..\..\lib\SDL\x86\SDL.dll" Link="runtimes\win-x86\native\SDL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
