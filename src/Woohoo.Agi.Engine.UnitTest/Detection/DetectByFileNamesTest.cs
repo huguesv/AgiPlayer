@@ -5,7 +5,6 @@ namespace Woohoo.Agi.Engine.UnitTest.Detection;
 
 using Woohoo.Agi.Engine.Detection;
 using Woohoo.Agi.Engine.UnitTest.Infrastructure;
-using Xunit.Abstractions;
 
 public class DetectByFileNamesTest
 {
