@@ -4,6 +4,9 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2;
 
 #if USE_SDL2
+
+#pragma warning disable SA1120
+
 public static partial class NativeMethods
 {
     //
@@ -38,4 +41,7 @@ public static partial class NativeMethods
     [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_WaitThread(IntPtr thread, out int status);
 }
+
+#pragma warning restore SA1120
+
 #endif

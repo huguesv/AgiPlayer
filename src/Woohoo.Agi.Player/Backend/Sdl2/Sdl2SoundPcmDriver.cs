@@ -4,7 +4,7 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2;
 
 #if USE_SDL2
-using Woohoo.Agi.Engine;
+using Woohoo.Agi.Engine.Interpreter;
 using static Woohoo.Agi.Player.Backend.Sdl2.NativeMethods;
 
 internal sealed class Sdl2SoundPcmDriver : ISoundPcmDriver
@@ -43,12 +43,10 @@ internal sealed class Sdl2SoundPcmDriver : ISoundPcmDriver
 
         SDL_AudioSpec obtained = default(SDL_AudioSpec);
 
-        //IntPtr desiredPtr = Marshal.AllocHGlobal(Marshal.SizeOf(desired));
         IntPtr obtainedPtr = Marshal.AllocHGlobal(Marshal.SizeOf(obtained));
 
         try
         {
-            //Marshal.StructureToPtr(desired, desiredPtr, false);
             result = SDL_OpenAudio(ref desired, obtainedPtr);
             if (result == 0)
             {
@@ -64,7 +62,6 @@ internal sealed class Sdl2SoundPcmDriver : ISoundPcmDriver
         }
         finally
         {
-            //Marshal.FreeHGlobal(desiredPtr);
             Marshal.FreeHGlobal(obtainedPtr);
         }
 

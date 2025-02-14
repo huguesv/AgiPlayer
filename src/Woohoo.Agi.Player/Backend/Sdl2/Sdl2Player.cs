@@ -5,11 +5,11 @@ namespace Woohoo.Agi.Player.Backend.Sdl2;
 
 #if USE_SDL2
 using Woohoo.Agi.Engine;
+using Woohoo.Agi.Engine.Interpreter;
 using static Woohoo.Agi.Player.Backend.Sdl2.NativeMethods;
 
 internal class Sdl2Player : AgiPlayer
 {
-
     /// <summary>
     /// Initializes a new instance of the <see cref="Sdl2Player"/> class.
     /// </summary>
@@ -19,10 +19,10 @@ internal class Sdl2Player : AgiPlayer
         var graphicsDriver = new Sdl2GraphicsDriver();
         var soundDriver = new PcmSoundDriver(new Sdl2SoundPcmDriver());
 
-        this.interpreter = new AgiInterpreter(inputDriver, graphicsDriver, soundDriver);
+        this.Interpreter = new AgiInterpreter(inputDriver, graphicsDriver, soundDriver);
 
-        inputDriver.SetInterpreter(this.interpreter);
-        soundDriver.SetInterpreter(this.interpreter);
+        inputDriver.SetInterpreter(this.Interpreter);
+        soundDriver.SetInterpreter(this.Interpreter);
     }
 
     protected override void Quit()

@@ -30,7 +30,13 @@
     <DefineConstants>$(DefineConstants);USE_SDL2</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Backend)'=='SDL3'">
+    <DefineConstants>$(DefineConstants);USE_SDL3</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="ppy.SDL2-CS" Condition="'$(Backend)'=='SDL2'" />
+    <PackageReference Include="ppy.SDL3-CS" Condition="'$(Backend)'=='SDL3'" />
     <PackageReference Include="StyleCop.Analyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

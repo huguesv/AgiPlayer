@@ -4,7 +4,7 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2;
 
 #if USE_SDL2
-using Woohoo.Agi.Engine;
+using Woohoo.Agi.Engine.Interpreter;
 
 internal class Sdl2SoundChannel
 {

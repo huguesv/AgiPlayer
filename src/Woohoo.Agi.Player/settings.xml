@@ -22,12 +22,12 @@
   <!-- Horizontal scaling factor. -->
   <!-- Values: 1+ -->
   <!-- Default: 2 -->
-  <DisplayScaleX>2</DisplayScaleX>
+  <DisplayScaleX>4</DisplayScaleX>
 
   <!-- Vertical scaling factor. -->
   <!-- Values: 1+ -->
   <!-- Default: 2 -->
-  <DisplayScaleY>2</DisplayScaleY>
+  <DisplayScaleY>4</DisplayScaleY>
 
   <!-- The theme affects the font and the color palette used. Once the game is running, these can be cycled using CTRL+R. -->
   <!-- Values: Ega, Cga1, Cga2, Hercules, HerculesGreen, HerculesAmber, AtariST, Amiga1, Amiga2, Amiga3, AppleIIgs -->

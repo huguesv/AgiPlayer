@@ -4,7 +4,13 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2;
 
 #if USE_SDL2
+
+#pragma warning disable SA1005
+#pragma warning disable SA1512
+#pragma warning disable SA1515
+
 using Woohoo.Agi.Engine;
+using Woohoo.Agi.Engine.Interpreter;
 using static Woohoo.Agi.Player.Backend.Sdl2.NativeMethods;
 
 internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
@@ -69,7 +75,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
         this.displayHeight = this.nativeHeight * displayScaleY;
         this.bpp = 8;
 
-        this.windowPtr = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, this.displayWidth, this.displayHeight, SDL_WindowFlags.SDL_WINDOW_SHOWN);
+        this.windowPtr = SDL_CreateWindow(string.Empty, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, this.displayWidth, this.displayHeight, SDL_WindowFlags.SDL_WINDOW_SHOWN);
         this.rendererPtr = SDL_CreateRenderer(this.windowPtr, 0, SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
         this.surfacePtr = SDL_CreateRGBSurfaceWithFormat(0, this.displayWidth, this.displayHeight, this.bpp, SDL_PIXELFORMAT_INDEX8);
         //this.surfacePtr = SDL_CreateRGBSurface(0, this.displayWidth, this.displayHeight, this.bpp, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
@@ -92,7 +98,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
                 y = rect.Y * this.displayScaleY,
                 w = rect.Width * this.displayScaleX,
                 h = rect.Height * this.displayScaleY,
-            }
+            },
         };
 
         SDL_UpdateWindowSurfaceRects(this.windowPtr, rects, rects.Length);
@@ -163,7 +169,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
                     y = (topLeft.Y + offsetYRenderPoints) * this.displayScaleY,
                     w = (bottomRight.X - topLeft.X) * this.displayScaleX,
                     h = (bottomRight.Y - topLeft.Y) * this.displayScaleY,
-                }
+                },
             };
 
             SDL_UpdateWindowSurfaceRects(this.windowPtr, rects, rects.Length);
@@ -212,7 +218,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
                         y = (topLeft.Y + offsetYRenderPoints) * this.displayScaleY,
                         w = (bottomRight.X - topLeft.X) * this.displayScaleX,
                         h = (bottomRight.Y - topLeft.Y) * this.displayScaleY,
-                    }
+                    },
                 };
 
                 SDL_UpdateWindowSurfaceRects(this.windowPtr, rects, rects.Length);
@@ -345,4 +351,9 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
         }
     }
 }
+
+#pragma warning restore SA1005
+#pragma warning restore SA1512
+#pragma warning restore SA1515
+
 #endif

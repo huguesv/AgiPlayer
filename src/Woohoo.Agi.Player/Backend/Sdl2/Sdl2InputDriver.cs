@@ -4,7 +4,13 @@
 namespace Woohoo.Agi.Player.Backend.Sdl2;
 
 #if USE_SDL2
+
+#pragma warning disable SA1005
+#pragma warning disable SA1512
+#pragma warning disable SA1515
+
 using Woohoo.Agi.Engine;
+using Woohoo.Agi.Engine.Interpreter;
 using static Woohoo.Agi.Player.Backend.Sdl2.NativeMethods;
 
 internal class Sdl2InputDriver : IInputDriver
@@ -366,12 +372,7 @@ internal class Sdl2InputDriver : IInputDriver
                     return InputEventAscii.Enter;
 
                 default:
-                    if ((keysym.unicode & 0xff80) == 0 && keysym.unicode != 0)
-                    {
-                        return (int)(keysym.unicode & 0x7f);
-                    }
-
-                    return (int)(keysym.unicode & 0xff);
+                    return (int)((int)keysym.sym & 0xff);
             }
         }
 
@@ -700,16 +701,6 @@ internal class Sdl2InputDriver : IInputDriver
                     case SDL_EventType.SDL_MOUSEBUTTONDOWN:
                         e = this.EventMouseButton(evt.button.button, evt.button.x, evt.button.y);
                         break;
-                    //case SDL_EventType.SDL_JOYBUTTONDOWN:
-                    //    e = this.EventJoyButton(evt.jbutton.button);
-                    //    break;
-                    //case SDL_EventType.SDL_JOYAXISMOTION:
-                    //    if (includeJoystickAxis)
-                    //    {
-                    //        e = this.EventJoyAxis(evt.jaxis.axis, evt.jaxis.val);
-                    //    }
-
-                    //    break;
                     case SDL_EventType.SDL_QUIT:
                         throw new AbortException();
                 }
@@ -777,4 +768,9 @@ internal class Sdl2InputDriver : IInputDriver
         }
     }
 }
+
+#pragma warning restore SA1005
+#pragma warning restore SA1512
+#pragma warning restore SA1515
+
 #endif
