@@ -1125,8 +1125,9 @@ public sealed partial class AgiInterpreter
 
     private void GraphicsClear()
     {
-        this.GraphicsDriver.Fill(new RenderRectangle(0, 0, this.GraphicsRenderer.RenderScaleX * 320, this.GraphicsRenderer.RenderScaleY * 200), 0);
-        this.GraphicsDriver.Update(new RenderRectangle(0, 0, 0, 0));
+        var rect = new RenderRectangle(0, 0, this.GraphicsRenderer.RenderScaleX * 320, this.GraphicsRenderer.RenderScaleY * 200);
+        this.GraphicsDriver.Fill(rect, 0);
+        this.GraphicsDriver.Update(rect);
     }
 
     private void GraphicsRender(bool picBuffRotate, bool fade)

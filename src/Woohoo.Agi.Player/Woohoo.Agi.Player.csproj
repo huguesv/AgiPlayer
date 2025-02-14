@@ -4,8 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Platforms>x86;x64;ARM64</Platforms>
-    <Backend>SDL3</Backend>
+    <Backend>SDL</Backend>
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -28,11 +27,6 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <DefineConstants>TRACE</DefineConstants>
-    <PlatformTarget>ARM64</PlatformTarget>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DefineConstants>TRACE</DefineConstants>
     <PlatformTarget>x64</PlatformTarget>
@@ -41,11 +35,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <DefineConstants></DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
-    <DefineConstants />
-    <PlatformTarget>ARM64</PlatformTarget>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -59,10 +48,6 @@
 
   <PropertyGroup Condition="'$(Backend)'=='SDL2'">
     <DefineConstants>$(DefineConstants);USE_SDL2</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Backend)'=='SDL3'">
-    <DefineConstants>$(DefineConstants);USE_SDL3</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(PlatformTarget)'=='x86'">
@@ -85,7 +70,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\lib\$(Backend)\$(PlatformTarget)\$(Backend).dll" Link="$(Backend).dll">
+    <Content Include="..\..\lib\SDL\x86\SDL.dll" Link="runtimes\win-x86\native\SDL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\lib\$(Backend)\$(PlatformTarget)\README-SDL.txt" Link="README-SDL.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
