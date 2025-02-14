@@ -6,6 +6,9 @@ namespace Woohoo.Agi.Player.Backend.Sdl;
 using System.Runtime.CompilerServices;
 
 #if USE_SDL
+
+#pragma warning disable CS0649
+
 internal static partial class NativeMethods
 {
     public const int SDL_INIT_TIMER = 1;
@@ -1138,4 +1141,7 @@ internal static partial class NativeMethods
         public const int SDL_TRUE = 1;
     }
 }
+
+#pragma warning restore CS0649
+
 #endif

@@ -4,7 +4,6 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Platforms>x86;x64</Platforms>
     <Backend>SDL</Backend>
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -23,40 +22,12 @@
     <Using Include="System.Xml" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <DefineConstants>TRACE</DefineConstants>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DefineConstants>TRACE</DefineConstants>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <DefineConstants></DefineConstants>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DefineConstants></DefineConstants>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Backend)'=='SDL'">
     <DefineConstants>$(DefineConstants);USE_SDL</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Backend)'=='SDL2'">
     <DefineConstants>$(DefineConstants);USE_SDL2</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(PlatformTarget)'=='x86'">
-    <DefineConstants>$(DefineConstants);X86</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(PlatformTarget)'=='x64'">
-    <DefineConstants>$(DefineConstants);X64</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -71,10 +42,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\lib\$(Backend)\$(PlatformTarget)\$(Backend).dll" Link="$(Backend).dll">
+    <Content Include="..\..\lib\SDL\x86\SDL.dll" Link="runtimes\win-x86\native\SDL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\lib\$(Backend)\$(PlatformTarget)\README-SDL.txt" Link="README-SDL.txt">
+    <Content Include="..\..\lib\SDL\x64\SDL.dll" Link="runtimes\win-x64\native\SDL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

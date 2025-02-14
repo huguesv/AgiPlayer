@@ -14,6 +14,8 @@ internal class SdlPlayer : AgiPlayer
     /// </summary>
     public SdlPlayer()
     {
+        SdlImportResolver.Initialize();
+
         var inputDriver = new SdlInputDriver();
         var graphicsDriver = new SdlGraphicsDriver();
         var soundDriver = new PcmSoundDriver(new SdlSoundPcmDriver());
