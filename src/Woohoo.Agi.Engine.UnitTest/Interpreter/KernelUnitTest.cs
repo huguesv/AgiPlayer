@@ -233,9 +233,27 @@ public class KernelUnitTest
         interpreter.State.Flags[Flags.SaidAccepted].Should().Be(expected);
     }
 
-    [Fact(Skip = TestNotImplemented)]
-    public void HaveKey()
+    [Theory]
+    [InlineData(65, 65, 65, true)]
+    [InlineData(0, 66, 66, true)]
+    [InlineData(0, 0, 0, false)]
+    public void HaveKey(byte initialKey, byte polledKey, byte expectedKey, bool expectedResult)
     {
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithInputDriver(inputDriver =>
+            {
+                inputDriver.CharacterPollLoop().Returns(polledKey);
+            })
+            .Build();
+        interpreter.State.Variables[Variables.KeyPressed] = initialKey;
+
+        // Act
+        var result = ((IKernel)interpreter).HaveKey();
+
+        // Assert
+        result.Should().Be(expectedResult);
+        interpreter.State.Variables[Variables.KeyPressed].Should().Be(expectedKey);
     }
 
     [Theory]
@@ -256,9 +274,14 @@ public class KernelUnitTest
         result.Should().Be(expected);
     }
 
-    [Fact(Skip = TestNotImplemented)]
+    [Fact]
     public void ReturnFalse()
     {
+        // Arrange
+        var interpreter = new InterpreterBuilder().Build();
+
+        // Act
+        ((IKernel)interpreter).ReturnFalse();
     }
 
     [Theory]
@@ -1246,9 +1269,28 @@ public class KernelUnitTest
     {
     }
 
-    [Fact(Skip = TestNotImplemented)]
-    public void WordToString()
+    [Theory]
+    [InlineData(4, 0, "get flower", "get")]
+    [InlineData(5, 1, "get flower", "flower")]
+    [InlineData(6, 2, "get flower", "")]
+    [InlineData(7, 0, "unknown", "unknown")]
+    [InlineData(8, 1, "unknown", "")]
+    public void WordToString(byte strDestination, byte numWord, string parseText, string expected)
     {
+        // Arrange
+        var interpreter = new InterpreterBuilder()
+            .WithVocabulary(vocab => vocab
+                .WithFamily(40, "get")
+                .WithFamily(50, "key")
+                .WithFamily(60, "flower"))
+            .Build();
+        interpreter.ParseText(parseText);
+
+        // Act
+        ((IKernel)interpreter).WordToString(strDestination, numWord);
+
+        // Assert
+        interpreter.State.Strings[strDestination].Should().Be(expected);
     }
 
     [Fact]

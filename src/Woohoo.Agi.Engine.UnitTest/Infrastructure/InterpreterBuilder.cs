@@ -16,6 +16,9 @@ internal class InterpreterBuilder
     private readonly List<ViewResource> viewResources = [];
     private InventoryResource? inventory;
     private VocabularyResource? vocabulary;
+    private IInputDriver? inputDriver;
+    private IGraphicsDriver? graphicsDriver;
+    private ISoundDriver? soundDriver;
 
     public InterpreterBuilder WithInventory(InventoryResource inventory)
     {
@@ -101,9 +104,48 @@ internal class InterpreterBuilder
         return this;
     }
 
+    public InterpreterBuilder WithInputDriver(IInputDriver inputDriver)
+    {
+        this.inputDriver = inputDriver;
+        return this;
+    }
+
+    public InterpreterBuilder WithInputDriver(Action<IInputDriver> build)
+    {
+        this.inputDriver = Substitute.For<IInputDriver>();
+        build(this.inputDriver);
+        return this;
+    }
+
+    public InterpreterBuilder WithGraphicsDriver(IGraphicsDriver graphicsDriver)
+    {
+        this.graphicsDriver = graphicsDriver;
+        return this;
+    }
+
+    public InterpreterBuilder WithGraphicsDriver(Action<IGraphicsDriver> build)
+    {
+        this.graphicsDriver = Substitute.For<IGraphicsDriver>();
+        build(this.graphicsDriver);
+        return this;
+    }
+
+    public InterpreterBuilder WithSoundDriver(ISoundDriver soundDriver)
+    {
+        this.soundDriver = soundDriver;
+        return this;
+    }
+
+    public InterpreterBuilder WithSoundDriver(Action<ISoundDriver> build)
+    {
+        this.soundDriver = Substitute.For<ISoundDriver>();
+        build(this.soundDriver);
+        return this;
+    }
+
     public AgiInterpreter Build()
     {
-        var result = new AgiInterpreter(null, null, null);
+        var result = new AgiInterpreter(this.inputDriver, this.graphicsDriver, this.soundDriver);
         result.CreateState();
 
         if (this.inventory is not null || this.vocabulary is not null)

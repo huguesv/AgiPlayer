@@ -1065,7 +1065,7 @@ public partial class AgiInterpreter : IKernel
 
     void IKernel.WordToString(byte stringDestination, byte numericWordNumber)
     {
-        this.State.Strings[stringDestination] = this.ParserResults[numericWordNumber].Word;
+        this.State.Strings[stringDestination] = numericWordNumber < this.ParserResults.Length ? this.ParserResults[numericWordNumber].Word : string.Empty;
     }
 
     void IKernel.Parse(byte stringInput)

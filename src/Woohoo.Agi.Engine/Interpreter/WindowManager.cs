@@ -713,7 +713,7 @@ public class WindowManager
                                 case 'w':
                                     num = StringUtility.ParseNumber(text, ref textIndex);
                                     num--;
-                                    embedded = this.Interpreter.ParserResults[num].Word;
+                                    embedded = num < this.Interpreter.ParserResults.Length ? this.Interpreter.ParserResults[num].Word : string.Empty;
                                     this.Display(embedded, message);
                                     break;
                                 default:
