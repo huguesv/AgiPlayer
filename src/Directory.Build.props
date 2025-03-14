@@ -1,6 +1,7 @@
 <Project>
 
   <PropertyGroup>
+    <LangVersion>preview</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors Condition="'$(TreatWarningsAsErrors)' == ''">true</TreatWarningsAsErrors>
