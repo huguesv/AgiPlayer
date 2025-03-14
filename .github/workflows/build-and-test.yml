@@ -15,8 +15,6 @@ jobs:
         os: [windows-latest, ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
-    env:
-      solutionFile: src/AgiPlayer.sln
 
     steps:
     - uses: actions/checkout@v4
@@ -25,10 +23,10 @@ jobs:
       with:
         dotnet-version: '9.0.x'
     - name: Clean
-      run: dotnet clean ${{env.solutionFile}} --configuration Release && dotnet nuget locals all --clear
+      run: dotnet clean src --configuration Release && dotnet nuget locals all --clear
     - name: Build
-      run: dotnet build ${{env.solutionFile}} --configuration Release
+      run: dotnet build src --configuration Release
     - name: Format
-      run: dotnet format ${{env.solutionFile}} --verify-no-changes --verbosity diagnostic
+      run: dotnet format src --verify-no-changes --verbosity diagnostic
     - name: Test
-      run: dotnet test ${{env.solutionFile}} --no-restore --verbosity normal
+      run: dotnet test src --no-restore --verbosity normal
