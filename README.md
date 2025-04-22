@@ -1,5 +1,7 @@
 # Agi Player
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/huguesv/AgiPlayer/build-and-test.yml)
+
 Agi Player is an open-source implementation of Sierra's popular AGI adventure game engine used by the first entries in the King's Quest, Space Quest, Leisure Suit Larry series and more.
 
 It is implemented in C#, and uses SDL for graphics, input and sound.
