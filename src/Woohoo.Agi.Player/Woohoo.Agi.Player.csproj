@@ -2,13 +2,15 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <BackendSdl>true</BackendSdl>
     <BackendSdl2>true</BackendSdl2>
     <BackendSdl3>true</BackendSdl3>
-    <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyTitle>Agi Player</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>

@@ -15,20 +15,32 @@ jobs:
         os: [windows-latest, ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
     env:
-      solutionFile: src/AgiPlayer.slnx
+      dotnetActionVersion: '10.0.x'
+      solutionFile: AgiPlayer.slnx
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '9.0.x'
+        dotnet-version: ${{ env.dotnetActionVersion }}
+
     - name: Clean
+      working-directory: src
       run: dotnet clean ${{env.solutionFile}} --configuration Release && dotnet nuget locals all --clear
+
     - name: Build
+      working-directory: src
       run: dotnet build ${{env.solutionFile}} --configuration Release
+
     - name: Format
+      working-directory: src
       run: dotnet format ${{env.solutionFile}} --verify-no-changes --verbosity diagnostic
+
     - name: Test
-      run: dotnet test ${{env.solutionFile}} --no-restore --verbosity normal
+      working-directory: src
+      run: dotnet test --solution ${{env.solutionFile}} --no-restore --verbosity normal

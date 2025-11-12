@@ -18,7 +18,7 @@ Why? Because it's fun and it was an opportunity to learn more about the internal
 
 ## Requirements
 
-- .NET 9 or later
+- .NET 10 or later
 - Windows 10 or later, 32-bit or 64-bit
 
 ## Features

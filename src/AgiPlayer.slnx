@@ -2,8 +2,9 @@
   <Folder Name="/Solution Items/">
     <File Path="../LICENSE" />
     <File Path="../README.md" />
-    <File Path="Common/Common.AssemblyInfo.cs" />
     <File Path="Common/stylecop.json" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
   </Folder>
   <Project Path="Woohoo.Agi.Engine.UnitTest/Woohoo.Agi.Engine.UnitTest.csproj" />
   <Project Path="Woohoo.Agi.Engine/Woohoo.Agi.Engine.csproj" />

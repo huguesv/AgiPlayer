@@ -1,11 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <NeutralLanguage>en</NeutralLanguage>
-    <Nullable>enable</Nullable>
+    <AssemblyTitle>Agi Engine</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>

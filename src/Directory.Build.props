@@ -1,24 +1,30 @@
 <Project>
 
   <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors Condition="'$(TreatWarningsAsErrors)' == ''">true</TreatWarningsAsErrors>
     <NoWarn>CS1591;SA1600;SA0001;IDE0290</NoWarn>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <SignAssembly>false</SignAssembly>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
   </PropertyGroup>
 
   <PropertyGroup>
-    <OutputPath>$(MSBuildThisFileDirectory)..\bin\$(Configuration)\$(MSBuildProjectName)</OutputPath>
-    <OutDir>$(OutputPath)</OutDir>
-    <UseCommonOutputDirectory>False</UseCommonOutputDirectory>
-    <SignAssembly>false</SignAssembly>
+    <Company>Hugues Valois</Company>
+    <Copyright>Copyright (c) Hugues Valois 2003-2025</Copyright>
+    <Product>Agi Player</Product>
+    <Version>1.1.0.0</Version>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)Common\stylecop.json" Link="stylecop.json" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\Common.AssemblyInfo.cs" Link="Common.AssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>
