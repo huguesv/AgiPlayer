@@ -17,7 +17,7 @@ public class XorTransformUnitTest
         var transform = new XorTransform(this.key);
 
         // Act
-        Action act = () => transform.TransformFinalBlock(null, 0, 0);
+        Action act = () => transform.TransformFinalBlock(null!, 0, 0);
 
         // Assert
         act.Should().Throw<ArgumentNullException>();

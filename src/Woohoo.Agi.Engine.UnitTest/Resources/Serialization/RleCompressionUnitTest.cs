@@ -11,7 +11,7 @@ public class RleCompressionUnitTest
     public void DecompressNull()
     {
         // Act
-        Action act = () => RleCompression.Decompress(null, 0, 1, 1, 0);
+        Action act = () => RleCompression.Decompress(null!, 0, 1, 1, 0);
 
         // Assert
         act.Should().Throw<ArgumentNullException>();

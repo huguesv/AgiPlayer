@@ -13,7 +13,7 @@ public class ParserUnitTest
     public void CreateNullVocabulary()
     {
         // Act
-        Action act = () => _ = new Parser(null);
+        Action act = () => _ = new Parser(null!);
 
         // Assert
         act.Should().Throw<ArgumentNullException>();
@@ -27,7 +27,7 @@ public class ParserUnitTest
         var parser = new Parser(resource);
 
         // Act
-        Action act = () => parser.Parse(null);
+        Action act = () => parser.Parse(null!);
 
         // Assert
         act.Should().Throw<ArgumentNullException>();

@@ -1074,8 +1074,9 @@ public class KernelUnitTest
         ((IKernel)interpreter).Get(1);
 
         // Assert
-        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
-        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(0xff);
+        interpreter.ResourceManager.InventoryResource.Should().NotBeNull();
+        interpreter.ResourceManager.InventoryResource!.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource!.Items[1].Location.Should().Be(0xff);
     }
 
     [Fact]
@@ -1094,8 +1095,9 @@ public class KernelUnitTest
         ((IKernel)interpreter).GetV(5);
 
         // Assert
-        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
-        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(0xff);
+        interpreter.ResourceManager.InventoryResource.Should().NotBeNull();
+        interpreter.ResourceManager.InventoryResource!.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource!.Items[1].Location.Should().Be(0xff);
     }
 
     [Fact]
@@ -1113,8 +1115,9 @@ public class KernelUnitTest
         ((IKernel)interpreter).Drop(1);
 
         // Assert
-        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
-        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(0x00);
+        interpreter.ResourceManager.InventoryResource.Should().NotBeNull();
+        interpreter.ResourceManager.InventoryResource!.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource!.Items[1].Location.Should().Be(0x00);
     }
 
     [Fact]
@@ -1134,8 +1137,9 @@ public class KernelUnitTest
         ((IKernel)interpreter).Put(1, 9);
 
         // Assert
-        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
-        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(61);
+        interpreter.ResourceManager.InventoryResource.Should().NotBeNull();
+        interpreter.ResourceManager.InventoryResource!.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource!.Items[1].Location.Should().Be(61);
     }
 
     [Fact]
@@ -1155,8 +1159,9 @@ public class KernelUnitTest
         ((IKernel)interpreter).PutV(8, 9);
 
         // Assert
-        interpreter.ResourceManager.InventoryResource.Items[0].Location.Should().Be(50);
-        interpreter.ResourceManager.InventoryResource.Items[1].Location.Should().Be(61);
+        interpreter.ResourceManager.InventoryResource.Should().NotBeNull();
+        interpreter.ResourceManager.InventoryResource!.Items[0].Location.Should().Be(50);
+        interpreter.ResourceManager.InventoryResource!.Items[1].Location.Should().Be(61);
     }
 
     [Fact]

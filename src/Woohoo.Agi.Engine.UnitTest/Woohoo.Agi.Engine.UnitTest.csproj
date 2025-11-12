@@ -3,7 +3,6 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
-    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

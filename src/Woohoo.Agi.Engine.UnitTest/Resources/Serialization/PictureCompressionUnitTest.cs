@@ -11,7 +11,7 @@ public class PictureCompressionUnitTest
     public void DecompressNull()
     {
         // Act
-        Action act = () => PictureCompression.Decompress(null, 0, 0, 0);
+        Action act = () => PictureCompression.Decompress(null!, 0, 0, 0);
 
         // Assert
         act.Should().Throw<ArgumentNullException>();

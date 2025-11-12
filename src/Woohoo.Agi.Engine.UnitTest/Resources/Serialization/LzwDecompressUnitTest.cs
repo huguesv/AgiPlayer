@@ -14,7 +14,7 @@ public class LzwDecompressUnitTest
         var decompress = new LzwDecompress();
 
         // Act
-        Action act = () => decompress.Decompress(null, 0, 0, 0);
+        Action act = () => decompress.Decompress(null!, 0, 0, 0);
 
         // Assert
         act.Should().Throw<ArgumentNullException>();
