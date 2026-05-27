@@ -32,6 +32,9 @@ jobs:
       with:
         dotnet-version: ${{ env.dotnetActionVersion }}
 
+    - name: Install dotnet-coverage
+      run: dotnet tool install --global dotnet-coverage
+
     - name: Clean
       working-directory: src
       run: dotnet clean ${{env.solutionFile}} --configuration Release && dotnet nuget locals all --clear
@@ -48,11 +51,14 @@ jobs:
       working-directory: src
       run: dotnet test --solution ${{env.solutionFile}} --no-restore --verbosity normal --coverlet
 
+    - name: Merge Coverage Results
+      run: dotnet-coverage merge "**/coverage.cobertura.*.xml" -f cobertura -o coverage.cobertura.merged.xml
+
     - name: Create Coverage Report
       if: matrix.os == 'ubuntu-latest'
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
-        filename: '**/coverage.cobertura.*.xml'
+        filename: 'coverage.cobertura.merged.xml'
         badge: true
         format: markdown
         hide_branch_rate: false
