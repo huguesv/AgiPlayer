@@ -12,4 +12,7 @@ updates:
         - "Microsoft.NET.Test.Sdk"
         - "AwesomeAssertions*"
         - "NSubstitute*"
-        
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily        
