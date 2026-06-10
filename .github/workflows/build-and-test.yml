@@ -68,7 +68,7 @@ jobs:
         thresholds: '8 10'
 
     - name: Add Coverage PR Comment
-      uses: marocchino/sticky-pull-request-comment@v2
+      uses: marocchino/sticky-pull-request-comment@v3
       if: matrix.os == 'ubuntu-latest' && github.event_name == 'pull_request'
       with:
         recreate: true
