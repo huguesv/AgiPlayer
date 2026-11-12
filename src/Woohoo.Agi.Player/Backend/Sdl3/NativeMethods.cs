@@ -32,7 +32,7 @@ public static unsafe partial class SDL
         /// </summary>
         /// <returns>A managed string.</returns>
         public static string ConvertToManaged(byte* unmanaged)
-            => Marshal.PtrToStringUTF8((IntPtr)unmanaged);
+            => Marshal.PtrToStringUTF8((nint)unmanaged);
     }
 
     // Custom marshaller for caller-owned strings returned by SDL.
@@ -44,13 +44,13 @@ public static unsafe partial class SDL
         /// </summary>
         /// <returns>A managed string.</returns>
         public static string ConvertToManaged(byte* unmanaged)
-            => Marshal.PtrToStringUTF8((IntPtr)unmanaged);
+            => Marshal.PtrToStringUTF8((nint)unmanaged);
 
         /// <summary>
         /// Free the memory for a specified unmanaged string.
         /// </summary>
         public static void Free(byte* unmanaged)
-            => SDL_free((IntPtr)unmanaged);
+            => SDL_free((nint)unmanaged);
     }
 
     // Taken from https://github.com/ppy/SDL3-CS
@@ -94,11 +94,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_malloc(UIntPtr size);
+    public static partial nint SDL_malloc(nuint size);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_free(IntPtr mem);
+    public static partial void SDL_free(nint mem);
 
     // /usr/local/include/SDL3/SDL_assert.h
 
@@ -128,7 +128,7 @@ public static unsafe partial class SDL
     public static partial SDL_AssertState SDL_ReportAssertion(ref SDL_AssertData data, string func, string file, int line);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate SDL_AssertState SDL_AssertionHandler(SDL_AssertData* data, IntPtr userdata);
+    public delegate SDL_AssertState SDL_AssertionHandler(SDL_AssertData* data, nint userdata);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -169,14 +169,14 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_AsyncIOOutcome
     {
-        public IntPtr asyncio;
+        public nint asyncio;
         public SDL_AsyncIOTaskType type;
         public SDL_AsyncIOResult result;
-        public IntPtr buffer;
+        public nint buffer;
         public ulong offset;
         public ulong bytes_requested;
         public ulong bytes_transferred;
-        public IntPtr userdata;
+        public nint userdata;
     }
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
@@ -185,27 +185,27 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial long SDL_GetAsyncIOSize(IntPtr asyncio);
+    public static partial long SDL_GetAsyncIOSize(nint asyncio);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ReadAsyncIO(IntPtr asyncio, IntPtr ptr, ulong offset, ulong size, IntPtr queue, IntPtr userdata);
+    public static partial SDLBool SDL_ReadAsyncIO(nint asyncio, nint ptr, ulong offset, ulong size, nint queue, nint userdata);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteAsyncIO(IntPtr asyncio, IntPtr ptr, ulong offset, ulong size, IntPtr queue, IntPtr userdata);
+    public static partial SDLBool SDL_WriteAsyncIO(nint asyncio, nint ptr, ulong offset, ulong size, nint queue, nint userdata);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_CloseAsyncIO(IntPtr asyncio, SDLBool flush, IntPtr queue, IntPtr userdata);
+    public static partial SDLBool SDL_CloseAsyncIO(nint asyncio, SDLBool flush, nint queue, nint userdata);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateAsyncIOQueue();
+    public static partial nint SDL_CreateAsyncIOQueue();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyAsyncIOQueue(IntPtr queue);
+    public static partial void SDL_DestroyAsyncIOQueue(nint queue);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -217,7 +217,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SignalAsyncIOQueue(IntPtr queue);
+    public static partial void SDL_SignalAsyncIOQueue(nint queue);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -227,15 +227,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_TryLockSpinlock(IntPtr @lock);
+    public static partial SDLBool SDL_TryLockSpinlock(nint @lock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_LockSpinlock(IntPtr @lock);
+    public static partial void SDL_LockSpinlock(nint @lock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnlockSpinlock(IntPtr @lock);
+    public static partial void SDL_UnlockSpinlock(nint @lock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -351,7 +351,7 @@ public static unsafe partial class SDL
     public static partial void SDL_UnlockProperties(uint props);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_CleanupPropertyCallback(IntPtr userdata, IntPtr value);
+    public delegate void SDL_CleanupPropertyCallback(nint userdata, nint value);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -411,7 +411,7 @@ public static unsafe partial class SDL
     public static partial SDLBool SDL_ClearProperty(uint props, string name);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_EnumeratePropertiesCallback(IntPtr userdata, uint props, byte* name);
+    public delegate void SDL_EnumeratePropertiesCallback(nint userdata, uint props, byte* name);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -445,7 +445,7 @@ public static unsafe partial class SDL
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int SDL_ThreadFunction(IntPtr data);
+    public delegate int SDL_ThreadFunction(nint data);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -453,7 +453,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateThreadWithPropertiesRuntime(uint props, IntPtr pfnBeginThread, IntPtr pfnEndThread);
+    public static partial nint SDL_CreateThreadWithPropertiesRuntime(uint props, nint pfnBeginThread, nint pfnEndThread);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -466,7 +466,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ulong SDL_GetThreadID(IntPtr thread);
+    public static partial ulong SDL_GetThreadID(nint thread);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -474,22 +474,22 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_WaitThread(IntPtr thread, IntPtr status);
+    public static partial void SDL_WaitThread(nint thread, nint status);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_ThreadState SDL_GetThreadState(IntPtr thread);
+    public static partial SDL_ThreadState SDL_GetThreadState(nint thread);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DetachThread(IntPtr thread);
+    public static partial void SDL_DetachThread(nint thread);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetTLS(IntPtr id);
+    public static partial nint SDL_GetTLS(nint id);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_TLSDestructorCallback(IntPtr value);
+    public delegate void SDL_TLSDestructorCallback(nint value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -503,103 +503,103 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateMutex();
+    public static partial nint SDL_CreateMutex();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_LockMutex(IntPtr mutex);
+    public static partial void SDL_LockMutex(nint mutex);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_TryLockMutex(IntPtr mutex);
+    public static partial SDLBool SDL_TryLockMutex(nint mutex);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnlockMutex(IntPtr mutex);
+    public static partial void SDL_UnlockMutex(nint mutex);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyMutex(IntPtr mutex);
+    public static partial void SDL_DestroyMutex(nint mutex);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateRWLock();
+    public static partial nint SDL_CreateRWLock();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_LockRWLockForReading(IntPtr rwlock);
+    public static partial void SDL_LockRWLockForReading(nint rwlock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_LockRWLockForWriting(IntPtr rwlock);
+    public static partial void SDL_LockRWLockForWriting(nint rwlock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_TryLockRWLockForReading(IntPtr rwlock);
+    public static partial SDLBool SDL_TryLockRWLockForReading(nint rwlock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_TryLockRWLockForWriting(IntPtr rwlock);
+    public static partial SDLBool SDL_TryLockRWLockForWriting(nint rwlock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnlockRWLock(IntPtr rwlock);
+    public static partial void SDL_UnlockRWLock(nint rwlock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyRWLock(IntPtr rwlock);
+    public static partial void SDL_DestroyRWLock(nint rwlock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateSemaphore(uint initial_value);
+    public static partial nint SDL_CreateSemaphore(uint initial_value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroySemaphore(IntPtr sem);
+    public static partial void SDL_DestroySemaphore(nint sem);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_WaitSemaphore(IntPtr sem);
+    public static partial void SDL_WaitSemaphore(nint sem);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_TryWaitSemaphore(IntPtr sem);
+    public static partial SDLBool SDL_TryWaitSemaphore(nint sem);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WaitSemaphoreTimeout(IntPtr sem, int timeoutMS);
+    public static partial SDLBool SDL_WaitSemaphoreTimeout(nint sem, int timeoutMS);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SignalSemaphore(IntPtr sem);
+    public static partial void SDL_SignalSemaphore(nint sem);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetSemaphoreValue(IntPtr sem);
+    public static partial uint SDL_GetSemaphoreValue(nint sem);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateCondition();
+    public static partial nint SDL_CreateCondition();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyCondition(IntPtr cond);
+    public static partial void SDL_DestroyCondition(nint cond);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SignalCondition(IntPtr cond);
+    public static partial void SDL_SignalCondition(nint cond);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_BroadcastCondition(IntPtr cond);
+    public static partial void SDL_BroadcastCondition(nint cond);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_WaitCondition(IntPtr cond, IntPtr mutex);
+    public static partial void SDL_WaitCondition(nint cond, nint mutex);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WaitConditionTimeout(IntPtr cond, IntPtr mutex, int timeoutMS);
+    public static partial SDLBool SDL_WaitConditionTimeout(nint cond, nint mutex, int timeoutMS);
 
     public enum SDL_InitStatus
     {
@@ -614,7 +614,7 @@ public static unsafe partial class SDL
     {
         public SDL_AtomicInt status;
         public ulong thread;
-        public IntPtr reserved;
+        public nint reserved;
     }
 
     [LibraryImport(nativeLibName)]
@@ -661,12 +661,12 @@ public static unsafe partial class SDL
     public struct SDL_IOStreamInterface
     {
         public uint version;
-        public IntPtr size; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr seek; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr read; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr write; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr flush; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr close; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint size; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint seek; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint read; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint write; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint flush; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint close; // WARN_ANONYMOUS_FUNCTION_POINTER
     }
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
@@ -675,15 +675,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_IOFromMem(IntPtr mem, UIntPtr size);
+    public static partial nint SDL_IOFromMem(nint mem, nuint size);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_IOFromConstMem(IntPtr mem, UIntPtr size);
+    public static partial nint SDL_IOFromConstMem(nint mem, nuint size);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_IOFromDynamicMem();
+    public static partial nint SDL_IOFromDynamicMem();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -691,35 +691,35 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_CloseIO(IntPtr context);
+    public static partial SDLBool SDL_CloseIO(nint context);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetIOProperties(IntPtr context);
+    public static partial uint SDL_GetIOProperties(nint context);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_IOStatus SDL_GetIOStatus(IntPtr context);
+    public static partial SDL_IOStatus SDL_GetIOStatus(nint context);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial long SDL_GetIOSize(IntPtr context);
+    public static partial long SDL_GetIOSize(nint context);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial long SDL_SeekIO(IntPtr context, long offset, SDL_IOWhence whence);
+    public static partial long SDL_SeekIO(nint context, long offset, SDL_IOWhence whence);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial long SDL_TellIO(IntPtr context);
+    public static partial long SDL_TellIO(nint context);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial UIntPtr SDL_ReadIO(IntPtr context, IntPtr ptr, UIntPtr size);
+    public static partial nuint SDL_ReadIO(nint context, nint ptr, nuint size);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial UIntPtr SDL_WriteIO(IntPtr context, IntPtr ptr, UIntPtr size);
+    public static partial nuint SDL_WriteIO(nint context, nint ptr, nuint size);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -727,7 +727,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_FlushIO(IntPtr context);
+    public static partial SDLBool SDL_FlushIO(nint context);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -739,7 +739,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SaveFile_IO(IntPtr src, IntPtr data, UIntPtr datasize, SDLBool closeio);
+    public static partial SDLBool SDL_SaveFile_IO(nint src, nint data, nuint datasize, SDLBool closeio);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -803,59 +803,59 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteU8(IntPtr dst, byte value);
+    public static partial SDLBool SDL_WriteU8(nint dst, byte value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteS8(IntPtr dst, sbyte value);
+    public static partial SDLBool SDL_WriteS8(nint dst, sbyte value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteU16LE(IntPtr dst, ushort value);
+    public static partial SDLBool SDL_WriteU16LE(nint dst, ushort value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteS16LE(IntPtr dst, short value);
+    public static partial SDLBool SDL_WriteS16LE(nint dst, short value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteU16BE(IntPtr dst, ushort value);
+    public static partial SDLBool SDL_WriteU16BE(nint dst, ushort value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteS16BE(IntPtr dst, short value);
+    public static partial SDLBool SDL_WriteS16BE(nint dst, short value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteU32LE(IntPtr dst, uint value);
+    public static partial SDLBool SDL_WriteU32LE(nint dst, uint value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteS32LE(IntPtr dst, int value);
+    public static partial SDLBool SDL_WriteS32LE(nint dst, int value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteU32BE(IntPtr dst, uint value);
+    public static partial SDLBool SDL_WriteU32BE(nint dst, uint value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteS32BE(IntPtr dst, int value);
+    public static partial SDLBool SDL_WriteS32BE(nint dst, int value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteU64LE(IntPtr dst, ulong value);
+    public static partial SDLBool SDL_WriteU64LE(nint dst, ulong value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteS64LE(IntPtr dst, long value);
+    public static partial SDLBool SDL_WriteS64LE(nint dst, long value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteU64BE(IntPtr dst, ulong value);
+    public static partial SDLBool SDL_WriteU64BE(nint dst, ulong value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteS64BE(IntPtr dst, long value);
+    public static partial SDLBool SDL_WriteS64BE(nint dst, long value);
 
     // /usr/local/include/SDL3/SDL_audio.h
 
@@ -966,7 +966,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BindAudioStream(uint devid, IntPtr stream);
+    public static partial SDLBool SDL_BindAudioStream(uint devid, nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -974,11 +974,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnbindAudioStream(IntPtr stream);
+    public static partial void SDL_UnbindAudioStream(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetAudioStreamDevice(IntPtr stream);
+    public static partial uint SDL_GetAudioStreamDevice(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -986,7 +986,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetAudioStreamProperties(IntPtr stream);
+    public static partial uint SDL_GetAudioStreamProperties(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -998,21 +998,21 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial float SDL_GetAudioStreamFrequencyRatio(IntPtr stream);
+    public static partial float SDL_GetAudioStreamFrequencyRatio(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetAudioStreamFrequencyRatio(IntPtr stream, float ratio);
+    public static partial SDLBool SDL_SetAudioStreamFrequencyRatio(nint stream, float ratio);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial float SDL_GetAudioStreamGain(IntPtr stream);
+    public static partial float SDL_GetAudioStreamGain(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetAudioStreamGain(IntPtr stream, float gain);
+    public static partial SDLBool SDL_SetAudioStreamGain(nint stream, float gain);
 
-    public static Span<int> SDL_GetAudioStreamInputChannelMap(IntPtr stream)
+    public static Span<int> SDL_GetAudioStreamInputChannelMap(nint stream)
     {
         var result = SDL_GetAudioStreamInputChannelMap(stream, out var count);
         return new Span<int>((void*)result, count);
@@ -1022,7 +1022,7 @@ public static unsafe partial class SDL
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial IntPtr SDL_GetAudioStreamInputChannelMap(IntPtr stream, out int count);
 
-    public static Span<int> SDL_GetAudioStreamOutputChannelMap(IntPtr stream)
+    public static Span<int> SDL_GetAudioStreamOutputChannelMap(nint stream)
     {
         var result = SDL_GetAudioStreamOutputChannelMap(stream, out var count);
         return new Span<int>((void*)result, count);
@@ -1042,50 +1042,50 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_PutAudioStreamData(IntPtr stream, IntPtr buf, int len);
+    public static partial SDLBool SDL_PutAudioStreamData(nint stream, nint buf, int len);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetAudioStreamData(IntPtr stream, IntPtr buf, int len);
+    public static partial int SDL_GetAudioStreamData(nint stream, nint buf, int len);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetAudioStreamAvailable(IntPtr stream);
+    public static partial int SDL_GetAudioStreamAvailable(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetAudioStreamQueued(IntPtr stream);
+    public static partial int SDL_GetAudioStreamQueued(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_FlushAudioStream(IntPtr stream);
+    public static partial SDLBool SDL_FlushAudioStream(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ClearAudioStream(IntPtr stream);
+    public static partial SDLBool SDL_ClearAudioStream(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_PauseAudioStreamDevice(IntPtr stream);
+    public static partial SDLBool SDL_PauseAudioStreamDevice(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ResumeAudioStreamDevice(IntPtr stream);
+    public static partial SDLBool SDL_ResumeAudioStreamDevice(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_AudioStreamDevicePaused(IntPtr stream);
+    public static partial SDLBool SDL_AudioStreamDevicePaused(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_LockAudioStream(IntPtr stream);
+    public static partial SDLBool SDL_LockAudioStream(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_UnlockAudioStream(IntPtr stream);
+    public static partial SDLBool SDL_UnlockAudioStream(nint stream);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_AudioStreamCallback(IntPtr userdata, IntPtr stream, int additional_amount, int total_amount);
+    public delegate void SDL_AudioStreamCallback(nint userdata, nint stream, int additional_amount, int total_amount);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1097,14 +1097,14 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyAudioStream(IntPtr stream);
+    public static partial void SDL_DestroyAudioStream(nint stream);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial IntPtr SDL_OpenAudioDeviceStream(uint devid, ref SDL_AudioSpec spec, SDL_AudioStreamCallback callback, IntPtr userdata);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_AudioPostmixCallback(IntPtr userdata, SDL_AudioSpec* spec, float* buffer, int buflen);
+    public delegate void SDL_AudioPostmixCallback(nint userdata, SDL_AudioSpec* spec, float* buffer, int buflen);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1120,7 +1120,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_MixAudio(IntPtr dst, IntPtr src, SDL_AudioFormat format, uint len, float volume);
+    public static partial SDLBool SDL_MixAudio(nint dst, nint src, SDL_AudioFormat format, uint len, float volume);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1479,15 +1479,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyPalette(IntPtr palette);
+    public static partial void SDL_DestroyPalette(nint palette);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_MapRGB(IntPtr format, IntPtr palette, byte r, byte g, byte b);
+    public static partial uint SDL_MapRGB(nint format, nint palette, byte r, byte g, byte b);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_MapRGBA(IntPtr format, IntPtr palette, byte r, byte g, byte b, byte a);
+    public static partial uint SDL_MapRGBA(nint format, nint palette, byte r, byte g, byte b, byte a);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1607,9 +1607,9 @@ public static unsafe partial class SDL
         public int w;
         public int h;
         public int pitch;
-        public IntPtr pixels;
+        public nint pixels;
         public int refcount;
-        public IntPtr reserved;
+        public nint reserved;
     }
 
     [LibraryImport(nativeLibName)]
@@ -1618,48 +1618,48 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Surface* SDL_CreateSurfaceFrom(int width, int height, SDL_PixelFormat format, IntPtr pixels, int pitch);
+    public static partial SDL_Surface* SDL_CreateSurfaceFrom(int width, int height, SDL_PixelFormat format, nint pixels, int pitch);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroySurface(IntPtr surface);
+    public static partial void SDL_DestroySurface(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetSurfaceProperties(IntPtr surface);
+    public static partial uint SDL_GetSurfaceProperties(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetSurfaceColorspace(IntPtr surface, SDL_Colorspace colorspace);
+    public static partial SDLBool SDL_SetSurfaceColorspace(nint surface, SDL_Colorspace colorspace);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Colorspace SDL_GetSurfaceColorspace(IntPtr surface);
+    public static partial SDL_Colorspace SDL_GetSurfaceColorspace(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Palette* SDL_CreateSurfacePalette(IntPtr surface);
+    public static partial SDL_Palette* SDL_CreateSurfacePalette(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetSurfacePalette(IntPtr surface, IntPtr palette);
+    public static partial SDLBool SDL_SetSurfacePalette(nint surface, nint palette);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Palette* SDL_GetSurfacePalette(IntPtr surface);
+    public static partial SDL_Palette* SDL_GetSurfacePalette(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_AddSurfaceAlternateImage(IntPtr surface, IntPtr image);
+    public static partial SDLBool SDL_AddSurfaceAlternateImage(nint surface, nint image);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SurfaceHasAlternateImages(IntPtr surface);
+    public static partial SDLBool SDL_SurfaceHasAlternateImages(nint surface);
 
-    public static Span<IntPtr> SDL_GetSurfaceImages(IntPtr surface)
+    public static Span<nint> SDL_GetSurfaceImages(nint surface)
     {
         var result = SDL_GetSurfaceImages(surface, out var count);
-        return new Span<IntPtr>((void*)result, count);
+        return new Span<nint>((void*)result, count);
     }
 
     [LibraryImport(nativeLibName)]
@@ -1668,19 +1668,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_RemoveSurfaceAlternateImages(IntPtr surface);
+    public static partial void SDL_RemoveSurfaceAlternateImages(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_LockSurface(IntPtr surface);
+    public static partial SDLBool SDL_LockSurface(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnlockSurface(IntPtr surface);
+    public static partial void SDL_UnlockSurface(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Surface* SDL_LoadBMP_IO(IntPtr src, SDLBool closeio);
+    public static partial SDL_Surface* SDL_LoadBMP_IO(nint src, SDLBool closeio);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1688,7 +1688,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SaveBMP_IO(IntPtr surface, IntPtr dst, SDLBool closeio);
+    public static partial SDLBool SDL_SaveBMP_IO(nint surface, nint dst, SDLBool closeio);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1696,19 +1696,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetSurfaceRLE(IntPtr surface, SDLBool enabled);
+    public static partial SDLBool SDL_SetSurfaceRLE(nint surface, SDLBool enabled);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SurfaceHasRLE(IntPtr surface);
+    public static partial SDLBool SDL_SurfaceHasRLE(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetSurfaceColorKey(IntPtr surface, SDLBool enabled, uint key);
+    public static partial SDLBool SDL_SetSurfaceColorKey(nint surface, SDLBool enabled, uint key);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SurfaceHasColorKey(IntPtr surface);
+    public static partial SDLBool SDL_SurfaceHasColorKey(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1716,7 +1716,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetSurfaceColorMod(IntPtr surface, byte r, byte g, byte b);
+    public static partial SDLBool SDL_SetSurfaceColorMod(nint surface, byte r, byte g, byte b);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1724,7 +1724,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetSurfaceAlphaMod(IntPtr surface, byte alpha);
+    public static partial SDLBool SDL_SetSurfaceAlphaMod(nint surface, byte alpha);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1732,11 +1732,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetSurfaceBlendMode(IntPtr surface, uint blendMode);
+    public static partial SDLBool SDL_SetSurfaceBlendMode(nint surface, uint blendMode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetSurfaceBlendMode(IntPtr surface, IntPtr blendMode);
+    public static partial SDLBool SDL_GetSurfaceBlendMode(nint surface, nint blendMode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1748,47 +1748,47 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_FlipSurface(IntPtr surface, SDL_FlipMode flip);
+    public static partial SDLBool SDL_FlipSurface(nint surface, SDL_FlipMode flip);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Surface* SDL_DuplicateSurface(IntPtr surface);
+    public static partial SDL_Surface* SDL_DuplicateSurface(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Surface* SDL_ScaleSurface(IntPtr surface, int width, int height, SDL_ScaleMode scaleMode);
+    public static partial SDL_Surface* SDL_ScaleSurface(nint surface, int width, int height, SDL_ScaleMode scaleMode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Surface* SDL_ConvertSurface(IntPtr surface, SDL_PixelFormat format);
+    public static partial SDL_Surface* SDL_ConvertSurface(nint surface, SDL_PixelFormat format);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Surface* SDL_ConvertSurfaceAndColorspace(IntPtr surface, SDL_PixelFormat format, IntPtr palette, SDL_Colorspace colorspace, uint props);
+    public static partial SDL_Surface* SDL_ConvertSurfaceAndColorspace(nint surface, SDL_PixelFormat format, nint palette, SDL_Colorspace colorspace, uint props);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ConvertPixels(int width, int height, SDL_PixelFormat src_format, IntPtr src, int src_pitch, SDL_PixelFormat dst_format, IntPtr dst, int dst_pitch);
+    public static partial SDLBool SDL_ConvertPixels(int width, int height, SDL_PixelFormat src_format, nint src, int src_pitch, SDL_PixelFormat dst_format, nint dst, int dst_pitch);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat src_format, SDL_Colorspace src_colorspace, uint src_properties, IntPtr src, int src_pitch, SDL_PixelFormat dst_format, SDL_Colorspace dst_colorspace, uint dst_properties, IntPtr dst, int dst_pitch);
+    public static partial SDLBool SDL_ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat src_format, SDL_Colorspace src_colorspace, uint src_properties, nint src, int src_pitch, SDL_PixelFormat dst_format, SDL_Colorspace dst_colorspace, uint dst_properties, nint dst, int dst_pitch);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_PremultiplyAlpha(int width, int height, SDL_PixelFormat src_format, IntPtr src, int src_pitch, SDL_PixelFormat dst_format, IntPtr dst, int dst_pitch, SDLBool linear);
+    public static partial SDLBool SDL_PremultiplyAlpha(int width, int height, SDL_PixelFormat src_format, nint src, int src_pitch, SDL_PixelFormat dst_format, nint dst, int dst_pitch, SDLBool linear);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_PremultiplySurfaceAlpha(IntPtr surface, SDLBool linear);
+    public static partial SDLBool SDL_PremultiplySurfaceAlpha(nint surface, SDLBool linear);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ClearSurface(IntPtr surface, float r, float g, float b, float a);
+    public static partial SDLBool SDL_ClearSurface(nint surface, float r, float g, float b, float a);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_FillSurfaceRect(IntPtr dst, IntPtr rect, uint color); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_FillSurfaceRect(nint dst, nint rect, uint color); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1796,39 +1796,39 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BlitSurface(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_BlitSurface(nint src, nint srcrect, nint dst, nint dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BlitSurfaceUnchecked(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_BlitSurfaceUnchecked(nint src, nint srcrect, nint dst, nint dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BlitSurfaceScaled(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect, SDL_ScaleMode scaleMode); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_BlitSurfaceScaled(nint src, nint srcrect, nint dst, nint dstrect, SDL_ScaleMode scaleMode); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BlitSurfaceUncheckedScaled(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect, SDL_ScaleMode scaleMode); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_BlitSurfaceUncheckedScaled(nint src, nint srcrect, nint dst, nint dstrect, SDL_ScaleMode scaleMode); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BlitSurfaceTiled(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_BlitSurfaceTiled(nint src, nint srcrect, nint dst, nint dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BlitSurfaceTiledWithScale(IntPtr src, IntPtr srcrect, float scale, SDL_ScaleMode scaleMode, IntPtr dst, IntPtr dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_BlitSurfaceTiledWithScale(nint src, nint srcrect, float scale, SDL_ScaleMode scaleMode, nint dst, nint dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_BlitSurface9Grid(IntPtr src, IntPtr srcrect, int left_width, int right_width, int top_height, int bottom_height, float scale, SDL_ScaleMode scaleMode, IntPtr dst, IntPtr dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_BlitSurface9Grid(nint src, nint srcrect, int left_width, int right_width, int top_height, int bottom_height, float scale, SDL_ScaleMode scaleMode, nint dst, nint dstrect); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_MapSurfaceRGB(IntPtr surface, byte r, byte g, byte b);
+    public static partial uint SDL_MapSurfaceRGB(nint surface, byte r, byte g, byte b);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_MapSurfaceRGBA(IntPtr surface, byte r, byte g, byte b, byte a);
+    public static partial uint SDL_MapSurfaceRGBA(nint surface, byte r, byte g, byte b, byte a);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1840,11 +1840,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteSurfacePixel(IntPtr surface, int x, int y, byte r, byte g, byte b, byte a);
+    public static partial SDLBool SDL_WriteSurfacePixel(nint surface, int x, int y, byte r, byte g, byte b, byte a);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WriteSurfacePixelFloat(IntPtr surface, int x, int y, float r, float g, float b, float a);
+    public static partial SDLBool SDL_WriteSurfacePixelFloat(nint surface, int x, int y, float r, float g, float b, float a);
 
     // /usr/local/include/SDL3/SDL_camera.h
 
@@ -1884,10 +1884,10 @@ public static unsafe partial class SDL
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial IntPtr SDL_GetCameras(out int count);
 
-    public static Span<IntPtr> SDL_GetCameraSupportedFormats(uint devid)
+    public static Span<nint> SDL_GetCameraSupportedFormats(uint devid)
     {
         var result = SDL_GetCameraSupportedFormats(devid, out var count);
-        return new Span<IntPtr>((void*)result, count);
+        return new Span<nint>((void*)result, count);
     }
 
     [LibraryImport(nativeLibName)]
@@ -1909,15 +1909,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetCameraPermissionState(IntPtr camera);
+    public static partial int SDL_GetCameraPermissionState(nint camera);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetCameraID(IntPtr camera);
+    public static partial uint SDL_GetCameraID(nint camera);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetCameraProperties(IntPtr camera);
+    public static partial uint SDL_GetCameraProperties(nint camera);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1929,11 +1929,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseCameraFrame(IntPtr camera, IntPtr frame);
+    public static partial void SDL_ReleaseCameraFrame(nint camera, nint frame);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_CloseCamera(IntPtr camera);
+    public static partial void SDL_CloseCamera(nint camera);
 
     // /usr/local/include/SDL3/SDL_clipboard.h
 
@@ -1964,10 +1964,10 @@ public static unsafe partial class SDL
     public static partial SDLBool SDL_HasPrimarySelectionText();
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate IntPtr SDL_ClipboardDataCallback(IntPtr userdata, byte* mime_type, IntPtr size);
+    public delegate nint SDL_ClipboardDataCallback(nint userdata, byte* mime_type, nint size);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_ClipboardCleanupCallback(IntPtr userdata);
+    public delegate void SDL_ClipboardCleanupCallback(nint userdata);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2061,7 +2061,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial UIntPtr SDL_GetSIMDAlignment();
+    public static partial nuint SDL_GetSIMDAlignment();
 
     // /usr/local/include/SDL3/SDL_video.h
 
@@ -2156,7 +2156,7 @@ public static unsafe partial class SDL
         public float refresh_rate;
         public int refresh_rate_numerator;
         public int refresh_rate_denominator;
-        public IntPtr @internal;
+        public nint @internal;
     }
 
     public enum SDL_DisplayOrientation
@@ -2206,10 +2206,10 @@ public static unsafe partial class SDL
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate IntPtr SDL_EGLAttribArrayCallback();
+    public delegate nint SDL_EGLAttribArrayCallback();
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate IntPtr SDL_EGLIntArrayCallback();
+    public delegate nint SDL_EGLIntArrayCallback();
 
     public enum SDL_GLAttr
     {
@@ -2298,10 +2298,10 @@ public static unsafe partial class SDL
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial float SDL_GetDisplayContentScale(uint displayID);
 
-    public static Span<IntPtr> SDL_GetFullscreenDisplayModes(uint displayID)
+    public static Span<nint> SDL_GetFullscreenDisplayModes(uint displayID)
     {
         var result = SDL_GetFullscreenDisplayModes(displayID, out var count);
-        return new Span<IntPtr>((void*)result, count);
+        return new Span<nint>((void*)result, count);
     }
 
     [LibraryImport(nativeLibName)]
@@ -2330,15 +2330,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetDisplayForWindow(IntPtr window);
+    public static partial uint SDL_GetDisplayForWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial float SDL_GetWindowPixelDensity(IntPtr window);
+    public static partial float SDL_GetWindowPixelDensity(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial float SDL_GetWindowDisplayScale(IntPtr window);
+    public static partial float SDL_GetWindowDisplayScale(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2346,7 +2346,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_DisplayMode* SDL_GetWindowFullscreenMode(IntPtr window);
+    public static partial SDL_DisplayMode* SDL_GetWindowFullscreenMode(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2354,12 +2354,12 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_PixelFormat SDL_GetWindowPixelFormat(IntPtr window);
+    public static partial SDL_PixelFormat SDL_GetWindowPixelFormat(nint window);
 
-    public static Span<IntPtr> SDL_GetWindows()
+    public static Span<nint> SDL_GetWindows()
     {
         var result = SDL_GetWindows(out var count);
-        return new Span<IntPtr>((void*)result, count);
+        return new Span<nint>((void*)result, count);
     }
 
     [LibraryImport(nativeLibName)]
@@ -2372,31 +2372,31 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreatePopupWindow(IntPtr parent, int offset_x, int offset_y, int w, int h, SDL_WindowFlags flags);
+    public static partial nint SDL_CreatePopupWindow(nint parent, int offset_x, int offset_y, int w, int h, SDL_WindowFlags flags);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateWindowWithProperties(uint props);
+    public static partial nint SDL_CreateWindowWithProperties(uint props);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetWindowID(IntPtr window);
+    public static partial uint SDL_GetWindowID(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetWindowFromID(uint id);
+    public static partial nint SDL_GetWindowFromID(uint id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetWindowParent(IntPtr window);
+    public static partial nint SDL_GetWindowParent(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetWindowProperties(IntPtr window);
+    public static partial uint SDL_GetWindowProperties(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_WindowFlags SDL_GetWindowFlags(IntPtr window);
+    public static partial SDL_WindowFlags SDL_GetWindowFlags(nint window);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2409,11 +2409,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowIcon(IntPtr window, IntPtr icon);
+    public static partial SDLBool SDL_SetWindowIcon(nint window, nint icon);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowPosition(IntPtr window, int x, int y);
+    public static partial SDLBool SDL_SetWindowPosition(nint window, int x, int y);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2421,7 +2421,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowSize(IntPtr window, int w, int h);
+    public static partial SDLBool SDL_SetWindowSize(nint window, int w, int h);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2433,7 +2433,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowAspectRatio(IntPtr window, float min_aspect, float max_aspect);
+    public static partial SDLBool SDL_SetWindowAspectRatio(nint window, float min_aspect, float max_aspect);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2449,7 +2449,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowMinimumSize(IntPtr window, int min_w, int min_h);
+    public static partial SDLBool SDL_SetWindowMinimumSize(nint window, int min_w, int min_h);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2457,7 +2457,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowMaximumSize(IntPtr window, int max_w, int max_h);
+    public static partial SDLBool SDL_SetWindowMaximumSize(nint window, int max_w, int max_h);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2465,59 +2465,59 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowBordered(IntPtr window, SDLBool bordered);
+    public static partial SDLBool SDL_SetWindowBordered(nint window, SDLBool bordered);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowResizable(IntPtr window, SDLBool resizable);
+    public static partial SDLBool SDL_SetWindowResizable(nint window, SDLBool resizable);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowAlwaysOnTop(IntPtr window, SDLBool on_top);
+    public static partial SDLBool SDL_SetWindowAlwaysOnTop(nint window, SDLBool on_top);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ShowWindow(IntPtr window);
+    public static partial SDLBool SDL_ShowWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_HideWindow(IntPtr window);
+    public static partial SDLBool SDL_HideWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RaiseWindow(IntPtr window);
+    public static partial SDLBool SDL_RaiseWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_MaximizeWindow(IntPtr window);
+    public static partial SDLBool SDL_MaximizeWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_MinimizeWindow(IntPtr window);
+    public static partial SDLBool SDL_MinimizeWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RestoreWindow(IntPtr window);
+    public static partial SDLBool SDL_RestoreWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowFullscreen(IntPtr window, SDLBool fullscreen);
+    public static partial SDLBool SDL_SetWindowFullscreen(nint window, SDLBool fullscreen);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SyncWindow(IntPtr window);
+    public static partial SDLBool SDL_SyncWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WindowHasSurface(IntPtr window);
+    public static partial SDLBool SDL_WindowHasSurface(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Surface* SDL_GetWindowSurface(IntPtr window);
+    public static partial SDL_Surface* SDL_GetWindowSurface(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowSurfaceVSync(IntPtr window, int vsync);
+    public static partial SDLBool SDL_SetWindowSurfaceVSync(nint window, int vsync);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2525,7 +2525,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_UpdateWindowSurface(IntPtr window);
+    public static partial SDLBool SDL_UpdateWindowSurface(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2533,27 +2533,27 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_DestroyWindowSurface(IntPtr window);
+    public static partial SDLBool SDL_DestroyWindowSurface(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowKeyboardGrab(IntPtr window, SDLBool grabbed);
+    public static partial SDLBool SDL_SetWindowKeyboardGrab(nint window, SDLBool grabbed);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowMouseGrab(IntPtr window, SDLBool grabbed);
+    public static partial SDLBool SDL_SetWindowMouseGrab(nint window, SDLBool grabbed);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetWindowKeyboardGrab(IntPtr window);
+    public static partial SDLBool SDL_GetWindowKeyboardGrab(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetWindowMouseGrab(IntPtr window);
+    public static partial SDLBool SDL_GetWindowMouseGrab(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetGrabbedWindow();
+    public static partial nint SDL_GetGrabbedWindow();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2561,31 +2561,31 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Rect* SDL_GetWindowMouseRect(IntPtr window);
+    public static partial SDL_Rect* SDL_GetWindowMouseRect(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowOpacity(IntPtr window, float opacity);
+    public static partial SDLBool SDL_SetWindowOpacity(nint window, float opacity);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial float SDL_GetWindowOpacity(IntPtr window);
+    public static partial float SDL_GetWindowOpacity(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowParent(IntPtr window, IntPtr parent);
+    public static partial SDLBool SDL_SetWindowParent(nint window, nint parent);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowModal(IntPtr window, SDLBool modal);
+    public static partial SDLBool SDL_SetWindowModal(nint window, SDLBool modal);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowFocusable(IntPtr window, SDLBool focusable);
+    public static partial SDLBool SDL_SetWindowFocusable(nint window, SDLBool focusable);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ShowWindowSystemMenu(IntPtr window, int x, int y);
+    public static partial SDLBool SDL_ShowWindowSystemMenu(nint window, int x, int y);
 
     public enum SDL_HitTestResult
     {
@@ -2602,7 +2602,7 @@ public static unsafe partial class SDL
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate SDL_HitTestResult SDL_HitTest(IntPtr win, SDL_Point* area, IntPtr data);
+    public delegate SDL_HitTestResult SDL_HitTest(nint win, SDL_Point* area, nint data);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2610,15 +2610,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowShape(IntPtr window, IntPtr shape);
+    public static partial SDLBool SDL_SetWindowShape(nint window, nint shape);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_FlashWindow(IntPtr window, SDL_FlashOperation operation);
+    public static partial SDLBool SDL_FlashWindow(nint window, SDL_FlashOperation operation);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyWindow(IntPtr window);
+    public static partial void SDL_DestroyWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2666,31 +2666,31 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GL_CreateContext(IntPtr window);
+    public static partial nint SDL_GL_CreateContext(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GL_MakeCurrent(IntPtr window, IntPtr context);
+    public static partial SDLBool SDL_GL_MakeCurrent(nint window, nint context);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GL_GetCurrentWindow();
+    public static partial nint SDL_GL_GetCurrentWindow();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GL_GetCurrentContext();
+    public static partial nint SDL_GL_GetCurrentContext();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_EGL_GetCurrentDisplay();
+    public static partial nint SDL_EGL_GetCurrentDisplay();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_EGL_GetCurrentConfig();
+    public static partial nint SDL_EGL_GetCurrentConfig();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_EGL_GetWindowSurface(IntPtr window);
+    public static partial nint SDL_EGL_GetWindowSurface(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2706,11 +2706,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GL_SwapWindow(IntPtr window);
+    public static partial SDLBool SDL_GL_SwapWindow(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GL_DestroyContext(IntPtr context);
+    public static partial SDLBool SDL_GL_DestroyContext(nint context);
 
     // /usr/local/include/SDL3/SDL_dialog.h
 
@@ -2731,7 +2731,7 @@ public static unsafe partial class SDL
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_DialogFileCallback(IntPtr userdata, IntPtr filelist, int filter);
+    public delegate void SDL_DialogFileCallback(nint userdata, nint filelist, int filter);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2821,15 +2821,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_OpenSensor(uint instance_id);
+    public static partial nint SDL_OpenSensor(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetSensorFromID(uint instance_id);
+    public static partial nint SDL_GetSensorFromID(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetSensorProperties(IntPtr sensor);
+    public static partial uint SDL_GetSensorProperties(nint sensor);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2838,23 +2838,23 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_SensorType SDL_GetSensorType(IntPtr sensor);
+    public static partial SDL_SensorType SDL_GetSensorType(nint sensor);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetSensorNonPortableType(IntPtr sensor);
+    public static partial int SDL_GetSensorNonPortableType(nint sensor);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetSensorID(IntPtr sensor);
+    public static partial uint SDL_GetSensorID(nint sensor);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetSensorData(IntPtr sensor, float* data, int num_values);
+    public static partial SDLBool SDL_GetSensorData(nint sensor, float* data, int num_values);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_CloseSensor(IntPtr sensor);
+    public static partial void SDL_CloseSensor(nint sensor);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -2943,15 +2943,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_OpenJoystick(uint instance_id);
+    public static partial nint SDL_OpenJoystick(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetJoystickFromID(uint instance_id);
+    public static partial nint SDL_GetJoystickFromID(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetJoystickFromPlayerIndex(int player_index);
+    public static partial nint SDL_GetJoystickFromPlayerIndex(int player_index);
 
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_VirtualJoystickTouchpadDesc
@@ -2987,15 +2987,15 @@ public static unsafe partial class SDL
         public byte* name;
         public SDL_VirtualJoystickTouchpadDesc* touchpads;
         public SDL_VirtualJoystickSensorDesc* sensors;
-        public IntPtr userdata;
-        public IntPtr Update; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr SetPlayerIndex; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr Rumble; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr RumbleTriggers; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr SetLED; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr SendEffect; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr SetSensorsEnabled; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr Cleanup; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint userdata;
+        public nint Update; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint SetPlayerIndex; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint Rumble; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint RumbleTriggers; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint SetLED; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint SendEffect; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint SetSensorsEnabled; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint Cleanup; // WARN_ANONYMOUS_FUNCTION_POINTER
     }
 
     [LibraryImport(nativeLibName)]
@@ -3012,31 +3012,31 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetJoystickVirtualAxis(IntPtr joystick, int axis, short value);
+    public static partial SDLBool SDL_SetJoystickVirtualAxis(nint joystick, int axis, short value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetJoystickVirtualBall(IntPtr joystick, int ball, short xrel, short yrel);
+    public static partial SDLBool SDL_SetJoystickVirtualBall(nint joystick, int ball, short xrel, short yrel);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetJoystickVirtualButton(IntPtr joystick, int button, SDLBool down);
+    public static partial SDLBool SDL_SetJoystickVirtualButton(nint joystick, int button, SDLBool down);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetJoystickVirtualHat(IntPtr joystick, int hat, byte value);
+    public static partial SDLBool SDL_SetJoystickVirtualHat(nint joystick, int hat, byte value);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetJoystickVirtualTouchpad(IntPtr joystick, int touchpad, int finger, SDLBool down, float x, float y, float pressure);
+    public static partial SDLBool SDL_SetJoystickVirtualTouchpad(nint joystick, int touchpad, int finger, SDLBool down, float x, float y, float pressure);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SendJoystickVirtualSensorData(IntPtr joystick, SDL_SensorType type, ulong sensor_timestamp, float* data, int num_values);
+    public static partial SDLBool SDL_SendJoystickVirtualSensorData(nint joystick, SDL_SensorType type, ulong sensor_timestamp, float* data, int num_values);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetJoystickProperties(IntPtr joystick);
+    public static partial uint SDL_GetJoystickProperties(nint joystick);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3050,31 +3050,31 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetJoystickPlayerIndex(IntPtr joystick);
+    public static partial int SDL_GetJoystickPlayerIndex(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetJoystickPlayerIndex(IntPtr joystick, int player_index);
+    public static partial SDLBool SDL_SetJoystickPlayerIndex(nint joystick, int player_index);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_GUID SDL_GetJoystickGUID(IntPtr joystick);
+    public static partial SDL_GUID SDL_GetJoystickGUID(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetJoystickVendor(IntPtr joystick);
+    public static partial ushort SDL_GetJoystickVendor(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetJoystickProduct(IntPtr joystick);
+    public static partial ushort SDL_GetJoystickProduct(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetJoystickProductVersion(IntPtr joystick);
+    public static partial ushort SDL_GetJoystickProductVersion(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetJoystickFirmwareVersion(IntPtr joystick);
+    public static partial ushort SDL_GetJoystickFirmwareVersion(nint joystick);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3083,7 +3083,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_JoystickType SDL_GetJoystickType(IntPtr joystick);
+    public static partial SDL_JoystickType SDL_GetJoystickType(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3091,27 +3091,27 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_JoystickConnected(IntPtr joystick);
+    public static partial SDLBool SDL_JoystickConnected(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetJoystickID(IntPtr joystick);
+    public static partial uint SDL_GetJoystickID(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetNumJoystickAxes(IntPtr joystick);
+    public static partial int SDL_GetNumJoystickAxes(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetNumJoystickBalls(IntPtr joystick);
+    public static partial int SDL_GetNumJoystickBalls(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetNumJoystickHats(IntPtr joystick);
+    public static partial int SDL_GetNumJoystickHats(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetNumJoystickButtons(IntPtr joystick);
+    public static partial int SDL_GetNumJoystickButtons(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3127,7 +3127,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial short SDL_GetJoystickAxis(IntPtr joystick, int axis);
+    public static partial short SDL_GetJoystickAxis(nint joystick, int axis);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3139,35 +3139,35 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial byte SDL_GetJoystickHat(IntPtr joystick, int hat);
+    public static partial byte SDL_GetJoystickHat(nint joystick, int hat);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetJoystickButton(IntPtr joystick, int button);
+    public static partial SDLBool SDL_GetJoystickButton(nint joystick, int button);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RumbleJoystick(IntPtr joystick, ushort low_frequency_rumble, ushort high_frequency_rumble, uint duration_ms);
+    public static partial SDLBool SDL_RumbleJoystick(nint joystick, ushort low_frequency_rumble, ushort high_frequency_rumble, uint duration_ms);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RumbleJoystickTriggers(IntPtr joystick, ushort left_rumble, ushort right_rumble, uint duration_ms);
+    public static partial SDLBool SDL_RumbleJoystickTriggers(nint joystick, ushort left_rumble, ushort right_rumble, uint duration_ms);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetJoystickLED(IntPtr joystick, byte red, byte green, byte blue);
+    public static partial SDLBool SDL_SetJoystickLED(nint joystick, byte red, byte green, byte blue);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SendJoystickEffect(IntPtr joystick, IntPtr data, int size);
+    public static partial SDLBool SDL_SendJoystickEffect(nint joystick, nint data, int size);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_CloseJoystick(IntPtr joystick);
+    public static partial void SDL_CloseJoystick(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_JoystickConnectionState SDL_GetJoystickConnectionState(IntPtr joystick);
+    public static partial SDL_JoystickConnectionState SDL_GetJoystickConnectionState(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3304,7 +3304,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_AddGamepadMappingsFromIO(IntPtr src, SDLBool closeio);
+    public static partial int SDL_AddGamepadMappingsFromIO(nint src, SDLBool closeio);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3389,23 +3389,23 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_OpenGamepad(uint instance_id);
+    public static partial nint SDL_OpenGamepad(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetGamepadFromID(uint instance_id);
+    public static partial nint SDL_GetGamepadFromID(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetGamepadFromPlayerIndex(int player_index);
+    public static partial nint SDL_GetGamepadFromPlayerIndex(int player_index);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetGamepadProperties(IntPtr gamepad);
+    public static partial uint SDL_GetGamepadProperties(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetGamepadID(IntPtr gamepad);
+    public static partial uint SDL_GetGamepadID(nint gamepad);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3419,35 +3419,35 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_GamepadType SDL_GetGamepadType(IntPtr gamepad);
+    public static partial SDL_GamepadType SDL_GetGamepadType(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_GamepadType SDL_GetRealGamepadType(IntPtr gamepad);
+    public static partial SDL_GamepadType SDL_GetRealGamepadType(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetGamepadPlayerIndex(IntPtr gamepad);
+    public static partial int SDL_GetGamepadPlayerIndex(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetGamepadPlayerIndex(IntPtr gamepad, int player_index);
+    public static partial SDLBool SDL_SetGamepadPlayerIndex(nint gamepad, int player_index);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetGamepadVendor(IntPtr gamepad);
+    public static partial ushort SDL_GetGamepadVendor(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetGamepadProduct(IntPtr gamepad);
+    public static partial ushort SDL_GetGamepadProduct(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetGamepadProductVersion(IntPtr gamepad);
+    public static partial ushort SDL_GetGamepadProductVersion(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ushort SDL_GetGamepadFirmwareVersion(IntPtr gamepad);
+    public static partial ushort SDL_GetGamepadFirmwareVersion(nint gamepad);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3456,11 +3456,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ulong SDL_GetGamepadSteamHandle(IntPtr gamepad);
+    public static partial ulong SDL_GetGamepadSteamHandle(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_JoystickConnectionState SDL_GetGamepadConnectionState(IntPtr gamepad);
+    public static partial SDL_JoystickConnectionState SDL_GetGamepadConnectionState(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3468,11 +3468,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GamepadConnected(IntPtr gamepad);
+    public static partial SDLBool SDL_GamepadConnected(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetGamepadJoystick(IntPtr gamepad);
+    public static partial nint SDL_GetGamepadJoystick(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3482,10 +3482,10 @@ public static unsafe partial class SDL
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial SDLBool SDL_GamepadEventsEnabled();
 
-    public static Span<IntPtr> SDL_GetGamepadBindings(IntPtr gamepad)
+    public static Span<nint> SDL_GetGamepadBindings(nint gamepad)
     {
         var result = SDL_GetGamepadBindings(gamepad, out var count);
-        return new Span<IntPtr>((void*)result, count);
+        return new Span<nint>((void*)result, count);
     }
 
     [LibraryImport(nativeLibName)]
@@ -3516,11 +3516,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GamepadHasAxis(IntPtr gamepad, SDL_GamepadAxis axis);
+    public static partial SDLBool SDL_GamepadHasAxis(nint gamepad, SDL_GamepadAxis axis);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial short SDL_GetGamepadAxis(IntPtr gamepad, SDL_GamepadAxis axis);
+    public static partial short SDL_GetGamepadAxis(nint gamepad, SDL_GamepadAxis axis);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3533,11 +3533,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GamepadHasButton(IntPtr gamepad, SDL_GamepadButton button);
+    public static partial SDLBool SDL_GamepadHasButton(nint gamepad, SDL_GamepadButton button);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetGamepadButton(IntPtr gamepad, SDL_GamepadButton button);
+    public static partial SDLBool SDL_GetGamepadButton(nint gamepad, SDL_GamepadButton button);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3545,15 +3545,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_GamepadButtonLabel SDL_GetGamepadButtonLabel(IntPtr gamepad, SDL_GamepadButton button);
+    public static partial SDL_GamepadButtonLabel SDL_GetGamepadButtonLabel(nint gamepad, SDL_GamepadButton button);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetNumGamepadTouchpads(IntPtr gamepad);
+    public static partial int SDL_GetNumGamepadTouchpads(nint gamepad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetNumGamepadTouchpadFingers(IntPtr gamepad, int touchpad);
+    public static partial int SDL_GetNumGamepadTouchpadFingers(nint gamepad, int touchpad);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -3561,43 +3561,43 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GamepadHasSensor(IntPtr gamepad, SDL_SensorType type);
+    public static partial SDLBool SDL_GamepadHasSensor(nint gamepad, SDL_SensorType type);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetGamepadSensorEnabled(IntPtr gamepad, SDL_SensorType type, SDLBool enabled);
+    public static partial SDLBool SDL_SetGamepadSensorEnabled(nint gamepad, SDL_SensorType type, SDLBool enabled);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GamepadSensorEnabled(IntPtr gamepad, SDL_SensorType type);
+    public static partial SDLBool SDL_GamepadSensorEnabled(nint gamepad, SDL_SensorType type);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial float SDL_GetGamepadSensorDataRate(IntPtr gamepad, SDL_SensorType type);
+    public static partial float SDL_GetGamepadSensorDataRate(nint gamepad, SDL_SensorType type);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetGamepadSensorData(IntPtr gamepad, SDL_SensorType type, float* data, int num_values);
+    public static partial SDLBool SDL_GetGamepadSensorData(nint gamepad, SDL_SensorType type, float* data, int num_values);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RumbleGamepad(IntPtr gamepad, ushort low_frequency_rumble, ushort high_frequency_rumble, uint duration_ms);
+    public static partial SDLBool SDL_RumbleGamepad(nint gamepad, ushort low_frequency_rumble, ushort high_frequency_rumble, uint duration_ms);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RumbleGamepadTriggers(IntPtr gamepad, ushort left_rumble, ushort right_rumble, uint duration_ms);
+    public static partial SDLBool SDL_RumbleGamepadTriggers(nint gamepad, ushort left_rumble, ushort right_rumble, uint duration_ms);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetGamepadLED(IntPtr gamepad, byte red, byte green, byte blue);
+    public static partial SDLBool SDL_SetGamepadLED(nint gamepad, byte red, byte green, byte blue);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SendGamepadEffect(IntPtr gamepad, IntPtr data, int size);
+    public static partial SDLBool SDL_SendGamepadEffect(nint gamepad, nint data, int size);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_CloseGamepad(IntPtr gamepad);
+    public static partial void SDL_CloseGamepad(nint gamepad);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -4172,7 +4172,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetKeyboardFocus();
+    public static partial nint SDL_GetKeyboardFocus();
 
     public static Span<SDLBool> SDL_GetKeyboardState()
     {
@@ -4202,7 +4202,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Scancode SDL_GetScancodeFromKey(uint key, IntPtr modstate);
+    public static partial SDL_Scancode SDL_GetScancodeFromKey(uint key, nint modstate);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -4228,7 +4228,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_StartTextInput(IntPtr window);
+    public static partial SDLBool SDL_StartTextInput(nint window);
 
     public enum SDL_TextInputType
     {
@@ -4253,19 +4253,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_StartTextInputWithProperties(IntPtr window, uint props);
+    public static partial SDLBool SDL_StartTextInputWithProperties(nint window, uint props);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_TextInputActive(IntPtr window);
+    public static partial SDLBool SDL_TextInputActive(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_StopTextInput(IntPtr window);
+    public static partial SDLBool SDL_StopTextInput(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ClearComposition(IntPtr window);
+    public static partial SDLBool SDL_ClearComposition(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -4281,7 +4281,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ScreenKeyboardShown(IntPtr window);
+    public static partial SDLBool SDL_ScreenKeyboardShown(nint window);
 
     // /usr/local/include/SDL3/SDL_mouse.h
 
@@ -4341,7 +4341,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetMouseFocus();
+    public static partial nint SDL_GetMouseFocus();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -4357,7 +4357,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_WarpMouseInWindow(IntPtr window, float x, float y);
+    public static partial void SDL_WarpMouseInWindow(nint window, float x, float y);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -4365,11 +4365,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetWindowRelativeMouseMode(IntPtr window, SDLBool enabled);
+    public static partial SDLBool SDL_SetWindowRelativeMouseMode(nint window, SDLBool enabled);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetWindowRelativeMouseMode(IntPtr window);
+    public static partial SDLBool SDL_GetWindowRelativeMouseMode(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -4377,31 +4377,31 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateCursor(IntPtr data, IntPtr mask, int w, int h, int hot_x, int hot_y);
+    public static partial nint SDL_CreateCursor(nint data, nint mask, int w, int h, int hot_x, int hot_y);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateColorCursor(IntPtr surface, int hot_x, int hot_y);
+    public static partial nint SDL_CreateColorCursor(nint surface, int hot_x, int hot_y);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateSystemCursor(SDL_SystemCursor id);
+    public static partial nint SDL_CreateSystemCursor(SDL_SystemCursor id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetCursor(IntPtr cursor);
+    public static partial SDLBool SDL_SetCursor(nint cursor);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetCursor();
+    public static partial nint SDL_GetCursor();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetDefaultCursor();
+    public static partial nint SDL_GetDefaultCursor();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyCursor(IntPtr cursor);
+    public static partial void SDL_DestroyCursor(nint cursor);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -4473,10 +4473,10 @@ public static unsafe partial class SDL
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial SDL_TouchDeviceType SDL_GetTouchDeviceType(ulong touchID);
 
-    public static Span<IntPtr> SDL_GetTouchFingers(ulong touchID)
+    public static Span<nint> SDL_GetTouchFingers(ulong touchID)
     {
         var result = SDL_GetTouchFingers(touchID, out var count);
-        return new Span<IntPtr>((void*)result, count);
+        return new Span<nint>((void*)result, count);
     }
 
     [LibraryImport(nativeLibName)]
@@ -5060,8 +5060,8 @@ public static unsafe partial class SDL
         public ulong timestamp;
         public uint windowID;
         public int code;
-        public IntPtr data1;
-        public IntPtr data2;
+        public nint data1;
+        public nint data2;
     }
 
     [StructLayout(LayoutKind.Explicit)]
@@ -5195,7 +5195,7 @@ public static unsafe partial class SDL
     public static partial SDLBool SDL_PushEvent(ref SDL_Event @event);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate bool SDL_EventFilter(IntPtr userdata, SDL_Event* evt);
+    public delegate bool SDL_EventFilter(nint userdata, SDL_Event* evt);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -5302,7 +5302,7 @@ public static unsafe partial class SDL
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate SDL_EnumerationResult SDL_EnumerateDirectoryCallback(IntPtr userdata, byte* dirname, byte* fname);
+    public delegate SDL_EnumerationResult SDL_EnumerateDirectoryCallback(nint userdata, byte* dirname, byte* fname);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -5741,7 +5741,7 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUTextureTransferInfo
     {
-        public IntPtr transfer_buffer;
+        public nint transfer_buffer;
         public uint offset;
         public uint pixels_per_row;
         public uint rows_per_layer;
@@ -5750,14 +5750,14 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUTransferBufferLocation
     {
-        public IntPtr transfer_buffer;
+        public nint transfer_buffer;
         public uint offset;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUTextureLocation
     {
-        public IntPtr texture;
+        public nint texture;
         public uint mip_level;
         public uint layer;
         public uint x;
@@ -5768,7 +5768,7 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUTextureRegion
     {
-        public IntPtr texture;
+        public nint texture;
         public uint mip_level;
         public uint layer;
         public uint x;
@@ -5782,7 +5782,7 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUBlitRegion
     {
-        public IntPtr texture;
+        public nint texture;
         public uint mip_level;
         public uint layer_or_depth_plane;
         public uint x;
@@ -5794,14 +5794,14 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUBufferLocation
     {
-        public IntPtr buffer;
+        public nint buffer;
         public uint offset;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUBufferRegion
     {
-        public IntPtr buffer;
+        public nint buffer;
         public uint offset;
         public uint size;
     }
@@ -5909,7 +5909,7 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUShaderCreateInfo
     {
-        public UIntPtr code_size;
+        public nuint code_size;
         public byte* code;
         public byte* entrypoint;
         public SDL_GPUShaderFormat format;
@@ -6015,8 +6015,8 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUGraphicsPipelineCreateInfo
     {
-        public IntPtr vertex_shader;
-        public IntPtr fragment_shader;
+        public nint vertex_shader;
+        public nint fragment_shader;
         public SDL_GPUVertexInputState vertex_input_state;
         public SDL_GPUPrimitiveType primitive_type;
         public SDL_GPURasterizerState rasterizer_state;
@@ -6029,7 +6029,7 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUComputePipelineCreateInfo
     {
-        public UIntPtr code_size;
+        public nuint code_size;
         public byte* code;
         public byte* entrypoint;
         public SDL_GPUShaderFormat format;
@@ -6048,13 +6048,13 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUColorTargetInfo
     {
-        public IntPtr texture;
+        public nint texture;
         public uint mip_level;
         public uint layer_or_depth_plane;
         public SDL_FColor clear_color;
         public SDL_GPULoadOp load_op;
         public SDL_GPUStoreOp store_op;
-        public IntPtr resolve_texture;
+        public nint resolve_texture;
         public uint resolve_mip_level;
         public uint resolve_layer;
         public SDLBool cycle;
@@ -6066,7 +6066,7 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUDepthStencilTargetInfo
     {
-        public IntPtr texture;
+        public nint texture;
         public float clear_depth;
         public SDL_GPULoadOp load_op;
         public SDL_GPUStoreOp store_op;
@@ -6096,21 +6096,21 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUBufferBinding
     {
-        public IntPtr buffer;
+        public nint buffer;
         public uint offset;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUTextureSamplerBinding
     {
-        public IntPtr texture;
-        public IntPtr sampler;
+        public nint texture;
+        public nint sampler;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUStorageBufferReadWriteBinding
     {
-        public IntPtr buffer;
+        public nint buffer;
         public SDLBool cycle;
         public byte padding1;
         public byte padding2;
@@ -6120,7 +6120,7 @@ public static unsafe partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_GPUStorageTextureReadWriteBinding
     {
-        public IntPtr texture;
+        public nint texture;
         public uint mip_level;
         public uint layer;
         public SDLBool cycle;
@@ -6143,11 +6143,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateGPUDeviceWithProperties(uint props);
+    public static partial nint SDL_CreateGPUDeviceWithProperties(uint props);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyGPUDevice(IntPtr device);
+    public static partial void SDL_DestroyGPUDevice(nint device);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6165,7 +6165,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_GPUShaderFormat SDL_GetGPUShaderFormats(IntPtr device);
+    public static partial SDL_GPUShaderFormat SDL_GetGPUShaderFormats(nint device);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6213,51 +6213,51 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_PopGPUDebugGroup(IntPtr command_buffer);
+    public static partial void SDL_PopGPUDebugGroup(nint command_buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUTexture(IntPtr device, IntPtr texture);
+    public static partial void SDL_ReleaseGPUTexture(nint device, nint texture);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUSampler(IntPtr device, IntPtr sampler);
+    public static partial void SDL_ReleaseGPUSampler(nint device, nint sampler);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUBuffer(IntPtr device, IntPtr buffer);
+    public static partial void SDL_ReleaseGPUBuffer(nint device, nint buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUTransferBuffer(IntPtr device, IntPtr transfer_buffer);
+    public static partial void SDL_ReleaseGPUTransferBuffer(nint device, nint transfer_buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUComputePipeline(IntPtr device, IntPtr compute_pipeline);
+    public static partial void SDL_ReleaseGPUComputePipeline(nint device, nint compute_pipeline);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUShader(IntPtr device, IntPtr shader);
+    public static partial void SDL_ReleaseGPUShader(nint device, nint shader);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUGraphicsPipeline(IntPtr device, IntPtr graphics_pipeline);
+    public static partial void SDL_ReleaseGPUGraphicsPipeline(nint device, nint graphics_pipeline);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_AcquireGPUCommandBuffer(IntPtr device);
+    public static partial nint SDL_AcquireGPUCommandBuffer(nint device);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_PushGPUVertexUniformData(IntPtr command_buffer, uint slot_index, IntPtr data, uint length);
+    public static partial void SDL_PushGPUVertexUniformData(nint command_buffer, uint slot_index, nint data, uint length);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_PushGPUFragmentUniformData(IntPtr command_buffer, uint slot_index, IntPtr data, uint length);
+    public static partial void SDL_PushGPUFragmentUniformData(nint command_buffer, uint slot_index, nint data, uint length);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_PushGPUComputeUniformData(IntPtr command_buffer, uint slot_index, IntPtr data, uint length);
+    public static partial void SDL_PushGPUComputeUniformData(nint command_buffer, uint slot_index, nint data, uint length);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6265,7 +6265,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_BindGPUGraphicsPipeline(IntPtr render_pass, IntPtr graphics_pipeline);
+    public static partial void SDL_BindGPUGraphicsPipeline(nint render_pass, nint graphics_pipeline);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6277,11 +6277,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SetGPUBlendConstants(IntPtr render_pass, SDL_FColor blend_constants);
+    public static partial void SDL_SetGPUBlendConstants(nint render_pass, SDL_FColor blend_constants);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SetGPUStencilReference(IntPtr render_pass, byte reference);
+    public static partial void SDL_SetGPUStencilReference(nint render_pass, byte reference);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6317,23 +6317,23 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DrawGPUIndexedPrimitives(IntPtr render_pass, uint num_indices, uint num_instances, uint first_index, int vertex_offset, uint first_instance);
+    public static partial void SDL_DrawGPUIndexedPrimitives(nint render_pass, uint num_indices, uint num_instances, uint first_index, int vertex_offset, uint first_instance);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DrawGPUPrimitives(IntPtr render_pass, uint num_vertices, uint num_instances, uint first_vertex, uint first_instance);
+    public static partial void SDL_DrawGPUPrimitives(nint render_pass, uint num_vertices, uint num_instances, uint first_vertex, uint first_instance);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DrawGPUPrimitivesIndirect(IntPtr render_pass, IntPtr buffer, uint offset, uint draw_count);
+    public static partial void SDL_DrawGPUPrimitivesIndirect(nint render_pass, nint buffer, uint offset, uint draw_count);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DrawGPUIndexedPrimitivesIndirect(IntPtr render_pass, IntPtr buffer, uint offset, uint draw_count);
+    public static partial void SDL_DrawGPUIndexedPrimitivesIndirect(nint render_pass, nint buffer, uint offset, uint draw_count);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_EndGPURenderPass(IntPtr render_pass);
+    public static partial void SDL_EndGPURenderPass(nint render_pass);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6341,7 +6341,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_BindGPUComputePipeline(IntPtr compute_pass, IntPtr compute_pipeline);
+    public static partial void SDL_BindGPUComputePipeline(nint compute_pass, nint compute_pipeline);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6357,27 +6357,27 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DispatchGPUCompute(IntPtr compute_pass, uint groupcount_x, uint groupcount_y, uint groupcount_z);
+    public static partial void SDL_DispatchGPUCompute(nint compute_pass, uint groupcount_x, uint groupcount_y, uint groupcount_z);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DispatchGPUComputeIndirect(IntPtr compute_pass, IntPtr buffer, uint offset);
+    public static partial void SDL_DispatchGPUComputeIndirect(nint compute_pass, nint buffer, uint offset);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_EndGPUComputePass(IntPtr compute_pass);
+    public static partial void SDL_EndGPUComputePass(nint compute_pass);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_MapGPUTransferBuffer(IntPtr device, IntPtr transfer_buffer, SDLBool cycle);
+    public static partial nint SDL_MapGPUTransferBuffer(nint device, nint transfer_buffer, SDLBool cycle);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnmapGPUTransferBuffer(IntPtr device, IntPtr transfer_buffer);
+    public static partial void SDL_UnmapGPUTransferBuffer(nint device, nint transfer_buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_BeginGPUCopyPass(IntPtr command_buffer);
+    public static partial nint SDL_BeginGPUCopyPass(nint command_buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6405,11 +6405,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_EndGPUCopyPass(IntPtr copy_pass);
+    public static partial void SDL_EndGPUCopyPass(nint copy_pass);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_GenerateMipmapsForGPUTexture(IntPtr command_buffer, IntPtr texture);
+    public static partial void SDL_GenerateMipmapsForGPUTexture(nint command_buffer, nint texture);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6417,31 +6417,31 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WindowSupportsGPUSwapchainComposition(IntPtr device, IntPtr window, SDL_GPUSwapchainComposition swapchain_composition);
+    public static partial SDLBool SDL_WindowSupportsGPUSwapchainComposition(nint device, nint window, SDL_GPUSwapchainComposition swapchain_composition);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WindowSupportsGPUPresentMode(IntPtr device, IntPtr window, SDL_GPUPresentMode present_mode);
+    public static partial SDLBool SDL_WindowSupportsGPUPresentMode(nint device, nint window, SDL_GPUPresentMode present_mode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ClaimWindowForGPUDevice(IntPtr device, IntPtr window);
+    public static partial SDLBool SDL_ClaimWindowForGPUDevice(nint device, nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseWindowFromGPUDevice(IntPtr device, IntPtr window);
+    public static partial void SDL_ReleaseWindowFromGPUDevice(nint device, nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetGPUSwapchainParameters(IntPtr device, IntPtr window, SDL_GPUSwapchainComposition swapchain_composition, SDL_GPUPresentMode present_mode);
+    public static partial SDLBool SDL_SetGPUSwapchainParameters(nint device, nint window, SDL_GPUSwapchainComposition swapchain_composition, SDL_GPUPresentMode present_mode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetGPUAllowedFramesInFlight(IntPtr device, uint allowed_frames_in_flight);
+    public static partial SDLBool SDL_SetGPUAllowedFramesInFlight(nint device, uint allowed_frames_in_flight);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_GPUTextureFormat SDL_GetGPUSwapchainTextureFormat(IntPtr device, IntPtr window);
+    public static partial SDL_GPUTextureFormat SDL_GetGPUSwapchainTextureFormat(nint device, nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6449,7 +6449,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WaitForGPUSwapchain(IntPtr device, IntPtr window);
+    public static partial SDLBool SDL_WaitForGPUSwapchain(nint device, nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6457,19 +6457,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SubmitGPUCommandBuffer(IntPtr command_buffer);
+    public static partial SDLBool SDL_SubmitGPUCommandBuffer(nint command_buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_SubmitGPUCommandBufferAndAcquireFence(IntPtr command_buffer);
+    public static partial nint SDL_SubmitGPUCommandBufferAndAcquireFence(nint command_buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_CancelGPUCommandBuffer(IntPtr command_buffer);
+    public static partial SDLBool SDL_CancelGPUCommandBuffer(nint command_buffer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_WaitForGPUIdle(IntPtr device);
+    public static partial SDLBool SDL_WaitForGPUIdle(nint device);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6477,11 +6477,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_QueryGPUFence(IntPtr device, IntPtr fence);
+    public static partial SDLBool SDL_QueryGPUFence(nint device, nint fence);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ReleaseGPUFence(IntPtr device, IntPtr fence);
+    public static partial void SDL_ReleaseGPUFence(nint device, nint fence);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6489,11 +6489,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GPUTextureSupportsFormat(IntPtr device, SDL_GPUTextureFormat format, SDL_GPUTextureType type, SDL_GPUTextureUsageFlags usage);
+    public static partial SDLBool SDL_GPUTextureSupportsFormat(nint device, SDL_GPUTextureFormat format, SDL_GPUTextureType type, SDL_GPUTextureUsageFlags usage);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GPUTextureSupportsSampleCount(IntPtr device, SDL_GPUTextureFormat format, SDL_GPUSampleCount sample_count);
+    public static partial SDLBool SDL_GPUTextureSupportsSampleCount(nint device, SDL_GPUTextureFormat format, SDL_GPUSampleCount sample_count);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6635,15 +6635,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_OpenHaptic(uint instance_id);
+    public static partial nint SDL_OpenHaptic(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetHapticFromID(uint instance_id);
+    public static partial nint SDL_GetHapticFromID(uint instance_id);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetHapticID(IntPtr haptic);
+    public static partial uint SDL_GetHapticID(nint haptic);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6656,35 +6656,35 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_OpenHapticFromMouse();
+    public static partial nint SDL_OpenHapticFromMouse();
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_IsJoystickHaptic(IntPtr joystick);
+    public static partial SDLBool SDL_IsJoystickHaptic(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_OpenHapticFromJoystick(IntPtr joystick);
+    public static partial nint SDL_OpenHapticFromJoystick(nint joystick);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_CloseHaptic(IntPtr haptic);
+    public static partial void SDL_CloseHaptic(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetMaxHapticEffects(IntPtr haptic);
+    public static partial int SDL_GetMaxHapticEffects(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetMaxHapticEffectsPlaying(IntPtr haptic);
+    public static partial int SDL_GetMaxHapticEffectsPlaying(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetHapticFeatures(IntPtr haptic);
+    public static partial uint SDL_GetHapticFeatures(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_GetNumHapticAxes(IntPtr haptic);
+    public static partial int SDL_GetNumHapticAxes(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6700,55 +6700,55 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RunHapticEffect(IntPtr haptic, int effect, uint iterations);
+    public static partial SDLBool SDL_RunHapticEffect(nint haptic, int effect, uint iterations);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_StopHapticEffect(IntPtr haptic, int effect);
+    public static partial SDLBool SDL_StopHapticEffect(nint haptic, int effect);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyHapticEffect(IntPtr haptic, int effect);
+    public static partial void SDL_DestroyHapticEffect(nint haptic, int effect);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetHapticEffectStatus(IntPtr haptic, int effect);
+    public static partial SDLBool SDL_GetHapticEffectStatus(nint haptic, int effect);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetHapticGain(IntPtr haptic, int gain);
+    public static partial SDLBool SDL_SetHapticGain(nint haptic, int gain);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetHapticAutocenter(IntPtr haptic, int autocenter);
+    public static partial SDLBool SDL_SetHapticAutocenter(nint haptic, int autocenter);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_PauseHaptic(IntPtr haptic);
+    public static partial SDLBool SDL_PauseHaptic(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_ResumeHaptic(IntPtr haptic);
+    public static partial SDLBool SDL_ResumeHaptic(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_StopHapticEffects(IntPtr haptic);
+    public static partial SDLBool SDL_StopHapticEffects(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_HapticRumbleSupported(IntPtr haptic);
+    public static partial SDLBool SDL_HapticRumbleSupported(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_InitHapticRumble(IntPtr haptic);
+    public static partial SDLBool SDL_InitHapticRumble(nint haptic);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_PlayHapticRumble(IntPtr haptic, float strength, uint length);
+    public static partial SDLBool SDL_PlayHapticRumble(nint haptic, float strength, uint length);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_StopHapticRumble(IntPtr haptic);
+    public static partial SDLBool SDL_StopHapticRumble(nint haptic);
 
     // /usr/local/include/SDL3/SDL_hidapi.h
 
@@ -6799,7 +6799,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_hid_free_enumeration(IntPtr devs); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial void SDL_hid_free_enumeration(nint devs); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6811,35 +6811,35 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_write(IntPtr dev, IntPtr data, UIntPtr length); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial int SDL_hid_write(nint dev, nint data, nuint length); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_read_timeout(IntPtr dev, IntPtr data, UIntPtr length, int milliseconds); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial int SDL_hid_read_timeout(nint dev, nint data, nuint length, int milliseconds); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_read(IntPtr dev, IntPtr data, UIntPtr length); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial int SDL_hid_read(nint dev, nint data, nuint length); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_set_nonblocking(IntPtr dev, int nonblock);
+    public static partial int SDL_hid_set_nonblocking(nint dev, int nonblock);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_send_feature_report(IntPtr dev, IntPtr data, UIntPtr length); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial int SDL_hid_send_feature_report(nint dev, nint data, nuint length); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_get_feature_report(IntPtr dev, IntPtr data, UIntPtr length); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial int SDL_hid_get_feature_report(nint dev, nint data, nuint length); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_get_input_report(IntPtr dev, IntPtr data, UIntPtr length); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial int SDL_hid_get_input_report(nint dev, nint data, nuint length); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_close(IntPtr dev);
+    public static partial int SDL_hid_close(nint dev);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -6859,11 +6859,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_hid_device_info* SDL_hid_get_device_info(IntPtr dev);
+    public static partial SDL_hid_device_info* SDL_hid_get_device_info(nint dev);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_hid_get_report_descriptor(IntPtr dev, IntPtr buf, UIntPtr buf_size); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial int SDL_hid_get_report_descriptor(nint dev, nint buf, nuint buf_size); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7138,7 +7138,7 @@ public static unsafe partial class SDL
     public static partial SDLBool SDL_GetHintBoolean(string name, SDLBool default_value);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_HintCallback(IntPtr userdata, byte* name, byte* oldValue, byte* newValue);
+    public delegate void SDL_HintCallback(nint userdata, byte* name, byte* oldValue, byte* newValue);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7180,16 +7180,16 @@ public static unsafe partial class SDL
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate SDL_AppResult SDL_AppInit_func(IntPtr appstate, int argc, IntPtr argv);
+    public delegate SDL_AppResult SDL_AppInit_func(nint appstate, int argc, nint argv);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate SDL_AppResult SDL_AppIterate_func(IntPtr appstate);
+    public delegate SDL_AppResult SDL_AppIterate_func(nint appstate);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate SDL_AppResult SDL_AppEvent_func(IntPtr appstate, SDL_Event* evt);
+    public delegate SDL_AppResult SDL_AppEvent_func(nint appstate, SDL_Event* evt);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_AppQuit_func(IntPtr appstate, SDL_AppResult result);
+    public delegate void SDL_AppQuit_func(nint appstate, SDL_AppResult result);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7216,7 +7216,7 @@ public static unsafe partial class SDL
     public static partial SDLBool SDL_IsMainThread();
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_MainThreadCallback(IntPtr userdata);
+    public delegate void SDL_MainThreadCallback(nint userdata);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7247,7 +7247,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnloadObject(IntPtr handle);
+    public static partial void SDL_UnloadObject(nint handle);
 
     // /usr/local/include/SDL3/SDL_locale.h
 
@@ -7258,10 +7258,10 @@ public static unsafe partial class SDL
         public byte* country;
     }
 
-    public static Span<IntPtr> SDL_GetPreferredLocales()
+    public static Span<nint> SDL_GetPreferredLocales()
     {
         var result = SDL_GetPreferredLocales(out var count);
-        return new Span<IntPtr>((void*)result, count);
+        return new Span<nint>((void*)result, count);
     }
 
     [LibraryImport(nativeLibName)]
@@ -7364,7 +7364,7 @@ public static unsafe partial class SDL
     public static partial void SDL_LogMessage(int category, SDL_LogPriority priority, string fmt);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_LogOutputFunction(IntPtr userdata, int category, SDL_LogPriority priority, byte* message);
+    public delegate void SDL_LogOutputFunction(nint userdata, int category, SDL_LogPriority priority, byte* message);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7437,7 +7437,7 @@ public static unsafe partial class SDL
     public struct SDL_MessageBoxData
     {
         public SDL_MessageBoxFlags flags;
-        public IntPtr window;
+        public nint window;
         public byte* title;
         public byte* message;
         public int numbuttons;
@@ -7457,15 +7457,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_Metal_CreateView(IntPtr window);
+    public static partial nint SDL_Metal_CreateView(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_Metal_DestroyView(IntPtr view);
+    public static partial void SDL_Metal_DestroyView(nint view);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_Metal_GetLayer(IntPtr view);
+    public static partial nint SDL_Metal_GetLayer(nint view);
 
     // /usr/local/include/SDL3/SDL_misc.h
 
@@ -7500,7 +7500,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateProcess(IntPtr args, SDLBool pipe_stdio);
+    public static partial nint SDL_CreateProcess(nint args, SDLBool pipe_stdio);
 
     public enum SDL_ProcessIO
     {
@@ -7512,11 +7512,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateProcessWithProperties(uint props);
+    public static partial nint SDL_CreateProcessWithProperties(uint props);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetProcessProperties(IntPtr process);
+    public static partial uint SDL_GetProcessProperties(nint process);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7524,15 +7524,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetProcessInput(IntPtr process);
+    public static partial nint SDL_GetProcessInput(nint process);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetProcessOutput(IntPtr process);
+    public static partial nint SDL_GetProcessOutput(nint process);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_KillProcess(IntPtr process, SDLBool force);
+    public static partial SDLBool SDL_KillProcess(nint process, SDLBool force);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7540,7 +7540,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyProcess(IntPtr process);
+    public static partial void SDL_DestroyProcess(nint process);
 
     // /usr/local/include/SDL3/SDL_render.h
 
@@ -7681,19 +7681,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateRendererWithProperties(uint props);
+    public static partial nint SDL_CreateRendererWithProperties(uint props);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateSoftwareRenderer(IntPtr surface);
+    public static partial nint SDL_CreateSoftwareRenderer(nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetRenderer(IntPtr window);
+    public static partial nint SDL_GetRenderer(nint window);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetRenderWindow(IntPtr renderer);
+    public static partial nint SDL_GetRenderWindow(nint renderer);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7702,7 +7702,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetRendererProperties(IntPtr renderer);
+    public static partial uint SDL_GetRendererProperties(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7714,23 +7714,23 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Texture* SDL_CreateTexture(IntPtr renderer, SDL_PixelFormat format, SDL_TextureAccess access, int w, int h);
+    public static partial SDL_Texture* SDL_CreateTexture(nint renderer, SDL_PixelFormat format, SDL_TextureAccess access, int w, int h);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Texture* SDL_CreateTextureFromSurface(IntPtr renderer, IntPtr surface);
+    public static partial SDL_Texture* SDL_CreateTextureFromSurface(nint renderer, nint surface);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Texture* SDL_CreateTextureWithProperties(IntPtr renderer, uint props);
+    public static partial SDL_Texture* SDL_CreateTextureWithProperties(nint renderer, uint props);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial uint SDL_GetTextureProperties(IntPtr texture); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial uint SDL_GetTextureProperties(nint texture); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetRendererFromTexture(IntPtr texture); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial nint SDL_GetRendererFromTexture(nint texture); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7738,11 +7738,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetTextureColorMod(IntPtr texture, byte r, byte g, byte b); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_SetTextureColorMod(nint texture, byte r, byte g, byte b); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetTextureColorModFloat(IntPtr texture, float r, float g, float b); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_SetTextureColorModFloat(nint texture, float r, float g, float b); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7754,11 +7754,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetTextureAlphaMod(IntPtr texture, byte alpha); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_SetTextureAlphaMod(nint texture, byte alpha); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetTextureAlphaModFloat(IntPtr texture, float alpha); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_SetTextureAlphaModFloat(nint texture, float alpha); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7770,15 +7770,15 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetTextureBlendMode(IntPtr texture, uint blendMode); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_SetTextureBlendMode(nint texture, uint blendMode); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetTextureBlendMode(IntPtr texture, IntPtr blendMode); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_GetTextureBlendMode(nint texture, nint blendMode); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetTextureScaleMode(IntPtr texture, SDL_ScaleMode scaleMode); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_SetTextureScaleMode(nint texture, SDL_ScaleMode scaleMode); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7806,19 +7806,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UnlockTexture(IntPtr texture); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial void SDL_UnlockTexture(nint texture); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderTarget(IntPtr renderer, IntPtr texture); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_SetRenderTarget(nint renderer, nint texture); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDL_Texture* SDL_GetRenderTarget(IntPtr renderer);
+    public static partial SDL_Texture* SDL_GetRenderTarget(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderLogicalPresentation(IntPtr renderer, int w, int h, SDL_RendererLogicalPresentation mode);
+    public static partial SDLBool SDL_SetRenderLogicalPresentation(nint renderer, int w, int h, SDL_RendererLogicalPresentation mode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7850,7 +7850,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RenderViewportSet(IntPtr renderer);
+    public static partial SDLBool SDL_RenderViewportSet(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7866,11 +7866,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RenderClipEnabled(IntPtr renderer);
+    public static partial SDLBool SDL_RenderClipEnabled(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderScale(IntPtr renderer, float scaleX, float scaleY);
+    public static partial SDLBool SDL_SetRenderScale(nint renderer, float scaleX, float scaleY);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7878,11 +7878,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderDrawColor(IntPtr renderer, byte r, byte g, byte b, byte a);
+    public static partial SDLBool SDL_SetRenderDrawColor(nint renderer, byte r, byte g, byte b, byte a);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderDrawColorFloat(IntPtr renderer, float r, float g, float b, float a);
+    public static partial SDLBool SDL_SetRenderDrawColorFloat(nint renderer, float r, float g, float b, float a);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7894,7 +7894,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderColorScale(IntPtr renderer, float scale);
+    public static partial SDLBool SDL_SetRenderColorScale(nint renderer, float scale);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7902,19 +7902,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderDrawBlendMode(IntPtr renderer, uint blendMode);
+    public static partial SDLBool SDL_SetRenderDrawBlendMode(nint renderer, uint blendMode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetRenderDrawBlendMode(IntPtr renderer, IntPtr blendMode);
+    public static partial SDLBool SDL_GetRenderDrawBlendMode(nint renderer, nint blendMode);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RenderClear(IntPtr renderer);
+    public static partial SDLBool SDL_RenderClear(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RenderPoint(IntPtr renderer, float x, float y);
+    public static partial SDLBool SDL_RenderPoint(nint renderer, float x, float y);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7922,7 +7922,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RenderLine(IntPtr renderer, float x1, float y1, float x2, float y2);
+    public static partial SDLBool SDL_RenderLine(nint renderer, float x1, float y1, float x2, float y2);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7970,7 +7970,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RenderGeometryRaw(IntPtr renderer, IntPtr texture, IntPtr xy, int xy_stride, IntPtr color, int color_stride, IntPtr uv, int uv_stride, int num_vertices, IntPtr indices, int num_indices, int size_indices); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial SDLBool SDL_RenderGeometryRaw(nint renderer, nint texture, nint xy, int xy_stride, nint color, int color_stride, nint uv, int uv_stride, int num_vertices, nint indices, int num_indices, int size_indices); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -7978,35 +7978,35 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_RenderPresent(IntPtr renderer);
+    public static partial SDLBool SDL_RenderPresent(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyTexture(IntPtr texture); // WARN_UNKNOWN_POINTER_PARAMETER
+    public static partial void SDL_DestroyTexture(nint texture); // WARN_UNKNOWN_POINTER_PARAMETER
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyRenderer(IntPtr renderer);
+    public static partial void SDL_DestroyRenderer(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_FlushRenderer(IntPtr renderer);
+    public static partial SDLBool SDL_FlushRenderer(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetRenderMetalLayer(IntPtr renderer);
+    public static partial nint SDL_GetRenderMetalLayer(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetRenderMetalCommandEncoder(IntPtr renderer);
+    public static partial nint SDL_GetRenderMetalCommandEncoder(nint renderer);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_AddVulkanRenderSemaphores(IntPtr renderer, uint wait_stage_mask, long wait_semaphore, long signal_semaphore);
+    public static partial SDLBool SDL_AddVulkanRenderSemaphores(nint renderer, uint wait_stage_mask, long wait_semaphore, long signal_semaphore);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_SetRenderVSync(IntPtr renderer, int vsync);
+    public static partial SDLBool SDL_SetRenderVSync(nint renderer, int vsync);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8026,17 +8026,17 @@ public static unsafe partial class SDL
     public struct SDL_StorageInterface
     {
         public uint version;
-        public IntPtr close; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr ready; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr enumerate; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr info; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr read_file; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr write_file; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr mkdir; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr remove; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr rename; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr copy; // WARN_ANONYMOUS_FUNCTION_POINTER
-        public IntPtr space_remaining; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint close; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint ready; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint enumerate; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint info; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint read_file; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint write_file; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint mkdir; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint remove; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint rename; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint copy; // WARN_ANONYMOUS_FUNCTION_POINTER
+        public nint space_remaining; // WARN_ANONYMOUS_FUNCTION_POINTER
     }
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
@@ -8057,11 +8057,11 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_CloseStorage(IntPtr storage);
+    public static partial SDLBool SDL_CloseStorage(nint storage);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_StorageReady(IntPtr storage);
+    public static partial SDLBool SDL_StorageReady(nint storage);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8101,7 +8101,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial ulong SDL_GetStorageSpaceRemaining(IntPtr storage);
+    public static partial ulong SDL_GetStorageSpaceRemaining(nint storage);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8110,7 +8110,7 @@ public static unsafe partial class SDL
     // /usr/local/include/SDL3/SDL_system.h
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate bool SDL_X11EventHook(IntPtr userdata, IntPtr xevent);
+    public delegate bool SDL_X11EventHook(nint userdata, nint xevent);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8204,7 +8204,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetCurrentTime(IntPtr ticks);
+    public static partial SDLBool SDL_GetCurrentTime(nint ticks);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8265,14 +8265,14 @@ public static unsafe partial class SDL
     public static partial void SDL_DelayPrecise(ulong ns);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate uint SDL_TimerCallback(IntPtr userdata, uint timerID, uint interval);
+    public delegate uint SDL_TimerCallback(nint userdata, uint timerID, uint interval);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     public static partial uint SDL_AddTimer(uint interval, SDL_TimerCallback callback, IntPtr userdata);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate ulong SDL_NSTimerCallback(IntPtr userdata, uint timerID, ulong interval);
+    public delegate ulong SDL_NSTimerCallback(nint userdata, uint timerID, ulong interval);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8295,7 +8295,7 @@ public static unsafe partial class SDL
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_TrayCallback(IntPtr userdata, IntPtr entry);
+    public delegate void SDL_TrayCallback(nint userdata, nint entry);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8303,7 +8303,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SetTrayIcon(IntPtr tray, IntPtr icon);
+    public static partial void SDL_SetTrayIcon(nint tray, nint icon);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8311,24 +8311,24 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateTrayMenu(IntPtr tray);
+    public static partial nint SDL_CreateTrayMenu(nint tray);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_CreateTraySubmenu(IntPtr entry);
+    public static partial nint SDL_CreateTraySubmenu(nint entry);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetTrayMenu(IntPtr tray);
+    public static partial nint SDL_GetTrayMenu(nint tray);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetTraySubmenu(IntPtr entry);
+    public static partial nint SDL_GetTraySubmenu(nint entry);
 
-    public static Span<IntPtr> SDL_GetTrayEntries(IntPtr menu)
+    public static Span<nint> SDL_GetTrayEntries(nint menu)
     {
         var result = SDL_GetTrayEntries(menu, out var size);
-        return new Span<IntPtr>((void*)result, size);
+        return new Span<nint>((void*)result, size);
     }
 
     [LibraryImport(nativeLibName)]
@@ -8337,7 +8337,7 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_RemoveTrayEntry(IntPtr entry);
+    public static partial void SDL_RemoveTrayEntry(nint entry);
 
     [LibraryImport(nativeLibName, StringMarshalling = StringMarshalling.Utf8)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8354,19 +8354,19 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SetTrayEntryChecked(IntPtr entry, SDLBool check);
+    public static partial void SDL_SetTrayEntryChecked(nint entry, SDLBool check);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetTrayEntryChecked(IntPtr entry);
+    public static partial SDLBool SDL_GetTrayEntryChecked(nint entry);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_SetTrayEntryEnabled(IntPtr entry, SDLBool enabled);
+    public static partial void SDL_SetTrayEntryEnabled(nint entry, SDLBool enabled);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial SDLBool SDL_GetTrayEntryEnabled(IntPtr entry);
+    public static partial SDLBool SDL_GetTrayEntryEnabled(nint entry);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -8374,23 +8374,23 @@ public static unsafe partial class SDL
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_ClickTrayEntry(IntPtr entry);
+    public static partial void SDL_ClickTrayEntry(nint entry);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_DestroyTray(IntPtr tray);
+    public static partial void SDL_DestroyTray(nint tray);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetTrayEntryParent(IntPtr entry);
+    public static partial nint SDL_GetTrayEntryParent(nint entry);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetTrayMenuParentEntry(IntPtr menu);
+    public static partial nint SDL_GetTrayMenuParentEntry(nint menu);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_GetTrayMenuParentTray(IntPtr menu);
+    public static partial nint SDL_GetTrayMenuParentTray(nint menu);
 
     // /usr/local/include/SDL3/SDL_version.h
 
@@ -8406,7 +8406,7 @@ public static unsafe partial class SDL
     // /usr/local/include/SDL3/SDL_main.h
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate int SDL_main_func(int argc, IntPtr argv);
+    public delegate int SDL_main_func(int argc, nint argv);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

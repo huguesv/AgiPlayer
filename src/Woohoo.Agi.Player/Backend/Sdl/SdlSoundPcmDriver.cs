@@ -44,8 +44,8 @@ internal sealed class SdlSoundPcmDriver : ISoundPcmDriver
 
         SDL_AudioSpec obtained = default;
 
-        IntPtr desiredPtr = Marshal.AllocHGlobal(Marshal.SizeOf(desired));
-        IntPtr obtainedPtr = Marshal.AllocHGlobal(Marshal.SizeOf(obtained));
+        nint desiredPtr = Marshal.AllocHGlobal(Marshal.SizeOf(desired));
+        nint obtainedPtr = Marshal.AllocHGlobal(Marshal.SizeOf(obtained));
 
         try
         {
@@ -176,7 +176,7 @@ internal sealed class SdlSoundPcmDriver : ISoundPcmDriver
         this.handlesUsed &= mask;
     }
 
-    private void SdlCallback(IntPtr userdata, IntPtr stream, int len)
+    private void SdlCallback(nint userdata, nint stream, int len)
     {
         bool output = false;
 

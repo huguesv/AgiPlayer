@@ -60,7 +60,7 @@ internal class Sdl2InputDriver : IInputDriver
     private int tick;
     private InputEvent stopEgoEvent;
     //private IntPtr clockThread;
-    private IntPtr joystick;
+    private nint joystick;
     private int joystickX;
     private int joystickY;
 
@@ -225,8 +225,8 @@ internal class Sdl2InputDriver : IInputDriver
     {
         SDL_Event ev = default(SDL_Event);
         ev.type = SDL_EventType.SDL_USEREVENT;
-        ev.user.data1 = new IntPtr(type);
-        ev.user.data2 = new IntPtr(data);
+        ev.user.data1 = new nint(type);
+        ev.user.data2 = new nint(data);
 
         if (SDL_PushEvent(ref ev) == 0)
         {
@@ -236,9 +236,9 @@ internal class Sdl2InputDriver : IInputDriver
         return false;
     }
 
-    void IInputDriver.PollMouse(out int button, out int x, out int y)
+    void IInputDriver.PollMouse(out int button, out int screenScaledX, out int screenScaledY)
     {
-        button = (int)SDL_GetMouseState(out x, out y);
+        button = (int)SDL_GetMouseState(out screenScaledX, out screenScaledY);
     }
 
     InputEvent IInputDriver.PollEvent()
@@ -310,7 +310,7 @@ internal class Sdl2InputDriver : IInputDriver
         return (int)(SDL_GetTicks() / DelayMultiplier);
     }
 
-    private InputEvent UserEventDecode(IntPtr data1, IntPtr data2)
+    private InputEvent UserEventDecode(nint data1, nint data2)
     {
         InputEvent e = new InputEvent();
         e.Type = data1.ToInt32();

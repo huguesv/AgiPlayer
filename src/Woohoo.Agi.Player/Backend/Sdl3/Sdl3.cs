@@ -17,7 +17,7 @@ public static unsafe partial class SDL
 {
     public const uint SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK = 0xFFFFFFFFu;
 
-    public static nint SDL_CreateTextureAsNint(IntPtr renderer, SDL_PixelFormat format, SDL_TextureAccess access, int w, int h)
+    public static nint SDL_CreateTextureAsNint(nint renderer, SDL_PixelFormat format, SDL_TextureAccess access, int w, int h)
     {
         unsafe
         {
@@ -133,7 +133,7 @@ public static unsafe partial class SDL
             }
 
             devices = new uint[playbackCount];
-            uint* ptr = (uint*)new IntPtr(count).ToPointer();
+            uint* ptr = (uint*)new nint(count).ToPointer();
             for (int i = 0; i < playbackCount; i++)
             {
                 devices[i] = ptr[i];

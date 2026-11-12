@@ -5,8 +5,6 @@
 
 namespace Woohoo.Agi.Engine.Interpreter;
 
-public delegate int AudioCallback(ToneChannel ch, short[] buffer, int count);
-
 public interface ISoundPcmDriver
 {
     void SetInterpreter(AgiInterpreter interpreter);

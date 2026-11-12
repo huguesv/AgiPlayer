@@ -494,7 +494,7 @@ public class PictureBuffer
         if (pattern == PictureBrushPattern.Splatter)
         {
             // Splatter brush
-            if ((SplatterBrushMap[pos >> 3] >> (0x07 - (pos & 0x07)) & 0x01) != 0)
+            if (((SplatterBrushMap[pos >> 3] >> (0x07 - (pos & 0x07))) & 0x01) != 0)
             {
                 this.DrawPixel(x, y);
             }

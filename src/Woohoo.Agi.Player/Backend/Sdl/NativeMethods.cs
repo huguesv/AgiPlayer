@@ -88,7 +88,7 @@ internal static partial class NativeMethods
     private const string nativeLibName = "SDL";
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void SDL_AudioCallback(IntPtr userdata, IntPtr stream, int len);
+    public delegate void SDL_AudioCallback(nint userdata, nint stream, int len);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate int SDL_EventFilter([Out] SDL_Event evt);
@@ -116,7 +116,7 @@ internal static partial class NativeMethods
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_OpenAudio(IntPtr desired, IntPtr obtained);
+    public static partial int SDL_OpenAudio(nint desired, nint obtained);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -160,7 +160,7 @@ internal static partial class NativeMethods
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_JoystickOpen(int device_index);
+    public static partial nint SDL_JoystickOpen(int device_index);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -196,11 +196,11 @@ internal static partial class NativeMethods
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial IntPtr SDL_SetVideoMode(int width, int height, int bpp, int flags);
+    public static partial nint SDL_SetVideoMode(int width, int height, int bpp, int flags);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial void SDL_UpdateRect(IntPtr screen, int x, int y, int w, int h);
+    public static partial void SDL_UpdateRect(nint screen, int x, int y, int w, int h);
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -224,7 +224,7 @@ internal static partial class NativeMethods
 
     [LibraryImport(nativeLibName)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    public static partial int SDL_WM_ToggleFullScreen(IntPtr surface);
+    public static partial int SDL_WM_ToggleFullScreen(nint surface);
 
     public static string SDL_GetError()
     {
@@ -233,7 +233,7 @@ internal static partial class NativeMethods
 
     [LibraryImport(nativeLibName, EntryPoint = "SDL_GetError")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    private static partial IntPtr __SDL_GetError();
+    private static partial nint __SDL_GetError();
 
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct SDL_AudioSpec
@@ -252,7 +252,7 @@ internal static partial class NativeMethods
 
         public int size;
 
-        public IntPtr callback;
+        public nint callback;
 
         public object userdata;
     }
@@ -392,9 +392,9 @@ internal static partial class NativeMethods
 
         public int code;
 
-        public IntPtr data1;
+        public nint data1;
 
-        public IntPtr data2;
+        public nint data2;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
@@ -402,7 +402,7 @@ internal static partial class NativeMethods
     {
         public byte type;
 
-        public IntPtr msg;
+        public nint msg;
     }
 
     [StructLayout(LayoutKind.Explicit)]
@@ -535,7 +535,7 @@ internal static partial class NativeMethods
     {
         public int flags;
 
-        public IntPtr format;
+        public nint format;
 
         public int w;
 
@@ -543,11 +543,11 @@ internal static partial class NativeMethods
 
         public short pitch;
 
-        public IntPtr pixels;
+        public nint pixels;
 
         public int offset;
 
-        public IntPtr hwdata;
+        public nint hwdata;
 
         public SDL_Rect clip_rect;
 
@@ -555,7 +555,7 @@ internal static partial class NativeMethods
 
         public int locked;
 
-        public IntPtr map;
+        public nint map;
 
         public int format_version;
 
