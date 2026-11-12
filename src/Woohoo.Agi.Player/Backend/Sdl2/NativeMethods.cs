@@ -5708,7 +5708,7 @@ public static partial class NativeMethods
         public ushort period;
         public ushort samples;
         public nint data; // Uint16*
-                            // Envelope
+        // Envelope
         public ushort attack_length;
         public ushort attack_level;
         public ushort fade_length;
