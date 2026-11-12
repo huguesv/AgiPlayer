@@ -17,10 +17,10 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
 {
     private int displayScaleX;
     private int displayScaleY;
-    private IntPtr windowPtr;
-    private IntPtr surfacePtr;
-    private IntPtr texturePtr;
-    private IntPtr rendererPtr;
+    private nint windowPtr;
+    private nint surfacePtr;
+    private nint texturePtr;
+    private nint rendererPtr;
     private int displayWidth;
     private int displayHeight;
     private int bpp;
@@ -155,7 +155,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
                     {
                         for (int deltaX = 0; deltaX < this.displayScaleX; deltaX++)
                         {
-                            Marshal.WriteByte(new IntPtr(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
+                            Marshal.WriteByte(new nint(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
                         }
                     }
                 }
@@ -203,7 +203,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
                             {
                                 for (int deltaX = 0; deltaX < this.displayScaleX; deltaX++)
                                 {
-                                    Marshal.WriteByte(new IntPtr(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
+                                    Marshal.WriteByte(new nint(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
                                 }
                             }
                         }
@@ -271,7 +271,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
                 int x = surface.pixels.ToInt32() + ((j + scaledOffsetY) * surface.pitch) + scaledOffsetY;
 
                 int length = this.displayWidth - scaledOffsetX;
-                IntPtr ptr = new IntPtr(x);
+                nint ptr = new nint(x);
                 Marshal.Copy(backup, j * surface.pitch, ptr, length);
             }
 
@@ -306,7 +306,7 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
                 {
                     for (int deltaX = 0; deltaX < fontScaleX; deltaX++)
                     {
-                        Marshal.WriteByte(new IntPtr(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
+                        Marshal.WriteByte(new nint(surface.pixels.ToInt32() + ((positionY + deltaY) * surface.pitch) + (positionX + deltaX)), pixel);
                     }
                 }
             }
@@ -341,8 +341,8 @@ internal sealed class Sdl2GraphicsDriver : IGraphicsDriver
 
         for (int j = 0; j < scaledHeight; j++)
         {
-            IntPtr targetPtr = new IntPtr(surface.pixels.ToInt32() + (targetY * surface.pitch) + scaledX);
-            IntPtr sourcePtr = new IntPtr(surface.pixels.ToInt32() + ((targetY + sourceYOffset) * surface.pitch) + scaledX);
+            nint targetPtr = new nint(surface.pixels.ToInt32() + (targetY * surface.pitch) + scaledX);
+            nint sourcePtr = new nint(surface.pixels.ToInt32() + ((targetY + sourceYOffset) * surface.pitch) + scaledX);
 
             Marshal.Copy(sourcePtr, buffer, 0, scaledWidth);
             Marshal.Copy(buffer, 0, targetPtr, scaledWidth);

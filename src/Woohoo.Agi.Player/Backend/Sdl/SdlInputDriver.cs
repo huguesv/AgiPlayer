@@ -78,8 +78,8 @@ internal class SdlInputDriver : IInputDriver
 
     private AgiInterpreter interpreter;
     private int tick;
-    private IntPtr clockThread;
-    private IntPtr joystick;
+    private nint clockThread;
+    private nint joystick;
     private int joystickX;
     private int joystickY;
 
@@ -97,7 +97,7 @@ internal class SdlInputDriver : IInputDriver
 
     void IInputDriver.ClockInitStartThread()
     {
-        this.clockThread = SDL_CreateThread(this.ClockThread, IntPtr.Zero);
+        this.clockThread = SDL_CreateThread(this.ClockThread, nint.Zero);
     }
 
     void IInputDriver.ClockDenitStopThread()
@@ -246,8 +246,8 @@ internal class SdlInputDriver : IInputDriver
             {
                 type = SDL_EventType.SDL_USEREVENT,
                 code = 0,
-                data1 = new IntPtr(type),
-                data2 = new IntPtr(data),
+                data1 = new nint(type),
+                data2 = new nint(data),
             },
         };
 
@@ -259,9 +259,9 @@ internal class SdlInputDriver : IInputDriver
         return false;
     }
 
-    void IInputDriver.PollMouse(out int button, out int x, out int y)
+    void IInputDriver.PollMouse(out int button, out int screenScaledX, out int screenScaledY)
     {
-        button = SDL_GetMouseState(out x, out y);
+        button = SDL_GetMouseState(out screenScaledX, out screenScaledY);
     }
 
     InputEvent IInputDriver.PollEvent()
@@ -330,7 +330,7 @@ internal class SdlInputDriver : IInputDriver
         return SDL_GetTicks() / DelayMultiplier;
     }
 
-    private static InputEvent UserEventDecode(IntPtr data1, IntPtr data2)
+    private static InputEvent UserEventDecode(nint data1, nint data2)
     {
         return new InputEvent
         {

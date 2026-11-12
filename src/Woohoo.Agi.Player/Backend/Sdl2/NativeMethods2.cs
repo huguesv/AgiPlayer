@@ -27,7 +27,7 @@ public static partial class NativeMethods
     //     SDL_CreateThread(int (SDLCALL *fn)(void *), const char *name, void *data)
     [SuppressUnmanagedCodeSecurity]
     [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern IntPtr SDL_CreateThread(ThreadDelegate fn, IntPtr name, object data);
+    public static extern nint SDL_CreateThread(ThreadDelegate fn, nint name, object data);
 
     //
     // Summary:
@@ -39,7 +39,7 @@ public static partial class NativeMethods
     //     *thread, int *status)
     [SuppressUnmanagedCodeSecurity]
     [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void SDL_WaitThread(IntPtr thread, out int status);
+    public static extern void SDL_WaitThread(nint thread, out int status);
 }
 
 #pragma warning restore SA1120

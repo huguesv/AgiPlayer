@@ -11,7 +11,7 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
 {
     private int displayScaleX;
     private int displayScaleY;
-    private IntPtr surfacePtr;
+    private nint surfacePtr;
     private int displayWidth;
     private int displayHeight;
     private int bpp;
@@ -112,7 +112,7 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
                     {
                         for (int deltaX = 0; deltaX < this.displayScaleX; deltaX++)
                         {
-                            IntPtr destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
+                            nint destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
                             Marshal.WriteByte(destPtr, pixel);
                         }
                     }
@@ -150,7 +150,7 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
                             {
                                 for (int deltaX = 0; deltaX < this.displayScaleX; deltaX++)
                                 {
-                                    IntPtr destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
+                                    nint destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
                                     Marshal.WriteByte(destPtr, pixel);
                                 }
                             }
@@ -195,7 +195,7 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
             for (int j = 0; j < this.displayHeight - scaledOffsetY; j++)
             {
                 int length = this.displayWidth - scaledOffsetX;
-                IntPtr ptr = surface.pixels + (((j + scaledOffsetY) * surface.pitch) + scaledOffsetY);
+                nint ptr = surface.pixels + (((j + scaledOffsetY) * surface.pitch) + scaledOffsetY);
                 Marshal.Copy(backup, j * surface.pitch, ptr, length);
             }
 
@@ -230,7 +230,7 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
                 {
                     for (int deltaX = 0; deltaX < fontScaleX; deltaX++)
                     {
-                        IntPtr destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
+                        nint destPtr = surface.pixels + (((positionY + deltaY) * surface.pitch) + positionX + deltaX);
                         Marshal.WriteByte(destPtr, pixel);
                     }
                 }
@@ -266,8 +266,8 @@ internal sealed class SdlGraphicsDriver : IGraphicsDriver
 
         for (int j = 0; j < scaledHeight; j++)
         {
-            IntPtr targetPtr = surface.pixels + ((targetY * surface.pitch) + scaledX);
-            IntPtr sourcePtr = surface.pixels + (((targetY + sourceYOffset) * surface.pitch) + scaledX);
+            nint targetPtr = surface.pixels + ((targetY * surface.pitch) + scaledX);
+            nint sourcePtr = surface.pixels + (((targetY + sourceYOffset) * surface.pitch) + scaledX);
 
             Marshal.Copy(sourcePtr, buffer, 0, scaledWidth);
             Marshal.Copy(buffer, 0, targetPtr, scaledWidth);

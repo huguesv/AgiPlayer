@@ -209,8 +209,8 @@ internal class Sdl3InputDriver : IInputDriver
     {
         SDL_Event ev = default(SDL_Event);
         ev.type = (uint)SDL_EventType.SDL_EVENT_USER;
-        ev.user.data1 = new IntPtr(type);
-        ev.user.data2 = new IntPtr(data);
+        ev.user.data1 = new nint(type);
+        ev.user.data2 = new nint(data);
 
         if (SDL_PushEvent(ref ev))
         {
@@ -225,7 +225,7 @@ internal class Sdl3InputDriver : IInputDriver
         this.interpreter = interpreter;
     }
 
-    private int ClockThread(IntPtr data)
+    private int ClockThread(nint data)
     {
         this.interpreter.Clock();
         return 0;
@@ -276,7 +276,7 @@ internal class Sdl3InputDriver : IInputDriver
         return (int)(SDL_GetTicks() / DelayMultiplier);
     }
 
-    private InputEvent UserEventDecode(IntPtr data1, IntPtr data2)
+    private InputEvent UserEventDecode(nint data1, nint data2)
     {
         InputEvent e = new InputEvent();
         e.Type = data1.ToInt32();

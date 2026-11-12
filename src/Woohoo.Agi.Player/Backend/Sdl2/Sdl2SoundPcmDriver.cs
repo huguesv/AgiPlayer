@@ -37,13 +37,13 @@ internal sealed class Sdl2SoundPcmDriver : ISoundPcmDriver
             format = (ushort)format,
             samples = SAMPLESIZE,
             channels = 1,
-            userdata = IntPtr.Zero,
+            userdata = nint.Zero,
             callback = this.sdlCallback,
         };
 
         SDL_AudioSpec obtained = default(SDL_AudioSpec);
 
-        IntPtr obtainedPtr = Marshal.AllocHGlobal(Marshal.SizeOf(obtained));
+        nint obtainedPtr = Marshal.AllocHGlobal(Marshal.SizeOf(obtained));
 
         try
         {
@@ -169,7 +169,7 @@ internal sealed class Sdl2SoundPcmDriver : ISoundPcmDriver
         this.handlesUsed &= mask;
     }
 
-    private void SdlCallback(IntPtr userdata, IntPtr stream, int len)
+    private void SdlCallback(nint userdata, nint stream, int len)
     {
         bool output = false;
 
